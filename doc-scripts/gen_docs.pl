@@ -473,8 +473,8 @@ sub get_ucdm_entities($) {
 
 sub file_handle($) {
   my($x) = @_;
-  my $udp_home = $ENV{'UDP_HOME'};
-  my $y = "$udp_home/docs/udp/$x";
+  my $udp_home = $ENV{'UDP_DOCS_HOME'};
+  my $y = "$udp_home/udp/$x";
   open(my $fh, '>:encoding(UTF-8)', $y) or die "Could not open file '$y' $!";
   return $fh;
 }
