@@ -20,7 +20,7 @@
 <tr ><td>Course status</td><td><code>Status</code></td><td>The status of the Course Offering at the institution.<br>Option set: <a href="../tables/RefOperationalStatus.html">RefOperationalStatus</a></td></tr>
 <tr ><td>Course credits</td><td><code>AvailableCredits</code></td><td>Measured in Carnegie units, the amount of credit available to a student who successfully meets the objectives of the Course Offering.</td></tr>
 <tr ><td>Course workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the Course offering, usually in relation to its availability for teaching and learning.</td></tr>
-</tbody></table><a href="#top">top</a><br><br><a name="course-section"><h1>Course section</h1></a><p>An administrative and instructional sub-organization of a course offering.(Common Educational Data Standards)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
+</tbody></table><a href="#top">top</a><br><br><a name="course-section"><h1>Course section</h1></a><p>An administrative and instructional sub-organization of a Course offering. Instructors may be assigned to one or more sections of a particular Course offering.(Common Educational Data Standards)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
 </thead><tbody><tr ><td>Course offering Id</td><td><code>CourseId</code></td><td>The course offering to which this Course section belongs.</td></tr>
 <tr ><td>Academic term Id</td><td><code>TermId</code></td><td>The term to which this Course section belongs.</td></tr>
 <tr ><td>Course Section number</td><td><code>SectionNumber</code></td><td>The unique number of a particular Course Section. E.g., "1", "015".</td></tr>
@@ -31,15 +31,15 @@
 <tr ><td>Course section ends</td><td><code>EndDate</code></td><td>The date & time when instruction in the course section begins. </td></tr>
 <tr ><td>Course section workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the Course section, usually in relation to its availability for teaching and learning.</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name="course-section-enrollment"><h1>Course section enrollment</h1></a><p>The association of a Person to an organization, usually defined by a particular role.(Common Educational Data Standards)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
-</thead><tbody><tr ><td>Person Id</td><td><code>PersonId</code></td><td>Description</td></tr>
-<tr ><td>Section Id</td><td><code>SectionId</code></td><td>Description</td></tr>
-<tr ><td>Role</td><td><code>Role</code></td><td>Description<br>Option set: <a href="../tables/Role.html">Role</a></td></tr>
-<tr ><td>Role status</td><td><code>RoleStatus</code></td><td>Description<br>Option set: <a href="../tables/RefRoleStatus.html">RefRoleStatus</a></td></tr>
-<tr ><td>Entry date</td><td><code>EntryDate</code></td><td>Description</td></tr>
-<tr ><td>Exit date</td><td><code>ExitDate</code></td><td>Description</td></tr>
-<tr ><td>Credits taken</td><td><code>CreditsTaken</code></td><td>Description</td></tr>
-<tr ><td>Credits earned</td><td><code>CreditsEarned</code></td><td>Description</td></tr>
-<tr ><td>Completed at</td><td><code>CompletedAt</code></td><td>Description</td></tr>
+</thead><tbody><tr ><td>Person Id</td><td><code>PersonId</code></td><td>The Person to whom this Course section enrollment applies.</td></tr>
+<tr ><td>Section Id</td><td><code>SectionId</code></td><td>The Course section to whom this Course section enrollment applies.</td></tr>
+<tr ><td>Role</td><td><code>Role</code></td><td>The role of the Person in the Section, as defined by a UCDM option set.<br>Option set: <a href="../tables/Role.html">Role</a></td></tr>
+<tr ><td>Role status</td><td><code>RoleStatus</code></td><td>The status of the Person in their role as a member of this Course section.<br>Option set: <a href="../tables/RefRoleStatus.html">RefRoleStatus</a></td></tr>
+<tr ><td>Entry date</td><td><code>EntryDate</code></td><td>The timestamp when the Person started this role in the Course section.</td></tr>
+<tr ><td>Exit date</td><td><code>ExitDate</code></td><td>The timestamp indicating when the Person ended this role in the Course section.</td></tr>
+<tr ><td>Credits taken</td><td><code>CreditsTaken</code></td><td>The number of credits the Person intended to earn in the Course section.</td></tr>
+<tr ><td>Credits earned</td><td><code>CreditsEarned</code></td><td>The number of credits the Person actually earned in the Course section.</td></tr>
+<tr ><td>Completed at</td><td><code>CompletedAt</code></td><td>The timestamp when the user completed their enrollment in the Course section.</td></tr>
 <tr ><td>Course workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the Course section enrollment.</td></tr>
 <tr ><td>Self Enrolled</td><td><code>SelfEnrolled</code></td><td>Is the user self-enrolled in the course section?</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name="institutional-affiliation"><h1>Institutional affiliation</h1></a><p>The association of a Person to an academic institution, and the description of the general or primary capacity in which they act at that institution.(Common Educational Data Standards)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
