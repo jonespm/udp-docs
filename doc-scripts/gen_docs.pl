@@ -1043,7 +1043,9 @@ sub q_catalog_tables {
     "   UcdmTable.Name as Name, Organization.Name as Jurisdiction" .
     " FROM UcdmTable " .
     " INNER JOIN Organization on UcdmTable.RefJurisdictionId=Organization.OrganizationId" .
-    " WHERE UcdmTable.Name like 'ucdm%'";
+    " WHERE UcdmTable.Name like 'ucdm%' " .
+    "    OR UcdmTable.Name like 'canvas%' " .
+    "    OR UcdmTable.Name like 'sis%' ";
 
   return $x;
 }
@@ -1081,6 +1083,8 @@ sub q_ucdm_tables {
     "       UcdmTable.Name not like 'udp%' AND " .
     "       UcdmTable.Name not like 'md%' AND " .
     "       UcdmTable.Name not like 'ref%' AND " .
+    "       UcdmTable.Name not like 'canvas%' AND " .
+    "       UcdmTable.Name not like 'sis%' AND " .
     "       UcdmTable.Name != 'roles'";
 
   return $x;
