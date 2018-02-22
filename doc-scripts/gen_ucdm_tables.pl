@@ -141,7 +141,9 @@ sub jurisdiction($) {
     $table =~ m/UcdmElement/i ||
     $table =~ m/UcdmEntityTableMapping/i ||
     $table =~ m/UcdmColumn/i ||
-    $table =~ m/UcdmTable/i
+    $table =~ m/UcdmTable/i ||
+    $table =~ m/Canvas/i ||
+    $table =~ m/Sis/i
   );
 
   return 1;
