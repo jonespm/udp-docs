@@ -1,48 +1,48 @@
 <!doctype html><html lang="en">  <head>   <title>learningresource: definition</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a><!-- Navigation --><div class="container"> <nav class="navbar is-transparent"> <div class="navbar-brand"> <div class="navbar-burger burger" data-target="navbarExampleTransparentExample"> <span></span> <span></span> <span></span> </div> </div> <div id="navbarExampleTransparentExample" class="navbar-menu"> <div class="navbar-start"> <a class="navbar-item" href="../index.html"> Home </a> <div class="navbar-item has-dropdown is-hoverable"> <a class="navbar-link" href="../index.html"> UDP </a> <div class="navbar-dropdown is-boxed"> <a class="navbar-item" href="../udp/access-udp-resources.html"> Accessing UDP resources </a> <hr class="navbar-divider"> <a class="navbar-item" href="../udp/caliper-endpoint.html"> Caliper endpoint </a> <a class="navbar-item" href="../udp/event-processing.html"> Event processing </a> <a class="navbar-item" href="../udp/lrs-event-record.html"> Event record </a> </div> </div> <div class="navbar-item has-dropdown is-hoverable"> <a class="navbar-link" href="../index.html"> UCDM </a> <div class="navbar-dropdown is-boxed"> <a class="navbar-item" href="../ucdm/data-dictionary.html"> Data dictionary </a> <a class="navbar-item" href="../ucdm/relational-schema.html"> Relational schema </a> <a class="navbar-item" href="../ucdm/sis-loading-schema.html"> SIS Loading Schema for UCDM </a> <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html"> Canvas Data to UCDM </a> <hr class="navbar-divider"> <a class="navbar-item" href="../ucdm/queries-relational-store.html"> Sample Relational Store queries </a> <a class="navbar-item" href="../ucdm/queries-event-store.html"> Sample Learning Record Store queries </a> </div> </div> </div> <div class="navbar-end"> </div> </div> </nav></div><!-- /// Navigation --><section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>learningresource</b>       </h1>      <h1 class="subtitle">              </h1>    </div>  </div></section><div class="content"><br><div class="container"><b>Table definition</b><table class='table is-bordered is-hoverable'><thead><tr ><th>Name</th><th>Definition</th><th>Jursidiction</th><th>Option set</th></tr>
-</thead><tbody><tr ><td>learningresourceid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>title</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>description</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>url</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>unizinid</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
+</thead><tbody><tr ><td>adaptedfromurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>assistivetechnologiescompatibleind</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>basedonurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>conceptkeyword</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>subjectname</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>subjectcode</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>subjectcodesystem</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflearningresourcetypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcetype.html">reflearningresourcetype</a></td></tr>
-<tr ><td>datecreated</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>version</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>creator</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>publishername</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>publisheddate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>printisbn</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>copyrightholdername</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>copyrightyear</td><td>CHARACTER (4)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>learningresourcelicenseurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>basedonurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflearningresourceintendedenduserroleid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceintendedenduserrole.html">reflearningresourceintendedenduserrole</a></td></tr>
-<tr ><td>reflearningresourceeducationaluseid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceeducationaluse.html">reflearningresourceeducationaluse</a></td></tr>
-<tr ><td>reflearningresourceinteractivitytypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceinteractivitytype.html">reflearningresourceinteractivitytype</a></td></tr>
-<tr ><td>reflanguageid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflanguage.html">reflanguage</a></td></tr>
-<tr ><td>timerequired</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>typicalagerangeminimum</td><td>SMALLINT</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>typicalagerangemaximum</td><td>SMALLINT</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>textcomplexityvalue</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>textcomplexitysystem</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>adaptedfromurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>assistivetechnologiescompatibleind</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>peerratingsamplesize</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflearningresourceaccessmodetypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccessmodetype.html">reflearningresourceaccessmodetype</a></td></tr>
-<tr ><td>reflearningresourcebookformattypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcebookformattype.html">reflearningresourcebookformattype</a></td></tr>
-<tr ><td>reflearningresourcedigitalmediasubtypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcedigitalmediasubtype.html">reflearningresourcedigitalmediasubtype</a></td></tr>
-<tr ><td>reflearningresourcedigitalmediatypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcedigitalmediatype.html">reflearningresourcedigitalmediatype</a></td></tr>
+<tr ><td>creator</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>datecreated</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>description</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>learningresourceauthoremail</td><td>CHARACTER VARYING (128)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>learningresourceauthorurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>learningresourcedatemodified</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>learningresourceid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>learningresourcelicenseurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>learningresourcepublisheremail</td><td>CHARACTER VARYING (128)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>peerratingsamplesize</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>printisbn</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>publisheddate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>publishername</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>reflanguageid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflanguage.html">reflanguage</a></td></tr>
+<tr ><td>reflearningresourceaccessapitypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccessapitype.html">reflearningresourceaccessapitype</a></td></tr>
+<tr ><td>reflearningresourceaccesshazardtypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccesshazardtype.html">reflearningresourceaccesshazardtype</a></td></tr>
+<tr ><td>reflearningresourceaccessmodetypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccessmodetype.html">reflearningresourceaccessmodetype</a></td></tr>
 <tr ><td>reflearningresourceaccessrightsurlid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccessrightsurl.html">reflearningresourceaccessrightsurl</a></td></tr>
 <tr ><td>reflearningresourceauthortypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceauthortype.html">reflearningresourceauthortype</a></td></tr>
-<tr ><td>reflearningresourceinteractionmodeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceinteractionmode.html">reflearningresourceinteractionmode</a></td></tr>
-<tr ><td>reflearningresourceaccessapitypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccessapitype.html">reflearningresourceaccessapitype</a></td></tr>
+<tr ><td>reflearningresourcebookformattypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcebookformattype.html">reflearningresourcebookformattype</a></td></tr>
 <tr ><td>reflearningresourcecontrolflexibilitytypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcecontrolflexibilitytype.html">reflearningresourcecontrolflexibilitytype</a></td></tr>
-<tr ><td>reflearningresourceaccesshazardtypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceaccesshazardtype.html">reflearningresourceaccesshazardtype</a></td></tr>
+<tr ><td>reflearningresourcedigitalmediasubtypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcedigitalmediasubtype.html">reflearningresourcedigitalmediasubtype</a></td></tr>
+<tr ><td>reflearningresourcedigitalmediatypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcedigitalmediatype.html">reflearningresourcedigitalmediatype</a></td></tr>
+<tr ><td>reflearningresourceeducationaluseid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceeducationaluse.html">reflearningresourceeducationaluse</a></td></tr>
+<tr ><td>reflearningresourceintendedenduserroleid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceintendedenduserrole.html">reflearningresourceintendedenduserrole</a></td></tr>
+<tr ><td>reflearningresourceinteractionmodeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceinteractionmode.html">reflearningresourceinteractionmode</a></td></tr>
+<tr ><td>reflearningresourceinteractivitytypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourceinteractivitytype.html">reflearningresourceinteractivitytype</a></td></tr>
+<tr ><td>reflearningresourcetypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearningresourcetype.html">reflearningresourcetype</a></td></tr>
+<tr ><td>subjectcode</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>subjectcodesystem</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>subjectname</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>textcomplexitysystem</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>textcomplexityvalue</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>timerequired</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>title</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>typicalagerangemaximum</td><td>SMALLINT</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>typicalagerangeminimum</td><td>SMALLINT</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>unizinid</td><td>CHARACTER VARYING (60)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>url</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>version</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
 </tbody></table><br><br><br><br></div></div><!-- Footer --><footer class="footer"> <div class="container"> <div class="content"> <p> Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br> Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer --></body></html>
