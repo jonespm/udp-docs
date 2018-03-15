@@ -1,8 +1,6 @@
 # UDP documentation to do
 
 ## Implementation
-* SIS Loading schema
-* SIS data files
 * Setting up Canvas Data, Live Events, Canvas API
 * Key rotation
 
