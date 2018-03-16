@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Caliper integration</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='../assets/base.css'>
+  </head>
+
+  <body>
+    <a name='top'></a>
+
+    <!-- Navigation -->
+    <div class="container">
+      <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+          <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="../index.html">
+              Home
+            </a>
+
+            <!-- UDP documentation menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                UDP
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="../udp/access-udp-resources.html">
+                  Accessing UDP resources
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="../udp/caliper-endpoint.html">
+                  Caliper endpoint
+                </a>
+                <a class="navbar-item" href="../udp/event-processing.html">
+                  Event processing
+                </a>
+                <a class="navbar-item" href="../udp/lrs-event-record.html">
+                  Event record
+                </a>
+              </div>
+            </div>
+
+            <!-- UCDM documentation menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                UCDM
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="../ucdm/data-dictionary.html">
+                  Data dictionary
+                </a>
+                <a class="navbar-item" href="../ucdm/relational-schema.html">
+                  Relational schema
+                </a>
+                <a class="navbar-item" href="../ucdm/sis-loading-schema.html">
+                  SIS Loading Schema for UCDM
+                </a>
+                <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+                  Canvas Data to UCDM
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+                  Sample Relational Store queries
+                </a>
+                <a class="navbar-item" href="../ucdm/queries-event-store.html">
+                  Sample Learning Record Store queries
+                </a>
+              </div>
+            </div>
+
+            <!-- Developer menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                Developers
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="../developers/caliper-integration.html">
+                  Caliper sensor guidelines
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="navbar-end">
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- /// Navigation -->
+
+    <!-- Section header -->
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title">Caliper integration</h2>
+          <h2 class="subtitle">Developer guide</h2>
+        </div>
+      </div>
+    </section>
+    <!-- /// Section header -->
+
+    <div class="content">
+      <br>
+      <div class="container">
+
+        <!-- Message routing -->
+        <h1>Overview</h1>
+        <a name='home'></a>
+        <p>
+          This document describes a set of requirements and considerations for your tool’s Caliper events intended to make best use of the Unizin Data Platform’s event stream capabilities. It does not serve as a guide for how best to implement the Caliper specification itself.
+        </p>
+
+        <p>
+          The Unizin Data Platform (UDP) ingests Caliper event streams through its Caliper endpoint. The UDP Caliper endpoint may, depending on the event, apply different forms of processing before the event is stored in the UDP Learning Record Store (LRS).
+        </p>
+
+        <p>
+          At present, three types of processing are supported:
+          <ul>
+            <li>Event record processing (e.g., Caliper validation, UCDM enrichment)</li>
+            <li>Latency reduction processing (e.g., updating value in the object store)</li>
+          </ul>
+        </p>
+
+        <p>
+          (<a href="../udp/event-processing.html">See further documentation on the UDP Caliper endpoint's event processing.</a>)
+        </p>
+
+        <p>
+          <strong>Event record processing</strong> is applied to all events captured by the UDP’s Caliper endpoint. Event record processing entails taking a valid Caliper event and persisting it in the Learning Record Store. Unizin defines two tiers of Event record processing.
+          <ul>
+            <li>Silver tier processing: records are persisted as-is into the UDP Learning Record Store.</li>
+            <li>Gold tier processing: records are commonly-modeled and enriched with data before persistence in the UDP Learning Record Store</li>
+          </ul>
+        </p>
+
+        <p>
+          Gold tier Event record processing requires extracting attribute values from your events, associating your event with objects in the UDP object store, and then enriching your event payload with supplemental data pulled from the UDP object store. To perform this kind of process, the Caliper endpoint must have knowledge of the expected shape of an event coming from your application. In addition to following guidelines below, you will need to work with Unizin to enable non-Standard forms of event processing.
+        </p>
+
+        <p>
+          By default, Unizin will enrich event payloads by creating, or adding to, the <code>extensions</code> attribute of the Caliper information model.
+        </p>
+
+        <p>
+          <strong>Latency reduction</strong> processing is intended to update the UDP object store with data in an event payload. For example, if an event captures that an assignment was given a particular grade, then the grade value for that assignment record in the object store is updated.
+        </p>
+
+        <h1>Guidance for your Caliper sensor</h1>
+        <a name='conform-to-caliper'></a>
+        <h3>Conform to Caliper v1.1 </h3>
+        <p>
+          The UDP requires all incoming event envelopes and events to conform with <a href="https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1">version 1.1 of the IMS Global Caliper standard</a>. If events conform with Caliper 1.1., they are routed to Event record processing, which persists events in the UDP Learning Record Store.
+        </p>
+
+        <p>
+          Event envelopes and/or events that do not conform with Caliper 1.1 (including non-1.1 version Caliper events) are rejected by the endpoint.
+        </p>
+
+        <p>
+          The UDP endpoint validates Caliper 1.1 conformance on the following:
+        </p>
+
+        <p>
+          <ul>
+            <li>All requests to the endpoint are posted over HTTPS</li>
+            <li>All events are sent in a Caliper envelope</li>
+            <li>
+              In the Caliper event envelope:
+              <ul>
+                <li>the <code>sensor</code> attribute is present and has a value</li>
+                <li>the <code>sendTime</code> attribute is present and in ISO 8601 format</li>
+                <li>the <code>dataVersion</code> attribute is present matches <code>http://purl.imsglobal.org/ctx/caliper/v1p1</code></li>
+              </ul>
+            </li>
+            <li>
+              The Envelope contains a valid bearer token (<a href="https://tools.ietf.org/html/rfc3987">RFC 6750</a>)
+              <ul>
+                <li>Note: the UDP grants tokens on a per-school, per-app, per-environment basis (this is explained further, below)</li>
+              </ul>
+            </li>
+            <li>For every Caliper event in the event envelope:</li>
+            <ul>
+              <li>the <code>@context</code> attribute is present matches <code>http://purl.imsglobal.org/ctx/caliper/v1p1</code></li>
+              <li>the <code>type</code> attribute is present</li>
+              <li>
+                the <code>actor</code> object is present
+                <ul>
+                  <li>Note: we recommend defining <code>actor</code> as a hash with an <code>id</code> and <code>type</code> attribute</li>
+                  <li>Alternatively, <code>actor</code> may be defined as a string</li>
+                </ul>
+              <li>the <code>action</code> attribute is present</li>
+              <li>the <code>object</code> attribute is present (this is likely to be a hash with an <code>id</code> attribute)</li>
+              <li>the <code>eventTime</code> attribute is present and in ISO 8601 format</li>
+            </ul>
+          </ul>
+        </p>
+
+        <a name='non-standard'></a>
+        <h3>Make your event payloads consistent</h3>
+
+        <p>
+          In practice, the UDP endpoint examines the attributes in event payloads to determine if they qualify for processing beyond standard processing. The UDP endpoint then routes an event to all of the kinds of processing for which it qualifies (our processing types are categorized into two main tiers).
+        </p>
+
+        <p>
+          To enable event processing beyond Silver tier event record processing, Unizin will build custom integrations for events streamed by your tool. To make our development efficient, we strongly urge you to:
+          <ul>
+            <li>Provide a standard <code>edApp</code> value (so we know how to read the rest of your event payload)</li>
+            <li>Use the same event shape across all of your events</li>
+            <li>Use consistent, predictable patterns for attribute values, particularly identifiers</li>
+            <li>Document your event payload shapes and attribute patterns</li>
+            <li>Share your documentation with Unizin (this enables us to write event processing based on your event attribute data).</li>
+          </ul>
+        </p>
+
+
+        <a name='idenifiers'></a>
+        <h3>Make your identifiers predictable IRIs or URNs</h3>
+        <p>
+          We suggest you define the identifiers included in your event payloads as Internationalized Resource Identifiers, or IRIs (RFC 3987). The UDP’s common modeling engine will expect identifiers to be IRIs. A known, predictable string pattern will allow for the UDP’s common modeling engine to strip the relevant piece(s) of the id that can cross-reference to existing data in the relational store.
+        </p>
+
+        <p>
+          Alternatively, if your identifiers are not normally IRIs, we suggest constructing them as URNs, which are useful for showing the object’s location in the app’s internal hierarchy.
+        </p>
+
+        <p>
+           For example:
+         </p>
+
+<pre>
+“edApp.id”: “http://unizin.instructure.com/”
+“session.id”: “urn:umich:engin:leccap:session:T7Lzgsmtq0x2e1204jut6sop6”
+</pre>
+
+        <a name='lti-launch'></a>
+        <h3>Include LTI launch parameters in your payload</h3>
+
+        <p>
+          If your tool is launched via LTI, Unizin recommends including the LTI launch parameters passed to your tool via an event’s <code>federatedSession</code> object. Of particular interest are the LTI parameters representing the LMS course ID and the LMS user ID corresponding to the event. These values are useful in commonly modeling your event data with object data.
+        </p>
+
+        <p>
+          In the example below, the LMS course and user IDs are passed via <code>messageParameters</code> (this is arbitrary) and identified with the attributes <code>lis_course_offering_sourcedid</code> and <code>lis_person_sourcedid</code>, respectively.
+        </p>
+
+<pre>
+"federatedSession": {
+  "type": "LtiSession",
+  "id": "urn:session-id-localized/lti/oauth_nonce/5a81e2eb557427.65333446",
+  "messageParameters": {
+    "custom_canvas_course_id": "12345",
+    "custom_canvas_user_id": "98765",
+    "lis_course_offering_sourcedid": "test_99999003",
+    "lis_person_sourcedid": "11235813",
+    "resource_link_id": "a1b2c3d4e5f6g7h8i9j10"
+  },
+  "user": "https://university.edu/#profile:smith"
+}
+</pre>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="content">
+          <p>
+            Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br>
+            Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- ///Footer -->
+
+  </body>
+</html>
