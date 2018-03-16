@@ -1,22 +1,22 @@
 <!doctype html><html lang="en">  <head>   <title>organizationcalendarsession: definition</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a><!-- Navigation --><div class="container"> <nav class="navbar is-transparent"> <div class="navbar-brand"> <div class="navbar-burger burger" data-target="navbarExampleTransparentExample"> <span></span> <span></span> <span></span> </div> </div> <div id="navbarExampleTransparentExample" class="navbar-menu"> <div class="navbar-start"> <a class="navbar-item" href="../index.html"> Home </a> <div class="navbar-item has-dropdown is-hoverable"> <a class="navbar-link" href="../index.html"> UDP </a> <div class="navbar-dropdown is-boxed"> <a class="navbar-item" href="../udp/access-udp-resources.html"> Accessing UDP resources </a> <hr class="navbar-divider"> <a class="navbar-item" href="../udp/caliper-endpoint.html"> Caliper endpoint </a> <a class="navbar-item" href="../udp/event-processing.html"> Event processing </a> <a class="navbar-item" href="../udp/lrs-event-record.html"> Event record </a> </div> </div> <div class="navbar-item has-dropdown is-hoverable"> <a class="navbar-link" href="../index.html"> UCDM </a> <div class="navbar-dropdown is-boxed"> <a class="navbar-item" href="../ucdm/data-dictionary.html"> Data dictionary </a> <a class="navbar-item" href="../ucdm/relational-schema.html"> Relational schema </a> <a class="navbar-item" href="../ucdm/sis-loading-schema.html"> SIS Loading Schema for UCDM </a> <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html"> Canvas Data to UCDM </a> <hr class="navbar-divider"> <a class="navbar-item" href="../ucdm/queries-relational-store.html"> Sample Relational Store queries </a> <a class="navbar-item" href="../ucdm/queries-event-store.html"> Sample Learning Record Store queries </a> </div> </div> </div> <div class="navbar-end"> </div> </div> </nav></div><!-- /// Navigation --><section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>organizationcalendarsession</b>       </h1>      <h1 class="subtitle">              </h1>    </div>  </div></section><div class="content"><br><div class="container"><b>Table definition</b><table class='table is-bordered is-hoverable'><thead><tr ><th>Name</th><th>Definition</th><th>Jursidiction</th><th>Option set</th></tr>
-</thead><tbody><tr ><td>organizationcalendarsessionid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>designator</td><td>CHARACTER VARYING (7)</td><td>Common Educational Data Standards</td><td></td></tr>
+</thead><tbody><tr ><td>attendancetermindicator</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>begindate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>enddate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reftermtypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reftermtype.html">reftermtype</a></td></tr>
-<tr ><td>refsessiontypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="refsessiontype.html">refsessiontype</a></td></tr>
-<tr ><td>sessionname</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>instructionalminutes</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>code</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>description</td><td>CHARACTER VARYING (10485760)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>markingtermindicator</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>schedulingtermindicator</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>attendancetermindicator</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>organizationcalendarid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>daysinsession</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>description</td><td>CHARACTER VARYING (10485760)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>designator</td><td>CHARACTER VARYING (7)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>enddate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>firstinstructiondate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>instructionalminutes</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>lastinstructiondate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>markingtermindicator</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>minutesperday</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>organizationcalendarid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>organizationcalendarsessionid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>refsessiontypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="refsessiontype.html">refsessiontype</a></td></tr>
+<tr ><td>reftermtypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reftermtype.html">reftermtype</a></td></tr>
+<tr ><td>schedulingtermindicator</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>sessionendtime</td><td>TIME WITHOUT TIME ZONE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>sessionname</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>sessionstarttime</td><td>TIME WITHOUT TIME ZONE</td><td>Common Educational Data Standards</td><td></td></tr>
 </tbody></table><br><br><br><br></div></div><!-- Footer --><footer class="footer"> <div class="container"> <div class="content"> <p> Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br> Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer --></body></html>
