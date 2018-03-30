@@ -115,24 +115,278 @@
         <!-- Message routing -->
         <h1>Overview</h1>
         <a name='home'></a>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li>
+            <a href="#1-responses">1. Responses
+            <ul>
+              <li><a href="#response-status-codes">Response status codes</a></li>
+              <li><a href="#response-body">Response body</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#2-validation">2. Validation errors
+            <ul>
+              <li><a href="#http-request-conformance">HTTP Request</a></li>
+              <li><a href="#caliper-envelope-conformance">Envelope validation</a></li>
+              <li><a href="#caliper-event-conformance">Event validation</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#3-event-processing">3. Event processing
+          </li>
+          <li>
+            <a href="#4-general-guidelines">4. General guidelines
+            <ul>
+              <li><a href="#non-standard">Consistent payloads</a></li>
+              <li><a href="#identifiers">Identifier definition</a></li>
+              <li><a href="#lti-launch">LTI launch parameters</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <a name='overview'></a>
         <p>
-          This document describes a set of requirements and considerations for your tool’s Caliper events intended to make best use of the Unizin Data Platform’s event stream capabilities. It does not serve as a guide for how best to implement the Caliper specification itself.
+          This document is a Caliper sensor implementation guide for developers integrating with the Unizin Data Platform. It defines the validation performed by the Caliper endpoint, the endpoint's responses, and how to design payloads that make the most of the UDP's capabilities.
         </p>
 
         <p>
-          The Unizin Data Platform (UDP) ingests Caliper event streams through its Caliper endpoint. The UDP Caliper endpoint may, depending on the event, apply different forms of processing before the event is stored in the UDP Learning Record Store (LRS).
+          The Unizin Data Platform (UDP) ingests Caliper event streams through a Caliper endpoint exposed over the web (HTTPS only). For each Caliper envelope it ingests, the Caliper endpoint performs two major operations:
+
+          <ol>
+            <li>Validates the HTTP request, Caliper envelope, and Caliper event(s)</li>
+            <li>Routes events for processing before being persisted in the UDP Learning Record Store (LRS).</li>
+          </ol>
+
         </p>
 
         <p>
-          At present, three types of processing are supported:
+          The Endpoint's HTTP response will vary based on the validation and routing it performs.
+        </p>
+
+        <a name='1-responses'></a>
+        <h2>1. Responses</h2>
+
+        <p>
+          In a <code>prod</code> environment, the Caliper's endpoint responses are terse to keep the endpoint performant at scale. We call these "common" responses (see below).
+        </p>
+
+        <p>
+          In a <code>dev</code> environment, the Caliper endpoint's responses are verbose (see below). The responses are intended to aid in debugging your Caliper event stream integration. If a valid HTTP request, the Endpoint's response will contain information about your envelope and event conformance with Caliper along with information describing how events were routed for processing.
+        </p>
+
+        <a name='response-status-codes'></a>
+        <h3>Response HTTP status codes</h3>
+        <p>
+          The endpoint may return different status codes depending on the results of validation.
+        </p>
+
+        <p>
+          <strong>HTTP request errors:</strong>
+
           <ul>
-            <li>Event record processing (e.g., Caliper validation, UCDM enrichment)</li>
-            <li>Latency reduction processing (e.g., updating value in the object store)</li>
+            <li><code>401</code> - Unauthorized</li>
+            <li><code>415</code> - Unsupported Media Type - JSON payload missing or malformed.</li>
           </ul>
         </p>
 
         <p>
-          (<a href="../udp/event-processing.html">See further documentation on the UDP Caliper endpoint's event processing.</a>)
+          <strong>Caliper conformance errors:</strong>
+
+          <ul>
+            <li><code>400</code> - Non-conformant envelope, or all events non-conformant (distinct from <code>202</code> below)</li>
+            <li><code>422</code> - Non-conformant envelope <code>dataVersion</code>. NOTE: A bad <code>dataVersion</code> will always cause a <code>422</code> status, even when the Endpont is run in a <code>dev</code> environment and other validation errors are returned.</li>
+          </ul>
+        </p>
+
+        <p>
+          <strong>Success:</strong>
+
+          <ul>
+            <li><code>200</code> - Success! Valid HTTP request, conformant envelope, all events conformant</li>
+            <li><code>202</code> - Partial Success. Valid request, conformant envelope, but at least one conformant event amoung other non-conformant events.</li>
+          </ul>
+        </p>
+
+        <a name='response-body'></a>
+        <h3>Response body</h3>
+
+        <p>
+          For any given request, the Caliper endpoint will respond in one of two styles.
+        </p>
+
+        <p>
+          <strong>Common response</strong>
+          <br>
+          In a <code>prod</code> environment, the Caliper endpoint will always and only return a common response. In a <code>dev</code> environment, a common response is given if and only if there is a validation error on the HTTP request itself (e.g., an invalid authentication token is used). In such cases, the Caliper endpoint rejects the request without inspecting the Caliper enevelope or its event(s).
+        </p>
+
+<pre>
+  {
+      "error": "Unauthorized",
+      "message": "Bearer token missing or not recognized"
+  }
+</pre>
+
+        <p>
+          <strong>Verbose response</strong>
+          <br>
+          In a <code>dev</code> environment, the Caliper endpoint will always return a verbose response if the HTTP request is valid.
+        </p>
+        <p>
+          A verbose response is divided into two sections.
+        </p>
+        <p>
+          An <code>accepted_events</code> attribute contains information about all of the conformant events that were accepted and to which processing they were routed (these are called "topics"). An <code>errors</code> attribute contains information about the Caliper envelope and all of the events that did not conform with Caliper.
+        </p>
+
+<pre>
+  {
+      'accepted_events': [
+          {
+              'id': 'urn:uuid:b46f370c-79e0-433f-9f2b-2d750155e338',
+              'topics': { '<name of topic>': '<pubsub ID>', ... }
+          }, ...
+      ]
+      'errors': {
+          'envelope': [ <envelope errors> ],
+          'events': [
+              {
+                 'id': 'urn:uuid:b46f370c-79e0-433f-9f2b-2d750155e337',
+                 'index': 0,
+                 'errors': ['Event `actor` attribute must an object or ' 'string.'],
+              }, ...
+          ]
+      }
+  }
+</pre>
+
+        <a name='2-validation'></a>
+        <h2>2. Validation errors: requests, envelopes, events</h2>
+
+        <p>
+          The UDP Caliper endpoint only accepts valid HTTP requests with <code>content-type</code> of JSON.
+        </p>
+
+        <a name='http-request-conformance'></a>
+        <h3>HTTP requests</h3>
+
+        <p>
+          The Caliper endpoint performs the following HTTP request validation:
+
+          <ol>
+            <li><strong>Missing or invalid token.</strong> If an authentication token is not presented in the HTTP request, or if an authentication token is not valid, the endpoint returns a <code>401</code> with the message: <code>Bearer token missing or not recognized</code>.</li>
+            <li><strong>Invalid content type</strong>. If the request body type is not <code>application/json</code>, the endpoint returns a <code>415</code> with the message: <code>Content type must be application/json</code>.</li>
+          </ol>
+        </p>
+
+
+        <a name='caliper-envelope-conformance'></a>
+        <h3>Caliper envelope</h3>
+
+        <p>
+          All events posted to the Endpoint must be delivered in a Caliper envelope. Caliper envelopes must conform to the  <a href="https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1">version 1.1 of the IMS Global Caliper standard</a>. The following validation is performed on Caliper envelopes.
+        </p>
+
+        <p>
+          <table>
+            <tr>
+              <th>Requirement</th>
+              <th>Error message</th>
+            </tr>
+            <tr>
+              <td><code>sensor</code> is present</td>
+              <td>
+                <code>Event envelope must include a `sensor` attribute</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>sendTime</code> is present and in ISO 8601 format</td>
+              <td>
+                <code>Event envelope `sendTime` attribute must be an ISO 8601 time string formated like "yyyy-mm-ddThh:mm:ss.SSSZ".</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>dataVersion</code> is present</td>
+              <td>
+                <code>Event envelope `dataVersion` attribute must be a version like "http://purl.imsglobal.org/ctx/caliper/v1p1"</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>dataVersion</code> is valid</td>
+              <td>
+                <code>Event envelope `data` attribute must be an array with at least one element.</code>
+              </td>
+            </tr>
+          </table>
+        </p>
+
+
+        <a name='caliper-event-conformance'></a>
+        <h3>Caliper events</h3>
+
+        <p>
+          All events in a Caliper envelope must conform with the Caliper standard. The Caliper endpoint will reject any events that fail the following requirements.
+        </p>
+
+        <p>
+          <table>
+            <tr>
+              <th>Requirement</th>
+              <th>Error message</th>
+            </tr>
+            <tr>
+              <td><code>id</code> is present</td>
+              <td>
+                <code>Event `id` must be present.  Version 4 UUID is recommended.</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>@context</code> is present and valid</td>
+              <td>
+                <code>Event `@context` must be a version like "http://purl.imsglobal.org/ctx/caliper/v1p1".</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>actor</code> is present</td>
+              <td>
+                <code>Event `actor` attribute must an object or string.</code>
+                <br><br>
+                Note: we recommend defining <code>actor</code> as a hash with an <code>id</code> and <code>type</code> attribute.
+                Alternatively, <code>actor</code> may be defined as a string.
+              </td>
+            <tr>
+              <td>
+                <code>action</code> is present<br>
+                <code>type</code> is present
+              </td>
+              <td>
+                <code>"Event `type` and `action` must be present, and `action` must be valid for `type`.</code>
+              </td>
+            </tr>
+            <tr>
+              <td><code>eventTime</code> is present and valid ISO 8601 format</td>
+              <td>
+                <code>Event `eventTime` attribute must be an ISO 8601 time string formated like "yyyy-mm-ddThh:mm:ss.SSSZ".</code>
+              </td>
+            </tr>
+        </table>
+
+
+        <a name='3-event-processing'></a>
+        <h2>3. Event processing</h2>
+
+        <p>
+          When Caliper events are accepted, the response includes information describing to which kind of processing the event was routed.
+        </p>
+
+        <p>
+          At present, two types of processing are supported:
+          <ul>
+            <li>Event record processing (e.g., Caliper validation, UCDM enrichment)</li>
+            <li>Latency reduction processing (e.g., updating value in the object store)</li>
+          </ul>
         </p>
 
         <p>
@@ -144,67 +398,12 @@
         </p>
 
         <p>
-          Gold tier Event record processing requires extracting attribute values from your events, associating your event with objects in the UDP object store, and then enriching your event payload with supplemental data pulled from the UDP object store. To perform this kind of process, the Caliper endpoint must have knowledge of the expected shape of an event coming from your application. In addition to following guidelines below, you will need to work with Unizin to enable non-Standard forms of event processing.
+          (<a href="../udp/event-processing.html">See further documentation on the UDP Caliper endpoint's event processing.</a>)
         </p>
 
-        <p>
-          By default, Unizin will enrich event payloads by creating, or adding to, the <code>extensions</code> attribute of the Caliper information model.
-        </p>
 
-        <p>
-          <strong>Latency reduction</strong> processing is intended to update the UDP object store with data in an event payload. For example, if an event captures that an assignment was given a particular grade, then the grade value for that assignment record in the object store is updated.
-        </p>
-
-        <h1>Guidance for your Caliper sensor</h1>
-        <a name='conform-to-caliper'></a>
-        <h3>Conform to Caliper v1.1 </h3>
-        <p>
-          The UDP requires all incoming event envelopes and events to conform with <a href="https://www.imsglobal.org/caliper/v1p1/caliper-spec-v1p1">version 1.1 of the IMS Global Caliper standard</a>. If events conform with Caliper 1.1., they are routed to Event record processing, which persists events in the UDP Learning Record Store.
-        </p>
-
-        <p>
-          Event envelopes and/or events that do not conform with Caliper 1.1 (including non-1.1 version Caliper events) are rejected by the endpoint.
-        </p>
-
-        <p>
-          The UDP endpoint validates Caliper 1.1 conformance on the following:
-        </p>
-
-        <p>
-          <ul>
-            <li>All requests to the endpoint are posted over HTTPS</li>
-            <li>All events are sent in a Caliper envelope</li>
-            <li>
-              In the Caliper event envelope:
-              <ul>
-                <li>the <code>sensor</code> attribute is present and has a value</li>
-                <li>the <code>sendTime</code> attribute is present and in ISO 8601 format</li>
-                <li>the <code>dataVersion</code> attribute is present matches <code>http://purl.imsglobal.org/ctx/caliper/v1p1</code></li>
-              </ul>
-            </li>
-            <li>
-              The Envelope contains a valid bearer token (<a href="https://tools.ietf.org/html/rfc3987">RFC 6750</a>)
-              <ul>
-                <li>Note: the UDP grants tokens on a per-school, per-app, per-environment basis (this is explained further, below)</li>
-              </ul>
-            </li>
-            <li>For every Caliper event in the event envelope:</li>
-            <ul>
-              <li>the <code>@context</code> attribute is present matches <code>http://purl.imsglobal.org/ctx/caliper/v1p1</code></li>
-              <li>the <code>type</code> attribute is present</li>
-              <li>
-                the <code>actor</code> object is present
-                <ul>
-                  <li>Note: we recommend defining <code>actor</code> as a hash with an <code>id</code> and <code>type</code> attribute</li>
-                  <li>Alternatively, <code>actor</code> may be defined as a string</li>
-                </ul>
-              <li>the <code>action</code> attribute is present</li>
-              <li>the <code>object</code> attribute is present (this is likely to be a hash with an <code>id</code> attribute)</li>
-              <li>the <code>eventTime</code> attribute is present and in ISO 8601 format</li>
-            </ul>
-          </ul>
-        </p>
-
+        <a name='4-general-guidelines'></a>
+        <h1>4. General guidelines</h1>
         <a name='non-standard'></a>
         <h3>Make your event payloads consistent</h3>
 
@@ -224,7 +423,7 @@
         </p>
 
 
-        <a name='idenifiers'></a>
+        <a name='identifiers'></a>
         <h3>Make your identifiers predictable IRIs or URNs</h3>
         <p>
           We suggest you define the identifiers included in your event payloads as Internationalized Resource Identifiers, or IRIs (RFC 3987). The UDP’s common modeling engine will expect identifiers to be IRIs. A known, predictable string pattern will allow for the UDP’s common modeling engine to strip the relevant piece(s) of the id that can cross-reference to existing data in the relational store.
