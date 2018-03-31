@@ -273,13 +273,26 @@
         <h3>HTTP requests</h3>
 
         <p>
-          The Caliper endpoint performs the following HTTP request validation:
-
-          <ol>
-            <li><strong>Missing or invalid token.</strong> If an authentication token is not presented in the HTTP request, or if an authentication token is not valid, the endpoint returns a <code>401</code> with the message: <code>Bearer token missing or not recognized</code>.</li>
-            <li><strong>Invalid content type</strong>. If the request body type is not <code>application/json</code>, the endpoint returns a <code>415</code> with the message: <code>Content type must be application/json</code>.</li>
-          </ol>
+          <table>
+            <tr>
+              <th>Requirement</th>
+              <th>Error message</th>
+            </tr>
+            <tr>
+              <td>Authentication token is present and valid</td>
+              <td>
+                <code>Bearer token missing or not recognized</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Content type is JSON</td>
+              <td>
+                <code>Unsupported Media Type", "message": "application/json payload expected.</code>
+              </td>
+            </tr>
+          </table>
         </p>
+
 
 
         <a name='caliper-envelope-conformance'></a>
