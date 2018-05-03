@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>SIS Loading schema v. 1.1</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='../assets/base.css'>
+  </head>
+  <body>
+    <a name='top'></a>
+    <!-- Navigation -->
+    <div class="container">
+       <nav class="navbar is-transparent">
+          <div class="navbar-brand">
+             <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                <span></span> <span></span> <span></span>
+             </div>
+         </div>
+         <div id="navbarExampleTransparentExample" class="navbar-menu">
+           <div class="navbar-start">
+             <a class="navbar-item" href="../index.html"> Home </a>
+              <!-- UDP documentation menu -->
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href=""> UDP </a>
+                <div class="navbar-dropdown is-boxed">
+                  <a class="navbar-item" href="../udp/access-udp-resources.html"> Accessing UDP resources </a>
+                    <hr class="navbar-divider">
+                      <a class="navbar-item" href="../udp/caliper-endpoint.html"> Caliper endpoint </a>
+                      <a class="navbar-item" href="../udp/event-processing.html"> Event processing </a>
+                      <a class="navbar-item" href="../udp/lrs-event-record.html"> Event record </a>
+                </div>
+              </div>
+              <!-- UCDM documentation menu -->
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href=""> UCDM </a>
+                <div class="navbar-dropdown is-boxed">
+                  <a class="navbar-item" href="../ucdm/data-dictionary.html"> Data dictionary </a>
+                  <a class="navbar-item" href="../ucdm/relational-schema.html"> Relational schema </a>
+                  <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html"> SIS Loading Schema for UCDM (v1) </a>
+                  <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html"> SIS Loading Schema proposed changes (v1.1) </a>
+                  <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html"> Canvas Data to UCDM </a>
+                  <hr class="navbar-divider">
+                  <a class="navbar-item" href="../ucdm/queries-relational-store.html"> Sample Relational Store queries </a>
+                  <a class="navbar-item" href="../ucdm/queries-event-store.html"> Sample Learning Record Store queries </a>
+                </div>
+              </div>
+              <!-- Developer menu -->
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href=""> Developers </a>
+                <div class="navbar-dropdown is-boxed">
+                  <a class="navbar-item" href="../developers/caliper-integration.html"> Caliper sensor guidelines </a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-end"> </div>
+          </div>
+        </nav>
+      </div>
+      <!-- /// Navigation -->
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              <b>SIS Loading schema v. 1.1</b>
+            </h1>
+            <h1 class="subtitle">        Proposed changes      </h1>
+          </div>
+        </div>
+      </section>
+      <div class="content"><br><div class="container">
+        <h1>Proposed changes</h1>
+          <p>Version 1.1 of the loading schema is intended to create new models and extend existing ones in order to support a broader swath of teaching & learning data, including data from Unizin Engage and Unizin Order Tool.</p>
+        <h2>New models</h2>
+          <h3>Session</h3>
+          <p>A session defines a period of instruction in a given term.</p>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>SIS Session ID</td>
+                <td><code>SisIntId</code></td>
+                <td>The internal primary key used by the SIS to define a session record.</td>
+              </tr>
+              <tr >
+                <td>SIS Term ID</td>
+                <td> <code>TermId</code></td>
+                <td>The foreign key to the Academic term to which the Session belongs.</td>
+              </tr>
+              <tr >
+                <td>Name</td>
+                <td><code>Name</code></td>
+                <td><p>The name of the Session. The value is typically intended to be humand-readable ("First 8-week session") and, in concert with an Academic term name, fully communicate when a Course section is offered ("Fall 2018 First 8-week session").</p></td>
+              </tr>
+              <tr >
+                <td>Instruction start date</td>
+                <td><code>StartDate</code></td>
+                <td><p>The beginning of instruction for Course sections in the Session.</p></td>
+              </tr>
+              <tr >
+                <td>Instruction end date</td>
+                <td><code>EndDate</code></td>
+                <td><p>The end of instruction for Course sections in the Session.</p></td>
+              </tr>
+              <tr >
+                <td>Inclusive access bill after date</td>
+                <td><code>BillAfterDate</code></td>
+                <td><p>The date after which inclusive access content can be billed to the institution.</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#top">top</a>
+          <br><br>
+          <h3>Campus</h3>
+          <p>Some institutions are system institutions with multiple Campuses. These may include "virtual campuses" that represent online programs, which is common to many Unizin Members.</p>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>SIS Campus ID</td>
+                <td><code>SisIntId</code></td>
+                <td>The internal primary key used by the SIS to define a Campus record.</td>
+              </tr>
+              <tr >
+                <td>Name</td>
+                <td> <code>Name</code></td>
+                <td>The full name of the Campus in the Institution's system (e.g., "Fort Wayne").</td>
+              </tr>
+              <tr >
+                <td>Abbreviation</td>
+                <td><code>Abbreviation</code></td>
+                <td><p>The abbreviation for the campus name. The intent is to capture the shorthand used in schedule of classes and other administravia to refer to the campus (e.g., "BL" for Bloomington).</p></td>
+              </tr>
+          </table>
+          <a href="#top">top</a>
+          <br><br>
+          <h3>Academic organizations</h3>
+          <p>Schools, Programs, Colleges, and Departments are Academic organizations responsible for delivering instruction. A particular instance of an Academic organization is unique to a campus. However, they may be multiple instances of Academic organizations that share the same Organization Code.</p>
+          <p>While a campus may only have a single Department of Sociology, for example, a system Institution likely has many Departments of Sociology, each with a unique SIS Academic organization ID but with a common Organization Code.</p>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>SIS Academic organization ID</td>
+                <td><code>SisIntId</code></td>
+                <td>The internal primary key used by the SIS to define an academic organization record.</td>
+              </tr>
+              <tr >
+                <td>SIS Campus ID</td>
+                <td> <code>CampusId</code></td>
+                <td>The foreign key to the Campus to which the Academic organization belongs.</td>
+              </tr>
+              <tr >
+                <td>Parent Academic organization</td>
+                <td><code>ParentId</code></td>
+                <td><p><i>(optional)</i> The foreign key to the parent Academic organization of this Academic organization.</p></td>
+              </tr>
+              <tr >
+                <td>Academic organization code</td>
+                <td><code>Code</code></td>
+                <td><p>A code for the Academic organization. The intended value is the shorthand used in schedule of classes and other administravia to refer to the Academic organization (e.g., "CAS").</p></td>
+              </tr>
+              <tr >
+                <td>Name</td>
+                <td><code>Name</code></td>
+                <td><p>The humand-readable name of the Academic organization (e.g., "The College of Arts and Sciences").</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#top">top</a>
+          <br><br>
+          <h3>Course grade</h3>
+          <p>The grade a person receives for a course.</p>
+          <p>While this field will likely be updated by Canvas during a session, the SIS ultimately owns final, end-of-term grades.</p>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>SIS Academic organization ID</td>
+                <td><code>SisIntId</code></td>
+                <td>The internal primary key used by the SIS to define an academic organization record.</td>
+              </tr>
+              <tr >
+                <td>SIS Campus ID</td>
+                <td> <code>CampusId</code></td>
+                <td>The foreign key to the Campus to which the Academic organization belongs.</td>
+              </tr>
+              <tr >
+                <td>Parent Academic organization</td>
+                <td><code>ParentId</code></td>
+                <td><p><i>(optional)</i> The foreign key to the parent Academic organization of this Academic organization.</p></td>
+              </tr>
+              <tr >
+                <td>Academic organization code</td>
+                <td><code>Code</code></td>
+                <td><p>A code for the Academic organization. The intended value is the shorthand used in schedule of classes and other administravia to refer to the Academic organization (e.g., "CAS").</p></td>
+              </tr>
+              <tr >
+                <td>Name</td>
+                <td><code>Name</code></td>
+                <td><p>The humand-readable name of the Academic organization (e.g., "The College of Arts and Sciences").</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#top">top</a>
+          <br><br>
+          <h2>Changes to existing models</h2>
+          <h3>Academic term</h3>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>Instruction start date</td>
+                <td><code>InstrBeginDate</code></td>
+                <td><font color="#d33d62">Remove</font></td>
+                <td>This value is replaced by a Session's instruction start date.</td>
+              </tr>
+              <tr >
+                <td>Instruction end date</td>
+                <td> <code>InstrEndDate</code></td>
+                <td><font color="#d33d62">Remove</font></td>
+                <td>This value is replaced by a Session's instruction end date.</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#top">top</a>
+          <br><br>
+          <h3>Person</h3>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>Federated identity management identifier</td>
+                <td><code>FedIdentity</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The unique identifier for an individual released by an Institution's Identity Provider, typically in an SSO scenario. In Shibboleth, this value will <i>usually</i> correspond to the eduPersonTargetedId (EPPN).</td>
+              </tr>
+              <tr >
+                <td>Varsity athlete indicator</td>
+                <td> <code>VarsityAthlete</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>If true, indicates that the student is a varsity athlete at the institution. If false, indicates that the student is not a varsity athlete at the institution.</td>
+              </tr>
+              <tr >
+                <td>Academic career</td>
+                <td> <code>Career</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>A code representing a grouping of academic programs for statistical purposes. An academic career exists for each school/college by the program level offered. This will take an option set.<br><br><strong>Option set values:</strong> <code>Dental</code>, <code>Graduate</code>, <code>Undergraduate</code>, <code>Law</code>, <code>Medical</code>, <code>Optical</code>.</td>
+              </tr>
+              <tr >
+                <td>Major</td>
+                <td> <code>Major</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The student's major course of study.</td>
+              </tr>
+              <tr >
+                <td>Minor</td>
+                <td> <code>Minor</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The student's minor course of study.</td>
+              </tr>
+              <tr >
+                <td>City residency</td>
+                <td> <code>City</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The city in which the student is a resident.</td>
+              </tr>
+              <tr >
+                <td>State residency</td>
+                <td> <code>State</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The state in which the student is a resident.</td>
+              </tr>
+              <tr >
+                <td>AdmittanceTerm</td>
+                <td> <code>AdmitTermId</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The SIS term ID for the Academic term to which the student was initially admitted.</td>
+              </tr>
+              <tr >
+                <td>First-generation student</td>
+                <td> <code>FirstGeneration</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>If true, the student is the first in their family to attend an institution of higher education in the United States. If false, the student is not the first in their family to attend an institution of higher education in the United States.</td>
+              </tr>
+              <tr >
+                <td>Legal sex</td>
+                <td> <code>Sex</code></td>
+                <td><font color="#9571d1">Updated</font></td>
+                <td>The legal sex of a person.</td>
+              </tr>
+              <tr >
+                <td>Gender identity</td>
+                <td> <code>Gender</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The gender to which the individual self-identifies.</td>
+              </tr>
+              <tr >
+                <td>Gender pronouns</td>
+                <td> <code>Pronoun</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The set of gender pronouns by which the individual prefers to be addressed. This will take an option set.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Financial aid data will also be ingested, but the particular elements that will comprise that data is still under investigation.</p>
+          <a href="#top">top</a>
+          <br><br>
+          <h3>Course offering</h3>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>Academic career</td>
+                <td><code>Career</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>A code representing a grouping of academic programs for statistical purposes. An academic career exists for each school/college by the program level offered. This will take an option set.<br><br><strong>Option set values:</strong> <code>Dental</code>, <code>Graduate</code>, <code>Undergraduate</code>, <code>Law</code>, <code>Medical</code>, <code>Optical</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#top">top</a>
+          <br><br>
+          <h3>Course section</h3>
+          <table class='table is-bordered is-hoverable'>
+            <thead>
+              <tr >
+                <th>Data element</th>
+                <th>Header</th>
+                <th>Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>SIS session ID</td>
+                <td><code>SessionId</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The foreign key to the Session in which the Course section is delivered.</td>
+              </tr>
+              <tr >
+                <td>SIS academic organization ID</td>
+                <td><code>AcademicOrgId</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The foreign key to the Academic organization responsible for delivering this Course section.</td>
+              </tr>
+              <tr >
+                <td>Class number</td>
+                <td><code>Class</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>A unique number for the Course section. This may or may not be the same as the internal SIS Course section identifier.</td>
+              </tr>
+              <tr >
+                <td>Section number</td>
+                <td><code>Section</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>Among the Course sections grouped by a particular Course offering, this is a unique identifier. Typical examples include "001", "002", "003", etc.</td>
+              </tr>
+              <tr >
+                <td>Section type</td>
+                <td><code>SectionType</code></td>
+                <td><font color="#3dd3ae">New</font></td>
+                <td>The type of instruction delivered in this section. Institutions may refer to a section type as a "component" of a Course offering. This will take an option set.<br><br><strong>Option set values:</strong> <code>Lecture</code>, <code>IndStudy</code>, <code>Laboratory</code>, <code>Research</code>, <code>Discussion</code>, <code>Activity</code>, <code>Intern</code>, <code>Reading</code>, <code>Practicum</code>, <code>Seminar</code>, <code>Clinic</code>, <code>Recitation</code>, <code>Drill</code>, <code>Studio</code>, <code>Practice</code>, <code>Field</code>, <code>Methods</code>, <code>Colloquium</code>, <code>Demo</code></td>
+              </tr>
+              <tr >
+                <td>SIS term ID</td>
+                <td><code>TermId</code></td>
+                <td><font color="#d33d62">Remove</font></td>
+                <td>Course sections are delivered in a Session, rather than an Academic term.</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#top">top</a>
+          <br><br><br><br><br><br>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="content">
+            <p> Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.
+              <br> Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+      <!-- ///Footer -->
+    </body>
+  </html>
