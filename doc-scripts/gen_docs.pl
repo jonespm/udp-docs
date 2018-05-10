@@ -85,7 +85,8 @@ sub ucdm_data_dictionary($) {
       ## Is there an option set for the
       ## element in this entity?
       if($optionset ne '') {
-        $elementdesc .= "<br>Option set: <a href=\"../tables/${optionset}.html\">$optionset</a>";
+        my $filename = lc($optionset);
+        $elementdesc .= "<br>Option set: <a href=\"../tables/${filename}.html\">$optionset</a>";
       }
 
       ## Display the element for this enitty.
@@ -243,6 +244,7 @@ sub map_canvas_to_ucdm($) {
       if( &is_os_table($ucdmcolumn) ) {
         my $os = $ucdmcolumn;
            $os =~ s/Id$//i;
+           $os = lc($os);
         $ucdmcolumn = "$ucdmcolumn (<a href=\"../tables/${os}.html\">option set</a>)";
       }
 
@@ -389,11 +391,13 @@ sub sis_loading_schema($) {
       if( defined $elements{$element}->{optionset} &&
                   $elements{$element}->{optionset} ne '' ) {
 
+        my $filename = lc($elements{$element}->{optionset});
+
         $description =
           "<p>$description</p>" .
           "<p>" .
           " Option set: " .
-          " <a href=\"../tables/$elements{$element}->{optionset}.html\">$elements{$element}->{optionset}</a>" .
+          " <a href=\"../tables/${filename}.html\">$elements{$element}->{optionset}</a>" .
           "</p>";
       } else {
         $description = "<p>$description</p>";
@@ -473,7 +477,9 @@ sub table_definitions_section($$) {
 
     &f_create_ucdm_table($dbh, $name);
 
-    $name = " <a href=\"../tables/$name.html\">$name</a>";
+    my $filename = lc($name);
+
+    $name = " <a href=\"../tables/$filename.html\">$name</a>";
 
     &p_table_row($fh, 'td', [$name, $jurisdiction], 0);
   }
@@ -501,7 +507,9 @@ sub f_create_ucdm_table($$) {
   my($dbh, $table) = @_;
   my @os_tables = (); ## Track OS tables for this table if they exist.
 
-  my $fh = &file_handle("tables/${table}.html");
+  my $filename = lc($table);
+
+  my $fh = &file_handle("tables/${filename}.html");
   &start_html($fh, '../', "$table: definition", $table, '');
 
   my @table_header = ('Name', 'Definition', 'Jursidiction');
@@ -540,7 +548,8 @@ sub f_create_ucdm_table($$) {
     ## then present a link to the Option set table
     ## file itself.
     } elsif( $name =~ /^(Ref\w+)id$/i ) {
-      $option_set = "<a href=\"$1.html\">$1</a>";
+      my $filename = lc($1);
+      $option_set = "<a href=\"${filename}.html\">$1</a>";
       push(@table_row, $option_set);
 
     ## If this is a normal UCDM element in the
