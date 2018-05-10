@@ -82,9 +82,14 @@
             </thead>
             <tbody>
               <tr >
-                <td>SIS Session ID</td>
+                <td>SIS Session Internal ID</td>
                 <td><code>SisIntId</code></td>
-                <td>The internal primary key used by the SIS to define a session record.</td>
+                <td>The internal primary key used by the SIS to define a Session record.</td>
+              </tr>
+              <tr >
+                <td>SIS Session External ID</td>
+                <td><code>SisExtId</code></td>
+                <td>The unique, global ID for a Session generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
               </tr>
               <tr >
                 <td>SIS Term ID</td>
@@ -94,7 +99,7 @@
               <tr >
                 <td>Name</td>
                 <td><code>Name</code></td>
-                <td><p>The name of the Session. The value is typically intended to be humand-readable ("First 8-week session") and, in concert with an Academic term name, fully communicate when a Course section is offered ("Fall 2018 First 8-week session").</p></td>
+                <td><p>The name of the Session. The value is typically intended to be humand-readable ("First 8-week") and, in concert with an Academic term name, fully communicate when a Course section is offered ("Fall 2018 First 8-week").</p></td>
               </tr>
               <tr >
                 <td>Instruction start date</td>
@@ -108,8 +113,8 @@
               </tr>
               <tr >
                 <td>Inclusive access bill after date</td>
-                <td><code>BillAfterDate</code></td>
-                <td><p>The date after which inclusive access content can be billed to the institution.</p></td>
+                <td><code>InclusiveAccessBillAfterDate</code></td>
+                <td><p>The date after which inclusive access course materials can be billed to the institution.</p></td>
               </tr>
             </tbody>
           </table>
