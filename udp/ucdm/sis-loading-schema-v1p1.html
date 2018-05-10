@@ -167,17 +167,22 @@
             </thead>
             <tbody>
               <tr >
-                <td>SIS Academic organization ID</td>
+                <td>SIS Internal Academic organization ID</td>
                 <td><code>SisIntId</code></td>
                 <td>The internal primary key used by the SIS to define an academic organization record.</td>
               </tr>
               <tr >
-                <td>SIS Campus ID</td>
+                <td>SIS External Academic organization ID</td>
+                <td><code>SisExtId</code></td>
+                <td>The unique, global ID for an Academic organization generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
+              </tr>
+              <tr >
+                <td>SIS Internal Campus Internal ID</td>
                 <td> <code>CampusId</code></td>
                 <td>The foreign key to the Campus to which the Academic organization belongs.</td>
               </tr>
               <tr >
-                <td>Parent Academic organization</td>
+                <td>Parent Internal Academic organization ID</td>
                 <td><code>ParentId</code></td>
                 <td><p><i>(optional)</i> The foreign key to the parent Academic organization of this Academic organization.</p></td>
               </tr>
@@ -208,19 +213,24 @@
             </thead>
             <tbody>
               <tr >
-                <td>SIS Academic organization ID</td>
+                <td>SIS Internal Course grade ID</td>
                 <td><code>SisIntId</code></td>
                 <td>The internal primary key used by the SIS to define an academic organization record.</td>
               </tr>
               <tr >
-                <td>SIS Campus ID</td>
+                <td>SIS External Course grade ID</td>
+                <td><code>SisExtId</code></td>
+                <td>The unique, global ID for a Course grade generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
+              </tr>
+              <tr >
+                <td>SIS Internal Campus ID</td>
                 <td> <code>CampusId</code></td>
                 <td>The foreign key to the Campus to which the Academic organization belongs.</td>
               </tr>
               <tr >
-                <td>Parent Academic organization</td>
+                <td>SIS Internal Parent Academic organization ID</td>
                 <td><code>ParentId</code></td>
-                <td><p><i>(optional)</i> The foreign key to the parent Academic organization of this Academic organization.</p></td>
+                <td><p>The foreign key to the parent Academic organization of this Academic organization.</p></td>
               </tr>
               <tr >
                 <td>Academic organization code</td>
