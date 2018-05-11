@@ -20,7 +20,7 @@ use utf8;
 use open ':std', ':encoding(UTF-8)';
 use DBI;
 
-my $dbh = &connect_to_database('ucdm', 'localhost', '5432', '', '');
+my $dbh = &connect_to_database('udp', '127.0.0.1', '5432', '', '');
 
 &ucdm_data_dictionary($dbh);
 &ucdm_relational_schema($dbh);
