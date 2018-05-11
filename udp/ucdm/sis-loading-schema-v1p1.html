@@ -223,24 +223,29 @@
                 <td>The unique, global ID for a Course grade generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
               </tr>
               <tr >
-                <td>SIS Internal Campus ID</td>
-                <td> <code>CampusId</code></td>
-                <td>The foreign key to the Campus to which the Academic organization belongs.</td>
+                <td>SIS Internal Course section ID</td>
+                <td> <code>CourseSectionId</code></td>
+                <td>The foreign key to the Course section to which the Course grade belongs.</td>
               </tr>
               <tr >
-                <td>SIS Internal Parent Academic organization ID</td>
-                <td><code>ParentId</code></td>
-                <td><p>The foreign key to the parent Academic organization of this Academic organization.</p></td>
+                <td>SIS Internal Person ID</td>
+                <td><code>Person</code></td>
+                <td><p>The foreign key to the Person to whom this Course grade belongs.</p></td>
               </tr>
               <tr >
-                <td>Academic organization code</td>
-                <td><code>Code</code></td>
-                <td><p>A code for the Academic organization. The intended value is the shorthand used in schedule of classes and other administravia to refer to the Academic organization (e.g., "CAS").</p></td>
+                <td>Score</td>
+                <td><code>Score</code></td>
+                <td><p>The absolute score for the course grade. Often, this will be a numerical score ranging from 0-100 (but it need not be). The intent is to capture a raw version of a course grade distinct from that reported in formal records.</p></td>
               </tr>
               <tr >
-                <td>Name</td>
-                <td><code>Name</code></td>
-                <td><p>The humand-readable name of the Academic organization (e.g., "The College of Arts and Sciences").</p></td>
+                <td>Published Score</td>
+                <td><code>PublishedScore</code></td>
+                <td><p>The published score for the Course grade. Often, this will be the letter version of the Score. The intent is to capture the formal, published score on record.</p></td>
+              </tr>
+              <tr >
+                <td>Workflow State</td>
+                <td><code>WorkflowState</code></td>
+                <td><p>The state of the course grade, which is likely to change over the course of the term. This will take an option set. Likely values include  "Incomplete," "Completed," and "Withdrew."</p></td>
               </tr>
             </tbody>
           </table>
