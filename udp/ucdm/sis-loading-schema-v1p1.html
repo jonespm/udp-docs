@@ -397,7 +397,7 @@
               </tr>
               <tr >
                 <td>SIS Internal Session ID</td>
-                <td><code>SessionID</code></td>
+                <td><code>SessionId</code></td>
                 <td><font style="color: green; font-weight: bold">New</font></td>
                 <td>The foreign key to the Session to which the Course offering belongs.</td>
               </tr>
@@ -406,6 +406,12 @@
                 <td><code>Career</code></td>
                 <td><font style="color: green; font-weight: bold">New</font></td>
                 <td>A code representing a grouping of academic programs for statistical purposes. An academic career exists for each school/college by the program level offered. This will take an option set.<br><br><strong>Option set values:</strong> <code>Dental</code>, <code>Graduate</code>, <code>Undergraduate</code>, <code>Law</code>, <code>Medical</code>, <code>Optical</code>.</td>
+              </tr>
+              <tr >
+                <td>SIS Internal Term ID</td>
+                <td><code>TermId</code></td>
+                <td><font style="color: red; font-weight: bold">Remove</font></td>
+                <td>Course offerings are offered in a given Session, which belongs to a specific Term. The course offering-to-term relationship can be derived via the session.</td>
               </tr>
             </tbody>
           </table>
