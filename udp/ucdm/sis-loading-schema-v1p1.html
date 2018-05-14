@@ -102,18 +102,13 @@
                 <td><p>The name of the Session. The value is typically intended to be humand-readable ("First 8-week") and, in concert with an Academic term name, fully communicate when a Course section is offered ("Fall 2018 First 8-week").</p></td>
               </tr>
               <tr >
-                <td>Session type</td>
-                <td><code>SessionType</code></td>
-                <td><p>The type of session, usually describing its length. This will take an option set, <a href="../tables/RefSessionType.html">RefSessionType</a>.</p></td>
-              </tr>
-              <tr >
-                <td>Instruction start date</td>
-                <td><code>StartDate</code></td>
+                <td>Instruction begin date</td>
+                <td><code>InstrBeginDate</code></td>
                 <td><p>The beginning of instruction for Course sections in the Session.</p></td>
               </tr>
               <tr >
                 <td>Instruction end date</td>
-                <td><code>EndDate</code></td>
+                <td><code>InstrEndDate</code></td>
                 <td><p>The end of instruction for Course sections in the Session.</p></td>
               </tr>
               <tr >
@@ -186,7 +181,7 @@
                 <td>The foreign key to the Campus to which the Academic organization belongs.</td>
               </tr>
               <tr >
-                <td>SSI Internal Parent Academic organization ID</td>
+                <td>SIS Internal Parent Academic organization ID</td>
                 <td><code>ParentId</code></td>
                 <td><p><i>(optional)</i> The foreign key to the parent Academic organization of this Academic organization.</p></td>
               </tr>
@@ -198,7 +193,7 @@
               <tr >
                 <td>Name</td>
                 <td><code>Name</code></td>
-                <td><p>The humand-readable name of the Academic organization (e.g., "The College of Arts and Sciences").</p></td>
+                <td><p>The human-readable name of the Academic organization (e.g., "The College of Arts and Sciences").</p></td>
               </tr>
             </tbody>
           </table>
@@ -233,7 +228,7 @@
               </tr>
               <tr >
                 <td>SIS Internal Person ID</td>
-                <td><code>Person</code></td>
+                <td><code>PersonId</code></td>
                 <td><p>The foreign key to the Person to whom this Course grade belongs.</p></td>
               </tr>
               <tr >
@@ -267,6 +262,12 @@
               </tr>
             </thead>
             <tbody>
+              <tr >
+                <td>Name</td>
+                <td><code>Name</code></td>
+                <td><font style="color: green; font-weight: bold">Add</font></td>
+                <td>The name of the Term. E.g., "Fall 2018.""</td>
+              </tr>
               <tr >
                 <td>Session type</td>
                 <td><code>SessionType</code></td>
