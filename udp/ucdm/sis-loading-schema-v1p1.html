@@ -62,16 +62,16 @@
             <h1 class="title">
               <b>SIS Loading schema v. 1.1</b>
             </h1>
-            <h1 class="subtitle">        Proposed changes      </h1>
+            <h1 class="subtitle">Proposed changes</h1>
           </div>
         </div>
       </section>
       <div class="content"><br><div class="container">
         <h1>Proposed changes</h1>
-          <p>Version 1.1 of the loading schema is intended to create new models and extend existing ones in order to support a broader swath of teaching & learning data, including data from Unizin Engage and Unizin Order Tool.</p>
+          <p>The SIS loading schema v1.1 introduces new entities and entity changes to the UCDM. There are two major goals of version 1.1. First, it enriches the Person model with data pertinent to learning analytics research. Second, it adds new concepts that better-model Term-based academic processes.</p>
         <h2>New models</h2>
           <h3>Session</h3>
-          <p>A session defines a period of instruction in a given term.</p>
+          <p>A Session is an administrative unit that defines an actual instructional period during a term. A session is always unique to a Term and will have many Course offerings.</p>
           <table class='table is-bordered is-hoverable'>
             <thead>
               <tr >
@@ -126,7 +126,7 @@
           <a href="#top">top</a>
           <br><br>
           <h3>Campus</h3>
-          <p>Some institutions are system institutions with multiple Campuses. These may include "virtual campuses" that represent online programs, which is common to many Unizin Members.</p>
+          <p>A Campus is the collection of departments, colleges, schools, and buildings that belong to a particular institution. All Universities have at least one campus. Some Universities are systems with multiple Campuses. These may include "virtual campuses" that represent online programs, which is common to many Unizin Members.</p>
           <table class='table is-bordered is-hoverable'>
             <thead>
               <tr >
@@ -160,8 +160,7 @@
           <a href="#top">top</a>
           <br><br>
           <h3>Academic organizations</h3>
-          <p>Schools, Programs, Colleges, and Departments are Academic organizations responsible for delivering instruction. A particular instance of an Academic organization is unique to a campus. However, they may be multiple instances of Academic organizations that share the same Organization Code.</p>
-          <p>While a campus may only have a single Department of Sociology, for example, a system Institution likely has many Departments of Sociology, each with a unique SIS Academic organization ID but with a common Organization Code.</p>
+          <p>An Academic organization is a School, Program, College, or Department responsible for delivering instruction. A particular Academic organization is always unique to a campus. However, Academic organizations across different campuses may share the same Organization Code. For example, there may exist a Department of Sociology at multiple campuses of a University system. Each instance can be uniquely identified but all may share the same Academic organization code.</p>
           <table class='table is-bordered is-hoverable'>
             <thead>
               <tr >
