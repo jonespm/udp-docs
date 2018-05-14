@@ -20,7 +20,9 @@ use utf8;
 use open ':std', ':encoding(UTF-8)';
 use DBI;
 
-my $dbh = &connect_to_database('ucdm', 'localhost', '5432', '', '');
+my $dbh = &connect_to_database('entity_store', '127.0.0.1', '5432', '', '');
+
+$dbh->do("set search_path=public, ucdm;");
 
 &ucdm_data_dictionary($dbh);
 &ucdm_relational_schema($dbh);
@@ -85,7 +87,8 @@ sub ucdm_data_dictionary($) {
       ## Is there an option set for the
       ## element in this entity?
       if($optionset ne '') {
-        $elementdesc .= "<br>Option set: <a href=\"../tables/${optionset}.html\">$optionset</a>";
+        my $filename = lc($optionset);
+        $elementdesc .= "<br>Option set: <a href=\"../tables/${filename}.html\">$optionset</a>";
       }
 
       ## Display the element for this enitty.
@@ -243,6 +246,7 @@ sub map_canvas_to_ucdm($) {
       if( &is_os_table($ucdmcolumn) ) {
         my $os = $ucdmcolumn;
            $os =~ s/Id$//i;
+           $os = lc($os);
         $ucdmcolumn = "$ucdmcolumn (<a href=\"../tables/${os}.html\">option set</a>)";
       }
 
@@ -389,11 +393,13 @@ sub sis_loading_schema($) {
       if( defined $elements{$element}->{optionset} &&
                   $elements{$element}->{optionset} ne '' ) {
 
+        my $filename = lc($elements{$element}->{optionset});
+
         $description =
           "<p>$description</p>" .
           "<p>" .
           " Option set: " .
-          " <a href=\"../tables/$elements{$element}->{optionset}.html\">$elements{$element}->{optionset}</a>" .
+          " <a href=\"../tables/${filename}.html\">$elements{$element}->{optionset}</a>" .
           "</p>";
       } else {
         $description = "<p>$description</p>";
@@ -473,7 +479,9 @@ sub table_definitions_section($$) {
 
     &f_create_ucdm_table($dbh, $name);
 
-    $name = " <a href=\"../tables/$name.html\">$name</a>";
+    my $filename = lc($name);
+
+    $name = " <a href=\"../tables/$filename.html\">$name</a>";
 
     &p_table_row($fh, 'td', [$name, $jurisdiction], 0);
   }
@@ -501,7 +509,9 @@ sub f_create_ucdm_table($$) {
   my($dbh, $table) = @_;
   my @os_tables = (); ## Track OS tables for this table if they exist.
 
-  my $fh = &file_handle("tables/${table}.html");
+  my $filename = lc($table);
+
+  my $fh = &file_handle("tables/${filename}.html");
   &start_html($fh, '../', "$table: definition", $table, '');
 
   my @table_header = ('Name', 'Definition', 'Jursidiction');
@@ -540,7 +550,8 @@ sub f_create_ucdm_table($$) {
     ## then present a link to the Option set table
     ## file itself.
     } elsif( $name =~ /^(Ref\w+)id$/i ) {
-      $option_set = "<a href=\"$1.html\">$1</a>";
+      my $filename = lc($1);
+      $option_set = "<a href=\"${filename}.html\">$1</a>";
       push(@table_row, $option_set);
 
     ## If this is a normal UCDM element in the
@@ -787,7 +798,7 @@ sub header($$) {
 sub navigation($) {
   my($fh) = @_;
 
-  print $fh "<!-- Navigation --><div class=\"container\"> <nav class=\"navbar is-transparent\"> <div class=\"navbar-brand\"> <div class=\"navbar-burger burger\" data-target=\"navbarExampleTransparentExample\"> <span></span> <span></span> <span></span> </div> </div> <div id=\"navbarExampleTransparentExample\" class=\"navbar-menu\"> <div class=\"navbar-start\"> <a class=\"navbar-item\" href=\"../index.html\"> Home </a> <!-- UDP documentation menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> UDP </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../udp/access-udp-resources.html\"> Accessing UDP resources </a> <hr class=\"navbar-divider\"> <a class=\"navbar-item\" href=\"../udp/caliper-endpoint.html\"> Caliper endpoint </a> <a class=\"navbar-item\" href=\"../udp/event-processing.html\"> Event processing </a> <a class=\"navbar-item\" href=\"../udp/lrs-event-record.html\"> Event record </a> </div> </div> <!-- UCDM documentation menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> UCDM </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../ucdm/data-dictionary.html\"> Data dictionary </a> <a class=\"navbar-item\" href=\"../ucdm/relational-schema.html\"> Relational schema </a> <a class=\"navbar-item\" href=\"../ucdm/sis-loading-schema.html\"> SIS Loading Schema for UCDM </a> <a class=\"navbar-item\" href=\"../ucdm/canvas-to-ucdm.html\"> Canvas Data to UCDM </a> <hr class=\"navbar-divider\"> <a class=\"navbar-item\" href=\"../ucdm/queries-relational-store.html\"> Sample Relational Store queries </a> <a class=\"navbar-item\" href=\"../ucdm/queries-event-store.html\"> Sample Learning Record Store queries </a> </div> </div> <!-- Developer menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> Developers </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../developers/caliper-integration.html\"> Caliper sensor guidelines </a> </div> </div> </div> <div class=\"navbar-end\"> </div> </div> </nav></div><!-- /// Navigation -->";
+  print $fh "<!-- Navigation --> <div class=\"container\"> <nav class=\"navbar is-transparent\"> <div class=\"navbar-brand\"> <div class=\"navbar-burger burger\" data-target=\"navbarExampleTransparentExample\"> <span></span> <span></span> <span></span> </div> </div> <div id=\"navbarExampleTransparentExample\" class=\"navbar-menu\"> <div class=\"navbar-start\"> <a class=\"navbar-item\" href=\"../index.html\"> Home </a> <!-- UDP documentation menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> UDP </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../udp/access-udp-resources.html\"> Accessing UDP resources </a> <hr class=\"navbar-divider\"> <a class=\"navbar-item\" href=\"../udp/caliper-endpoint.html\"> Caliper endpoint </a> <a class=\"navbar-item\" href=\"../udp/event-processing.html\"> Event processing </a> <a class=\"navbar-item\" href=\"../udp/lrs-event-record.html\"> Event record </a> </div> </div> <!-- UCDM documentation menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> UCDM </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../ucdm/data-dictionary.html\"> Data dictionary </a> <a class=\"navbar-item\" href=\"../ucdm/relational-schema.html\"> Relational schema </a> <a class=\"navbar-item\" href=\"../ucdm/sis-loading-schema-v1.html\"> SIS Loading Schema for UCDM (v1) </a> <a class=\"navbar-item\" href=\"../ucdm/sis-loading-schema-v1p1.html\"> SIS Loading Schema proposed changes (v1.1) </a> <a class=\"navbar-item\" href=\"../ucdm/canvas-to-ucdm.html\"> Canvas Data to UCDM </a> <hr class=\"navbar-divider\"> <a class=\"navbar-item\" href=\"../ucdm/queries-relational-store.html\"> Sample Relational Store queries </a> <a class=\"navbar-item\" href=\"../ucdm/queries-event-store.html\"> Sample Learning Record Store queries </a> </div> </div> <!-- Developer menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> Developers </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../developers/caliper-integration.html\"> Caliper sensor guidelines </a> </div> </div> </div> <div class=\"navbar-end\"> </div> </div> </nav> </div> <!-- /// Navigation -->";
 
   return 1;
 }

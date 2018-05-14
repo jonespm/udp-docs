@@ -12,7 +12,9 @@
 use strict;
 use DBI;
 
-my $dbh = &connect_to_database('ucdm', 'localhost', '5432', '', '');
+my $dbh = &connect_to_database('entity_store', '127.0.0.1', '5432', '', '');
+
+$dbh->do("set search_path=public, ucdm;");
 
 ## Iterate over each UCDM table.
 foreach my $table ( &get_tables($dbh) ) {
