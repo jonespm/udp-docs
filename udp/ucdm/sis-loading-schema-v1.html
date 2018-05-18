@@ -52,16 +52,20 @@
       <p><strong>Course</strong>, <strong>Academic Term</strong>, <strong>Course Section</strong>, and <strong>Enrollment</strong>. It is expected that <em>all</em> records for these entities in your SIS are relevant to the UDP. These entities provide essential contextual information that describe your teaching and learning environments and individuals’ membership in those environments. Enrollments include not only student, but also instructors (with teaching assignments), TA, etc.</p>
       <h1>What are my next steps?</h1>
       <p>The first step in producing data to that model is correlating data in the SIS loading schema to data in your SIS. While some data is easy to correlate (e.g., a Person's first, middle, and last name), other data may not correspond exactly how data is modeled in your SIS. In these latter cases, please open a dialog with Unizin to determine how to proceed.</p>
-      <p>Second, many data elements in the Unizin Data Common Model have are limited to a finite set of predefined values, called "Option sets." When a particular element in the loading schema uses an Option set, you will need to translate your SIS data <em>values</em> to UCDM data values. For example, email addresses in UCDM have a <code>EmailType</code> data element whose values can be <code>Home</code>, <code>Work</code>, <code>Organizational</code>, and <code>Other</code>. If your SIS models an email's "type," its possible values may or may not perfectly overlap with the values in the UCDM Option set for <code>EmailType</code>. When you produce the SIS data for ingestion in the UDP, you will need to align the values of data elements that use an option set to the appropriate code in that Option set.</p><h1>Data type formats</h1><p>When data of type <code>date</code> is requested, the format is <code>YYYY-MM-DD</code>. When data of type <code>time</code> is requested, the format is <code>hh14:mm:ss</code>. If the data does not exist for a particular record, or the mapping between your SIS and the UCDM is insufficient, leave the value blank.</p>
+      <p>Second, many data elements in the Unizin Data Common Model have are limited to a finite set of predefined values, called "Option sets." When a particular element in the loading schema uses an Option set, you will need to translate your SIS data <em>values</em> to UCDM data values. For example, email addresses in UCDM have a <code>EmailType</code> data element whose values can be <code>Home</code>, <code>Work</code>, <code>Organizational</code>, and <code>Other</code>. If your SIS models an email's "type," its possible values may or may not perfectly overlap with the values in the UCDM Option set for <code>EmailType</code>. When you produce the SIS data for ingestion in the UDP, you will need to align the values of data elements that use an option set to the appropriate code in that Option set.</p>
+      <h1>Data type formats</h1>
+      <p>When data of type <code>date</code> is requested, the format is <code>YYYY-MM-DD</code>. When data of type <code>time</code> is requested, the format is <code>hh14:mm:ss</code>. If the data does not exist for a particular record, or the mapping between your SIS and the UCDM is insufficient, leave the value blank.</p>
       <h1>File formats</h1>
       <p>Your data files must be UTF-8 encoded, comma-separated value (CSV) files with column headers. The header strings are described in the SIS Loading Schema document.</p>
       <ul>
-        <li>Produce one data file for each UCDM Entity below.</li>
-        <li>Data files are full dumps (not deltas).</li>
-        <li>Data files are generated and pushed daily to the UDP.</li>
+        <li>Produce one data file for each UCDM Entity below</li>
+        <li>Data files are full dumps (not deltas)</li>
+        <li>Data files are generated and pushed daily to the UDP</li>
         <li>The field delimiter is a comma (,)</li>
         <li>The value quoting character is a double quotes (")</li>
         <li>The quote escape character is a backslash (\)</li>
+        <li>Non-applicable or otherwise unmapped fields should be left fully blank ("a",,"c")</li>
+        <li>Option set values are case-sensitive</li>
       </ul>
       <h1>Entities</h1>
       <ol>
