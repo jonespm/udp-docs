@@ -658,7 +658,7 @@
             </td>
           </tr>
         </tbody>
-      </table><a href="#top">top</a><br><br><a name='5'></a>
+      </table><a href="#top">top</a><br><br><a name='8'></a>
       <h2>Course section</h2>
       <p>An administrative and instructional sub-organization of a Course offering. Instructors may be assigned to one or more sections of a particular Course offering.</p>
       <p>The Course section file should be created in a comma-separated (CSV) format with the naming convention <code>course_section_&lt;date&gt;.csv</code> , where
@@ -716,7 +716,7 @@
             </td>
           </tr>
         </tbody>
-      </table><a href="#top">top</a><br><br><a name='6'></a>
+      </table><a href="#top">top</a><br><br><a name='9'></a>
       <h2>Course section enrollment</h2>
       <p>The association of a Person to an organization, usually defined by a particular role.</p>
       <p>The Course section enrollment file should be created in a comma-separated (CSV) format with the naming convention <code>course_section_enrollment_&lt;date&gt;.csv</code> , where
@@ -785,7 +785,53 @@
             </td>
           </tr>
         </tbody>
-      </table><a href="#top">top</a><br><br><br><br><br><br></div>
+      </table><a href="#top">top</a><br><br><a name='10'></a>
+      <h2>Course grade</h2>
+      <p>The grade a person receives for a course as part of their Section enrollment.</p>
+      <p>While this field will likely be updated by Canvas during a Session, the SIS ultimately owns final, end-of-term grades. We expect this file will be blank until those grades are available.</p>
+      <p>The Course grade file should be created in a comma-separated (CSV) format with the naming convention <code>course_grade_&lt;date&gt;.csv</code>, where <date> is the date on which the file was generated, and the following headers:</p>
+      <table class='table is-bordered is-hoverable'>
+        <thead>
+          <tr>
+            <th>Data element</th>
+            <th>Header</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SIS Internal Course grade ID</td>
+            <td><code>SisIntId</code></td>
+            <td>The internal primary key used by the SIS to define a Course grade.</td>
+          </tr>
+          <tr>
+            <td>SIS External Course grade ID</td>
+            <td><code>SisExtId</code></td>
+            <td>The unique, global ID for a Course grade generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
+          </tr>
+          <tr>
+            <td>SIS Internal Course section id</td>
+            <td><code>CourseSectionId</code></td>
+            <td>The foreign key to the Course section to which the Course grade belongs.</td>
+          </tr>
+          <tr>
+            <td>SIS Internal Person ID</td>
+            <td><code>PersonId</code></td>
+            <td>The foreign key to the Person to whom this Course grade belongs.</td>
+          </tr>
+          <tr>
+            <td>Score</td>
+            <td><code>Score</code></td>
+            <td>The absolute score for the Course grade. Often, this will be a numerical score ranging from 0-100 (but need not be). The intent is to capture a raw version of a course grade distinct from that reported in formal records.</td>
+          </tr>
+          <tr>
+            <td>Published score</td>
+            <td><code>PublishedScore</code></td>
+            <td>The published score for the Course grade. Often, this will be the letter version of the score. The intent is to capture the formal, published score on record (often, but not only, used by transcripts).</td>
+          </tr>
+        </tbody>
+      </table><a href="#top">top</a><br><br>
+      <br><br><br><br></div>
   </div>
   <!-- Footer -->
   <footer class="footer">
