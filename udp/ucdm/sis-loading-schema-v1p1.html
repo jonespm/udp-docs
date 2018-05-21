@@ -536,7 +536,56 @@
             </td>
           </tr>
         </tbody>
-      </table><a href="#top">top</a><br><br><a name='4'></a>
+      </table><a href="#top">top</a><br><br><a name='6'></a>
+      <h2>Session</h2>
+      <p>An administrative unit that defines an actual instructional period during a term. Every Academic term is comprised of one or more Sessions. A Session is always unique to an Academic term and will have many Course offerings.</p>
+      <p>The Session file should be created in a comma-separated (CSV) format with the naming convetion <code>session_&lt;date&gt;.csv</code>, where <date> is the date on which the file was generated, and the following headers:</p>
+      <table class='table is-bordered is-hoverable'>
+        <thead>
+          <tr>
+            <th>Data element</th>
+            <th>Header</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SIS Internal Session ID</td>
+            <td><code>SisIntId</code></td>
+            <td>The internal primary key used by the SIS to define a Session record.</td>
+          </tr>
+          <tr>
+            <td>Sis External Session ID</td>
+            <td><code>SisExtId</code></td>
+            <td>The unique, global ID for a Session generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
+          </tr>
+          <tr>
+            <td>SIS Internal Term ID</td>
+            <td><code>TermId</code></td>
+            <td>The foreign key to the Academic term to which the Session belongs.</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><code>Name</code></td>
+            <td>The name of the Session. The value is typically intended to be human-readable ("First 8-week") and, in concert with the Academic term name, fully communicate when a Course section is offered ("Fall 2018 First 8-week").</td>
+          </tr>
+          <tr>
+            <td>Instructional begin date</td>
+            <td><code>InstrBeginDate</code></td>
+            <td>The beginning of instruction for Course sections in the Session.</td>
+          </tr>
+          <tr>
+            <td>Instructional end date</td>
+            <td><code>InstrEndDate</code></td>
+            <td>The end of instruction for Course sections in the Sessions.</td>
+          </tr>
+          <tr>
+            <td>Inclusive access bill after date</td>
+            <td><code>InclusiveAccessBillAfterDate</code></td>
+            <td>The date after which inclusive access course materials can be billed to the institution.</td>
+          </tr>
+        </tbody>
+      </table><a href="#top">top</a><br><br><a name='7'></a>
       <h2>Course offering</h2>
       <p>An institutional offering of organized subject matter and learner activities chosen by learners in an academic term.</p>
       <p>The Course offering file should be created in a comma-separated (CSV) format with the naming convention <code>course_offering_&lt;date&gt;.csv</code> , where
