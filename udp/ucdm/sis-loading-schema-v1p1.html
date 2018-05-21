@@ -610,9 +610,14 @@
             <td>The unique, global id for the Course Offering generated for Canvas and other learning systems and tools.</td>
           </tr>
           <tr>
-            <td>SIS Internal Term ID</td>
-            <td><code>TermId</code></td>
-            <td>The globally unique, SIS-generated internal ID for the term to which the Course Offering belongs.</td>
+            <td>SIS Internal Campus ID</td>
+            <td><code>CampusId</code></td>
+            <td>The foreign key to the Campus where the Course offering is delivered.</td>
+          </tr>
+          <tr>
+            <td>SIS Internal Session ID</td>
+            <td><code>SessionId</code></td>
+            <td>The foreign key to the Session to which the Course offering belongs.</td>
           </tr>
           <tr>
             <td>Course subject</td>
@@ -640,6 +645,14 @@
             <td><code>Description</code></td>
             <td>
               <p>The Course Offering description.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Academic career</td>
+            <td><code>Career</code></td>
+            <td>
+              <p>A code representing a grouping of academic programs for statistical purposes. An academic career exists for each school/college by the program level offered.</p>
+              <p>Option set: <a href="../tables/RefCareer.html">RefCareer</a></p>
             </td>
           </tr>
           <tr>
