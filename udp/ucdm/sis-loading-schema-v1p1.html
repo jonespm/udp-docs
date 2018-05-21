@@ -701,15 +701,28 @@
             <td>The unique, SIS-generated ID for the Course Offering of which the section is an instance.</td>
           </tr>
           <tr>
-            <td>SIS Internal Term ID</td>
-            <td><code>TermId</code></td>
-            <td>The unique, SIS-generated ID for the academic term to which the Course Section belongs.</td>
+            <td>SIS Internal Academic organization ID</td>
+            <td><code>AcademicOrgId</code></td>
+            <td>The foreign key to the Academic organization responsible for delivering this Course section.</td>
           </tr>
           <tr>
             <td>Course Section number</td>
             <td><code>SectionNumber</code></td>
             <td>
               <p>The unique number of a particular Course Section. E.g., "1", "015".</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Class number</td>
+            <td><code>ClassNumber</code></td>
+            <td>A unique number for the Course section. This may or may not be the same as the internal SIS Course section identifier.</td>
+          </tr>
+          <tr>
+            <td>Section type</td>
+            <td><code>SectionType</code></td>
+            <td>
+              <p>The type of instruction delivered in this section. Institutions may refer to a section type as a "component" of a Course offering.</p>
+              <p>Option set: <a href="../tables/RefCourseSectionType.html">RefCourseSectionType</a></p>
             </td>
           </tr>
           <tr>
