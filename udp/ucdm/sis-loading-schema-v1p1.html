@@ -421,6 +421,84 @@
           </tr>
         </tbody>
       </table><a href="#top">top</a><br><br><a name='3'></a>
+      <h2>Campus</h2>
+      <p>The collection of departments, colleges, schools, and buildings that belong to a particular institution. All Universities have at least one campus. Some Universities are systems with multiple Campuses. These may include "virtual campuses" that represent online programs, which is common to many Unizin Members.</p>
+      <p>The Campus file should be created in a comma-separated (CSV) format with the naming convetion <code>campus_&lt;date&gt;.csv</code> where <date> is the date on which the file was generated, and the following headers:</p>
+      <table class='table is-bordered is-hoverable'>
+        <thead>
+          <tr>
+            <th>Data element</th>
+            <th>Header</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SIS Internal Campus ID</td>
+            <td><code>SisIntId</code></td>
+            <td>The internal primary key used by the SIS to define a Campus record.</td>
+          </tr>
+          <tr>
+            <td>SIS External Campus ID</td>
+            <td><code>SisExtId</code></td>
+            <td>The unique, global ID for a Campus generated in yor institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><code>Name</code></td>
+            <td>The full name of the Campus in the Institution's system (e.g., "Fort Wayne").</td>
+          </tr>
+          <tr>
+            <td>Abbreviation</td>
+            <td><code>Abbreviation</code></td>
+            <td>The abbreviation for the campus name. The intent is to capture the shorthand used in schedule of classes and other administravia to refer to the campus (e.g., "BL" for Bloomington).</td>
+          </tr>
+        </tbody>
+      </table><a href="#top">top</a><br><br><a name='4'></a>
+      <h2>Academic organization</h2>
+      <p>An Academic organization is a School, Program, College, or Department responsible for delivering instruction. A particular Academic organization is always unique to a campus. However, Academic organizations across different campuses may share the same Organization Code. For example, there may exist a Department of Sociology at multiple campuses of a University system — each instance can be uniquely identified, but all may share the same academic organization code.</p>
+      <p>The Academic organization file should be created in a comma-separated (CSV) format with the naming convention <code>academic_organization_&lt;date&gt;.csv</code>, where <date> is the date on which the file was generated, and the following headers:</p>
+      <table class='table is-bordered is-hoverable'>
+        <thead>
+          <tr>
+            <th>Data element</th>
+            <th>Header</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SIS Internal Academic organization ID</td>
+            <td><code>SisIntId</code></td>
+            <td>The internal primary key used by the SIS to define an academic organization record.</td>
+          </tr>
+          <tr>
+            <td>SIS External Academic organization ID</td>
+            <td><code>SisExtId</code></td>
+            <td>The unique, global ID for an Academic organization generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.</td>
+          </tr>
+          <tr>
+            <td>SIS Internal Campus ID</td>
+            <td><code>CampusId</code></td>
+            <td>The foreign key to the Campus to which the Academic organization belongs.</td>
+          </tr>
+          <tr>
+            <td>SIS Internal Parent Academic organization ID</td>
+            <td><code>ParentId</code></td>
+            <td><em>(optional)</em> The foreign key to the parent Academic organization of this Academic organization.</td>
+          </tr>
+          <tr>
+            <td>Academic organization code</td>
+            <td><code>Code</code></td>
+            <td>A code for the Academic organization. The intended value is the shorthand used in schedule of classes and other administravia to refer to the Academic organization (e.g., "CAS").</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><code>Name</code></td>
+            <td>The human-readable name of the Academic organization (e.g., "The College of Arts and Sciences").</td>
+          </tr>
+        </tbody>
+      </table><a href="#top">top</a><br><br><a name='#5'></a>
       <h2>Academic term</h2>
       <p>A calendar session in which classes are instructed.</p>
       <p>The Academic term file should be created in a comma-separated (CSV) format with the naming convention <code>academic_term_&lt;date&gt;.csv</code> , where
