@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html -->
+<html lang="en" class="gr__rawgit_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   <title>UCDM Data dictionary</title>      <link rel="stylesheet" href="../assets/base.css"> </head><body data-gr-c-s-loaded="true"><a name="top"></a>
+
+  <!-- Navigation -->
+  <div class="container">
+    <nav class="navbar is-transparent">
+      <div class="navbar-brand">
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">
+            Home
+          </a>
+
+          <!-- UDP documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              UDP
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../udp/access-udp-resources.html">
+                Accessing UDP resources
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="../udp/caliper-endpoint.html">
+                Caliper endpoint
+              </a>
+              <a class="navbar-item" href="../udp/event-processing.html">
+                Event processing
+              </a>
+              <a class="navbar-item" href="../udp/lrs-event-record.html">
+                Event record
+              </a>
+            </div>
+          </div>
+
+          <!-- UCDM documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              UCDM
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../ucdm/data-dictionary.html">
+                Data dictionary (ingested)
+              </a>
+              <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
+                Data dictionary (modeled)
+              </a>
+              <a class="navbar-item" href="../ucdm/relational-schema.html">
+                Relational schema
+              </a>
+              <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">
+                SIS Loading Schema for UCDM (v1)
+              </a>
+              <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">
+                SIS Loading Schema proposed changes (v1.1)
+              </a>
+              <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+                Canvas Data to UCDM
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+                Sample Relational Store queries
+              </a>
+              <a class="navbar-item" href="../ucdm/queries-event-store.html">
+                Sample Learning Record Store queries
+              </a>
+            </div>
+          </div>
+
+          <!-- Developer menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              Developers
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../developers/caliper-integration.html">
+                Caliper sensor guidelines
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="navbar-end">
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- /// Navigation -->
+
+
+  <section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>Data dictionary</b>       </h1>      <h1 class="subtitle">        Unizin Common Data Model      </h1>    </div>  </div></section><div class="content"><br><div class="container"><h1>UCDM Entities</h1><ul><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#academic-organization">Academic organization</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#academic-term">Academic term</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#campus">Campus</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#course-grade">Course grade</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#course-offering">Course offering</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#course-section">Course section</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#course-section-enrollment">Course section enrollment</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#discussion">Discussion</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#discussion-entry">Discussion entry</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#grading-period">Grading period</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#grading-period-grade">Grading period grade</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#institutional-affiliation">Institutional affiliation</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-activity">Learner activity</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-activity-group">Learner activity group</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-activity-override">Learner activity override</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-activity-result">Learner activity result</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-group">Learner group</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-group-category">Learner group category</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#learner-group-membership">Learner group membership</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#module">Module</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#module-attempt">Module attempt</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#module-item">Module item</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#module-item-attempt">Module item attempt</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#participant-session">Participant session</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#participant-session-role">Participant session role</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#person">Person</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#quiz">Quiz</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#quiz-item">Quiz item</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#quiz-item-response">Quiz item response</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#quiz-result">Quiz result</a></li><li><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#session">Session</a></li></ul><a name="academic-organization"><h1>Academic organization</h1></a><p>A School, Program, College, or Department responsible for delivering instruction.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Campus Id</td><td><code>CampusId</code></td><td>The Campus to which the Academic organization belongs.</td></tr>
+<tr><td>Parent Id</td><td><code>ParentId</code></td><td>The parent Academcic organization of this Academic organization.</td></tr>
+<tr><td>Code</td><td><code>Code</code></td><td>A shorthand code for the Academic organization.</td></tr>
+<tr><td>Name</td><td><code>Name</code></td><td>The humand-readable name of the Academic organization.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="academic-term"><h1>Academic term</h1></a><p>A calendar session in which classes are instructed.(Common Educational Data Standards)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Name</td><td><code>Name</code></td><td>The name of the Term.</td></tr>
+<tr><td>Term type</td><td><code>TermType</code></td><td>The type of Academic term.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/reftermtype.html">RefTermType</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="campus"><h1>Campus</h1></a><p>The collection of departments, colleges, schools, and buildings that belong to a particular institution.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Name</td><td><code>Name</code></td><td>The full name of the Campus.</td></tr>
+<tr><td>Abbreviation</td><td><code>Abbreviation</code></td><td>The abbreviation for the campus name.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="course-grade"><h1>Course grade</h1></a><p>A class of data corresponding to evaluations of the results of learner activities.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Course Id</td><td><code>CourseId</code></td><td>The foreign key to the Course Id for which this is a Course grade</td></tr>
+<tr><td>Score</td><td><code>Score</code></td><td>The current course grade score for a Person in the Course.</td></tr>
+<tr><td>Published score</td><td><code>PublishedScore</code></td><td>The final course grade score for a Person in the Course.</td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the course grade.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="course-offering"><h1>Course offering</h1></a><p>An institutional offering of organized subject matter and learner activities chosen by learners in an academic term.(Common Educational Data Standards)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Campus Id</td><td><code>CampusId</code></td><td>The campus to which this Course offering belongs.</td></tr>
+<tr><td>Session Id</td><td><code>SessionId</code></td><td>The session in which the Course offering is offered.</td></tr>
+<tr><td>Course subject</td><td><code>CourseSubj</code></td><td>The alphabetic abbreviation of the academic department or discipline offering the course. It is one part of the total course Id number. E.g., "BIO" in "BIO 101."</td></tr>
+<tr><td>Course number</td><td><code>CourseNo</code></td><td>The official reference number portion of a course Id. This number normally designates the level of the course as well as the level of the individual expected to enroll in the course. E.g. "101" in "BIO 101."</td></tr>
+<tr><td>Course title</td><td><code>Title</code></td><td>The title of the Course Offering.</td></tr>
+<tr><td>Course description</td><td><code>Description</code></td><td>The Course Offering description.</td></tr>
+<tr><td>Academic career</td><td><code>Career</code></td><td>A code representing a grouping of academic programs for statistical purposes.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refcareer.html">RefCareer</a></td></tr>
+<tr><td>Course status</td><td><code>Status</code></td><td>The workflow state of the Course offering, usually in relation to its availability for teaching and learning.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+<tr><td>Course credits</td><td><code>AvailableCredits</code></td><td>Measured in Carnegie units, the amount of credit available to a student who successfully meets the objectives of the Course Offering.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="course-section"><h1>Course section</h1></a><p>An administrative and instructional sub-organization of a Course offering. Instructors may be assigned to one or more sections of a particular Course offering.(Common Educational Data Standards)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Course offering Id</td><td><code>CourseId</code></td><td>The course offering to which this Course section belongs.</td></tr>
+<tr><td>Academic term Id</td><td><code>TermId</code></td><td>The term to which this Course section belongs.</td></tr>
+<tr><td>Academic organization Id</td><td><code>AcademicOrgId</code></td><td>The Academic organization responsible for delivering this Course section.</td></tr>
+<tr><td>Course section number</td><td><code>SectionNumber</code></td><td>The unique number of a particular Course section.</td></tr>
+<tr><td>Class number</td><td><code>ClassNumber</code></td><td>A unique number for the Course section.</td></tr>
+<tr><td>Delivery mode</td><td><code>DeliveryMode</code></td><td>The delivery mode for the instruction given in this Course Section.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refcoursesectiondeliverymode.html">RefCourseSectionDeliveryMode</a></td></tr>
+<tr><td>Max enrollment</td><td><code>MaxEnrollment</code></td><td>Maximum number of students who can be enrolled in the Course Section. </td></tr>
+<tr><td>Course section name</td><td><code>Name</code></td><td>The name of the course section </td></tr>
+<tr><td>Course section begins</td><td><code>BeginDate</code></td><td>The date &amp; time when instruction in the course section begins. </td></tr>
+<tr><td>Course section ends</td><td><code>EndDate</code></td><td>The date &amp; time when instruction in the course section begins. </td></tr>
+<tr><td>Course section workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the Course section, usually in relation to its availability for teaching and learning.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="course-section-enrollment"><h1>Course section enrollment</h1></a><p>The association of a Person to an organization, usually defined by a particular role.(Common Educational Data Standards)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Person Id</td><td><code>PersonId</code></td><td>The Person to whom this Course section enrollment applies.</td></tr>
+<tr><td>Section Id</td><td><code>SectionId</code></td><td>The Course section to whom this Course section enrollment applies.</td></tr>
+<tr><td>Role</td><td><code>Role</code></td><td>The role of the Person in the Section, as defined by a UCDM option set.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/role.html">Role</a></td></tr>
+<tr><td>Role status</td><td><code>RoleStatus</code></td><td>The status of the Person in their role as a member of this Course section.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refrolestatus.html">RefRoleStatus</a></td></tr>
+<tr><td>Entry date</td><td><code>EntryDate</code></td><td>The timestamp when the Person started this role in the Course section.</td></tr>
+<tr><td>Exit date</td><td><code>ExitDate</code></td><td>The timestamp indicating when the Person ended this role in the Course section.</td></tr>
+<tr><td>Credits taken</td><td><code>CreditsTaken</code></td><td>The number of credits the Person intended to earn in the Course section.</td></tr>
+<tr><td>Credits earned</td><td><code>CreditsEarned</code></td><td>The number of credits the Person actually earned in the Course section.</td></tr>
+<tr><td>Completed at</td><td><code>CompletedAt</code></td><td>The timestamp when the user completed their enrollment in the Course section.</td></tr>
+<tr><td>Course workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the Course section enrollment.</td></tr>
+<tr><td>Self Enrolled</td><td><code>SelfEnrolled</code></td><td>Is the user self-enrolled in the course section?</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="discussion"><h1>Discussion</h1></a><p>A forum in which learners and instructors are encouraged to exchange ideas.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="discussion-entry"><h1>Discussion entry</h1></a><p>An entry in a particular Disucssion.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="grading-period"><h1>Grading period</h1></a><p>An instructional unit of time in a session for which a discrete grade is given.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="grading-period-grade"><h1>Grading period grade</h1></a><p>The grade received for a given Grading period.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="institutional-affiliation"><h1>Institutional affiliation</h1></a><p>The association of a Person to an academic institution, and the description of the general or primary capacity in which they act at that institution.(Common Educational Data Standards)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Person Id</td><td><code>PersonId</code></td><td>The person affilitated with the University.</td></tr>
+<tr><td>Directory information block</td><td><code>DirectoryBlock</code></td><td>A variable used to describe Persons who are currently electing to block their directory information as per FERPA, or those who previously had a block but are requesting it be removed. A `null` value indicates that the related person does not have a FERPA directory block, and values may be shared in accordance with standard data agreements. &nbsp;  - This block is only valid for institutional affiliated records.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refdirectoryinformationblock.html">RefDirectoryInformationBlock</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-activity"><h1>Learner activity</h1></a><p>An assignment, task, piece of work, or other activity that is as part of a course of study.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Course Id</td><td><code>CourseId</code></td><td>The Course offering Id to which this learner activity belongs.</td></tr>
+<tr><td>Title</td><td><code>Title</code></td><td>The title or name of the learner activity.</td></tr>
+<tr><td>Description</td><td><code>Description</code></td><td>The description of the learner activity, described in a way that the learner can understand.</td></tr>
+<tr><td>Due date</td><td><code>DueDate</code></td><td>The date the learner activity is due.</td></tr>
+<tr><td>Due date as a day</td><td><code>DueDateAsDay</code></td><td>The date version of the due date if the IsDueOnDay attribute is true.</td></tr>
+<tr><td>Release date</td><td><code>ReleaseDate</code></td><td>The date the student was informed about an learner activity or that an automated system displays the learner activity as available for completion.</td></tr>
+<tr><td>Lock date</td><td><code>LockDate</code></td><td>The date &amp; time when the learner activity is locked, indicating that students can no longer start the learner activity.</td></tr>
+<tr><td>Learner activity group Id</td><td><code>LearnerActivityGroup</code></td><td>The identifier of the Learner activity group to which this Learner activity belongs.</td></tr>
+<tr><td>Position</td><td><code>Position</code></td><td>The position of this Learner activity in a Learner activity group.</td></tr>
+<tr><td>Visibility</td><td><code>VisibilityType</code></td><td>Defines the type of visibility of the learner actiivty to students in the course.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refvisibilitytype.html">RefVisibilityType</a></td></tr>
+<tr><td>Possible points</td><td><code>PossiblePoints</code></td><td>The number of possible points for the learner activity.</td></tr>
+<tr><td>Score metric type</td><td><code>ScoreMetricType</code></td><td>The method used to assess the learner activity. This is a metric type from which a score is derived.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refscoremetrictype.html">RefScoreMetricType</a></td></tr>
+<tr><td>Learner activity result type</td><td><code>LearnerActivityResultType</code></td><td>A valid method of submitting the learner activity result for this learner activty.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/reflearneractivityresulttype.html">RefLearnerActivityResultType</a></td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>Current workflow state of the learner activity<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+<tr><td>Creation date</td><td><code>CreationDate</code></td><td>The date &amp; time the learner activity was created.</td></tr>
+<tr><td>Update date</td><td><code>UpdateDate</code></td><td>The date &amp; time the learner activity was updated.</td></tr>
+<tr><td>Peer review enabled</td><td><code>IsPeerReviewed</code></td><td>If true, peer reviews are enabled for this learner activity</td></tr>
+<tr><td>Peer review automatic learner activity</td><td><code>IsPeerReviewLearnerActivityAutomated</code></td><td>If true, peer reviews are assigned algorithmically as opposed to manually.</td></tr>
+<tr><td>Peer reviewer count</td><td><code>NumberOfPeerReviewers</code></td><td>The number of peers to assign for review if using algorithmic learner activity</td></tr>
+<tr><td>Peer review due date</td><td><code>PeerReviewDueDate</code></td><td>Timestamp for when peer reviews should be completed</td></tr>
+<tr><td>Are all peer reviewers assigned</td><td><code>AreAllPeerReviewersAssigned</code></td><td>True if all peer reviews have been assigned</td></tr>
+<tr><td>May be locked</td><td><code>MayBeLocked</code></td><td>True if the learner activity is under a module that could be locked</td></tr>
+<tr><td>Is due on a day</td><td><code>IsDueOnDay</code></td><td>True if a specific time for when the learner activity was due was not given. The effective due time will be 11:59 pm.</td></tr>
+<tr><td>Is individually scored</td><td><code>IsIndividuallyScored</code></td><td>True if students who submit work as a group will each receive individual grades (vs one grade that is copied to all group members)</td></tr>
+<tr><td>Is Muted</td><td><code>IsMuted</code></td><td>Student cannot see grades left on the learner activity.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-activity-group"><h1>Learner activity group</h1></a><p>A group of learner activities as part of a course design.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Course Id</td><td><code>CourseId</code></td><td>The Course offering Id to which this learner activity belongs.</td></tr>
+<tr><td>Name</td><td><code>Name</code></td><td>Name of the Learner activity group.</td></tr>
+<tr><td>Default learner activity name</td><td><code>DefaultLearnerActivityName</code></td><td>Default name assigned to the learner activities in the learner activity group if no name is assigned to them during their creation.</td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>Current workflow state of the learner activity group.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+<tr><td>Position</td><td><code>Position</code></td><td>The position of the Learner activity group in a Course offering.</td></tr>
+<tr><td>Creation date</td><td><code>CreationDate</code></td><td>The date &amp; time the learner activity was created.</td></tr>
+<tr><td>Update date</td><td><code>UpdateDate</code></td><td>The date &amp; time the learner activity was updated.</td></tr>
+<tr><td>Group weight percentage</td><td><code>GroupWeightPercentage</code></td><td>Percentage of the total course grade accounted for by learner activities in this group.</td></tr>
+<tr><td>Drop lowest count</td><td><code>NumberDropLowest</code></td><td>Number of lowest scored learner activityies which can be dropped from the group</td></tr>
+<tr><td>Drop highest count</td><td><code>NumberDropHighest</code></td><td>Number of highest scored learner activities which can be dropped from the group</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-activity-override"><h1>Learner activity override</h1></a><p>A rule or set of rules that overrides the default conditions of a learner activity for a particular audience of students.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Learner activity Id</td><td><code>LearnerActivityId</code></td><td>Foreign key to the learner activity with which the override is associated.</td></tr>
+<tr><td>Learner activity version</td><td><code>LearnerActivityVersion</code></td><td>The version of the learner activity to which this override applies.</td></tr>
+<tr><td>Assessment Id</td><td><code>AssessmentId</code></td><td>Foreign key to the assessment with which the override is associated.</td></tr>
+<tr><td>Assessment version</td><td><code>AssessmentVersion</code></td><td>The version of the assessment to which this override applies.</td></tr>
+<tr><td>Override type</td><td><code>OverrideType</code></td><td>Defines to which Entity the learner activity override is applied.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refoverridetype.html">RefOverrideType</a></td></tr>
+<tr><td>Override title</td><td><code>OverrideTitle</code></td><td>The title of the learner activity override.</td></tr>
+<tr><td>Course section Id</td><td><code>CourseSectionId</code></td><td>Foreign key to the Course section to which this learner activity override applies.</td></tr>
+<tr><td>Group Id</td><td><code>GroupId</code></td><td>Foreign key to the Learner group to which this learner activity override applies.</td></tr>
+<tr><td>Person Id</td><td><code>PersonId</code></td><td>Foreign key to the Person to which this learner activity overrided applies.</td></tr>
+<tr><td>Due date</td><td><code>OverrideDueDate</code></td><td>The new due date if the "Due date is overriden" value is True.</td></tr>
+<tr><td>Due date is overridden</td><td><code>DoOverrideDueDate</code></td><td>True if a override's "Due date" value overrides the learner activity's "Due date" value.</td></tr>
+<tr><td>Release date</td><td><code>OverrideReleaseDate</code></td><td>The new release date if the "Release date is overriden" value is True.</td></tr>
+<tr><td>Release date is overridden</td><td><code>DoOverrideReleaseDate</code></td><td>True if a override's "Release date" value overrides the learner activity's "Release date" value.</td></tr>
+<tr><td>Lock date</td><td><code>OverrideLockDate</code></td><td>The new lock date if the "Lock date is overriden" value is true.</td></tr>
+<tr><td>Lock date is overridden</td><td><code>DoOverrideLockDate</code></td><td>True if a override's "Lock date" value overrides the learner activity's "Lock date" value.</td></tr>
+<tr><td>Due date as a day</td><td><code>OverrideDueDateAsDay</code></td><td>The date version of the due date if the IsDueOnDay attribute is true.</td></tr>
+<tr><td>Due date as a day is overridden</td><td><code>DoOverrideDueDateAsDay</code></td><td>True if a override's "Due date as a day" value overrides the learner activity's "Due date as a day" value.</td></tr>
+<tr><td>Creation date</td><td><code>CreationDate</code></td><td>The date on which the learner activity override was created.</td></tr>
+<tr><td>Update date</td><td><code>UpdateDate</code></td><td>The date &amp; time the learner activity override was updated.</td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>Current workflow state of the learner activity override.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-activity-result"><h1>Learner activity result</h1></a><p>The result of a learner engagement with a learner activity.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Learner activity Id</td><td><code>LearnerActivityId</code></td><td>Foreign key to Learner activity of which this is a result.</td></tr>
+<tr><td>Learner activity result type</td><td><code>LearnerActivityResultType</code></td><td>Type of Learner activity result.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/reflearneractivityresulttype.html">RefLearnerActivityResultType</a></td></tr>
+<tr><td>Person Id</td><td><code>PersonId</code></td><td>Foreign key to user dimension of user who submitted the learner activity result.</td></tr>
+<tr><td>Grader Id</td><td><code>GraderId</code></td><td>Foreign key to the user dimension of user who graded the learner activity result.</td></tr>
+<tr><td>Learner group Id</td><td><code>LearnerGroupId</code></td><td>Foreign key to the group_dim table</td></tr>
+<tr><td>Body</td><td><code>Body</code></td><td>Text content for the submission</td></tr>
+<tr><td>Url</td><td><code>Url</code></td><td>URL content for the submission</td></tr>
+<tr><td>Result submitted date</td><td><code>ResultSubmittedDate</code></td><td>Timestamp of when the submission was submitted</td></tr>
+<tr><td>Has assessment rubric</td><td><code>HasRubricAssessment</code></td><td>True if the submission is associated with a rubric that has been assessed for at least one student</td></tr>
+<tr><td>Number of attempts</td><td><code>AttemptNumber</code></td><td>Number of attempts made including this one</td></tr>
+<tr><td>Is excused</td><td><code>IsExcused</code></td><td>Denotes if this Learner activity result is excused or not.</td></tr>
+<tr><td>Is graded anonymously</td><td><code>IsGradedAnonymously</code></td><td>Denotes how grading has been performed</td></tr>
+<tr><td>Grade matches the current result</td><td><code>GradeMatchesCurrentResult</code></td><td>Indicates that the current grade given by the teaher is not for the most recent submission by the student</td></tr>
+<tr><td>Creation date</td><td><code>CreationDate</code></td><td>The date on which the learner activity override was created.</td></tr>
+<tr><td>Update date</td><td><code>UpdateDate</code></td><td>The date &amp; time the learner activity override was updated.</td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>Workflow state for submission lifetime values</td></tr>
+<tr><td>Score</td><td><code>Score</code></td><td>Numberic grade given to the submission</td></tr>
+<tr><td>Published score</td><td><code>PublishedScore</code></td><td>Numerical value of the actual score</td></tr>
+<tr><td>Grade</td><td><code>Grade</code></td><td>Letter grade mapped from the score by the grading scheme.</td></tr>
+<tr><td>Published grade</td><td><code>PublishedGrade</code></td><td>Strings that reflect the grading type used</td></tr>
+<tr><td>What if score</td><td><code>WhatIfScore</code></td><td>Most recent what-if score entered by the student</td></tr>
+<tr><td>Graded on date</td><td><code>GradedDate</code></td><td>Timestamp of when the submission was graded</td></tr>
+<tr><td>Grade state</td><td><code>GradeState</code></td><td>Denotes the current state of the grade<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refgradestate.html">RefGradeState</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-group"><h1>Learner group</h1></a><p>A pedagogically-oriented group of learners in a course. This concept is distinct from Course section, which is an administrative grouping of learners.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Learner group category Id</td><td><code>LearnerGroupCategoryId</code></td><td>A foreign key to an arbitrary definition of a category of learner groups. Learner group categories are used to defined ad hoc sets of groups that whose membership is limited to one group.</td></tr>
+<tr><td>Course Id</td><td><code>CourseId</code></td><td>The Course offering Id to which this learner activity belongs.</td></tr>
+<tr><td>Name</td><td><code>Name</code></td><td>The name of the Learner group.</td></tr>
+<tr><td>Description</td><td><code>Description</code></td><td>A description of the particular Learner group.</td></tr>
+<tr><td>Creation date</td><td><code>CreationDate</code></td><td>The date on which the learner group was created.</td></tr>
+<tr><td>Update date</td><td><code>UpdateDate</code></td><td>The date on which the learner group was updated.</td></tr>
+<tr><td>Deletion date</td><td><code>DeletionDate</code></td><td>The date on which the learner group was deleted.</td></tr>
+<tr><td>Is public</td><td><code>IsPublic</code></td><td>If true, then any public user may join the group and access the contents of the group (e.g., files).</td></tr>
+<tr><td>Membership cap</td><td><code>MembershipCap</code></td><td>The maximum number of students allowed in the group.</td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>Workflow state of the learner group</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-group-category"><h1>Learner group category</h1></a><p>Learner group categories are used to defined ad hoc sets of groups that whose membership is limited to one group.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Learner group category Id</td><td><code>LearnerGroupCategoryId</code></td><td>The unique ID for the Learner group category. Learner group categories are used to defined ad hoc sets of groups that whose membership is limited to one group.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="learner-group-membership"><h1>Learner group membership</h1></a><p>The association of a Person to a Learner group.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Learner group Id</td><td><code>LearnerGroupId</code></td><td>A foreign key to a Learner group.</td></tr>
+<tr><td>Person Id</td><td><code>PersonId</code></td><td>A foreign key to a Person.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="module"><h1>Module</h1></a><p>A set of independent items that can be used to construct a more complex structure of learning.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="module-attempt"><h1>Module attempt</h1></a><p>The progress a learner has made for a particular Module.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="module-item"><h1>Module item</h1></a><p>An item in a particular Module.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="module-item-attempt"><h1>Module item attempt</h1></a><p>The progress a learner has made for a particular Module item.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="participant-session"><h1>Participant session</h1></a><p>A(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="participant-session-role"><h1>Participant session role</h1></a><p>The role in which a Person acted in a Participant session.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody></tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="person"><h1>Person</h1></a><p>An individual participating, in any capacity, in the design, delivery, or evaluation of teaching and learning processes and environments.(Common Educational Data Standards)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>First name</td><td><code>FirstName</code></td><td>Legal first name of the person.</td></tr>
+<tr><td>Middle name</td><td><code>MiddleName</code></td><td>Legal middle name or names of the person.</td></tr>
+<tr><td>Last name</td><td><code>LastName</code></td><td>Legal family name of the person</td></tr>
+<tr><td>Suffix</td><td><code>Suffix</code></td><td>Suffix for the person. </td></tr>
+<tr><td>Sex</td><td><code>Sex</code></td><td>The legal sex of the person.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refsex.html">RefSex</a></td></tr>
+<tr><td>Gender</td><td><code>Gender</code></td><td>The person’s self-identified gender.</td></tr>
+<tr><td>Ethnicity</td><td><code>Ethnicity</code></td><td>The self-reported ethnicity of the student.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refrace.html">RefRace</a></td></tr>
+<tr><td>Zip code</td><td><code>ZipCode</code></td><td>The zip code of the student’s permanent address at time of his or her application.</td></tr>
+<tr><td>US residency status</td><td><code>UsResidency</code></td><td>The person’s residency status in the United States.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refuscitizenshipstatus.html">RefUSCitizenshipStatus</a></td></tr>
+<tr><td>High School GPA</td><td><code>HsGpa</code></td><td>Student’s reported cumulative high school grade point average. This value is intended to capture the primary GPA used by your institution to evaluate this student’s admission.</td></tr>
+<tr><td>College GPA; cumulative</td><td><code>ColGpaCum</code></td><td>The cumulative GPA of a post-secondary student through to their most recent term. This GPA score is intended to cover the whole career of a post-secondary student.</td></tr>
+<tr><td>Is active duty military</td><td><code>ActiveDuty</code></td><td>Is the student/person an active duty member of the military?<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refmilitaryactivestudentindicator.html">RefMilitaryActiveStudentIndicator</a></td></tr>
+<tr><td>Is veteran</td><td><code>Veteran</code></td><td>Is the student/person a military veteran (i.e., a retired member of the military who served on active duty)?<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refmilitaryveteranstudentindicator.html">RefMilitaryVeteranStudentIndicator</a></td></tr>
+<tr><td>Father highest education level</td><td><code>EduLevelPaternal</code></td><td>The highest level of education attained by a person's father or paternal guardian(s).<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refeducationlevel.html">RefEducationLevel</a></td></tr>
+<tr><td>Mother highest education level</td><td><code>EduLevelMaternal</code></td><td>The highest level of education attained by a person's mother or maternal guardian(s).<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refeducationlevel.html">RefEducationLevel</a></td></tr>
+<tr><td>Parent highest education level</td><td><code>EduLevelParental</code></td><td>The highest level of education attained by a person's parent or guardian(s). Use this if the available data is not specific to a mother/maternal guardian or father/paternal guardian.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refeducationlevel.html">RefEducationLevel</a></td></tr>
+<tr><td>Enrollment level</td><td><code>EnrollmentLevel</code></td><td>The enrollment type of this person (student) at your institution.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refpsstudentlevel.html">RefPsStudentLevel</a></td></tr>
+<tr><td>Academic career</td><td><code>Career</code></td><td>A code representing a grouping of academic programs for statistical purposes. An academic career exists for each school or college by the program level offered.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refcareer.html">RefCareer</a></td></tr>
+<tr><td>Course count</td><td><code>CourseCount</code></td><td>Number of courses undertaken by student from date of SIS data availability to present, regardless of pass/fail.</td></tr>
+<tr><td>SAT Math Pre2016</td><td><code>SatMathPre2016</code></td><td>The non-concorded, pre-2016 SAT Math score from the student's best sitting.</td></tr>
+<tr><td>SAT Math Post2016</td><td><code>SatMathPost2016</code></td><td>The post-2016 SAT Math score from the student's best sitting.</td></tr>
+<tr><td>SAT Math Combined</td><td><code>SatMathCombined</code></td><td>The combined SAT Math score from the student's best sitting. A combined score combines the actual post-2016 score with concorded (translated) pre-2016 score.</td></tr>
+<tr><td>SAT Verbal Pre2016</td><td><code>SatVerbalPre2016</code></td><td>The non-concorded, pre-2016 SAT Verbal score from the student's best sitting.</td></tr>
+<tr><td>SAT Reading Post2016</td><td><code>SatReadingPost2016</code></td><td>The post-2016 SAT Reading score from the student's best sitting.</td></tr>
+<tr><td>SAT Verbal/Reading Combined</td><td><code>SatVerbalReadingCombined</code></td><td>The combined SAT Verbal and Reading scores from the student's best sitting. A combined score combines the concorded (translated) pre-2016 Verbal score with the actual post-2016 Reading score.</td></tr>
+<tr><td>SAT Writing Pre2016</td><td><code>SatWritingPre2016</code></td><td>The non-concorded, pre-2016 SAT Writing score from the student's best sitting.</td></tr>
+<tr><td>SAT Writing Post2016</td><td><code>SatWritingPost2016</code></td><td>The post-2016 SAT Writing score from the student's best sitting.</td></tr>
+<tr><td>SAT Writing Combined</td><td><code>SatWritingCombined</code></td><td>The combined SAT Writing scores from the student's best sitting. A combined score combines the concorded (translated) pre-2016 Writing score with the actual post-2016 Writing score *except* if the pre-2016 Writing score is missing, in which case this field is `null`.</td></tr>
+<tr><td>SAT Total Combined</td><td><code>SatTotalCombined</code></td><td>Total Combined SAT score. This score combines concorded Math, Reading, and Writing scores except if a Writing score is unavailable, in which case this score is null.</td></tr>
+<tr><td>ACT Reading score</td><td><code>ActReading</code></td><td>Score on ACT Reading exam.</td></tr>
+<tr><td>ACT Math score</td><td><code>ActMath</code></td><td> Score on ACT Math exam.</td></tr>
+<tr><td>ACT English score</td><td><code>ActEnglish</code></td><td>Score on ACT English exam.</td></tr>
+<tr><td>ACT Science score</td><td><code>ActScience</code></td><td>Score on ACT Science exam.</td></tr>
+<tr><td>ACT Composite score</td><td><code>ActComposite</code></td><td>Composite ACT score.</td></tr>
+<tr><td>Phone number</td><td><code>PhoneNumber</code></td><td>The university’s primary number for contacting a person by phone.</td></tr>
+<tr><td>Phone number type</td><td><code>PhoneType</code></td><td>The type of phone number that is the primary method of contact for the person by phone.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refpersontelephonenumbertype.html">RefPersonTelephoneNumberType</a></td></tr>
+<tr><td>Email address</td><td><code>EmailAddress</code></td><td>The university’s primary address for contacting a person by email.|</td></tr>
+<tr><td>Email address type</td><td><code>EmailType</code></td><td>The type of email address that is the primary method of contact for the person by email.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refemailtype.html">RefEmailType</a></td></tr>
+<tr><td>Federated identity management Id</td><td><code>FedIdentity</code></td><td>The unique identifier for an individual released by an institutions identity provider, typically in an SSO scenario.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="quiz"><h1>Quiz</h1></a><p>A class of learner activity used to assess learner content mastery.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Course Id</td><td><code>CourseId</code></td><td>The Course offering Id to which this learner activity belongs.</td></tr>
+<tr><td>Learner activity Id</td><td><code>LearnerActivityId</code></td><td>Foreign key to Learner activity of this Assessment.</td></tr>
+<tr><td>Quiz type Id</td><td><code>QuizTypeId</code></td><td>The type of quiz.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmenttype.html">RefAssessmentType</a></td></tr>
+<tr><td>Name</td><td><code>Name</code></td><td>The name of the quiz</td></tr>
+<tr><td>Description</td><td><code>Description</code></td><td>The description of the quiz</td></tr>
+<tr><td>Scoring policy</td><td><code>ScoringPolicy</code></td><td>The scoring policy for this quiz; defines the rules that determine a final score.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentscoringpolicy.html">RefAssessmentScoringPolicy</a></td></tr>
+<tr><td>Result presentation policy</td><td><code>ResultPresentationPolicy</code></td><td>The presentation policy for the results of the quiz. Defines if and how the result should be presented.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentresultpresentationpolicy.html">RefAssessmentResultPresentationPolicy</a></td></tr>
+<tr><td>Quiz item presentation grouping policy</td><td><code>QuizItemPresentationGrouping</code></td><td>The grouping presentation policy for the quiz items. Defines how quiz items should be grouped in their display, if it all.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentitempresentationgroupingpolicy.html">RefAssessmentItemPresentationGroupingPolicy</a></td></tr>
+<tr><td>Quiz item presentation ordering policy</td><td><code>QuizItemPresentationOrdering</code></td><td>The ordering presentation policy for the quiz items. Defines how the quiz items should be ordered in their presentation.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentitempresentationorderpolicy.html">RefAssessmentItemPresentationOrderPolicy</a></td></tr>
+<tr><td>Quiz item result presentation policy</td><td><code>QuizItemResultPresentationPolicy</code></td><td>The presentation policy for the quiz items. Defines when and how quiz item results should be presented.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentitemresultpresentationpolicy.html">RefAssessmentItemResultPresentationPolicy</a></td></tr>
+<tr><td>May be locked</td><td><code>MayBeLocked</code></td><td>Defines whether the quiz may be locked.</td></tr>
+<tr><td>Possible points</td><td><code>PossiblePoints</code></td><td>Defines the maximum possible points attainable in the quiz.</td></tr>
+<tr><td>Maximum time allowed (minutes)</td><td><code>MaximumTimeAllowed</code></td><td>Defines the maximum time alloted to take the quiz.</td></tr>
+<tr><td>Maximum attempts allowed</td><td><code>MaximumAttemptsAllowed</code></td><td>Defines the maximum number of attempts allowed on the quiz.</td></tr>
+<tr><td>May submit anonymously</td><td><code>MaySubmitAnonymously</code></td><td>If true, the quiz can be submitted anonymously.</td></tr>
+<tr><td>May return to previous quiz items</td><td><code>MayReturnToPreviousQuizItems</code></td><td>If true, the user can navigate back to previous quiz items.</td></tr>
+<tr><td>Is browser lockdown required?</td><td><code>IsBrowserLockdownRequired</code></td><td>If true, the browser must be locked down during test taking.</td></tr>
+<tr><td>Is browser lockdown required to display results?</td><td><code>IsBrowserLockdownRequiredToDisplayResults</code></td><td>If true, the browser must be locked down when viewing quiz results.</td></tr>
+<tr><td>Is browser lockdown monitor required?</td><td><code>IsBrowserLockdownMonitorRequired</code></td><td>If true, a browser lockdown monitor must be installed during test taking.</td></tr>
+<tr><td>Creation date</td><td><code>CreationDate</code></td><td>The date the quiz is created.</td></tr>
+<tr><td>Update date</td><td><code>UpdateDate</code></td><td>The date the quiz is updated.</td></tr>
+<tr><td>Publish date</td><td><code>PublishDate</code></td><td>The date the quiz is published.</td></tr>
+<tr><td>Release date</td><td><code>ReleaseDate</code></td><td>The date the quiz is release/unlocked.</td></tr>
+<tr><td>Lock date</td><td><code>LockDate</code></td><td>The date the quiz is locked.</td></tr>
+<tr><td>Due date</td><td><code>DueDate</code></td><td>The date the quiz is due.</td></tr>
+<tr><td>Release correct answers date</td><td><code>ReleaseCorrectAnswersDate</code></td><td>The date the correct answers to the quiz items are released.</td></tr>
+<tr><td>Hide correct answers date</td><td><code>HideCorrectAnswersDate</code></td><td>The date the correct answers to the quiz items are hidden.</td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the quiz.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="quiz-item"><h1>Quiz item</h1></a><p>A particular quiz item in a particular quiz.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Name</td><td><code>Code7</code></td><td>Description</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="quiz-item-response"><h1>Quiz item response</h1></a><p>The learner response given for a particular quiz item.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Name</td><td><code>Code8</code></td><td>Description</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="quiz-result"><h1>Quiz result</h1></a><p>A learner response to a quiz.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Quiz Id</td><td><code>QuizId</code></td><td>The Quiz Id for which this is a student Quiz result.</td></tr>
+<tr><td>Person Id</td><td><code>PersonId</code></td><td>The Person Id for the student who submissed this Quiz result.</td></tr>
+<tr><td>Version number</td><td><code>VersionNumber</code></td><td>If multiple attempts are allowed, the version number denotes which attempt this Quiz result is by the student.</td></tr>
+<tr><td>Assessment result source</td><td><code>AssessmentResultSource</code></td><td>Describes from where the student Quiz result was received.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentresultsource.html">RefAssessmentResultSource</a></td></tr>
+<tr><td>Time taken to complete (minutes)</td><td><code>TimeAssessed</code></td><td>In minutes, the time taken by the student to complete the quiz.</td></tr>
+<tr><td>Student has viewed results</td><td><code>StudentHasViewedResult</code></td><td>If true, the student has seen the results of their Quiz result.</td></tr>
+<tr><td>Extra attempts allotted</td><td><code>ExtraAttemptsAllotted</code></td><td>Describes the number of extra attmepts beyond the allowed attempts were given to the student for this response.</td></tr>
+<tr><td>Extra time allotted</td><td><code>ExtraTimeAllotted</code></td><td>Describes the amount of time (in minutes) beyond the allowed time was given to the student for this response.</td></tr>
+<tr><td>Possible points</td><td><code>PossiblePoints</code></td><td>Describes the number of possible points that can be earned by the student for this response, if different from the possible points associated with the Quiz.</td></tr>
+<tr><td>Assessment scoring policy</td><td><code>AssessmentScoringPolicy</code></td><td>Describes the scoring policy for this Quiz result if different from (overridden) the scoring policy associated with the Quiz.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentscoringpolicy.html">RefAssessmentScoringPolicy</a></td></tr>
+<tr><td>Score</td><td><code>Score</code></td><td>The score metric for this Quiz result.</td></tr>
+<tr><td>Score before regrade</td><td><code>ScoreMetricBeforeRegrade</code></td><td>The score metric for this Quiz result before it was regraded.</td></tr>
+<tr><td>Score fudge points</td><td><code>ScoreMetricFudgePoints</code></td><td>The number of points, whether negative or positive, granted to this Quiz result after normal scoring.</td></tr>
+<tr><td>Creation date</td><td><code>DateCreated</code></td><td>The date the Quiz result was created.</td></tr>
+<tr><td>Update date</td><td><code>DateUpdated</code></td><td>The date the Quiz result was updated.</td></tr>
+<tr><td>Start date time</td><td><code>ActualStartDateTime</code></td><td>The date and time the Quiz result was started by the student.</td></tr>
+<tr><td>End date time</td><td><code>ActualEndDateTime</code></td><td>The date and time the Quiz result was completed by the student.</td></tr>
+<tr><td>Due date</td><td><code>DueDate</code></td><td>The date and time the Quiz result was due, if different from the Due date associated with the Quiz.</td></tr>
+<tr><td>Submission state</td><td><code>ResultSubmissionState</code></td><td>Denotes whether the Quiz result is the current or a previous Quiz result by the the student.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refresultsubmissionstate.html">RefResultSubmissionState</a></td></tr>
+<tr><td>Quiz state at submission</td><td><code>AssessmentWorkflowStateAtSubmission</code></td><td>Describes the state of the quiz when the student submitted their Quiz result.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refassessmentworkflowstateatsubmission.html">RefAssessmentWorkflowStateAtSubmission</a></td></tr>
+<tr><td>Workflow state</td><td><code>WorkflowState</code></td><td>The workflow state of the Quiz result.<br>Option set: <a href="https://rawgit.com/unizin/udp-docs/master/udp/tables/refworkflowstate.html">RefWorkflowState</a></td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><a name="session"><h1>Session</h1></a><p>An administrative unit that defines an actual instructional period during a term.(Unizin Common Data Model)</p><table class="table is-bordered is-hoverable"><thead><tr><th>Element</th><th>Code</th><th>Description</th></tr>
+</thead><tbody><tr><td>Term Id</td><td><code>TermId</code></td><td>The Academic term of which the Session is a part.</td></tr>
+<tr><td>Name</td><td><code>Name</code></td><td>The name of the session.</td></tr>
+<tr><td>Instruction begin date</td><td><code>InstrBeginDate</code></td><td>The beginning of instruction for Course sections in the Session.</td></tr>
+<tr><td>Instruction end date</td><td><code>InstrEndDate</code></td><td>The end of instruction for Course sections in the Session.</td></tr>
+<tr><td>Inclusive access bill-after date</td><td><code>BillAfterDate</code></td><td>The date after which inclusive access course materials can be billed to the institution.</td></tr>
+</tbody></table><a href="https://rawgit.com/unizin/udp-docs/master/udp/ucdm/data-dictionary-modeled.html#top">top</a><br><br><br><br><br><br></div></div><!-- Footer --><footer class="footer"> <div class="container"> <div class="content"> <p> Questions about the documentation? <a href="mailto:udp@unizin.org">Contact us</a>.<br> Unizin Data Platform by <a href="http://unizin.org/">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer --></body></html>
