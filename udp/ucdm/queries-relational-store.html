@@ -169,6 +169,9 @@
         <h2>Query for a particular person</h2>
         <div style="border: 1px dashed #FAA; width: 80%; height: 500px; max-height: 500px; overflow: hidden;">
           <pre style="padding-left: 0px; height: 100%; max-height: 100%; overflow-y: scroll">
+            WITH LocalConstants (mypersonid) as (
+   		          values (1)
+            )
             SELECT
               Person.Prefix as Prefix,
               Person.Firstname as FirstName,
@@ -184,7 +187,7 @@
                 LEFT JOIN OrganizationPersonRole on PsStudentApplication.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7
               ) as HsGpa,
               (
@@ -193,7 +196,7 @@
                 LEFT JOIN OrganizationPersonRole on PsStudentAcademicRecord.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7
               ) as ColGpaCum,
               RefMilitaryActiveStudentIndicator.Description as ActiveDuty,
@@ -205,7 +208,7 @@
                 FROM OrganizationPersonRole
                   INNER JOIN Course on Course.OrganizationId=OrganizationPersonRole.OrganizationPersonRoleId
                   INNER JOIN Role on Role.RoleId=OrganizationPersonRole.RoleId
-                WHERE Role.name='Student' and PersonId=1
+                WHERE Role.name='Student' and PersonId=mypersonid
               ) as CourseCount,
               (
                 SELECT PsStudentAdmissionTest.StandardizedAdmissionTestScore
@@ -214,7 +217,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatMathPre2016'
               ) as SatMathPre2016,
@@ -225,7 +228,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatMathPost2016'
               ) as SatMathPost2016,
@@ -236,7 +239,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatMathCombined'
               ) as SatMathCombined,
@@ -247,7 +250,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatVerbalPre2016'
               ) as SatVerbalPre2016,
@@ -258,7 +261,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatReadingPost2016'
               ) as SatReadingPost2016,
@@ -269,7 +272,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatVerbalReadingCombined'
               ) as SatVerbalReadingCombined,
@@ -280,7 +283,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatWritingPre2016'
               ) as SatWritingPre2016,
@@ -291,7 +294,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatWritingPost2016'
               ) as SatWritingPost2016,
@@ -302,7 +305,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatWritingCombined'
               ) as SatWritingCombined,
@@ -313,7 +316,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='SatTotalCombined'
               ) as SatTotalCombined,
@@ -324,7 +327,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='ActReading'
               ) as ActReading,
@@ -335,7 +338,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='ActMath'
               ) as ActMath,
@@ -346,7 +349,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='ActEnglish'
               ) as ActEnglish,
@@ -357,7 +360,7 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='ActScience'
               ) as ActScience,
@@ -368,16 +371,17 @@
                 LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
                 LEFT JOIN RefStandardizedAdmissionTest on RefStandardizedAdmissionTest.RefStandardizedAdmissionTestId=PsStudentAdmissionTest.RefStandardizedAdmissionTestId
                 WHERE
-                  Person.PersonId=1 AND
+                  Person.PersonId=mypersonid AND
                   OrganizationPersonRole.OrganizationId=7 AND
                   RefStandardizedAdmissionTest.code='ActComposite'
               ) as ActComposite,
               PersonEmailAddress.EmailAddress as EmailAddress,
               RefEmailType.Description as EmailType,
               PersonTelephone.TelephoneNumber as PhoneNumber,
-              RefPersonTelephoneNumberType.Description as PhoneType
-
-            FROM Person
+              RefPersonTelephoneNumberType.Description as PhoneType,
+              ucdmint.sourcekey as SisIntId,
+              ucdmext.sourcekey as SisExtId
+              FROM LocalConstants, Person
               LEFT JOIN RefSex on RefSex.RefSexId=Person.RefSexId
               LEFT JOIN PersonDemographicRace on PersonDemographicRace.PersonId=Person.PersonId
               LEFT JOIN RefRace on RefRace.RefRaceId=PersonDemographicRace.RefRaceId
@@ -390,9 +394,18 @@
               LEFT JOIN RefEmailType on RefEmailType.RefEmailTypeId=PersonEmailAddress.RefEmailTypeId
               LEFT JOIN PersonTelephone on PersonTelephone.PersonId=Person.PersonId
               LEFT JOIN RefPersonTelephoneNumberType on RefPersonTelephoneNumberType.RefPersonTelephoneNumberTypeId=PersonTelephone.RefPersonTelephoneNumberTypeId
-
+              LEFT JOIN ucdmentitykeymap ucdmint on ucdmint.ucdmkey = Person.PersonId and ucdmint.ucdmentityid = 1 and ucdmint.systemprovisioningid = 
+              (select id from mdsystemdataprovisioning where systemid = 
+                (select id from mdsystem where refsystemtypeid = 1)
+                and is_external = false
+              )
+              LEFT JOIN ucdmentitykeymap ucdmext on ucdmext.ucdmkey = Person.PersonId and ucdmext.ucdmentityid = 1 and ucdmext.systemprovisioningid = 
+              (select id from mdsystemdataprovisioning where systemid = 
+                (select id from mdsystem where refsystemtypeid = 1)
+                and is_external = true
+              )
             WHERE
-              Person.PersonId=1;
+              Person.PersonId=mypersonid;
           </pre>
         </div>
 
