@@ -379,8 +379,8 @@
               RefEmailType.Description as EmailType,
               PersonTelephone.TelephoneNumber as PhoneNumber,
               RefPersonTelephoneNumberType.Description as PhoneType,
-              ucdm1.sourcekey as SisIntId,
-              ucdm2.sourcekey as SisExtId
+              ucdmint.sourcekey as SisIntId,
+              ucdmext.sourcekey as SisExtId
               FROM LocalConstants, Person
               LEFT JOIN RefSex on RefSex.RefSexId=Person.RefSexId
               LEFT JOIN PersonDemographicRace on PersonDemographicRace.PersonId=Person.PersonId
@@ -394,8 +394,16 @@
               LEFT JOIN RefEmailType on RefEmailType.RefEmailTypeId=PersonEmailAddress.RefEmailTypeId
               LEFT JOIN PersonTelephone on PersonTelephone.PersonId=Person.PersonId
               LEFT JOIN RefPersonTelephoneNumberType on RefPersonTelephoneNumberType.RefPersonTelephoneNumberTypeId=PersonTelephone.RefPersonTelephoneNumberTypeId
-              LEFT JOIN ucdmentitykeymap ucdm1 on ucdm1.ucdmkey = Person.PersonId and ucdm1.ucdmentityid = 1 and ucdm1.systemprovisioningid = 1000
-              LEFT JOIN ucdmentitykeymap ucdm2 on ucdm2.ucdmkey = Person.PersonId and ucdm2.ucdmentityid = 1 and ucdm2.systemprovisioningid = 1001
+              LEFT JOIN ucdmentitykeymap ucdmint on ucdmint.ucdmkey = Person.PersonId and ucdmint.ucdmentityid = 1 and ucdmint.systemprovisioningid = 
+              (select id from mdsystemdataprovisioning where systemid = 
+                (select id from mdsystem where refsystemtypeid = 1)
+                and is_external = false
+              )
+              LEFT JOIN ucdmentitykeymap ucdmext on ucdmext.ucdmkey = Person.PersonId and ucdmext.ucdmentityid = 1 and ucdmext.systemprovisioningid = 
+              (select id from mdsystemdataprovisioning where systemid = 
+                (select id from mdsystem where refsystemtypeid = 1)
+                and is_external = true
+              )
             WHERE
               Person.PersonId=mypersonid;
           </pre>
