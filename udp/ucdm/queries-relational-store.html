@@ -410,7 +410,6 @@
           <pre style="padding-left: 0px; height: 100%; max-height: 100%; overflow-y: scroll">
             SELECT
               OrganizationCalendarSession.OrganizationCalendarSessionId as TermId,
-              RefTermType.Description as TermType,
               RefSessionType.Description as SessionType,
               OrganizationCalendarSession.SessionName as SessionName,
               OrganizationCalendarSession.BeginDate as TermBeginDate,
@@ -418,7 +417,6 @@
               OrganizationCalendarSession.FirstInstructionDate as InstrBeginDate,
               OrganizationCalendarSession.LastInstructionDate as InstrEndDate
             FROM OrganizationCalendarSession
-              LEFT JOIN RefTermType on RefTermType.RefTermTypeId=OrganizationCalendarSession.RefTermTypeId
               LEFT JOIN RefSessionType on RefSessionType.RefSessionTypeId=OrganizationCalendarSession.RefSessionTypeId
             WHERE OrganizationCalendarSession.OrganizationCalendarSessionId=2;
           </pre>
@@ -453,7 +451,8 @@
               LEFT JOIN OrganizationCalendarSession on OrganizationCalendarSession.OrganizationCalendarSessionId=PsCourse.OrganizationCalendarSessionId
               LEFT JOIN RefCourseCreditUnit on RefCourseCreditUnit.RefCourseCreditUnitId=Course.RefCourseCreditUnitId
               LEFT JOIN RefWorkflowState on RefWorkflowState.RefWorkflowStateId=Course.RefWorkflowStateId
-              LEFT JOIN RefTermType on RefTermType.RefTermTypeId=OrganizationCalendarSession.RefTermTypeId
+              LEFT JOIN OrganizationCalendar on OrganizationCalendar.OrganizationId=Course.OrganizationId 
+              LEFT JOIN RefTermType on RefTermType.RefTermTypeId=OrganizationCalendar.RefTermTypeId
               LEFT JOIN RefSessionType on RefSessionType.RefSessionTypeId=OrganizationCalendarSession.RefSessionTypeId
             Where Course.OrganizationId=1;
           </pre>
