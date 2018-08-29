@@ -62,9 +62,13 @@ sub load_navigation($) {
   return $ls_index;
 }
 
-sub navigation_as_html($$) {
-  my($doc_dir, $index) = @_;
+sub navigation_as_html($$$) {
+  my($doc_dir, $index, $depth) = @_;
   my $html   = '';
+
+  ## Default depth
+  $depth = $depth ? $depth : 1;
+  $dots  = '../' x  $depth;
 
   ## Navigation
   my $nav_template = $doc_dir . '/udp/assets/navigation.html';
@@ -89,7 +93,7 @@ sub navigation_as_html($$) {
 
         foreach my $version (keys %$versions) {
 
-          $html .= "    <a class='navbar-item' href='$versions->{$version}->{file}'>\n";
+          $html .= "    <a class='navbar-item' href='${dots}loading_schemas/html/$versions->{$version}->{file}'>\n";
           $html .= "      $versions->{$version}->{label}";
           $html .= "\n";
           $html .= "    </a>\n";
@@ -99,6 +103,11 @@ sub navigation_as_html($$) {
       $html .= "  </div>\n";
       $html .= "</div>\n";
 
+
+    } elsif( $line =~ m|^(.*)\.\./(.*)$| ) {
+      $html .= $line;
+
+      $html .= $1 . $dots . $2;
 
     } else {
       $html .= $line;
@@ -111,24 +120,26 @@ sub navigation_as_html($$) {
 }
 
 sub ls_navigation_to_html($$) {
-  my($doc_dir) = @_;
+  my($doc_dir, $depth) = @_;
 
   my $nav_html =
     &navigation_as_html(
       $doc_dir,
-      &load_navigation($doc_dir)
+      &load_navigation($doc_dir),
+      $depth
     );
 
   return $nav_html;
 }
 
-sub ls_navigation_to_file($$) {
-  my($fh, $doc_dir) = @_;
+sub ls_navigation_to_file($$$) {
+  my($fh, $doc_dir, $depth) = @_;
 
   my $nav_html =
     &navigation_as_html(
       $doc_dir,
-      &load_navigation($doc_dir)
+      &load_navigation($doc_dir),
+      $depth
     );
 
   print $fh $nav_html;

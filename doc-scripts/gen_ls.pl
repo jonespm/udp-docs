@@ -6,7 +6,8 @@
 
 use strict;
 use YAML::Tiny;
-use Data::Dumper;
+use utf8;
+use open ':std', ':encoding(UTF-8)';
 use DBI;
 use Getopt::Long;
 
@@ -341,13 +342,12 @@ sub start_html($$$$$) {
   print $fh '<body>';
   print $fh "<a name='top'></a>";
 
-  &ls_navigation_to_file($fh, $doc_dir);
+  &ls_navigation_to_file($fh, $doc_dir, 2);
 
   &header($fh, $header, $subheader);
 
   print $fh "<div class=\"content\"><br>";
   print $fh "<div class=\"container\">";
-
 
   return 1;
 }

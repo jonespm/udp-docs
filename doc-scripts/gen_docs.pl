@@ -15,25 +15,46 @@
 ## 5. You've set your UDP_HOME environment variable.
 ##
 
+# ./gen_docs.pl  \
+#   -db_name=entity_store -db_user= -db_user= -db_host=127.0.0.1 -db_port=5432 \
+#   -doc_dir=/path/to/udp-docs
+
 use strict;
+use YAML::Tiny;
 use utf8;
 use open ':std', ':encoding(UTF-8)';
 use DBI;
+use Getopt::Long;
 
 require 'navigation.pl';
 
-my $dbh = &connect_to_database('entity_store', '127.0.0.1', '5432', '', '');
+################################################################################
 
-$dbh->do("set search_path=public, ucdm;");
+my $doc_dir = '';
 
-&ucdm_data_dictionary($dbh);
-&ucdm_relational_schema($dbh);
+my $db_name = '';
+my $db_user = '';
+my $db_pass = '';
+my $db_port = '';
+my $db_host = '';
+
+&fetch_and_verify_options;
+
+################################################################################
+
+my $dbh = &connect_to_database($db_name, $db_host, $db_port, $db_user, $db_pass);
+   $dbh->do("set search_path=public, ucdm;");
+
+#&ucdm_data_dictionary($dbh);
+#&ucdm_relational_schema($dbh);
 &ucdm_event_schema($dbh);
-&map_canvas_to_ucdm($dbh);
+#&map_canvas_to_ucdm($dbh);
 
 &disconnect_from_database($dbh);
 
-1;
+exit 1;
+
+################################################################################
 
 sub ucdm_data_dictionary($) {
   my($dbh) = @_;
@@ -513,13 +534,12 @@ sub start_html($$$) {
   print $fh '<body>';
   print $fh "<a name='top'></a>";
 
-  &ls_navigation_to_file($fh, $doc_dir);
+  &ls_navigation_to_file($fh, $doc_dir, 1);
 
   &header($fh, $header, $subheader);
 
   print $fh "<div class=\"content\"><br>";
   print $fh "<div class=\"container\">";
-
 
   return 1;
 }
@@ -844,6 +864,33 @@ sub q_ref_table($) {
 
 ################################################################################
 ################################################################################
+
+sub fetch_and_verify_options {
+
+  GetOptions(
+    'doc_dir=s'        => \$doc_dir,
+    'db_name=s'         => \$db_name,
+    'db_host=s'         => \$db_host,
+    'db_port=i'         => \$db_port,
+    'db_user:s'         => \$db_user,
+    'db_pass:s'         => \$db_pass
+  );
+
+  ## Must have some variables to function
+  if(
+    $doc_dir      eq '' ||
+    $db_name      eq '' ||
+    $db_host      eq '' ||
+    $db_port      == 0
+  ) {
+
+    print "\n\nFATAL: One or more required params is missing.\n";
+
+    die;
+  }
+
+  return 1;
+}
 
 sub connect_to_database {
   my( $db_name, $db_host, $db_port, $db_user, $db_pass ) = @_;
