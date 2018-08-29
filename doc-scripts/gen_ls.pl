@@ -10,6 +10,8 @@ use Data::Dumper;
 use DBI;
 use Getopt::Long;
 
+require 'navigation.pl';
+
 ################################################################################
 
 my $doc_dir = '';
@@ -94,14 +96,13 @@ sub document_loading_schema($) {
   open(my $fh, ">$outfile") or die "Couldn't create $outfile\n";
 
   ## Start the HTML in the documentation.
-  &start_html($fh, './', "Loading schema: $ls_label", $ls_label, 'UDP Loading schema');
+  &start_html($doc_dir, $fh, './', "Loading schema: $ls_label", $ls_label, 'UDP Loading schema');
 
   ## Status of the loading schema
   &ls_status($fh, $status);
 
   ## LS entities
   &ls_entity_menu($fh, $entities);
-
 
   foreach my $entity (@$entities) {
 
@@ -327,8 +328,8 @@ sub ls_status($$) {
 ################################################################################
 ################################################################################
 
-sub start_html($$$) {
-  my($fh, $prefix, $title, $header, $subheader) = @_;
+sub start_html($$$$$) {
+  my($doc_dir, $fh, $prefix, $title, $header, $subheader) = @_;
 
   print $fh '<!doctype html>';
   print $fh '<html lang="en">';
@@ -340,7 +341,7 @@ sub start_html($$$) {
   print $fh '<body>';
   print $fh "<a name='top'></a>";
 
-#  &navigation($fh);
+  &ls_navigation_to_file($fh, $doc_dir);
 
   &header($fh, $header, $subheader);
 
