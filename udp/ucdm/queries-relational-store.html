@@ -173,10 +173,11 @@
    		          values (1)
             )
             SELECT
-              Person.Prefix as Prefix,
               Person.Firstname as FirstName,
               Person.Middlename as MiddleName,
               Person.Lastname as LastName,
+              Person.Prefix as Prefix,
+              Person.GenerationCode as Suffix,
               RefSex.description as Sex,
               RefRace.Description as Ethnicity,
               PersonAddress.PostalCode as ZipCode,
