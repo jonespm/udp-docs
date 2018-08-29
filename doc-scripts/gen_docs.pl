@@ -20,6 +20,8 @@ use utf8;
 use open ':std', ':encoding(UTF-8)';
 use DBI;
 
+require 'navigation.pl';
+
 my $dbh = &connect_to_database('entity_store', '127.0.0.1', '5432', '', '');
 
 $dbh->do("set search_path=public, ucdm;");
@@ -511,7 +513,7 @@ sub start_html($$$) {
   print $fh '<body>';
   print $fh "<a name='top'></a>";
 
-  &navigation($fh);
+  &ls_navigation_to_file($fh, $doc_dir);
 
   &header($fh, $header, $subheader);
 
