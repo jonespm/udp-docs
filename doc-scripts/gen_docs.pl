@@ -45,10 +45,10 @@ my $db_host = '';
 my $dbh = &connect_to_database($db_name, $db_host, $db_port, $db_user, $db_pass);
    $dbh->do("set search_path=public, ucdm;");
 
-#&ucdm_data_dictionary($dbh);
-#&ucdm_relational_schema($dbh);
+&ucdm_data_dictionary($dbh);
+&ucdm_relational_schema($dbh);
 &ucdm_event_schema($dbh);
-#&map_canvas_to_ucdm($dbh);
+&map_canvas_to_ucdm($dbh);
 
 &disconnect_from_database($dbh);
 
