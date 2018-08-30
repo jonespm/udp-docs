@@ -10,6 +10,7 @@ use utf8;
 use open ':std', ':encoding(UTF-8)';
 use DBI;
 use Getopt::Long;
+use Data::Dumper;
 
 require 'navigation.pl';
 
@@ -110,9 +111,23 @@ sub document_loading_schema($) {
     ## Get the entity data
     my $entity_data = &get_entity_by_name($entity->{name});
 
-    print $fh "<a name='$entity->{name}'></a>";
-    print $fh "<h2>$entity_data->{name}</h2>\n";
-    print $fh "<p>$entity_data->{description}</p>\n";
+    ## Use config file as defaults.
+    my $entity_name =
+      (
+        defined $entity->{name} &&
+        defined $entity->{name} ne ''
+      ) ? $entity->{name} : $entity_data->{name};
+
+    my $entity_description =
+    (
+      defined $entity->{description} &&
+      defined $entity->{description} ne ''
+    ) ? $entity->{description} : $entity_data->{description};
+
+    ## Print information
+    print $fh "<a name='$entity_name'></a>";
+    print $fh "<h2>$entity_name</h2>\n";
+    print $fh "<p>$entity_description</p>\n";
 
     print $fh '<table class="table is-bordered is-hoverable">';
 
@@ -142,16 +157,37 @@ sub document_loading_schema($) {
           $element_ls->{code}
         );
 
+      ## Use config file as defaults.
+      my $element_name =
+        (
+          defined $element_ls->{name} &&
+          defined $element_ls->{name} ne ''
+        ) ? $element_ls->{name} : $element_data->{name};
+
+      my $element_code =
+      (
+        defined $element_ls->{code} &&
+        defined $element_ls->{code} ne ''
+      ) ? $element_ls->{code} : $element_data->{code};
+
+      my $element_description =
+      (
+        defined $element_ls->{description} &&
+        defined $element_ls->{description} ne ''
+      ) ? $element_ls->{description} : $element_data->{description};
+
       ## Present element metadata from the schema
       ## if it exists. Otherwise, we default to what
       ## is in the YAML definition.
-      if( defined $element_data->{name} && $element_data->{name} ne '' ) {
+      if( defined $element_name        && $element_name ne '' &&
+          defined $element_code        && $element_code ne '' &&
+          defined $element_description && $element_description ne '' ) {
 
         &ls_row(
           $fh,
-          $element_data->{name},
-          "<code>$element_data->{code}</code>",
-          $element_data->{description},
+          $element_name,
+          "<code>$element_code</code>",
+          $element_description,
           0
         );
 
