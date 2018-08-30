@@ -183,6 +183,16 @@ sub document_loading_schema($) {
           defined $element_code        && $element_code ne '' &&
           defined $element_description && $element_description ne '' ) {
 
+        ## Option set.
+        if(defined $element_ls->{option_set} && $element_ls->{option_set} ne '' ) {
+          my $h = lc($element_ls->{option_set});
+          $element_description .=
+            '<br><br>' .
+            '<p>' .
+            "Option set: <a href='../../tables/${h}.html'>$element_ls->{option_set}</a>" .
+            '</p>';
+        }
+
         &ls_row(
           $fh,
           $element_name,
