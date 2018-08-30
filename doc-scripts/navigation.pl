@@ -94,7 +94,7 @@ sub navigation_as_html($$$) {
         foreach my $version (keys %$versions) {
 
           $html .= "    <a class='navbar-item' href='${dots}loading_schemas/html/$versions->{$version}->{file}'>\n";
-          $html .= "      $versions->{$version}->{label}";
+          $html .= "     $system $versions->{$version}->{label}";
           $html .= "\n";
           $html .= "    </a>\n";
         }
