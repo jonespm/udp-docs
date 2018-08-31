@@ -532,7 +532,6 @@
               -- Self-enrolled?
 
             FROM OrganizationPersonRole
-              INNER JOIN CourseSection on CourseSection.OrganizationId=OrganizationPersonRole.OrganizationPersonRoleId
               INNER JOIN Role on Role.RoleId=OrganizationPersonRole.RoleId
               INNER JOIN RoleStatus on RoleStatus.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
               INNER JOIN RefRoleStatus on RefRoleStatus.RefRoleStatusId=RoleStatus.RefRoleStatusId
