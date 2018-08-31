@@ -12,25 +12,18 @@ entities:
       - code: OcExtId
         name: Originality checker External Person ID
         description: The unique identifier for the Person from the system that provisions the Originality checker. Typically, this is the unique LMS identifier for the Person.
-      - code: FirstName
-      - code: LastName
-      - code: EmailAddress
-        description: The email address associated with the Person in the Originality checker.
-      - code: EmailType
-        option_set: RefEmailType
       - code: Language
         name: Language
-        description: The language preference of the user.
+        description: ??
         option_set: RefLanguage
-  - name: Course section
+  - name: Course offering
     elements:
       - code: OcIntId
-        name: Originality checker Internal Course section ID
-        description: The internal primary key used by the Originality checker to define a Course section record. This ID may or may not be different than the Originality checker External Course section ID.
+        name: Originality checker Internal Course offering ID
+        description: The internal primary key used by the Originality checker to define a Course offering record. This ID may or may not be different than the Originality checker External Course offering ID.
       - code: OcExtId
-        name: Originality checker External Course section ID
-        description: The unique identifier for the Course section from the system that provisions the Originality checker. Typically, this is the unique LMS identifier for the Course section.
-      - code: Title
+        name: Originality checker External Course offering ID
+        description: The unique identifier for the Course offering from the system that provisions the Originality checker. Typically, this is the unique LMS identifier for the Course offering.
   - name: Learner activity
     elements:
       - code: OcIntId
@@ -39,67 +32,78 @@ entities:
       - code: OcExtId
         name: External Learner activity ID
         description: The unique identifier for the Learner activity from the system that provisions the Originality checker. In the UCDM, Assignments for which an originality score is given are a type of Learner activity. This value will most likely correspond to the unique LMS identifier for the assignment.
-      - code: CourseSectionId
-        name: Course section ID
-        desription: The unique, internal identifier for the Course section to which this Learner activity belongs.
-      - code: StartDate
+      - code: CourseId
+        name: Course offering ID
+        desription: The unique, internal identifier for the Course offering to which this Learner activity belongs.
+      - code: CreateDate
         name: Learner activity start date
-        description: ???
-      - code: PostDate
-        name: Learner activity post date
-        desription: ??
+        description: The date on which the Learner activity was first created in the Originality checker.
+      - code: ReleaseDate
+        name: Learner activity release date
+        desription: The date on which the Learner activity was made available to learners.
+      - code: DueDate
+        name: Due date
+        description: The date on which the Learner activity is due.
       - code: ReportGenerationSpeed
-        name: Report Generation Speed
+        name: Report generation speed
         description: ??
-      - code: MaxGrade
-        name: Max grade available
+      - code: PossiblePoints
+        name: Possible points
+        description: The maximum number of points that can be awarded for the Learner activity.
+      - code: RepositorySubmission
+        name: Repository submission
         description: ??
-      - code: IsLateSubmissionAllowed
-        name: Late submissions allowed?
-        description: ??
+      - code: RubricId
+        name: Rubric
+        description: The internal primary key used by the Originality checker for the rubric against which the Learner activity should be graded.
+      - code: LateSubmissionAllowed
+        name: Late submissions allowed
+        description: TRUE if learners are able to submit the Learner activity after the Due date has passed. Otherwise, FALSE.
       - code: CanSeeOriginalityReport
         name: Can see originality report
-        description: ??
-      - code: RepositorySubmission
-        name: Submit paper to...
-        description: ??
-      - code: AnonymousMarking
-        name: AnonymousMarkingIsEnabled
-        description: ??
+        description: TRUE if learners able to see the results of their Originality report. Otherwise, FALSE.
+      - code: AnonymousMarkingEnabled
+        name: Anonymous marking enabled
+        description: TRUE if the Learner activity will be checked anonymously. Otherwise, FALSE.
+      - code: ExcludeBibliography
+        name: Exclude - Bibliography
+        description: TRUE if bibliography sections should be ignored by the Originality checker for this Learner activyt. Otherwise, FALSE.
       - code: ExcludeSmallMatches
-        name: Exclude - small matches
-        description: ??
-      - code: QuotedExclusion
-        name: Quoted exclusion
-        description: ??
-      - code: RubricAttachedToAssignment
-        name: Rubirc attached to assignment
-        description: ??
+        name: Exclude - Small matches
+        description: TRUE if ??. Otherwise, FALSE.
+      - code: ExcludeQuotes
+        name: Exclude - Quotes
+        description: TRUE if quoted material should be ignored by the Originality checker for this Learner activity. Otherwise, FALSE.
       - code: AllowAnyFileType
         name: Allow any file type
         description: ??
+  - name: Quiz
+    elements:
+      - code: OcIntId
+        name: Internal Quiz ID
+        description: The internal primary key used by the Originality checker to define a Quiz. This value will most likely correspond to the Originality checker's primary key for a quiz.
+      - code: OcExtId
+        name: External Quiz ID
+        description: The unique identifier for the Quiz from the system that provisions the Originality checker. This value will most likely correspond to the unique LMS identifier for the quiz.
   - name: Learner activity result
     elements:
       - code: OcIntId
         name: Internal Learner activity result ID
-        description: The internal primary key used by the Originality checker to define a Learner activity result. In the UCDM, Assignment submissions for which an originality score is given are a type of Learner activity result. This value will most likely correspond to the Originality checker's primary key for an assignment.
+        description: The internal primary key used by the Originality checker to define a Learner activity result. In the UCDM, assignment submissions for which an originality score is given are a type of Learner activity result. This value will most likely correspond to the Originality checker's primary key for an assignment submission.
       - code: OcExtId
         name: External Learner activity ID
-        description: The unique identifier for the Learner activity result from the system that provisions the Originality checker. In the UCDM, Assignment submissions for which an originality score is given are a type of Learner activity result. This value will most likely correspond to the unique LMS identifier for the assignment submission.
+        description: The unique identifier for the Learner activity result from the system that provisions the Originality checker. In the UCDM, assignment submissions for which an originality score is given are a type of Learner activity result. This value will most likely correspond to the unique LMS identifier for the assignment submission.
       - code: LearnerActivityId
       - code: Type
       - code: PersonId
         name: Person ID
-      - code: ??
-        name: Paper ID
-        description: ???
       - code: Title
         name: Learner activity result title
         description: The title of the learner activity result
-      - code: DateUploaded
-        name: Date uploaded
-        description: The date & time that the learner activity result (e.g., assignment submission) was upoaded by the user.
-      - code: ??
+      - code: CreateDate
+        name: Create date
+        description: The date & time that the learner activity result (e.g., assignment submission) was created in the Originality checker.
+      - code: OwnerId
         name: Owner ID
         description: ??
       - code: CharacterCount
@@ -111,24 +115,32 @@ entities:
       - code: PageCount
         name: Page Count
         description: The number of pages in the learner activity result.
-      - code: RemoteIPAddress
-        name: Remote IP Address
+      - code: IPAddress
+        name: IP Address
         description: ??
+  - name: Quiz result
+    elements:
+      - code: OcIntId
+        name: Internal Quiz result ID
+        description: The internal primary key used by the Originality checker to define a Quiz result. In the UCDM, quiz submissions for which an originality score is given are known as Quiz results. This value will most likely correspond to the Originality checker's primary key for a quiz submission.
+      - code: OcExtId
+        name: External Quiz result ID
+        description: The unique identifier for the Quiz result from the system that provisions the Originality checker. In the UCDM, quiz submissions for which an originality score is given are Quiz results. This value will most likely correspond to the unique LMS identifier for the quiz submission.
   - name: Originality score
     elements:
-      - code: PaperId
-        name: Paper ID
-        description: ???
-      - code: DateProcessed
-        name: Date report was processed
-        description: ??
-      - code: DoExcludeQuotes
+      - code: LearnerActivityResultId
+        name: Learner activity result ID
+        description: The unique identifier for the Learner activity result in the Originality checker.
+      - code: CreateDate
+        name: Create date
+        description: Date the Originality score was created.
+      - code: ExcludeQuotes
         name: Exclude - Quotes
         description: ??
-      - code: DoExcludeBibliography
+      - code: ExcludeBibliography
         name: Exlcude - Bibliography
         description: ??
-      - code: DoExcludeSmallMatches
+      - code: ExcludeSmallMatches
         name: Exclude - Small matches
         description: ??
       - code: SimilarityScore
@@ -149,23 +161,23 @@ entities:
       - code: SimilarityToQuotedContent
         name: Similarity - Quoted content
         description: ??
-  - name: Grade
+  - name: Learner activity result grade
     elements:
-      - code: PaperId
-        name: Paper ID
-        description: ???
-      - code: PersonId
-        name: Person who opened the viewer
-        description: ???
-      - code: DateGradeApplied
-        name: Date the grade was applied
-        description: The date and time when feedback was left, this could be a grade or GradeMark (latest time)
-      - code: DateOwnerOpenedViewer
-        name: When the student opened the viewer
-        description: ??
-      - code: DateOwnerClosedViewer
-        name: When the student closed the viewer
-        description: ??
+      - code: LearnerActivityResultId
+        name: Learner activity result ID
+        description: The unique identifier for the Learner activity result in the Originality checker.
+      - code: ViewerId
+        name: Viewer
+        description: The unique identifier for the Person who viewed the Learner activity result grade
+      - code: UpdateDate
+        name: Update date
+        description: The date and time when feedback was most recently left, this could be a grade or grade mark.
+      - code: OwnerOpenedDate
+        name: Owner opened date
+        description: The date on which the student opened the viewer.
+      - code: OwnerClosedDate
+        name: Owner closed date
+        description: The date on which the student closed the viewer.
       - code: CountStudentOpenedViewer
         name: Number of times the student opened the viewer
         description: ??
