@@ -132,7 +132,7 @@ sub document_loading_schema($) {
     print $fh '<table class="table is-bordered is-hoverable">';
 
     print $fh '<thead>';
-    &ls_row($fh, 'Data element', 'Header', 'Description', 1);
+    &ls_row($fh, 'Element', 'Code (Header)', 'Description', 1);
     print $fh '</thead>';
 
     print $fh '<tbody>';
@@ -183,7 +183,15 @@ sub document_loading_schema($) {
           defined $element_code        && $element_code ne '' &&
           defined $element_description && $element_description ne '' ) {
 
-        ## Option set.
+        ## Is this a code we don't have
+        ## in the UCDM's DD?
+        my $new_element =
+          (
+            (! defined $element_ls->{ls_only} || $element_ls->{ls_only} ne 'true') &&
+            (! defined $element_data->{code}  || $element_data eq '')
+          ) ? '<br><span style="font-size: 10px">(new)</a>' : '';
+
+        ## Option set
         if(defined $element_ls->{option_set} && $element_ls->{option_set} ne '' ) {
           my $h = lc($element_ls->{option_set});
           $element_description .=
@@ -196,7 +204,7 @@ sub document_loading_schema($) {
         &ls_row(
           $fh,
           $element_name,
-          "<code>$element_code</code>",
+          "<code>$element_code</code>$new_element",
           $element_description,
           0
         );

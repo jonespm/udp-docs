@@ -9,9 +9,11 @@ entities:
       - name: Internal ID
         code: SisIntId
         description: none
+        ls_only: true
       - name: External ID
         code: SisExtId
         description: none
+        ls_only: true
       - code: FirstName
       - code: MiddleName
       - code: LastName
@@ -57,9 +59,11 @@ entities:
       - name: Internal ID
         code: SisIntId
         description: none
+        ls_only: true
       - name: External ID
         code: SisExtId
         description: none
+        ls_only: true
       - code: TermType
       - code: SessionType
       - code: SessionName
@@ -72,9 +76,11 @@ entities:
       - name: Internal ID
         code: SisIntId
         description: none
+        ls_only: true
       - name: External ID
         code: SisExtId
         description: none
+        ls_only: true
       - code: TermId
       - code: CourseSubj
       - code: CourseNo
@@ -87,9 +93,11 @@ entities:
       - name: Internal ID
         code: SisIntId
         description: none
+        ls_only: true
       - name: External ID
         code: SisExtId
         description: none
+        ls_only: true
       - code: CourseId
       - code: TermId
       - code: SectionNumber

@@ -1,0 +1,171 @@
+configuration:
+  system: Originality checker
+  version: 1.0
+  ucdmVersion: ?
+  status: Draft
+entities:
+  - name: Person
+    elements:
+      - code: OcIntId
+        name: Originality checker Internal Person ID
+        description: The internal primary key used by the Originality checker to define a Person record. This ID may or may not be different than the Originality checker External Person ID.
+      - code: OcExtId
+        name: Originality checker External Person ID
+        description: The unique identifier for the Person from the system that provisions the Originality checker. Typically, this is the unique LMS identifier for the Person.
+      - code: FirstName
+      - code: LastName
+      - code: EmailAddress
+        description: The email address associated with the Person in the Originality checker.
+      - code: EmailType
+        option_set: RefEmailType
+      - code: Language
+        name: Language
+        description: The language preference of the user.
+        option_set: RefLanguage
+  - name: Course section
+    elements:
+      - code: OcIntId
+        name: Originality checker Internal Course section ID
+        description: The internal primary key used by the Originality checker to define a Course section record. This ID may or may not be different than the Originality checker External Course section ID.
+      - code: OcExtId
+        name: Originality checker External Course section ID
+        description: The unique identifier for the Course section from the system that provisions the Originality checker. Typically, this is the unique LMS identifier for the Course section.
+      - code: Title
+  - name: Learner activity
+    elements:
+      - code: OcIntId
+        name: Internal Learner activity ID
+        description: The internal primary key used by the Originality checker to define a Learner activity. In the UCDM, Assignments for which an originality score is given are a type of Learner activity. This value will most likely correspond to the Originality checker's primary key for an assignment.
+      - code: OcExtId
+        name: External Learner activity ID
+        description: The unique identifier for the Learner activity from the system that provisions the Originality checker. In the UCDM, Assignments for which an originality score is given are a type of Learner activity. This value will most likely correspond to the unique LMS identifier for the assignment.
+      - code: CourseSectionId
+        name: Course section ID
+        desription: The unique, internal identifier for the Course section to which this Learner activity belongs.
+      - code: StartDate
+        name: Learner activity start date
+        description: ???
+      - code: PostDate
+        name: Learner activity post date
+        desription: ??
+      - code: ReportGenerationSpeed
+        name: Report Generation Speed
+        description: ??
+      - code: MaxGrade
+        name: Max grade available
+        description: ??
+      - code: IsLateSubmissionAllowed
+        name: Late submissions allowed?
+        description: ??
+      - code: CanSeeOriginalityReport
+        name: Can see originality report
+        description: ??
+      - code: RepositorySubmission
+        name: Submit paper to...
+        description: ??
+      - code: AnonymousMarking
+        name: AnonymousMarkingIsEnabled
+        description: ??
+      - code: ExcludeSmallMatches
+        name: Exclude - small matches
+        description: ??
+      - code: QuotedExclusion
+        name: Quoted exclusion
+        description: ??
+      - code: RubricAttachedToAssignment
+        name: Rubirc attached to assignment
+        description: ??
+      - code: AllowAnyFileType
+        name: Allow any file type
+        description: ??
+  - name: Learner activity result
+    elements:
+      - code: OcIntId
+        name: Internal Learner activity result ID
+        description: The internal primary key used by the Originality checker to define a Learner activity result. In the UCDM, Assignment submissions for which an originality score is given are a type of Learner activity result. This value will most likely correspond to the Originality checker's primary key for an assignment.
+      - code: OcExtId
+        name: External Learner activity ID
+        description: The unique identifier for the Learner activity result from the system that provisions the Originality checker. In the UCDM, Assignment submissions for which an originality score is given are a type of Learner activity result. This value will most likely correspond to the unique LMS identifier for the assignment submission.
+      - code: LearnerActivityId
+      - code: Type
+      - code: PersonId
+        name: Person ID
+      - code: ??
+        name: Paper ID
+        description: ???
+      - code: Title
+        name: Learner activity result title
+        description: The title of the learner activity result
+      - code: DateUploaded
+        name: Date uploaded
+        description: The date & time that the learner activity result (e.g., assignment submission) was upoaded by the user.
+      - code: ??
+        name: Owner ID
+        description: ??
+      - code: CharacterCount
+        name: Character count
+        description: The number of characters in the learner activity result.
+      - code: WordCount
+        name: Word Count
+        description: The number of words in the learner activity result.
+      - code: PageCount
+        name: Page Count
+        description: The number of pages in the learner activity result.
+      - code: RemoteIPAddress
+        name: Remote IP Address
+        description: ??
+  - name: Originality score
+    elements:
+      - code: PaperId
+        name: Paper ID
+        description: ???
+      - code: DateProcessed
+        name: Date report was processed
+        description: ??
+      - code: DoExcludeQuotes
+        name: Exclude - Quotes
+        description: ??
+      - code: DoExcludeBibliography
+        name: Exlcude - Bibliography
+        description: ??
+      - code: DoExcludeSmallMatches
+        name: Exclude - Small matches
+        description: ??
+      - code: SimilarityScore
+        name: Similarity score
+        description: ???
+      - code: SimilarityToInternetContent
+        name: Similarity - Internet content
+        description: ??
+      - code: SimilarityToStudentContent
+        name: Similarity - Student content
+        description: ??
+      - code: SimilarityToPublishersContent
+        name: Similarity - Publishers content
+        description: ??
+      - code: SimilarityToBibliography
+        name: Similarity - Bibliography
+        description: ??
+      - code: SimilarityToQuotedContent
+        name: Similarity - Quoted content
+        description: ??
+  - name: Grade
+    elements:
+      - code: PaperId
+        name: Paper ID
+        description: ???
+      - code: PersonId
+        name: Person who opened the viewer
+        description: ???
+      - code: DateGradeApplied
+        name: Date the grade was applied
+        description: The date and time when feedback was left, this could be a grade or GradeMark (latest time)
+      - code: DateOwnerOpenedViewer
+        name: When the student opened the viewer
+        description: ??
+      - code: DateOwnerClosedViewer
+        name: When the student closed the viewer
+        description: ??
+      - code: CountStudentOpenedViewer
+        name: Number of times the student opened the viewer
+        description: ??
