@@ -1,0 +1,115 @@
+configuration:
+  system: SIS
+  version: 1.0
+  ucdmVersion: 1.0
+  status: Final
+entities:
+  - name: Person
+    elements:
+      - name: Internal ID
+        code: SisIntId
+        description: none
+        ls_only: true
+      - name: External ID
+        code: SisExtId
+        description: none
+        ls_only: true
+      - code: FirstName
+      - code: MiddleName
+      - code: LastName
+      - code: Suffix
+      - code: Sex
+      - code: Ethnicity
+      - code: ZipCode
+      - code: UsResidency
+      - code: HsGpa
+      - code: ColGpaCum
+      - code: ActiveDuty
+      - code: Veteran
+      - code: EduLevelPaternal
+      - code: EduLevelMaternal
+      - code: EduLevelParental
+      - code: EnrollmentLevel
+      - code: CourseCount
+      - code: SatMathPre2016
+      - code: SatMathPost2016
+      - code: SatMathCombined
+      - code: SatVerbalPre2016
+      - code: SatReadingPost2016
+      - code: SatVerbalReadingCombined
+      - code: SatWritingPre2016
+      - code: SatWritingPost2016
+      - code: SatWritingCombined
+      - code: SatTotalCombined
+      - code: ActReading
+      - code: ActMath
+      - code: ActEnglish
+      - code: ActScience
+      - code: ActComposite
+      - code: PhoneNumber
+      - code: PhoneType
+      - code: EmailAddress
+      - code: EmailType
+  - name: Institutional affiliation
+    elements:
+      - code: PersonId
+      - code: DirectoryBlock
+  - name: Academic term
+    elements:
+      - name: Internal ID
+        code: SisIntId
+        description: none
+        ls_only: true
+      - name: External ID
+        code: SisExtId
+        description: none
+        ls_only: true
+      - code: TermType
+      - code: SessionType
+      - code: SessionName
+      - code: TermBeginDate
+      - code: TermEndDate
+      - code: InstrBeginDate
+      - code: InstrEndDate
+  - name: Course offering
+    elements:
+      - name: Internal ID
+        code: SisIntId
+        description: none
+        ls_only: true
+      - name: External ID
+        code: SisExtId
+        description: none
+        ls_only: true
+      - code: TermId
+      - code: CourseSubj
+      - code: CourseNo
+      - code: Title
+      - code: Description
+      - code: Status
+      - code: AvailableCredits
+  - name: Course section
+    elements:
+      - name: Internal ID
+        code: SisIntId
+        description: none
+        ls_only: true
+      - name: External ID
+        code: SisExtId
+        description: none
+        ls_only: true
+      - code: CourseId
+      - code: TermId
+      - code: SectionNumber
+      - code: DeliveryMode
+      - code: MaxEnrollment
+  - name: Course section enrollment
+    elements:
+      - code: PersonId
+      - code: SectionId
+      - code: Role
+      - code: RoleStatus
+      - code: EntryDate
+      - code: ExitDate
+      - code: CreditsTaken
+      - code: CreditsEarned

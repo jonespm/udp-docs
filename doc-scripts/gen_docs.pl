@@ -15,24 +15,46 @@
 ## 5. You've set your UDP_HOME environment variable.
 ##
 
+# ./gen_docs.pl  \
+#   -db_name=entity_store -db_user= -db_user= -db_host=127.0.0.1 -db_port=5432 \
+#   -doc_dir=/path/to/udp-docs
+
 use strict;
+use YAML::Tiny;
 use utf8;
 use open ':std', ':encoding(UTF-8)';
 use DBI;
+use Getopt::Long;
 
-my $dbh = &connect_to_database('entity_store', '127.0.0.1', '5432', '', '');
+require 'navigation.pl';
 
-$dbh->do("set search_path=public, ucdm;");
+################################################################################
+
+my $doc_dir = '';
+
+my $db_name = '';
+my $db_user = '';
+my $db_pass = '';
+my $db_port = '';
+my $db_host = '';
+
+&fetch_and_verify_options;
+
+################################################################################
+
+my $dbh = &connect_to_database($db_name, $db_host, $db_port, $db_user, $db_pass);
+   $dbh->do("set search_path=public, ucdm;");
 
 &ucdm_data_dictionary($dbh);
 &ucdm_relational_schema($dbh);
 &ucdm_event_schema($dbh);
 &map_canvas_to_ucdm($dbh);
-&sis_loading_schema($dbh);
 
 &disconnect_from_database($dbh);
 
-1;
+exit 1;
+
+################################################################################
 
 sub ucdm_data_dictionary($) {
   my($dbh) = @_;
@@ -283,184 +305,6 @@ sub map_canvas_to_ucdm($) {
 ################################################################################
 ################################################################################
 
-sub sis_loading_schema($) {
-  my($dbh) = @_;
-
-  ########################################
-  ## Find the SIS latest loading schema.
-  my $latest_version = &get_latest_sis_loading_schema;
-
-  return unless (defined $latest_version && $latest_version > 0);
-
-  ###################################
-  ## Create SIS Loading schema file
-  my $fh = &file_handle('ucdm/sis-loading-schema.html');
-  &start_html($fh, './', "SIS Loading schema v. $latest_version", "SIS Loading schema v. $latest_version", 'Documentation');
-
-  ##############################################
-  ## First, content describing how to use the
-  ## SIS loading schema.
-  print $fh "<h2>What is a loading schema?</h1>";
-
-  print $fh "<p>It is a document that defines the data and formatting requirements necessary to load data into the Unizin Data Platform. In addition, the documentation below guides decisions you must make about aligning SIS data at your Institution to the Unizin Common Data Model.</p>";
-
-  print $fh "<p>During your UDP implementation, Unizin will provide guidance about the meaning of the data below and help you identify how to align your SIS data to the Unizin Common Data model. </p>";
-
-  print $fh "<h1>How much data is required for each entity?</h1>";
-
-  print $fh "<p><strong>Person</strong>. The intent is to capture all individuals who have any relationship to teaching and learning practices, and who generate data in any digital tool used in teaching and learning. This includes advisors, tutors, students, instructors, instructional designers, faculty, teaching assistants, and other actors whose behaviors generate data in a teaching & learning environment or about whom data is generated in a teaching and learning environment.</p>";
-
-  print $fh "<p><strong>Course</strong>, <strong>Academic Term</strong>, <strong>Course Section</strong>, and <strong>Enrollment</strong>. It is expected that <em>all</em> records for these entities in your SIS are relevant to the UDP. These entities provide essential contextual information that describe your teaching and learning environments and individuals’ membership in those environments. Enrollments include not only student, but also instructors (with teaching assignments), TA, etc.</p>";
-
-  print $fh "<h1>What are my next steps?</h1>";
-
-  print $fh "<p>The first step in producing data to that model is correlating data in the SIS loading schema to data in your SIS. While some data is easy to correlate (e.g., a Person's first, middle, and last name), other data may not correspond exactly how data is modeled in your SIS. In these latter cases, please open a dialog with Unizin to determine how to proceed.</p>";
-
-  print $fh "<p>Second, many data elements in the Unizin Data Common Model have are limited to a finite set of predefined values, called \"Option sets.\" When a particular element in the loading schema uses an Option set, you will need to translate your SIS data <em>values</em> to UCDM data values. For example, email addresses in UCDM have a <code>EmailType</code> data element whose values can be <code>Home</code>, <code>Work</code>, <code>Organizational</code>, and <code>Other</code>. If your SIS models an email's \"type,\" its possible values may or may not perfectly overlap with the values in the UCDM Option set for <code>EmailType</code>. When you produce the SIS data for ingestion in the UDP, you will need to align the values of data elements that use an option set to the appropriate code in that Option set.</p>";
-
-  print $fh "<h1>Data type formats</h1>";
-
-  print $fh "<p>When data of type <code>date</code> is requested, the format is <code>YYYY-MM-DD</code>. When data of type <code>time</code> is requested, the format is <code>hh14:mm:ss</code>. If the data does not exist for a particular record, or the mapping between your SIS and the UCDM is insufficient, leave the value blank.</p>";
-
-  print $fh "<h1>File formats</h1>";
-
-  print $fh "<p>Your data files must be UTF-8 encoded, comma-separated value (CSV) files with column headers. The header strings are described in the SIS Loading Schema document.</p>";
-
-  print $fh "<ul>";
-  print $fh "<li>Produce one data file for each UCDM Entity below.</li>";
-  print $fh "<li>Data files are full dumps (not deltas).</li>";
-  print $fh "<li>Data files are generated and pushed daily to the UDP.</li>";
-  print $fh "<li>The field delimiter is a comma (,)</li>";
-  print $fh "<li>The value quoting character is a double quotes (\")</li>";
-  print $fh "<li>The quote escape character is a backslash (\\)</li>";
-  print $fh "</ul>";
-
-  ## Fetch the loading schema's entities.
-  my %entities =
-    &get_sis_loading_schema_ucdm_entities($dbh, $latest_version);
-
-  ## Generate the table of contents
-  print $fh "<h1>Entities</h1>";
-  print $fh "<ol>";
-  foreach my $entity (sort { $entities{$a}->{id} <=> $entities{$b}->{id} } keys %entities) {
-    print $fh "<li><a href=\"#$entities{$entity}->{id}\">$entity</a></li>";
-  }
-  print $fh "</ol>";
-
-  foreach my $entity (sort { $entities{$a}->{id} <=> $entities{$b}->{id} } keys %entities) {
-
-    ## Get the entity elements in the Loading schema.
-    my $entity_id = $entities{$entity}->{id};
-
-    print $fh "<a name='$entity_id'></a>";
-    print $fh "<h2>$entity</h2>";
-    print $fh "<p>$entities{$entity}->{description}</p>";
-
-    ## Make a filename
-    my $filename = $entity;
-       $filename =~ s/\s/_/g;
-       $filename = lc($filename);
-
-    print $fh "<p>The $entity file should be created in a comma-separated (CSV) format with the naming convention <code>$filename\_&lt;date&gt;.csv</code> , where <date> is the date on which the file was generated, and the following headers:</p>";
-
-    print $fh "<table class='table is-bordered is-hoverable'>";
-    print $fh "<thead>";
-    &p_table_row($fh, 'th', ['Data element', 'Header', 'Description'], 0);
-    print $fh "</thead>";
-    print $fh "<tbody>";
-
-    ## Required identifiers for the Loading schema,
-    ## based on the entities.
-    &sis_loading_schema_identifiers($fh, $entity);
-
-    ## Get the Entity elements in the loading schema.
-    my %elements =
-      &get_sis_loading_schema_ucdm_elements_for_entity(
-        $dbh,
-        $latest_version,
-        $entity_id
-      );
-
-    foreach my $element (sort { $elements{$a}->{id} <=> $elements{$b}->{id} } keys %elements) {
-      my $code        = $elements{$element}->{code};
-      my $name        = $elements{$element}->{name};
-      my $description = $elements{$element}->{description};
-
-      ## Codify code
-      $code = "<code>$code</code>";
-
-      ## Is there an option set?
-      if( defined $elements{$element}->{optionset} &&
-                  $elements{$element}->{optionset} ne '' ) {
-
-        my $filename = lc($elements{$element}->{optionset});
-
-        $description =
-          "<p>$description</p>" .
-          "<p>" .
-          " Option set: " .
-          " <a href=\"../tables/${filename}.html\">$elements{$element}->{optionset}</a>" .
-          "</p>";
-      } else {
-        $description = "<p>$description</p>";
-      }
-
-      &p_table_row($fh, 'td', [$name, $code, $description], 0);
-    }
-
-    print $fh "</tbody>";
-    print $fh "</table>";
-    print $fh "<a href=\"#top\">top</a>";
-    print $fh "<br><br>";
-  }
-
-  &end_html($fh);
-
-  close($fh);
-
-  return 1;
-}
-
-sub sis_loading_schema_identifiers($$) {
-  my($fh, $entity) = @_;
-
-  ## Need to have an entity.
-  return unless defined $entity && $entity ne '';
-
-  if($entity eq 'Person') {
-    &p_table_row($fh, 'td', ['SIS Internal Person ID', '<code>SisIntId</code>', 'The internal primary key used by the SIS to define a person record. This ID may or may not be different than the external Person ID.'], 0);
-    &p_table_row($fh, 'td', ['SIS External Person ID', ' <code>SisExtId</code>', 'The unique, global ID for a person that is generated by the SIS for use in external tools, such as the LMS, LTI tools, etc.'], 0);
-
-  } elsif( $entity eq 'Institutional affiliation') {
-    &p_table_row($fh, 'td', ['SIS Internal Person ID', '<code>PersonId</code>', 'The unique, SIS-generated internal Person ID for the person affiliated in an institution of higher education.'], 0);
-
-  } elsif( $entity eq 'Academic term') {
-    &p_table_row($fh, 'td', ['SIS Internal Term ID', '<code>SisIntId</code>', 'The unique primary key used internally by your SIS system to identify an academic term. This ID may or may not differ from the external id.'], 0);
-    &p_table_row($fh, 'td', ['SIS External Term ID', '<code>SisExtId</code>', 'The unique, global ID for an academic term generated in your institutional SIS for use by external tools such as Canvas, LTI applications, etc.'], 0);
-
-  } elsif( $entity eq 'Course offering') {
-    &p_table_row($fh, 'td', ['SIS Internal Course offering ID', '<code>SisIntId</code>', 'The unique primary key used by your SIS to internally identify a Course Offering. This ID may or may not differ from the external id.'], 0);
-    &p_table_row($fh, 'td', ['SIS External Course offering ID', '<code>SisExtId</code>', 'The unique, global id for the Course Offering generated for Canvas and other learning systems and tools.'], 0);
-    &p_table_row($fh, 'td', ['SIS Internal Term ID', '<code>TermId</code>', 'The globally unique, SIS-generated internal ID for the term to which the Course Offering belongs.'], 0);
-
-  } elsif( $entity eq 'Course section') {
-    &p_table_row($fh, 'td', ['SIS Internal Course section ID', '<code>SisIntId</code>', 'The unique primary key used by your SIS to internally identify a Course Section. This ID may or may not differ from the external id.'], 0);
-    &p_table_row($fh, 'td', ['SIS External Course section ID', '<code>SisExtId</code>', 'The globally unique, SIS-generated ID used by Canvas and other learning tools to identify a particular section.'], 0);
-    &p_table_row($fh, 'td', ['SIS Internal Course offering ID', '<code>CourseId</code>', 'The unique, SIS-generated ID for the Course Offering of which the section is an instance.'], 0);
-    &p_table_row($fh, 'td', ['SIS Internal Term ID', '<code>TermId</code>', 'The unique, SIS-generated ID for the academic term to which the Course Section belongs.'], 0);
-
-  } elsif( $entity eq 'Course section enrollment') {
-    &p_table_row($fh, 'td', ['SIS Internal Person ID', '<code>PersonId</code>', 'The unique, SIS-generated internal ID for the person who is enrolled in a Course Section.'], 0);
-    &p_table_row($fh, 'td', ['SIS Internal Course section ID', '<code>SectionId</code>', 'The unique, SIS-generated internal ID for the Course Section in which a person is enrolled.'], 0);
-
-  }
-
-  return 1;
-}
-
-################################################################################
-################################################################################
-
 sub table_definitions_section($$) {
   my($dbh, $fh, $query) = @_;
 
@@ -631,23 +475,6 @@ sub is_os_table($) {
 ################################################################################
 ################################################################################
 
-sub get_latest_sis_loading_schema($) {
-  my($dbh) = @_;
-  my $version = undef;
-
-  my $query = &q_sis_latest_loading_schema;
-  my $sth   = $dbh->prepare($query);
-     $sth->execute;
-
-  while( my $row = $sth->fetchrow_hashref ) {
-    $version = $row->{version};
-  }
-
-  $sth->finish;
-
-  return $version;
-}
-
 sub get_ucdm_entities($) {
   my($dbh) = @_;
   my %entities = ();
@@ -678,65 +505,7 @@ sub get_ucdm_entities($) {
   return %entities;
 }
 
-sub get_sis_loading_schema_ucdm_entities($$) {
-  my($dbh, $version) = @_;
-  my %entities = ();
 
-  my $query = &q_sis_loading_schema_ucdm_entities;
-  my $sth = $dbh->prepare($query);
-     $sth->execute($version);
-
-   while(my $row = $sth->fetchrow_hashref) {
-     my $id           = defined $row->{id}           ? $row->{id} : '';
-     my $name         = defined $row->{name}         ? $row->{name} : '';
-     my $description  = defined $row->{description}  ? $row->{description} : '';
-     my $jurisdiction = defined $row->{jurisdiction} ? $row->{jurisdiction} : '';
-
-     my $code = lc($name);
-        $code =~ s/\s/-/g;
-
-     $entities{$name} = {
-       id           => $id,
-       code         => $code,
-       description  => $description,
-       jurisdiction => $jurisdiction
-     };
-   }
-
-  $sth->finish;
-
-  return %entities;
-}
-
-sub get_sis_loading_schema_ucdm_elements_for_entity($$$) {
-  my($dbh, $version, $entity) = @_;
-  my %elements = ();
-
-  my $query = &q_sis_loading_schema_ucdm_elements_for_entity;
-  my $sth   = $dbh->prepare($query);
-     $sth->execute($version, $entity);
-
-   while(my $row = $sth->fetchrow_hashref) {
-     my $id           = defined $row->{id}           ? $row->{id} : '';
-     my $name         = defined $row->{name}         ? $row->{name} : '';
-     my $code         = defined $row->{code}         ? $row->{code} : '';
-     my $description  = defined $row->{description}  ? $row->{description} : '';
-     my $optionset    = defined $row->{optionset}    ? $row->{optionset} : '';
-
-     $elements{$name} = {
-       id           => $id,
-       name         => $name,
-       code         => $code,
-       description  => $description,
-       optionset    => $optionset
-     };
-
-   }
-
-  $sth->finish;
-
-  return %elements;
-}
 
 ################################################################################
 ################################################################################
@@ -765,13 +534,12 @@ sub start_html($$$) {
   print $fh '<body>';
   print $fh "<a name='top'></a>";
 
-  &navigation($fh);
+  &ls_navigation_to_file($fh, $doc_dir, 1);
 
   &header($fh, $header, $subheader);
 
   print $fh "<div class=\"content\"><br>";
   print $fh "<div class=\"container\">";
-
 
   return 1;
 }
@@ -791,14 +559,6 @@ sub header($$) {
   print $fh '    </div>';
   print $fh '  </div>';
   print $fh '</section>';
-
-  return 1;
-}
-
-sub navigation($) {
-  my($fh) = @_;
-
-  print $fh "<!-- Navigation --><div class=\"container\"> <nav class=\"navbar is-transparent\"> <div class=\"navbar-brand\"> <div class=\"navbar-burger burger\" data-target=\"navbarExampleTransparentExample\"> <span></span> <span></span> <span></span> </div> </div> <div id=\"navbarExampleTransparentExample\" class=\"navbar-menu\"> <div class=\"navbar-start\"> <a class=\"navbar-item\" href=\"../index.html\"> Home </a> <!-- UDP documentation menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> UDP </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../udp/access-udp-resources.html\"> Accessing UDP resources </a> <hr class=\"navbar-divider\"> <a class=\"navbar-item\" href=\"../udp/caliper-endpoint.html\"> Caliper endpoint </a> <a class=\"navbar-item\" href=\"../udp/event-processing.html\"> Event processing </a> <a class=\"navbar-item\" href=\"../udp/lrs-event-record.html\"> Event record </a> </div> </div> <!-- UCDM documentation menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> UCDM </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../ucdm/data-dictionary.html\"> Data dictionary (ingested) </a> <a class=\"navbar-item\" href=\"../ucdm/data-dictionary-modeled.html\"> Data dictionary (modeled) </a> <a class=\"navbar-item\" href=\"../ucdm/relational-schema.html\"> Relational schema </a> <a class=\"navbar-item\" href=\"../ucdm/sis-loading-schema-v1.html\"> SIS Loading Schema for UCDM (v1) </a> <a class=\"navbar-item\" href=\"../ucdm/sis-loading-schema-v1p1.html\"> SIS Loading Schema proposed changes (v1.1) </a> <a class=\"navbar-item\" href=\"../ucdm/canvas-to-ucdm.html\"> Canvas Data to UCDM </a> <hr class=\"navbar-divider\"> <a class=\"navbar-item\" href=\"../ucdm/queries-relational-store.html\"> Sample Relational Store queries </a> <a class=\"navbar-item\" href=\"../ucdm/queries-event-store.html\"> Sample Learning Record Store queries </a> </div> </div> <!-- Developer menu --> <div class=\"navbar-item has-dropdown is-hoverable\"> <a class=\"navbar-link\" href=\"\"> Developers </a> <div class=\"navbar-dropdown is-boxed\"> <a class=\"navbar-item\" href=\"../developers/caliper-integration.html\"> Caliper sensor guidelines </a> </div> </div> </div> <div class=\"navbar-end\"> </div> </div> </nav></div><!-- /// Navigation -->";
 
   return 1;
 }
@@ -977,43 +737,8 @@ sub q_canvas_data_table_to_ucdm {
   return $x;
 }
 
-sub q_sis_latest_loading_schema {
-  my $x =
-    'select max(version) as version from SisLoadingSchema';
 
-  return $x;
-}
 
-sub q_sis_loading_schema_ucdm_entities {
-  my $x =
-    ' SELECT UcdmEntity.* ' .
-    ' FROM SisLoadingSchemaElement ' .
-    ' INNER JOIN UcdmElement  on UcdmElement.Id=SisLoadingSchemaElement.UcdmElementId ' .
-    ' INNER JOIN UcdmEntity   on UcdmEntity.Id=UcdmElement.UcdmEntityId ' .
-    ' WHERE SisLoadingSchemaId=? ' .
-    ' GROUP BY UcdmEntity.Id ' .
-    ' ORDER BY UcdmEntity.Id ASC';
-
-  return $x;
-}
-
-sub q_sis_loading_schema_ucdm_elements_for_entity {
-  my $x =
-    ' SELECT ' .
-    ' UcdmElement.Id as id, ' .
-    ' UcdmElement.name as name,  ' .
-    ' UcdmElement.code as code,  ' .
-    ' UcdmElement.description as description, ' .
-    ' UcdmElement.optionset as optionset ' .
-    ' FROM SisLoadingSchemaElement ' .
-    ' INNER JOIN UcdmElement on UcdmElement.Id=SisLoadingSchemaElement.UcdmElementId ' .
-    ' INNER JOIN UcdmEntity  on UcdmEntity.Id=UcdmElement.UcdmEntityId ' .
-    ' WHERE SisLoadingSchemaId=? ' .
-    ' AND   UcdmEntity.Id=? ' .
-    ' ORDER BY UcdmElement.UcdmEntityId, UcdmElement.Id ASC ';
-
-  return $x;
-}
 
 sub q_os_tables {
   my $x =
@@ -1139,6 +864,33 @@ sub q_ref_table($) {
 
 ################################################################################
 ################################################################################
+
+sub fetch_and_verify_options {
+
+  GetOptions(
+    'doc_dir=s'        => \$doc_dir,
+    'db_name=s'         => \$db_name,
+    'db_host=s'         => \$db_host,
+    'db_port=i'         => \$db_port,
+    'db_user:s'         => \$db_user,
+    'db_pass:s'         => \$db_pass
+  );
+
+  ## Must have some variables to function
+  if(
+    $doc_dir      eq '' ||
+    $db_name      eq '' ||
+    $db_host      eq '' ||
+    $db_port      == 0
+  ) {
+
+    print "\n\nFATAL: One or more required params is missing.\n";
+
+    die;
+  }
+
+  return 1;
+}
 
 sub connect_to_database {
   my( $db_name, $db_host, $db_port, $db_user, $db_pass ) = @_;
