@@ -124,10 +124,17 @@ sub document_loading_schema($) {
       defined $entity->{description} ne ''
     ) ? $entity->{description} : $entity_data->{description};
 
+    my $entity_system_of_record =
+    (
+      defined $entity->{system_of_record} &&
+      defined $entity->{system_of_record} ne ''
+    ) ? $entity->{system_of_record} : 'false';
+
     ## Print information
     print $fh "<a name='$entity_name'></a>";
     print $fh "<h2>$entity_name</h2>\n";
     print $fh "<p>$entity_description</p>\n";
+    print $fh "<p>System of record: <strong>$entity_system_of_record</strong></p>\n";
 
     print $fh '<table class="table is-bordered is-hoverable">';
 
