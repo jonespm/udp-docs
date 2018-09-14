@@ -5,6 +5,7 @@ configuration:
   status: Final
 entities:
   - name: Person
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
@@ -53,12 +54,14 @@ entities:
       - code: EmailAddress
       - code: EmailType
   - name: Institutional affiliation
+    system_of_record: true
     elements:
       - code: PersonId
         is_required: true
         fk: Person.SisIntId
       - code: DirectoryBlock
   - name: Academic term
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
@@ -78,6 +81,7 @@ entities:
       - code: InstrBeginDate
       - code: InstrEndDate
   - name: Course offering
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
@@ -99,6 +103,7 @@ entities:
       - code: Status
       - code: AvailableCredits
   - name: Course section
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
@@ -120,6 +125,7 @@ entities:
       - code: DeliveryMode
       - code: MaxEnrollment
   - name: Course section enrollment
+    system_of_record: true 
     elements:
       - code: PersonId
         is_required: true
