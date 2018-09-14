@@ -9,7 +9,7 @@ entities:
     elements:
       - code: LmsIntId
         name: LMS Internal ID
-        description:
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Person in LMS entities.
         ls_only: true
         is_required: true
       - code: LmsExtId
@@ -18,8 +18,13 @@ entities:
         ls_only: true
         is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Persons in the LMS from the SIS. This identifier is used to join SIS Person records with LMS Person records.
+        ls_only: true
         is_required: true
       - code: Name
+        name: Name
+        description: The Person's full name.
       - code: Gender
       - code: Birthdate
   - name: Academic term
@@ -85,6 +90,7 @@ entities:
       - code: EntryDate
       - code: ExitDate
   - name: Learner activity group
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -98,6 +104,7 @@ entities:
         option_set: RefWorkflowState
       - code: Position
   - name: Learner activity
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -122,6 +129,7 @@ entities:
       - code: UpdateDate
       - code: Position         # This is presently NOT in the Data dictionary.
   - name: Learner activity override
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -154,6 +162,7 @@ entities:
       - code: Status
         option_set: RefWorkflowState
   - name: Learner activity result
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -197,6 +206,7 @@ entities:
       - code: ExtraAttempts
       - code: ExtraTime
   - name: Learner group
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -216,6 +226,7 @@ entities:
       - code: DeleteDate
       - code: PublicContents
   - name: Quiz
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -233,6 +244,7 @@ entities:
       - code: Status
         option_set: RefWorkflowState
   - name: Quiz item
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -245,6 +257,7 @@ entities:
         option_set: ??
       - code: Body
   - name: Quiz item response
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
@@ -258,6 +271,7 @@ entities:
         fk: Quiz result.LmsIntId
       - code: Body
   - name: Quiz result
+    system_of_record: true
     elements:
       - code: LmsIntId
         is_required: true
