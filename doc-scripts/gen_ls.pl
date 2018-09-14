@@ -377,7 +377,7 @@ sub ls_logistics($) {
 
   print $fh "<p>Your data files must be UTF-8 encoded, comma-separated value (CSV) files with column headers. The header strings are described above in the <code>Header</code> column.</p>";
 
-  print $fh "<p>The file names should correspond to the UCDM entities in the loading schema, lowercased, separated by an underscore (_) in place of spaces, and ISO8601 dated for the current date. (Ex: An \"Academic term\" file might be named <code>academic_term_2018-01-01.csv</code>.)";
+  print $fh "<p>The file names should correspond to the UCDM entities in the loading schema, lowercased, separated by an underscore (_) in place of spaces, and dated for the current date. (Ex: An \"Academic term\" file might be named <code>academic_term_2018-01-01.csv</code>.)";
 
   print $fh "<ul>";
   print $fh "<li>Produce one data file for each UCDM entity.</li>";
