@@ -361,38 +361,37 @@ sub ls_logistics($) {
 
   print $fh "<h2>What is a loading schema?</h1>";
 
-  print $fh "<p>It is a document that defines the data and formatting requirements necessary to load data into the Unizin Data Platform. In addition, the documentation below guides decisions you must make about aligning SIS data at your Institution to the Unizin Common Data Model.</p>";
-
-  print $fh "<p>During your UDP implementation, Unizin will provide guidance about the meaning of the data below and help you identify how to align your SIS data to the Unizin Common Data model. </p>";
-
-  print $fh "<h1>How much data is required for each entity?</h1>";
-
-  print $fh "<p><strong>Person</strong>. The intent is to capture all individuals who have any relationship to teaching and learning practices, and who generate data in any digital tool used in teaching and learning. This includes advisors, tutors, students, instructors, instructional designers, faculty, teaching assistants, and other actors whose behaviors generate data in a teaching & learning environment or about whom data is generated in a teaching and learning environment.</p>";
-
-  print $fh "<p><strong>Course</strong>, <strong>Academic Term</strong>, <strong>Course Section</strong>, and <strong>Enrollment</strong>. It is expected that <em>all</em> records for these entities in your SIS are relevant to the UDP. These entities provide essential contextual information that describe your teaching and learning environments and individuals’ membership in those environments. Enrollments include not only student, but also instructors (with teaching assignments), TA, etc.</p>";
+  print $fh "<p>It is a document that defines the data and formatting requirements necessary to load data into the Unizin Data Platform, and acts as a guide for aligning your data to the Unizin Common Data Model.</p>";
 
   print $fh "<h1>What are my next steps?</h1>";
 
-  print $fh "<p>The first step in producing data to that model is correlating data in the SIS loading schema to data in your SIS. While some data is easy to correlate (e.g., a Person's first, middle, and last name), other data may not correspond exactly how data is modeled in your SIS. In these latter cases, please open a dialog with Unizin to determine how to proceed.</p>";
+  print $fh "<p>The first step in producing data to that model is correlating data in the loading schema to data in your system. While some data is easy to correlate (e.g., a Person's first, middle, and last name), other data may not correspond exactly how data is modeled in your system. In these latter cases, please open a dialog with Unizin to determine how to proceed.</p>";
 
-  print $fh "<p>Second, many data elements in the Unizin Data Common Model have are limited to a finite set of predefined values, called \"Option sets.\" When a particular element in the loading schema uses an Option set, you will need to translate your SIS data <em>values</em> to UCDM data values. For example, email addresses in UCDM have a <code>EmailType</code> data element whose values can be <code>Home</code>, <code>Work</code>, <code>Organizational</code>, and <code>Other</code>. If your SIS models an email's \"type,\" its possible values may or may not perfectly overlap with the values in the UCDM Option set for <code>EmailType</code>. When you produce the SIS data for ingestion in the UDP, you will need to align the values of data elements that use an option set to the appropriate code in that Option set.</p>";
+  print $fh "<p>Second, many data elements in the Unizin Data Common Model have are limited to a finite set of predefined values, called \"option sets.\" When a particular element in the loading schema uses an option set, you will need to translate your data <em>values</em> to UCDM data values. For example, email addresses in UCDM have a <code>EmailType</code> data element whose values can be <code>Home</code>, <code>Work</code>, <code>Organizational</code>, and <code>Other</code>. If your system models an email's \"type,\" its possible values may or may not perfectly overlap with the values in the UCDM option set for <code>EmailType</code>. When you produce data for ingestion in the UDP, you will need to align the values of data elements that use an option set to the appropriate code in that option set.</p>";
 
-  print $fh "<h1>Data type formats</h1>";
+  print $fh "<h1>Data formats</h1>";
 
-  print $fh "<p>When data of type <code>date</code> is requested, the format is <code>YYYY-MM-DD</code>. When data of type <code>time</code> is requested, the format is <code>hh14:mm:ss</code>. If the data does not exist for a particular record, or the mapping between your SIS and the UCDM is insufficient, leave the value blank.</p>";
+  print $fh "<p>When data of type <code>date</code> is requested, the format is <code>YYYY-MM-DD</code>. When data of type <code>time</code> is requested, the format is <code>hh24:mm:ss</code>. If the data does not exist for a particular record, or the mapping between your system and the UCDM is insufficient, leave the value blank (<code>\"\"</code>).</p>";
 
-  print $fh "<h1>File formats</h1>";
+  print $fh "<h1>File requirements</h1>";
 
-  print $fh "<p>Your data files must be UTF-8 encoded, comma-separated value (CSV) files with column headers. The header strings are described in the SIS Loading Schema document.</p>";
+  print $fh "<p>Your data files must be UTF-8 encoded, comma-separated value (CSV) files with column headers. The header strings are described above in the <code>Header</code> column.</p>";
+
+  print $fh "<p>The file names should correspond to the UCDM entities in the loading schema, lowercased, separated by an underscore (_) in place of spaces, and ISO8601 dated for the current date. (Ex: An \"Academic term\" file might be named <code>academic_term_2018-01-01.csv</code>.)";
 
   print $fh "<ul>";
-  print $fh "<li>Produce one data file for each UCDM Entity below.</li>";
+  print $fh "<li>Produce one data file for each UCDM entity.</li>";
   print $fh "<li>Data files are full dumps (not deltas).</li>";
   print $fh "<li>Data files are generated and pushed daily to the UDP.</li>";
   print $fh "<li>The field delimiter is a comma (,)</li>";
   print $fh "<li>The value quoting character is a double quotes (\")</li>";
   print $fh "<li>The quote escape character is a backslash (\\)</li>";
   print $fh "</ul>";
+
+  print $fh "<h1>Manifest file</h1>";
+
+  print $fh "<p>A complete set of files should be accompanied by a manifest file, used by the UDP as a sentinel file (to kick off ingestion of your files) and as a manifest (to confirm that all expected files are present in the upload). Please work with Unizin to determine the correct manifest file naming and structure for your system.</p>";
+
 
   return 1;
 }
