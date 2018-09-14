@@ -9,69 +9,105 @@ entities:
     elements:
       - code: LmsIntId
         name: LMS Internal ID
-        description: none
+        description:
         ls_only: true
-        ucdm_element: THIS
+        is_required: true
       - code: LmsExtId
         name: LMS External ID
         description: The unique identifier used to provision Persons in tools launched from the LMS. This may be the unique person identifier passed in an LTI launch or by some other provisioning means.
         ls_only: true
+        is_required: true
       - code: SisExtId
+        is_required: true
       - code: Name
       - code: Gender
       - code: Birthdate
   - name: Academic term
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: SisExtId
+        is_required: true
       - code: Name
   - name: Session
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: SisExtId
+        is_required: true
       - code: TermId
+        is_required: true
+        fk: Academic term.LmsIntId
       - code: Name
       - code: InstrBeginDate
       - code: InstrEndDate
   - name: Course offering
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: SisExtId
+        is_required: true
       - code: SessionId
+        is_required: true
+        fk: Session.LmsIntId
       - code: Title
       - cdoe: Status
   - name: Course section
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: SisExtId
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: SectionNumber
       - code: Status
   - name: Course section enrollment
     elements:
       - code: PersonId
+        is_required: true
+        fk: Person.LmsIntId
       - code: SectionId
+        is_required: true
+        fk: Course section.LmsIntId
       - code: Role
+        is_required: true
+        option_set: Role
       - code: EntryDate
       - code: ExitDate
   - name: Learner activity group
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: Name
       - code: Status
+        option_set: RefWorkflowState
       - code: Position
   - name: Learner activity
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: LearnerActivityGroupId
+        fk: Learner activity group.LmsIntId
       - code: Title
       - code: Description
       - code: DueDate
@@ -79,22 +115,31 @@ entities:
       - code: LockDate
       - code: PossiblePoints
       - code: ScoreMetricType  # This is presently `gradingtype` in the LMS schema.
+        option_set: RefScoreMetricType
       - code: Status
+        option_set: RefWorkflowState
       - code: CreateDate
       - code: UpdateDate
       - code: Position         # This is presently NOT in the Data dictionary.
   - name: Learner activity override
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: LearnerActivityId
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: LearnerActivityVersion
       - code: QuizId
+        fk: Quiz.LmsIntId
       - code: QuizVersion
       - code: Title
       - code: OrganizationId
       - code: PersonId
+        fk: Person.LmsIntId
       - code: Type
+        option_set: ??
       - code: OverrideDueDate
       - code: DueDate
       - code: OverrideDueDate
@@ -107,27 +152,42 @@ entities:
       - code: CreateDate
       - code: UpdateDate
       - code: Status
+        option_set: RefWorkflowState
   - name: Learner activity result
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: LearnerActivityId
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: PersonId
+        is_required: true
+        fk: Person.LmsIntId
       - code: GraderId
+        fk: Person.LmsIntId
       - code: LearnerGroupId
+        fk: Learner group.LmsIntId
       - code: LearnerActivitySessionId
       - code: Type
+        option_set: ??
       - code: Body
       - code: Url
       - code: GradingStatus
+        option_set: ??
       - code: Score
       - code: PublishedScore
       - code: ScoreType        # This is presently NOT in the Data dictionary
+        option_set: ??
       - code: Grade
       - code: PublishedGrade
       - code: GradeType
+        option_set: ??
       - code: SubmissionStatus
+        option_set: ??
       - code: GradebookStatus
+        option_set: ??
       - code: CreateDate
       - code: UpdateDate
       - code: ResponseDate
@@ -139,11 +199,16 @@ entities:
   - name: Learner group
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: Name
       - code: Description
       - code: Status
+        option_set: RefWorkflowState
       - code: CreateDate
       - code: UpdateDate
       - code: CreateDate
@@ -153,36 +218,66 @@ entities:
   - name: Quiz
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: LearnerActivityId
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: Title
       - code: Type
+        option_set: ??
       - code: Status
+        option_set: RefWorkflowState
   - name: Quiz item
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: QuizId
+        is_required: true
+        fk: Quiz.LmsIntId
       - code: Type
+        option_set: ??
       - code: Body
   - name: Quiz item response
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: QuizItemId
+        is_required: true
+        fk: Quiz item.LmsIntId
       - code: QuizResultId      # This is presently NOT in the Data dictionary
+        is_required: true
+        fk: Quiz result.LmsIntId
       - code: Body
   - name: Quiz result
     elements:
       - code: LmsIntId
+        is_required: true
       - code: LmsExtId
+        is_required: true
       - code: QuizId
+        is_required: true
+        fk: Quiz.LmsIntId
       - code: LearnerActivityId       # Not in the data dictionary
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: LearnerActivityResultId # Not in the data dictionary
+        is_required: true
+        fk: Learner activity result.LmsIntId
       - code: PersonId
+        is_required: true
+        fk: Person.LmsIntId
       - code: NumberOfResponses       # This is presently NOT in the Data dictionary. Also doesn't appear in Canvas Data
       - code: Status
+        option_set: RefWorkflowState
       - code: CreateDate
       - code: UpdateDate
 #   - name: Discussion
