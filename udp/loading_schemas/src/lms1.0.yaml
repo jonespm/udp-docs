@@ -1,0 +1,295 @@
+configuration:
+  system: LMS
+  version: 1.0
+  ucdmVersion: 1.0
+  status: Draft
+entities:
+  - name: Person
+    ucdm_entity: Person
+    elements:
+      - code: LmsIntId
+        name: LMS Internal ID
+        description: none
+        ls_only: true
+        ucdm_element: THIS
+      - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Persons in tools launched from the LMS. This may be the unique person identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+      - code: SisExtId
+      - code: Name
+      - code: Gender
+      - code: Birthdate
+  - name: Academic term
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: SisExtId
+      - code: Name
+  - name: Session
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: SisExtId
+      - code: TermId
+      - code: Name
+      - code: InstrBeginDate
+      - code: InstrEndDate
+  - name: Course offering
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: SisExtId
+      - code: SessionId
+      - code: Title
+      - cdoe: Status
+  - name: Course section
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: SisExtId
+      - code: CourseId
+      - code: SectionNumber
+      - code: Status
+  - name: Course section enrollment
+    elements:
+      - code: PersonId
+      - code: SectionId
+      - code: Role
+      - code: EntryDate
+      - code: ExitDate
+  - name: Learner activity group
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: CourseId
+      - code: Name
+      - code: Status
+      - code: Position
+  - name: Learner activity
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: CourseId
+      - code: LearnerActivityGroupId
+      - code: Title
+      - code: Description
+      - code: DueDate
+      - code: ReleaseDate      # This is presently `unlockdate` in the LMS schema.
+      - code: LockDate
+      - code: PossiblePoints
+      - code: ScoreMetricType  # This is presently `gradingtype` in the LMS schema.
+      - code: Status
+      - code: CreateDate
+      - code: UpdateDate
+      - code: Position         # This is presently NOT in the Data dictionary.
+  - name: Learner activity override
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: LearnerActivityId
+      - code: LearnerActivityVersion
+      - code: QuizId
+      - code: QuizVersion
+      - code: Title
+      - code: OrganizationId
+      - code: PersonId
+      - code: Type
+      - code: OverrideDueDate
+      - code: DueDate
+      - code: OverrideDueDate
+      - code: DueDate
+      - code: AllDay
+      - code: OverrideUnlockDate
+      - code: UnlockDate
+      - code: OverrideLockDate
+      - code: LockDate
+      - code: CreateDate
+      - code: UpdateDate
+      - code: Status
+  - name: Learner activity result
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: LearnerActivityId
+      - code: PersonId
+      - code: GraderId
+      - code: LearnerGroupId
+      - code: LearnerActivitySessionId
+      - code: Type
+      - code: Body
+      - code: Url
+      - code: GradingStatus
+      - code: Score
+      - code: PublishedScore
+      - code: ScoreType        # This is presently NOT in the Data dictionary
+      - code: Grade
+      - code: PublishedGrade
+      - code: GradeType
+      - code: SubmissionStatus
+      - code: GradebookStatus
+      - code: CreateDate
+      - code: UpdateDate
+      - code: ResponseDate
+      - code: GradedDate
+      - code: Usage           # This is presently NOT in the Data dictionary
+      - code: StudentViewed
+      - code: ExtraAttempts
+      - code: ExtraTime
+  - name: Learner group
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: CourseId
+      - code: Name
+      - code: Description
+      - code: Status
+      - code: CreateDate
+      - code: UpdateDate
+      - code: CreateDate
+      - code: UpdateDate
+      - code: DeleteDate
+      - code: PublicContents
+  - name: Quiz
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: LearnerActivityId
+      - code: CourseId
+      - code: Title
+      - code: Type
+      - code: Status
+  - name: Quiz item
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: QuizId
+      - code: Type
+      - code: Body
+  - name: Quiz item response
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: QuizItemId
+      - code: QuizResultId      # This is presently NOT in the Data dictionary
+      - code: Body
+  - name: Quiz result
+    elements:
+      - code: LmsIntId
+      - code: LmsExtId
+      - code: QuizId
+      - code: LearnerActivityId       # Not in the data dictionary
+      - code: LearnerActivityResultId # Not in the data dictionary
+      - code: PersonId
+      - code: NumberOfResponses       # This is presently NOT in the Data dictionary. Also doesn't appear in Canvas Data
+      - code: Status
+      - code: CreateDate
+      - code: UpdateDate
+#   - name: Discussion
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: LearnerActivityId
+#       - code: CourseId
+#       - code: LearnerGroupId
+#       - code: Title
+#       - code: Body
+#       - code: Status
+#       - code: Type
+#       - code: CreateDate
+#       - code: UpdateDate
+#       - code: PostDate
+#       - code: DeleteDate
+#   - name: Discussion entry
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: DiscussionId
+#       - code: Body
+#       - code: Status
+#       - code: CreateDate
+#       - code: UpdateDate
+#       - code: Position
+#   - name: Grading period
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: Title
+#       - code: StartDate
+#       - code: CloseDate
+#       - code: EndDate
+#       - code: Status
+#   - name: Module
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: CourseId
+#       - code: Name
+#       - code: Position
+#       - code: Status
+#       - code: Sequential
+#       - code: PrerequisiteModuleId
+#       - code: CreateDate
+#       - code: UpdateDate
+#       - code: UnlockDate
+#       - code: DeleteDate
+#   - name: Module attempt
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: ModuleItemId
+#       - code: PersonId
+#       - code: Status
+#       - code: CreateDate
+#       - code: UpdateDate
+#       - code: CompleteDate
+#       - code: EvaluatedDate
+#   - name: Module item
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: ModuleId
+#       - code: Title
+#       - code: Type
+#       - code: CompletionType
+#       - code: Status
+#       - code: Position
+#       - code: DiscussionId
+#       - code: FileId
+#       - code: LearnerActivityId
+#       - code: QuizId
+#       - code: Url
+#   - name: Module item attempt
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: ModuleItemId
+#       - code: ModuleAttemptId
+#       - code: CompletionStatus
+#   - name: Participant session
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: AcademicOrganizationId
+#       - code: LearnerGroupId
+#       - code: CourseId
+#       - code: Title
+#       - code: StartTime
+#       - code: EndTime
+#       - code: CreateDate
+#       - code: UpdateDate
+#   - name: Participant session role
+#     elements:
+#       - code: PersonId
+#       - code: ParticipantSessionId
+#       - code: Role
+#   - name: Course grade
+#     elements:
+#       - code: LmsIntId
+#       - code: LmsExtId
+#       - code: SisExtId
+#       - code: SectionId
+#       - code: PersonId
+#       - code: Score
+#       - code: PublishedScore
+#

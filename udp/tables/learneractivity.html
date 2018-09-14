@@ -21,10 +21,12 @@
             UDP
           </a>
           <div class="navbar-dropdown is-boxed">
+<!--
             <a class="navbar-item" href="../udp/access-udp-resources.html">
             <a class="navbar-item" href="../udp/access-udp-resources.html">              Accessing UDP resources
             </a>
             <hr class="navbar-divider">
+          -->
             <a class="navbar-item" href="../udp/caliper-endpoint.html">
             <a class="navbar-item" href="../udp/caliper-endpoint.html">              Caliper endpoint
             </a>
@@ -52,12 +54,6 @@
             <a class="navbar-item" href="../ucdm/relational-schema.html">
             <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
             </a>
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">              SIS Loading Schema for UCDM (v1)
-            </a>
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">              SIS Loading Schema proposed changes (v1.1)
-            </a>
             <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
             <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
             </a>
@@ -71,6 +67,26 @@
           </div>
         </div>
 
+<div class='navbar-item has-dropdown is-hoverable'>
+  <a class='navbar-link' href=''>
+    Loading schemas
+  </a>
+  <div class='navbar-dropdown is-boxed'>
+    <a class='navbar-item' href='../loading_schemas/html/SIS-1.1.html'>
+     SIS v1.1 (Candidate)
+    </a>
+    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
+     SIS v1.0 (Final)
+    </a>
+    <a class='navbar-item' href='../loading_schemas/html/LMS-1.0.html'>
+     LMS v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../loading_schemas/html/Originality checker-1.0.html'>
+     Originality checker v1.0 (Draft)
+    </a>
+  </div>
+</div>
+
         <!-- Developer menu -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="">
@@ -83,17 +99,6 @@
           </div>
         </div>
 
-<div class='navbar-item has-dropdown is-hoverable'>
-  <a class='navbar-link' href=''>
-    Loading schemas
-  </a>
-  <div class='navbar-dropdown is-boxed'>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
-      v1.0 (Final)
-    </a>
-  </div>
-</div>
-
       </div>
 
       <div class="navbar-end">
@@ -103,48 +108,48 @@
 </div>
 <!-- /// Navigation -->
 <section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>learneractivity</b>       </h1>      <h1 class="subtitle">              </h1>    </div>  </div></section><div class="content"><br><div class="container"><b>Table definition</b><table class='table is-bordered is-hoverable'><thead><tr ><th>Name</th><th>Definition</th><th>Jursidiction</th><th>Option set</th></tr>
-</thead><tbody><tr ><td>learneractivityid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+</thead><tbody><tr ><td>assessmentregistrationid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>assignedbypersonid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>courseid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>coursesectionid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>learnergroupid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>personid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>learneractivitygroupid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>position</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>assessmentregistrationid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>organizationcalendarsessionid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>title</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>description</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>prerequisite</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflearneractivitytypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearneractivitytype.html">reflearneractivitytype</a></td></tr>
-<tr ><td>rubricurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>creationdate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>updatedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>publishdate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>deletedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>maximumtimeallowed</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflearneractivitymaximumtimeallowedunitsid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearneractivitymaximumtimeallowedunits.html">reflearneractivitymaximumtimeallowedunits</a></td></tr>
+<tr ><td>description</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>duedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>duetime</td><td>TIME WITHOUT TIME ZONE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>maximumattemptsallowed</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflearneractivityaddtogradebookflagid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearneractivityaddtogradebookflag.html">reflearneractivityaddtogradebookflag</a></td></tr>
-<tr ><td>releasedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>leaorganizationid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>learneractivitygroupid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>learneractivityid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>learnergroupid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>lmsextid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>lmsintid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>lockdate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>weight</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>maximumattemptsallowed</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>maximumtimeallowed</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>organizationcalendarsessionid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>personid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>pk</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>position</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>possiblepoints</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>prerequisite</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>publishdate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>reflanguageid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflanguage.html">reflanguage</a></td></tr>
+<tr ><td>reflearneractivityaddtogradebookflagid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearneractivityaddtogradebookflag.html">reflearneractivityaddtogradebookflag</a></td></tr>
+<tr ><td>reflearneractivitymaximumtimeallowedunitsid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearneractivitymaximumtimeallowedunits.html">reflearneractivitymaximumtimeallowedunits</a></td></tr>
+<tr ><td>reflearneractivitytypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflearneractivitytype.html">reflearneractivitytype</a></td></tr>
 <tr ><td>refscoremetrictypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="refscoremetrictype.html">refscoremetrictype</a></td></tr>
 <tr ><td>refworkflowstateid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="refworkflowstate.html">refworkflowstate</a></td></tr>
+<tr ><td>releasedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>rubricid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>reflanguageid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td><a href="reflanguage.html">reflanguage</a></td></tr>
-<tr ><td>assignedbypersonid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>rubricurl</td><td>CHARACTER VARYING (512)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>schoolorganizationid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>leaorganizationid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>sisintid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>sisextid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>lmsintid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>lmsextid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>status</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>sisintid</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>source</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>pk</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
-<tr ><td>ucdm</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>stage</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>status</td><td>CHARACTER VARYING (300)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>title</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>ucdm</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>updatedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>weight</td><td>NUMERIC</td><td>Common Educational Data Standards</td><td></td></tr>
 </tbody></table><br><br><br><br></div></div><!-- Footer --><footer class="footer"> <div class="container"> <div class="content"> <p> Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br> Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer --></body></html>
