@@ -1,3 +1,8 @@
+# RepositorySubmission - need clarity from entity_id
+# Check which system this comes from: CreateDate, ReleaseDate, DueDate, PossiblePoints, LateSubmissionAllowed
+# Remove: AnonymousMarkingEnabled Not supported in CPF
+# TII will check on SmallMatchThresholdPercentage and what the percentage is
+
 configuration:
   system: Originality checker
   version: 1.0
@@ -57,7 +62,7 @@ entities:
         is_required: false
       - code: RepositorySubmission
         name: Repository submission
-        description: ??
+        description:
         is_required: false
       - code: RubricId (to be deleted)
         name: Rubric
@@ -70,10 +75,6 @@ entities:
       - code: CanSeeOriginalityReport
         name: Can see originality report
         description: If true, then learners are able to see the results of their Originality report. Otherwise, this value must be false.
-        is_required: false
-      - code: AnonymousMarkingEnabled
-        name: Anonymous marking enabled
-        description: If true, then the Learner activity will be checked anonymously (that is, the identify of the learner will be opaque to the person performing the marking/evaluation). Otherwise, this value must be false.
         is_required: false
       - code: ExcludeBibliography
         name: Exclude - Bibliography
