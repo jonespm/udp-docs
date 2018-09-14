@@ -132,7 +132,7 @@ sub document_loading_schema($) {
     print $fh '<table class="table is-bordered is-hoverable">';
 
     print $fh '<thead>';
-    &ls_row($fh, 'Element', 'Code (Header)', 'Description', 1);
+    &ls_row($fh, 'Element', 'Code (Header)', 'Description', 'Required', 1);
     print $fh '</thead>';
 
     print $fh '<tbody>';
@@ -176,6 +176,7 @@ sub document_loading_schema($) {
         defined $element_ls->{description} ne ''
       ) ? $element_ls->{description} : $element_data->{description};
 
+
       ## Present element metadata from the schema
       ## if it exists. Otherwise, we default to what
       ## is in the YAML definition.
@@ -183,29 +184,57 @@ sub document_loading_schema($) {
           defined $element_code        && $element_code ne '' &&
           defined $element_description && $element_description ne '' ) {
 
+        ## Start with the basic description.
+        my $html_element_description =
+          "<a name=\"$entity_name.$element_code\"></a>" .
+          $element_description;
+
         ## Is this a code we don't have
         ## in the UCDM's DD?
         my $new_element =
           (
             (! defined $element_ls->{ls_only} || $element_ls->{ls_only} ne 'true') &&
             (! defined $element_data->{code}  || $element_data eq '')
-          ) ? '<br><span style="font-size: 10px">(new)</a>' : '';
+          ) ? '<br><span style="font-size: 10px">(new to DD)</a>' : '';
+
+        ## Break
+        $html_element_description .= "<br><br>"
+          if ( (defined $element_ls->{fk}          && $element_ls->{fk}          ne ''    ) ||
+               (defined $element_ls->{option_set}  && $element_ls->{option_set}  ne '')
+             );
 
         ## Option set
         if(defined $element_ls->{option_set} && $element_ls->{option_set} ne '' ) {
           my $h = lc($element_ls->{option_set});
-          $element_description .=
-            '<br><br>' .
+          $html_element_description .=
             '<p>' .
             "Option set: <a href='../../tables/${h}.html'>$element_ls->{option_set}</a>" .
             '</p>';
         }
 
+        ## FK
+        if(defined $element_ls->{fk} && $element_ls->{fk} ne '') {
+          $html_element_description .=
+            '<p>This is a foreign key to ' .
+            "<a href=\"#$element_ls->{fk}\">$element_ls->{fk}</a>." .
+            '</p>';
+        }
+
+        ## Is required?
+        my $html_is_required =
+          (
+            defined $element_ls->{is_required} &&
+            $element_ls->{is_required} eq 'true'
+          ) ?
+          '<span style="color: green">Yes</span>' :
+          '<span style="color: red">No</span>';
+
         &ls_row(
           $fh,
           $element_name,
           "<code>$element_code</code>$new_element",
-          $element_description,
+          $html_element_description,
+          $html_is_required,
           0
         );
 
@@ -220,6 +249,7 @@ sub document_loading_schema($) {
           $element_name,
           "<code>$element_code</code>",
           $element_desc,
+          '<span color="red">No</span>',
           0
         );
       }
@@ -286,7 +316,7 @@ sub get_element_by_code($$) {
 }
 
 sub ls_row {
-  my($fh, $element, $header, $desc, $is_head) = @_;
+  my($fh, $element, $header, $desc, $is_required, $is_head) = @_;
 
   my $row_type = $is_head ? 'th' : 'td';
 
@@ -298,6 +328,7 @@ sub ls_row {
   print $fh "<${row_type}>$element</${row_type}>";
   print $fh "<${row_type}>$header</${row_type}>";
   print $fh "<${row_type}>$desc</${row_type}>";
+  print $fh "<${row_type}>$is_required</${row_type}>";
   print $fh '</tr>';
 
   return 1;
