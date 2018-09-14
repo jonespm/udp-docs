@@ -21,10 +21,12 @@
             UDP
           </a>
           <div class="navbar-dropdown is-boxed">
+<!--
             <a class="navbar-item" href="../udp/access-udp-resources.html">
             <a class="navbar-item" href="../udp/access-udp-resources.html">              Accessing UDP resources
             </a>
             <hr class="navbar-divider">
+          -->
             <a class="navbar-item" href="../udp/caliper-endpoint.html">
             <a class="navbar-item" href="../udp/caliper-endpoint.html">              Caliper endpoint
             </a>
@@ -52,12 +54,6 @@
             <a class="navbar-item" href="../ucdm/relational-schema.html">
             <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
             </a>
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">              SIS Loading Schema for UCDM (v1)
-            </a>
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">
-            <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">              SIS Loading Schema proposed changes (v1.1)
-            </a>
             <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
             <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
             </a>
@@ -71,6 +67,26 @@
           </div>
         </div>
 
+<div class='navbar-item has-dropdown is-hoverable'>
+  <a class='navbar-link' href=''>
+    Loading schemas
+  </a>
+  <div class='navbar-dropdown is-boxed'>
+    <a class='navbar-item' href='../loading_schemas/html/Originality checker-1.0.html'>
+     Originality checker v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../loading_schemas/html/LMS-1.0.html'>
+     LMS v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../loading_schemas/html/SIS-1.1.html'>
+     SIS v1.1 (Candidate)
+    </a>
+    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
+     SIS v1.0 (Final)
+    </a>
+  </div>
+</div>
+
         <!-- Developer menu -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="">
@@ -83,17 +99,6 @@
           </div>
         </div>
 
-<div class='navbar-item has-dropdown is-hoverable'>
-  <a class='navbar-link' href=''>
-    Loading schemas
-  </a>
-  <div class='navbar-dropdown is-boxed'>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
-      v1.0 (Final)
-    </a>
-  </div>
-</div>
-
       </div>
 
       <div class="navbar-end">
@@ -103,11 +108,11 @@
 </div>
 <!-- /// Navigation -->
 <section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>reflearningresourceauthortype</b>       </h1>      <h1 class="subtitle">              </h1>    </div>  </div></section><div class="content"><br><div class="container"><b>Table definition</b><table class='table is-bordered is-hoverable'><thead><tr ><th>Name</th><th>Definition</th><th>Jursidiction</th></tr>
-</thead><tbody><tr ><td>reflearningresourceauthortypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td></tr>
-<tr ><td>description</td><td>CHARACTER VARYING (100)</td><td>Common Educational Data Standards</td></tr>
-<tr ><td>code</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td></tr>
+</thead><tbody><tr ><td>code</td><td>CHARACTER VARYING (50)</td><td>Common Educational Data Standards</td></tr>
 <tr ><td>definition</td><td>CHARACTER VARYING (4000)</td><td>Common Educational Data Standards</td></tr>
+<tr ><td>description</td><td>CHARACTER VARYING (100)</td><td>Common Educational Data Standards</td></tr>
 <tr ><td>refjurisdictionid</td><td>INTEGER</td><td>Common Educational Data Standards</td></tr>
+<tr ><td>reflearningresourceauthortypeid</td><td>INTEGER</td><td>Common Educational Data Standards</td></tr>
 <tr ><td>sortorder</td><td>NUMERIC</td><td>Common Educational Data Standards</td></tr>
 </tbody></table><b>Option set values</b><table class='table is-bordered is-hoverable'><thead><tr ><th>Code</th><th>Description</th><th>Definition</th><th>Jurisdiction</th></tr>
 </thead><tbody><tr ><td><code>NoData</code></td><td>No data provided</td><td>No data provided</td><td>Unizin Common Data Model</td></tr>

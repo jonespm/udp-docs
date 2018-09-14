@@ -115,7 +115,6 @@ entities:
         fk: Learner activity.OcIntId
       - code: Name
         name: Name
-        description: The name of the Source.
         is_required: true
         description: The name of the source for a learner activity.
   - name: Learner activity result
