@@ -9,7 +9,7 @@ entities:
     elements:
       - code: LmsIntId
         name: LMS Internal ID
-        description: The system-generated, internal ID used by the LMS to uniquely identify the Person in LMS entities.
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Person.
         ls_only: true
         is_required: true
       - code: LmsExtId
@@ -30,19 +30,37 @@ entities:
   - name: Academic term
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Academic term.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Academic terms in tools launched from the LMS. This may be the unique term identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Academic terms in the LMS from the SIS. This identifier is used to join SIS Academic term records with LMS Academic term records.
+        ls_only: true
         is_required: true
       - code: Name
   - name: Session
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Session.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Sessions in tools launched from the LMS. This may be the unique session identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Sessions in the LMS from the SIS. This identifier is used to join SIS Session records with LMS Session records.
+        ls_only: true
         is_required: true
       - code: TermId
         is_required: true
@@ -53,10 +71,19 @@ entities:
   - name: Course offering
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Course offering.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Course offerings in tools launched from the LMS. This may be the unique course offering identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Course offerings in the LMS from the SIS. This identifier is used to join SIS Course offering records with LMS Course offering records.
+        ls_only: true
         is_required: true
       - code: SessionId
         is_required: true
@@ -66,10 +93,19 @@ entities:
   - name: Course section
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Course section.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Course sections in tools launched from the LMS. This may be the unique course section identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Course sections in the LMS from the SIS. This identifier is used to join SIS Course section records with LMS Course section records.
+        ls_only: true
         is_required: true
       - code: CourseId
         is_required: true
@@ -93,8 +129,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity group.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activity groups in tools launched from the LMS. This may be the unique learner activity group identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: CourseId
         is_required: true
@@ -107,8 +149,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activities in tools launched from the LMS. This may be the unique learner activity identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: CourseId
         is_required: true
@@ -132,8 +180,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity override.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activity overrides in tools launched from the LMS. This may be the unique learner activity override identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: LearnerActivityId
         is_required: true
@@ -165,8 +219,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity result.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activity results in tools launched from the LMS. This may be the unique learner activity result passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: LearnerActivityId
         is_required: true
@@ -209,8 +269,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner group.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner groups in tools launched from the LMS. This may be the unique learner group identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: CourseId
         is_required: true
@@ -229,8 +295,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quizzes in tools launched from the LMS. This may be the unique quiz identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: LearnerActivityId
         is_required: true
@@ -247,8 +319,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz item.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quiz items in tools launched from the LMS. This may be the unique quiz item identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: QuizId
         is_required: true
@@ -260,8 +338,14 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz item response.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quiz item responses in tools launched from the LMS. This may be the unique quiz item response identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
         is_required: true
       - code: QuizItemId
         is_required: true
@@ -274,8 +358,13 @@ entities:
     system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz result.
+        ls_only: true
         is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quiz results in tools launched from the LMS. This may be the unique quiz result identifier passed in an LTI launch or by some other provisioning means.
         is_required: true
       - code: QuizId
         is_required: true
