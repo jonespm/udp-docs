@@ -9,69 +9,160 @@ entities:
     elements:
       - code: LmsIntId
         name: LMS Internal ID
-        description: none
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Person.
         ls_only: true
-        ucdm_element: THIS
+        is_required: true
       - code: LmsExtId
         name: LMS External ID
         description: The unique identifier used to provision Persons in tools launched from the LMS. This may be the unique person identifier passed in an LTI launch or by some other provisioning means.
         ls_only: true
+        is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Persons in the LMS from the SIS. This identifier is used to join SIS Person records with LMS Person records.
+        ls_only: true
+        is_required: true
       - code: Name
+        name: Name
+        description: The Person's full name.
       - code: Gender
       - code: Birthdate
   - name: Academic term
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Academic term.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Academic terms in tools launched from the LMS. This may be the unique term identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Academic terms in the LMS from the SIS. This identifier is used to join SIS Academic term records with LMS Academic term records.
+        ls_only: true
+        is_required: true
       - code: Name
   - name: Session
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Session.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Sessions in tools launched from the LMS. This may be the unique session identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Sessions in the LMS from the SIS. This identifier is used to join SIS Session records with LMS Session records.
+        ls_only: true
+        is_required: true
       - code: TermId
+        is_required: true
+        fk: Academic term.LmsIntId
       - code: Name
       - code: InstrBeginDate
       - code: InstrEndDate
   - name: Course offering
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Course offering.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Course offerings in tools launched from the LMS. This may be the unique course offering identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Course offerings in the LMS from the SIS. This identifier is used to join SIS Course offering records with LMS Course offering records.
+        ls_only: true
+        is_required: true
       - code: SessionId
+        is_required: true
+        fk: Session.LmsIntId
       - code: Title
       - cdoe: Status
   - name: Course section
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Course section.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Course sections in tools launched from the LMS. This may be the unique course section identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: SisExtId
+        name: SIS External ID
+        description: The unique identifier used to provision Course sections in the LMS from the SIS. This identifier is used to join SIS Course section records with LMS Course section records.
+        ls_only: true
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: SectionNumber
       - code: Status
   - name: Course section enrollment
     elements:
       - code: PersonId
+        is_required: true
+        fk: Person.LmsIntId
       - code: SectionId
+        is_required: true
+        fk: Course section.LmsIntId
       - code: Role
+        is_required: true
+        option_set: Role
       - code: EntryDate
       - code: ExitDate
   - name: Learner activity group
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity group.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activity groups in tools launched from the LMS. This may be the unique learner activity group identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: Name
       - code: Status
+        option_set: RefWorkflowState
       - code: Position
   - name: Learner activity
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activities in tools launched from the LMS. This may be the unique learner activity identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: LearnerActivityGroupId
+        fk: Learner activity group.LmsIntId
       - code: Title
       - code: Description
       - code: DueDate
@@ -79,22 +170,38 @@ entities:
       - code: LockDate
       - code: PossiblePoints
       - code: ScoreMetricType  # This is presently `gradingtype` in the LMS schema.
+        option_set: RefScoreMetricType
       - code: Status
+        option_set: RefWorkflowState
       - code: CreateDate
       - code: UpdateDate
       - code: Position         # This is presently NOT in the Data dictionary.
   - name: Learner activity override
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity override.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activity overrides in tools launched from the LMS. This may be the unique learner activity override identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: LearnerActivityId
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: LearnerActivityVersion
       - code: QuizId
+        fk: Quiz.LmsIntId
       - code: QuizVersion
       - code: Title
       - code: OrganizationId
       - code: PersonId
+        fk: Person.LmsIntId
       - code: Type
+        option_set: ??
       - code: OverrideDueDate
       - code: DueDate
       - code: OverrideDueDate
@@ -107,27 +214,49 @@ entities:
       - code: CreateDate
       - code: UpdateDate
       - code: Status
+        option_set: RefWorkflowState
   - name: Learner activity result
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner activity result.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner activity results in tools launched from the LMS. This may be the unique learner activity result passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: LearnerActivityId
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: PersonId
+        is_required: true
+        fk: Person.LmsIntId
       - code: GraderId
+        fk: Person.LmsIntId
       - code: LearnerGroupId
+        fk: Learner group.LmsIntId
       - code: LearnerActivitySessionId
       - code: Type
+        option_set: ??
       - code: Body
       - code: Url
       - code: GradingStatus
+        option_set: ??
       - code: Score
       - code: PublishedScore
       - code: ScoreType        # This is presently NOT in the Data dictionary
+        option_set: ??
       - code: Grade
       - code: PublishedGrade
       - code: GradeType
+        option_set: ??
       - code: SubmissionStatus
+        option_set: ??
       - code: GradebookStatus
+        option_set: ??
       - code: CreateDate
       - code: UpdateDate
       - code: ResponseDate
@@ -137,13 +266,25 @@ entities:
       - code: ExtraAttempts
       - code: ExtraTime
   - name: Learner group
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Learner group.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Learner groups in tools launched from the LMS. This may be the unique learner group identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: Name
       - code: Description
       - code: Status
+        option_set: RefWorkflowState
       - code: CreateDate
       - code: UpdateDate
       - code: CreateDate
@@ -151,38 +292,95 @@ entities:
       - code: DeleteDate
       - code: PublicContents
   - name: Quiz
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quizzes in tools launched from the LMS. This may be the unique quiz identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: LearnerActivityId
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: CourseId
+        is_required: true
+        fk: Course offering.LmsIntId
       - code: Title
       - code: Type
+        option_set: ??
       - code: Status
+        option_set: RefWorkflowState
   - name: Quiz item
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz item.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quiz items in tools launched from the LMS. This may be the unique quiz item identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: QuizId
+        is_required: true
+        fk: Quiz.LmsIntId
       - code: Type
+        option_set: ??
       - code: Body
   - name: Quiz item response
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz item response.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quiz item responses in tools launched from the LMS. This may be the unique quiz item response identifier passed in an LTI launch or by some other provisioning means.
+        ls_only: true
+        is_required: true
       - code: QuizItemId
+        is_required: true
+        fk: Quiz item.LmsIntId
       - code: QuizResultId      # This is presently NOT in the Data dictionary
+        is_required: true
+        fk: Quiz result.LmsIntId
       - code: Body
   - name: Quiz result
+    system_of_record: true
     elements:
       - code: LmsIntId
+        name: LMS Internal ID
+        description: The system-generated, internal ID used by the LMS to uniquely identify the Quiz result.
+        ls_only: true
+        is_required: true
       - code: LmsExtId
+        name: LMS External ID
+        description: The unique identifier used to provision Quiz results in tools launched from the LMS. This may be the unique quiz result identifier passed in an LTI launch or by some other provisioning means.
+        is_required: true
       - code: QuizId
+        is_required: true
+        fk: Quiz.LmsIntId
       - code: LearnerActivityId       # Not in the data dictionary
+        is_required: true
+        fk: Learner activity.LmsIntId
       - code: LearnerActivityResultId # Not in the data dictionary
+        is_required: true
+        fk: Learner activity result.LmsIntId
       - code: PersonId
+        is_required: true
+        fk: Person.LmsIntId
       - code: NumberOfResponses       # This is presently NOT in the Data dictionary. Also doesn't appear in Canvas Data
       - code: Status
+        option_set: RefWorkflowState
       - code: CreateDate
       - code: UpdateDate
 #   - name: Discussion

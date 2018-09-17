@@ -5,15 +5,18 @@ configuration:
   status: Final
 entities:
   - name: Person
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
         description: none
         ls_only: true
+        is_required: true
       - name: External ID
         code: SisExtId
         description: none
         ls_only: true
+        is_required: true
       - code: FirstName
       - code: MiddleName
       - code: LastName
@@ -51,19 +54,25 @@ entities:
       - code: EmailAddress
       - code: EmailType
   - name: Institutional affiliation
+    system_of_record: true
     elements:
       - code: PersonId
+        is_required: true
+        fk: Person.SisIntId
       - code: DirectoryBlock
   - name: Academic term
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
         description: none
         ls_only: true
+        is_required: true
       - name: External ID
         code: SisExtId
         description: none
         ls_only: true
+        is_required: true
       - code: TermType
       - code: SessionType
       - code: SessionName
@@ -72,16 +81,21 @@ entities:
       - code: InstrBeginDate
       - code: InstrEndDate
   - name: Course offering
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
         description: none
         ls_only: true
+        is_required: true
       - name: External ID
         code: SisExtId
         description: none
         ls_only: true
+        is_required: true
       - code: TermId
+        is_required: true
+        fk: Academic term.SisIntId
       - code: CourseSubj
       - code: CourseNo
       - code: Title
@@ -89,25 +103,38 @@ entities:
       - code: Status
       - code: AvailableCredits
   - name: Course section
+    system_of_record: true
     elements:
       - name: Internal ID
         code: SisIntId
         description: none
         ls_only: true
+        is_required: true
       - name: External ID
         code: SisExtId
         description: none
         ls_only: true
+        is_required: true
       - code: CourseId
+        is_required: true
+        fk: Course offering.SisIntId
       - code: TermId
+        is_required: true
+        fk: Academic term.SisIntId
       - code: SectionNumber
       - code: DeliveryMode
       - code: MaxEnrollment
   - name: Course section enrollment
+    system_of_record: true 
     elements:
       - code: PersonId
+        is_required: true
+        fk: Person.SisIntid
       - code: SectionId
+        is_required: true
+        fk: Course section.SisIntId
       - code: Role
+        is_required: true
       - code: RoleStatus
       - code: EntryDate
       - code: ExitDate

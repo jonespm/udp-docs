@@ -5,6 +5,7 @@ configuration:
   status: Candidate
 entities:
   - name: Person
+    system_of_record: true
     elements:
       - code: SisIntId
         name: SIS Internal Person ID
@@ -74,6 +75,7 @@ entities:
       - code: EmailType
         option_set: RefEmailType
   - name: Institutional affiliation
+    system_of_record: true
     elements:
       - code: PersonId
         name: SIS Internal Person ID
@@ -83,6 +85,7 @@ entities:
         option_set: RefDirectoryInformationBlockStatus
   - name: Campus
     description: The collection of departments, colleges, schools, and buildings that belong to a particular institution. All Universities have at least one campus. Some Universities are systems with multiple Campuses. These may include "virtual campuses" that represent online programs, which is common to many Unizin Members.
+    system_of_record: true
     elements:
       - code: SisIntId
         name: SIS Internal Campus ID
@@ -100,6 +103,7 @@ entities:
         description: The abbreviation for the campus name. The intent is to capture the shorthand used in schedule of classes and other administravia to refer to the campus (e.g., "BL" for Bloomington).
   - name: Academic organization
     description: An Academic organization is a School, Program, College, or Department responsible for delivering instruction. A particular Academic organization is always unique to a campus. However, Academic organizations across different campuses may share the same Organization Code. For example, there may exist a Department of Sociology at multiple campuses of a University system — each instance can be uniquely identified, but all may share the same academic organization code.
+    system_of_record: true
     elements:
       - code: SisIntId
         name: SIS Internal Academic organization ID
@@ -122,6 +126,7 @@ entities:
         name: Name
         description: The human-readable name of the Academic organization (e.g., "The College of Arts and Sciences").
   - name: Academic term
+    system_of_record: true
     elements:
       - code: SisIntId
         name: SIS Internal Term ID
@@ -140,6 +145,7 @@ entities:
         option_set: RefTermType
   - name: Session
     description: An administrative unit that defines an actual instructional period during a term. Every Academic term is comprised of one or more Sessions. A Session is always unique to an Academic term and will have many Course offerings.
+    system_of_record: true
     elements:
       - code: SisIntId
         name: SIS Internal Session ID
@@ -165,6 +171,7 @@ entities:
         name: Inclusive access bill after date
         description: The date after which inclusive access course materials can be billed to the institution.
   - name: Course offering
+    system_of_record: true
     elements:
       - code: SisIntId
         name: SIS Internal Course offering ID
@@ -192,6 +199,7 @@ entities:
         option_set: RefWorkflowState
       - code: AvailableCredits
   - name: Course section
+    system_of_record: true
     elements:
       - name: SIS Internal Course section ID
         code: SisIntId
@@ -225,6 +233,7 @@ entities:
         name: Max enrollment
         description: Maximum number of students who can be enrolled in the Course Section.
   - name: Course section enrollment
+    system_of_record: true
     elements:
       - code: PersonId
         name: SIS Internal Person ID
@@ -254,6 +263,7 @@ entities:
         description: The number of credits the Person actually earned in the Course section.
   - name: Course grade
     description: The grade a person receives for a course as part of their Section enrollment. While this field will likely be updated by Canvas during a Session, the SIS ultimately owns final, end-of-term grades. We expect this file will be blank until those grades are available.
+    system_of_record: true 
     elements:
       - code: SisIntId
         name: SIS Internal Course grade ID
