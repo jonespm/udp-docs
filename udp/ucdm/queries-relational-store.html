@@ -216,8 +216,37 @@
                   OrganizationPersonRole.OrganizationId=7
               ) as ColGpaCum,
               RefMilitaryActiveStudentIndicator.Description as ActiveDuty,
-              RefMilitaryVeteranStudentIndicator.Description as Veteran,
-              -- Parent educational levels!!
+              RefMilitaryVeteranStudentIndicator.Description as Veteran,    
+             (
+                SELECT RefEducationLevel.Code
+                FROM PsStudentDemographic
+                LEFT JOIN OrganizationPersonRole ON PsStudentDemoGraphic.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
+                LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
+                LEFT JOIN RefEducationLevel ON PsStudentDemographic.RefPaternalEducationLevelId = RefEducationLevel.RefEducationLevelId
+                WHERE
+                  Person.PersonId=mypersonid AND
+                  OrganizationPersonRole.OrganizationId=7  
+              ) as EduLevelPaternal,      
+              (
+                SELECT RefEducationLevel.Code
+                FROM PsStudentDemographic
+                LEFT JOIN OrganizationPersonRole ON PsStudentDemoGraphic.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
+                LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
+                LEFT JOIN RefEducationLevel ON PsStudentDemographic.RefMaternalEducationLevelId = RefEducationLevel.RefEducationLevelId
+                WHERE
+                  Person.PersonId=mypersonid AND
+                  OrganizationPersonRole.OrganizationId=7  
+              ) as EduLevelMaternal,
+              (
+                SELECT RefEducationLevel.Code
+                FROM PsStudentDemographic
+                LEFT JOIN OrganizationPersonRole ON PsStudentDemoGraphic.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
+                LEFT JOIN Person on OrganizationPersonRole.PersonId=Person.PersonId
+                LEFT JOIN RefEducationLevel ON PsStudentDemographic.RefParentalEducationLevelId = RefEducationLevel.RefEducationLevelId
+                WHERE
+                  Person.PersonId=mypersonid AND
+                  OrganizationPersonRole.OrganizationId=7  
+              ) as EduLevelParental,
               (
                 SELECT
                   COUNT(*)
