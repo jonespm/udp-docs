@@ -187,9 +187,9 @@
             -- Change the email address here to retrieve a person record
             WITH LocalConstants (mypersonid) as 
             (
-			        SELECT PersonId AS mypersonid FROM personemailaddress
+			        SELECT PersonId AS mypersonid FROM PersonEmailAddress
 			        LEFT JOIN RefEmailType ON PersonEmailAddress.RefEmailTypeId = RefEmailType.RefEmailTypeId 
-			        WHERE RefEmailType.Code = 'Organizational' AND lower(emailaddress) = 'personid@example.edu'
+			        WHERE RefEmailType.Code = 'Organizational' AND lower(EmailAddress) = 'personid@example.edu'
             )
             SELECT
               Person.Firstname as FirstName,
