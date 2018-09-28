@@ -184,8 +184,12 @@
         <h2>Query for a particular person</h2>
         <div style="border: 1px dashed #FAA; width: 80%; height: 500px; max-height: 500px; overflow: hidden;">
           <pre style="padding-left: 0px; height: 100%; max-height: 100%; overflow-y: scroll">
-            WITH LocalConstants (mypersonid) as (
-   		          values (1)
+            -- Change the email address here to retrieve a person record
+            WITH LocalConstants (mypersonid) as 
+            (
+			        SELECT PersonId AS mypersonid FROM personemailaddress
+			        LEFT JOIN RefEmailType ON PersonEmailAddress.RefEmailTypeId = RefEmailType.RefEmailTypeId 
+			        WHERE RefEmailType.Code = 'Organizational' AND lower(emailaddress) = 'personid@example.edu'
             )
             SELECT
               Person.Firstname as FirstName,
