@@ -568,28 +568,38 @@
         <h2>All student enrollments</h2>
         <div style="border: 1px dashed #FAA; width: 80%; height: 500px; max-height: 500px; overflow: hidden;">
           <pre style="padding-left: 0px; height: 100%; max-height: 100%; overflow-y: scroll">
+            WITH LocalConstants (mypersonid) as (
+             SELECT PersonId AS mypersonid FROM personemailaddress
+             LEFT JOIN RefEmailType ON PersonEmailAddress.RefEmailTypeId = RefEmailType.RefEmailTypeId 
+             WHERE RefEmailType.Code = 'Organizational' AND lower(emailaddress) = 'personid@example.edu' 
+            )	
             SELECT
+              ucdmint.sourcekey as SisIntId,
+              ucdmext.sourcekey as SisExtId,
               OrganizationPersonRole.PersonId as PersonId,
-              OrganizationPersonRole.OrganizationId as SectionId,
+              ucdmint.sourcekey as SectionId,
               Role.Name as Role,
-              RefRoleStatus.Description as RoleStatus,
-              OrganizationPersonRole.EntryDate as EntryDate,
-              OrganizationPersonRole.ExitDate as ExitDate,
+              RefRoleStatus.Code as RoleStatus,
+              to_char(OrganizationPersonRole.EntryDate,'YYYY-MM-DD') as EntryDate,
+              to_char(OrganizationPersonRole.ExitDate,'YYYY-MM-DD') as ExitDate,
               PsStudentSection.NumberOfCreditsTaken as CreditsTaken,
-              PsStudentSection.NumberOfCreditsEarned as CreditsEarned,
+              PsStudentSection.NumberOfCreditsEarned as CreditsEarned
               -- Completed at??
-              RefWorkflowState.Description as WorkflowState
+              -- Currently not populated
+              -- RefWorkflowState.Description as WorkflowState
               -- Self-enrolled?
-
-            FROM OrganizationPersonRole
-              INNER JOIN CourseSection on CourseSection.OrganizationId=OrganizationPersonRole.OrganizationPersonRoleId
+            FROM LocalConstants,OrganizationPersonRole
               INNER JOIN Role on Role.RoleId=OrganizationPersonRole.RoleId
               INNER JOIN RoleStatus on RoleStatus.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
-              INNER JOIN RefRoleStatus on RefRoleStatus.RefRoleStatusId=RoleStatus.RefRoleStatusId
-              INNER JOIN PsStudentSection on PsStudentSection.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
-              INNER JOIN RefWorkflowState on RefWorkflowState.RefWorkflowStateId=OrganizationPersonRole.RefWorkflowStateId
-            WHERE
-              Role.name='Student';
+              LEFT JOIN RefRoleStatus on RefRoleStatus.RefRoleStatusId=RoleStatus.RefRoleStatusId
+              LEFT JOIN PsStudentSection on PsStudentSection.OrganizationPersonRoleId=OrganizationPersonRole.OrganizationPersonRoleId
+              -- Currently not populated
+              -- LEFT JOIN RefWorkflowState on RefWorkflowState.RefWorkflowStateId=OrganizationPersonRole.RefWorkflowStateId
+              LEFT JOIN ucdmentitykeymap ucdmint on ucdmint.ucdmkey = OrganizationPersonRole.OrganizationId and ucdmint.ucdmentityid = 5 and ucdmint.systemprovisioningid = 1000
+              LEFT JOIN ucdmentitykeymap ucdmext on ucdmext.ucdmkey = OrganizationPersonRole.OrganizationId and ucdmext.ucdmentityid = 5 and ucdmext.systemprovisioningid = 1001
+              WHERE ROLE.Name = 'Student' AND
+              OrganizationPersonRole.PersonId = mypersonid
+
           </pre>
         </div>
 
