@@ -87,9 +87,10 @@ sub navigation_as_html($$$) {
       $html .= "    Context data\n";
       $html .= "  </a>\n";
       $html .= "  <div class='navbar-dropdown is-boxed'>\n";
-      $html .= ' <a class="navbar-item" href="../udp/manifest-file.html">';
+      $html .= ' <a class="navbar-item" href="../context-data/manifest-file.html">';
       $html .= '   Manifest file';
       $html .= ' </a>';
+      $html .= "\n";
 
       foreach my $system (keys %$index) {
         my $versions = $index->{$system};

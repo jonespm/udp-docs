@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
-
   <head>
-    <title>Event store queries</title>
+    <title>Manifest file</title>
     <meta charset="utf-8">
     <link rel='stylesheet' href='../assets/base.css'>
   </head>
@@ -100,13 +99,12 @@
     </div>
     <!-- /// Navigation -->
 
-
     <!-- Section header -->
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title"><strong>Learning Record Store queries</strong></h1>
-          <h2 class="subtitle">Unizin Common Data Model</h2>
+          <h2 class="title">Manifest file</h2>
+          <h2 class="subtitle">Batch data integrations</h2>
         </div>
       </div>
     </section>
@@ -116,38 +114,8 @@
       <br>
       <div class="container">
 
-        <h1>Overview</h1>
-        <p>
-          The following document provides some example starter queries for the UDP Learning Record Store of commonly-modeled data. It is intended only to provide some starter queries from which Members may work as they explore data in the Unizin Common Data Model.
-        </p>
 
-        <h1>Example queries</h1>
-        <p>
-          <strong>Count events by type and action</strong>
-          <pre>
-            SELECT
-              COUNT(*) c, event_type, event_action
-            FROM
-              learning_datasets.enriched_events
-            GROUP BY
-             event_type, event_action
-            ORDER BY c DESC
-            ;
-          </pre>
-        </p>
 
-        <p>
-          <strong>Find all of the "grade" events for a particular user</strong>
-          <pre>
-            SELECT
-              event
-            FROM
-              learning_datasets.enriched_events
-            WHERE
-              event_type = 'GradeEvent' AND
-              ucdm_actor_id = '1'
-          </pre>
-        </p>
       </div>
     </div>
 
