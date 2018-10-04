@@ -114,7 +114,27 @@
       <br>
       <div class="container">
 
+<pre>
+  # This file acts as a manifest and sentinel file
 
+  manifest_version: v1 # a version tag describing the version of this manifest
+
+  source: canvas-data # value will be (canvas-data|[sis_system])
+  # where sis_system == (hyphen-separated sis system name(s), e.g. 'peoplesoft', 'banner')
+
+  data_schema: 1.0 # ucdm version number
+
+  datetime: 2017-11-19T21:11:31Z # ISO 8601 datetime stamp
+
+  dump_id: b4f8eec7-7adc-47a1-83a4-238f1032da00 # some UUID for canvas data, a truncated ISO 8601 date (YYYY-MM-DD) for SIS
+
+  files:
+    - name: assignment_dim_0.gz # name of file
+      checksum: 291305b872ff5ae8e47dbe8d97ec23b2 # md5 checksum of file
+    - name: assignment_dim_1.gz
+      checksum: 163f2d7d097518435ccc61936e60cd49
+    ...
+</pre>
 
       </div>
     </div>
