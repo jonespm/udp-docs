@@ -114,20 +114,33 @@
       <br>
       <div class="container">
 
+        <p>
+          Manifest files accompany every batch dataset pushed to the UDP for ingestion. They describe the contents of the full data dump, enabling the UDP to validate the completeness and integrity of the dataset beore ingestion. The schema for a manifest file is described below.
+        </p>
+
 <pre>
-  # This file acts as a manifest and sentinel file
+   # The version of the manifest file used
+   # in this dataset.
+  manifest_version: v1
 
-  manifest_version: v1 # a version tag describing the version of this manifest
+  # The name of the system whose data is ingested,
+  # where values may include 'peoplesoft', 'banner',
+  # 'canvas-data', etc. depending on the application.
+  source: canvas-data
 
-  source: canvas-data # value will be (canvas-data|[sis_system])
-  # where sis_system == (hyphen-separated sis system name(s), e.g. 'peoplesoft', 'banner')
+  # The UCDM version number this dataset's format
+  # corresponds to.
+  data_schema: 1.0
 
-  data_schema: 1.0 # ucdm version number
+  ## The ISO 8601 datetime stamp describing when
+  ## the dataset was produced.
+  datetime: 2017-11-19T21:11:31Z #
 
-  datetime: 2017-11-19T21:11:31Z # ISO 8601 datetime stamp
+  ## A UUID for the dataset
+  dump_id: b4f8eec7-7adc-47a1-83a4-238f1032da00
 
-  dump_id: b4f8eec7-7adc-47a1-83a4-238f1032da00 # some UUID for canvas data, a truncated ISO 8601 date (YYYY-MM-DD) for SIS
-
+  ## An array of the files included in the dataset.
+  ## For each file, a checksum is provided.
   files:
     - name: assignment_dim_0.gz # name of file
       checksum: 291305b872ff5ae8e47dbe8d97ec23b2 # md5 checksum of file
