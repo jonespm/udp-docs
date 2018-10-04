@@ -15,30 +15,6 @@
         <a class="navbar-item" href="../index.html">          Home
         </a>
 
-        <!-- UDP documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            UDP
-          </a>
-          <div class="navbar-dropdown is-boxed">
-<!--
-            <a class="navbar-item" href="../udp/access-udp-resources.html">
-            <a class="navbar-item" href="../udp/access-udp-resources.html">              Accessing UDP resources
-            </a>
-            <hr class="navbar-divider">
-          -->
-            <a class="navbar-item" href="../udp/caliper-endpoint.html">
-            <a class="navbar-item" href="../udp/caliper-endpoint.html">              Caliper endpoint
-            </a>
-            <a class="navbar-item" href="../udp/event-processing.html">
-            <a class="navbar-item" href="../udp/event-processing.html">              Event processing
-            </a>
-            <a class="navbar-item" href="../udp/lrs-event-record.html">
-            <a class="navbar-item" href="../udp/lrs-event-record.html">              Event record
-            </a>
-          </div>
-        </div>
-
         <!-- UCDM documentation menu -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="">
@@ -67,37 +43,40 @@
           </div>
         </div>
 
-<div class='navbar-item has-dropdown is-hoverable'>
-  <a class='navbar-link' href=''>
-    Loading schemas
-  </a>
-  <div class='navbar-dropdown is-boxed'>
-    <a class='navbar-item' href='../loading_schemas/html/LMS-1.0.html'>
-     LMS v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/Originality checker-1.0.html'>
-     Originality checker v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
-     SIS v1.0 (Final)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.1.html'>
-     SIS v1.1 (Candidate)
-    </a>
-  </div>
-</div>
-
-        <!-- Developer menu -->
+        <!-- Caliper endpoint documentation menu -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="">
-            Developers
+            Event data
           </a>
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../developers/caliper-integration.html">
-            <a class="navbar-item" href="../developers/caliper-integration.html">              Caliper sensor guidelines
+            <a class="navbar-item" href="../udp/caliper-endpoint.html">
+            <a class="navbar-item" href="../udp/caliper-endpoint.html">              UDP Caliper endpoint
+            </a>
+            <a class="navbar-item" href="../udp/event-processing.html">
+            <a class="navbar-item" href="../udp/event-processing.html">              UDP Event processing
             </a>
           </div>
         </div>
+
+<div class='navbar-item has-dropdown is-hoverable'>
+  <a class='navbar-link' href=''>
+    Context data
+  </a>
+  <div class='navbar-dropdown is-boxed'>
+ <a class="navbar-item" href="../udp/manifest-file.html">   Manifest file </a>    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+     SIS v1.0 (Final)
+    </a>
+    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+     SIS v1.1 (Candidate)
+    </a>
+    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+     Originality checker v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+     LMS v1.0 (Draft)
+    </a>
+  </div>
+</div>
 
       </div>
 
@@ -110,54 +89,54 @@
 <section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>Canvas to UCDM</b>       </h1>      <h1 class="subtitle">        Mapping from Camvas Data to UCDM      </h1>    </div>  </div></section><div class="content"><br><div class="container"><h1>Notes about the Canvas Data -> UCDM Mapping</h1><ol><li> The Canvas Data schema is a denormalized, Kimball-style data warehouse schema. The UCDM schema, by constrast, is a highly normalized relational warehouse schema. Given this, the majority of foreign keys in Canvas Data's dimensional and fact tables will not be mapped to a particular Element in the UCDM. This is important to keep in mind as you explore the mappings.</li><li> The <code>id</code> and <code>canvas_id</code> values for each dimensional table are not mapped. This is because, upon ingestion, the UDP replaces source primary keys with UCDM surrogate keys.</li><li> All <code>sis_source_id</code> values are not mapped. Again, all source data primary identifiers are collapsed into UCDM surrogate identifiers.</li></ol><h1>Canvas data tables</h1><ul><li><a href="#assignment_dim">assignment_dim</a></li><li><a href="#assignment_fact">assignment_fact</a></li><li><a href="#assignment_group_dim">assignment_group_dim</a></li><li><a href="#assignment_group_fact">assignment_group_fact</a></li><li><a href="#assignment_group_rule_dim">assignment_group_rule_dim</a></li><li><a href="#assignment_override_dim">assignment_override_dim</a></li><li><a href="#assignment_override_fact">assignment_override_fact</a></li><li><a href="#assignment_override_user_dim">assignment_override_user_dim</a></li><li><a href="#assignment_override_user_fact">assignment_override_user_fact</a></li><li><a href="#course_dim">course_dim</a></li><li><a href="#course_section_dim">course_section_dim</a></li><li><a href="#enrollment_dim">enrollment_dim</a></li><li><a href="#enrollment_fact">enrollment_fact</a></li><li><a href="#enrollment_term_dim">enrollment_term_dim</a></li><li><a href="#group_dim">group_dim</a></li><li><a href="#group_fact">group_fact</a></li><li><a href="#quiz_dim">quiz_dim</a></li><li><a href="#quiz_fact">quiz_fact</a></li><li><a href="#quiz_submission_dim">quiz_submission_dim</a></li><li><a href="#quiz_submission_fact">quiz_submission_fact</a></li><li><a href="#quiz_submission_historical_dim">quiz_submission_historical_dim</a></li><li><a href="#quiz_submission_historical_fact">quiz_submission_historical_fact</a></li><li><a href="#score_dim">score_dim</a></li><li><a href="#score_fact">score_fact</a></li><li><a href="#submission_dim">submission_dim</a></li><li><a href="#submission_fact">submission_fact</a></li><li><a href="#user_dim">user_dim</a></li></ul><a name='assignment_dim'></a><h1>assignment_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>course_id</td><td>Learner activity result</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
-<tr ><td>title</td><td>Learner activity result</td><td>Learner activity result type</td><td>-</td><td>-</td></tr>
-<tr ><td>description</td><td>Learner activity result</td><td>Person Id</td><td>-</td><td>-</td></tr>
-<tr ><td>due_at</td><td>Learner activity result</td><td>Grader Id</td><td>-</td><td>-</td></tr>
-<tr ><td>unlock_at</td><td>Learner activity result</td><td>Learner activity session Id</td><td>-</td><td>-</td></tr>
-<tr ><td>lock_at</td><td>Learner activity result</td><td>Body</td><td>-</td><td>-</td></tr>
-<tr ><td>points_possible</td><td>Learner activity result</td><td>Published score</td><td>-</td><td>-</td></tr>
-<tr ><td>grading_type</td><td>Learner activity result</td><td>Grade</td><td>-</td><td>-</td></tr>
-<tr ><td>submission_types</td><td>Learner activity result</td><td>Published grade</td><td>-</td><td>-</td></tr>
-<tr ><td>workflow_state</td><td>Learner activity result</td><td>Grade type</td><td>-</td><td>-</td></tr>
-<tr ><td>created_at</td><td>Learner activity result</td><td>Submission status</td><td>-</td><td>-</td></tr>
-<tr ><td>updated_at</td><td>Learner activity result</td><td>Gradebook status</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>peer_review_count</td><td>Learner activity result</td><td>Responded on date</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>peer_reviews_due_at</td><td>Learner activity result</td><td>Graded on date</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>peer_reviews_assigned</td><td>Learner activity result</td><td>Student viewed result</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>peer_reviews</td><td>Learner activity result</td><td>Create date</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>automatic_peer_reviews</td><td>Learner activity result</td><td>Update date</td><td>-</td><td>-</td></tr>
-<tr ><td>all_day</td><td>Learner activity result</td><td>Extra time used</td><td>-</td><td>-</td></tr>
-<tr ><td>all_day_date</td><td>Learner activity result</td><td>Learner group Id</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>could_be_locked</td><td>Learner activity result</td><td>Extra attempts used</td><td>-</td><td>-</td></tr>
+<tr ><td>course_id</td><td>Learner activity</td><td>Course Id</td><td>-</td><td>-</td></tr>
+<tr ><td>title</td><td>Learner activity</td><td>Title</td><td>-</td><td>-</td></tr>
+<tr ><td>description</td><td>Learner activity</td><td>Description</td><td>-</td><td>-</td></tr>
+<tr ><td>due_at</td><td>Learner activity</td><td>Due date</td><td>-</td><td>-</td></tr>
+<tr ><td>unlock_at</td><td>Learner activity</td><td>Release date</td><td>-</td><td>-</td></tr>
+<tr ><td>lock_at</td><td>Learner activity</td><td>Lock date</td><td>-</td><td>-</td></tr>
+<tr ><td>points_possible</td><td>Learner activity</td><td>Possible points</td><td>-</td><td>-</td></tr>
+<tr ><td>grading_type</td><td>Learner activity</td><td>Score metric type</td><td>-</td><td>-</td></tr>
+<tr ><td>submission_types</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>updated_at</td><td>Learner activity</td><td>Update date</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>peer_review_count</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>peer_reviews_due_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>peer_reviews_assigned</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>peer_reviews</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>automatic_peer_reviews</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>all_day</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>all_day_date</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>could_be_locked</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>grade_group_students_individually</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>anonyous_peer_reviews</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>muted</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_group_id</td><td>Learner activity result</td><td>Url</td><td>-</td><td>-</td></tr>
-<tr ><td>position</td><td>Learner activity result</td><td>Grading status</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>visibility</td><td>Learner activity result</td><td>Score</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_group_id</td><td>Learner activity</td><td>Learner activity group Id</td><td>-</td><td>-</td></tr>
+<tr ><td>position</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>visibility</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_fact'></a><h1>assignment_fact</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>assignment_dim</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>course_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>course_account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>enrollment_term_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>points_possible</td><td>Learner activity result</td><td>Published score</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>peer_review_count</td><td>Learner activity result</td><td>Responded on date</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_group_id</td><td>Learner activity result</td><td>Url</td><td>-</td><td>-</td></tr>
+<tr ><td>points_possible</td><td>Learner activity</td><td>Possible points</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>peer_review_count</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_group_id</td><td>Learner activity</td><td>Learner activity group Id</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_group_dim'></a><h1>assignment_group_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>course_id</td><td>Learner group</td><td>Course Id</td><td>-</td><td>-</td></tr>
-<tr ><td>name</td><td>Learner group</td><td>Name</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>default_assignment_name</td><td>Learner group</td><td>Description</td><td>-</td><td>-</td></tr>
-<tr ><td>workflow_state</td><td>Learner group</td><td>Status</td><td>-</td><td>-</td></tr>
-<tr ><td>position</td><td>Learner group</td><td>Create date</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>created_at</td><td>Learner group</td><td>Update date</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>updated_at</td><td>Learner group</td><td>Deletion date</td><td>-</td><td>-</td></tr>
+<tr ><td>course_id</td><td>Learner activity group</td><td>Course Id</td><td>-</td><td>-</td></tr>
+<tr ><td>name</td><td>Learner activity group</td><td>Name</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>default_assignment_name</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>position</td><td>Learner activity group</td><td>Position</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>updated_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_group_fact'></a><h1>assignment_group_fact</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>assignment_group_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>course_id</td><td>Learner group</td><td>Course Id</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>group_weight</td><td>Learner group</td><td>Is public</td><td>-</td><td>-</td></tr>
+<tr ><td>course_id</td><td>Learner activity group</td><td>Course Id</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>group_weight</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_group_rule_dim'></a><h1>assignment_group_rule_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>assignment_group_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>drop_lowest</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -165,24 +144,24 @@
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_override_dim'></a><h1>assignment_override_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_id</td><td>Quiz</td><td>Course Id</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_id</td><td>Learner activity override</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
 <tr ><td>course_section_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>group_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>quiz_id</td><td>Quiz</td><td>Quiz type</td><td>-</td><td>-</td></tr>
+<tr ><td>quiz_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>all_day</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>all_day_date</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>assignment_version</td><td>Quiz</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>assignment_version</td><td>Learner activity override</td><td>Learner activity version</td><td>-</td><td>-</td></tr>
 <tr ><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>due_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>due_at</td><td>Learner activity override</td><td>Due date is overridden</td><td>-</td><td>-</td></tr>
 <tr ><td>due_at_overridden</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>lock_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>lock_at</td><td>Learner activity override</td><td>Lock date is overridden</td><td>-</td><td>-</td></tr>
 <tr ><td>lock_at_overridden</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>set_type</td><td>Quiz</td><td>Status</td><td>-</td><td>-</td></tr>
+<tr ><td>set_type</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>title</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>unlock_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>unlock_at_overridden</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>updated_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>quiz_version</td><td>Quiz</td><td>Quiz title</td><td>-</td><td>-</td></tr>
+<tr ><td>updated_at</td><td>Learner activity override</td><td>Update date</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>quiz_version</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_override_fact'></a><h1>assignment_override_fact</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>assignment_override_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -204,7 +183,7 @@
 <tr  style="color: #BBB"><td>assignment_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>assignment_override_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>quiz_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>user_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>user_id</td><td>Learner activity override</td><td>Person Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>updated_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='assignment_override_user_fact'></a><h1>assignment_override_user_fact</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
@@ -224,7 +203,7 @@
 <tr  style="color: #BBB"><td>account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>enrollment_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>enrollment_term_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>name</td><td>Learner activity</td><td>Release date</td><td>-</td><td>-</td></tr>
+<tr ><td>name</td><td>Course offering</td><td>Course title</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>code</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>type</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -258,12 +237,12 @@
 <tr  style="color: #BBB"><td>course_section_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>role_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>type</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>workflow_state</td><td>Learner activity override</td><td>Due date is overridden</td><td>-</td><td>-</td></tr>
+<tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>updated_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>start_at</td><td>Learner activity override</td><td>Override type</td><td>-</td><td>-</td></tr>
-<tr ><td>end_at</td><td>Learner activity override</td><td>Override title</td><td>-</td><td>-</td></tr>
-<tr ><td>completed_at</td><td>Learner activity override</td><td>Due date</td><td>-</td><td>-</td></tr>
+<tr ><td>start_at</td><td>Course section enrollment</td><td>Entry date</td><td>-</td><td>-</td></tr>
+<tr ><td>end_at</td><td>Course section enrollment</td><td>Exit date</td><td>-</td><td>-</td></tr>
+<tr ><td>completed_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>self_enrolled</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>sis_source_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>course_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -282,17 +261,17 @@
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>root_account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>name</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>date_start</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>date_end</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>name</td><td>Academic term</td><td>Session name</td><td>-</td><td>-</td></tr>
+<tr ><td>date_start</td><td>Academic term</td><td>Begin date</td><td>-</td><td>-</td></tr>
+<tr ><td>date_end</td><td>Academic term</td><td>End date</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>sis_source_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='group_dim'></a><h1>group_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>name</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>description</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>name</td><td>Learner group</td><td>Name</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>description</td><td>Learner group</td><td>Description</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>updated_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>updated_at</td><td>Learner group</td><td>Update date</td><td>-</td><td>-</td></tr>
 <tr ><td>deleted_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>is_public</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -301,7 +280,7 @@
 <tr  style="color: #BBB"><td>join_level</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>default_view</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>sis_source_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>group_category_id</td><td>Quiz item response</td><td>Quiz item Id</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>group_category_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>wiki_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='group_fact'></a><h1>group_fact</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
@@ -323,8 +302,8 @@
 <tr ><td>points_possible</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>description</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>quiz_type</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>course_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>course_id</td><td>Quiz</td><td>Course Id</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_id</td><td>Quiz</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
 <tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>scoring_policy</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>anonymous_submissions</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -354,15 +333,15 @@
 <tr ><td>allowed_attempts</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>unpublished_question_count</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>question_count</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_id</td><td>Quiz</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>course_account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>enrollment_term_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='quiz_submission_dim'></a><h1>quiz_submission_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>quiz_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>quiz_id</td><td>Quiz result</td><td>Quiz Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>submission_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>user_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>user_id</td><td>Quiz result</td><td>Person Id</td><td>-</td><td>-</td></tr>
 <tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>quiz_state_during_submission</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>submission_scoring_policy</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
@@ -455,46 +434,46 @@
 </tbody></table><a href="#top">top</a><br><br><a name='submission_dim'></a><h1>submission_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>body</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>url</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>grade</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>body</td><td>Learner activity result</td><td>Body</td><td>-</td><td>-</td></tr>
+<tr ><td>url</td><td>Learner activity result</td><td>Url</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>grade</td><td>Learner activity result</td><td>Grade</td><td>-</td><td>-</td></tr>
 <tr ><td>submitted_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>submission_type</td><td>Quiz item</td><td>Quiz item type</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>submission_type</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>workflow_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>created_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>updated_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>updated_at</td><td>Learner activity result</td><td>Update date</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>processed</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>processed_attempts</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr ><td>grade_matches_current_submission</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>published_grade</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>graded_at</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>published_grade</td><td>Learner activity result</td><td>Published grade</td><td>-</td><td>-</td></tr>
+<tr ><td>graded_at</td><td>Learner activity result</td><td>Graded on date</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>has_rubric_assessment</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>attempt</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>has_admin_comment</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_id</td><td>Quiz item</td><td>Quiz Id</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_id</td><td>Learner activity result</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>excused</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>graded_anonymously</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr  style="color: #BBB"><td>grader_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>group_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr  style="color: #BBB"><td>grader_id</td><td>Learner activity result</td><td>Grader Id</td><td>-</td><td>-</td></tr>
+<tr ><td>group_id</td><td>Learner activity result</td><td>Learner group Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>quiz_submission_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>user_id</td><td>Quiz item</td><td>Body</td><td>-</td><td>-</td></tr>
+<tr ><td>user_id</td><td>Learner activity result</td><td>Person Id</td><td>-</td><td>-</td></tr>
 <tr ><td>grade_state</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name='submission_fact'></a><h1>submission_fact</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>submission_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>assignment_id</td><td>Quiz item</td><td>Quiz Id</td><td>-</td><td>-</td></tr>
+<tr ><td>assignment_id</td><td>Learner activity result</td><td>Learner activity Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>course_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>enrollment_term_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>user_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>grader_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>course_account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>enrollment_rollup_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>score</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>published_score</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>score</td><td>Learner activity result</td><td>Score</td><td>-</td><td>-</td></tr>
+<tr ><td>published_score</td><td>Learner activity result</td><td>Published score</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>what_if_score</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>submission_comments_count</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>account_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>assignment_group_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-<tr ><td>group_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<tr ><td>group_id</td><td>Learner activity result</td><td>Learner group Id</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>quiz_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>quiz_submission_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>wiki_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>

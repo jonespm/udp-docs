@@ -15,30 +15,6 @@
         <a class="navbar-item" href="../index.html">          Home
         </a>
 
-        <!-- UDP documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            UDP
-          </a>
-          <div class="navbar-dropdown is-boxed">
-<!--
-            <a class="navbar-item" href="../udp/access-udp-resources.html">
-            <a class="navbar-item" href="../udp/access-udp-resources.html">              Accessing UDP resources
-            </a>
-            <hr class="navbar-divider">
-          -->
-            <a class="navbar-item" href="../udp/caliper-endpoint.html">
-            <a class="navbar-item" href="../udp/caliper-endpoint.html">              Caliper endpoint
-            </a>
-            <a class="navbar-item" href="../udp/event-processing.html">
-            <a class="navbar-item" href="../udp/event-processing.html">              Event processing
-            </a>
-            <a class="navbar-item" href="../udp/lrs-event-record.html">
-            <a class="navbar-item" href="../udp/lrs-event-record.html">              Event record
-            </a>
-          </div>
-        </div>
-
         <!-- UCDM documentation menu -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="">
@@ -67,37 +43,40 @@
           </div>
         </div>
 
+        <!-- Caliper endpoint documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            Event data
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../udp/caliper-endpoint.html">
+            <a class="navbar-item" href="../udp/caliper-endpoint.html">              UDP Caliper endpoint
+            </a>
+            <a class="navbar-item" href="../udp/event-processing.html">
+            <a class="navbar-item" href="../udp/event-processing.html">              UDP Event processing
+            </a>
+          </div>
+        </div>
+
 <div class='navbar-item has-dropdown is-hoverable'>
   <a class='navbar-link' href=''>
-    Loading schemas
+    Context data
   </a>
   <div class='navbar-dropdown is-boxed'>
-    <a class='navbar-item' href='../loading_schemas/html/Originality checker-1.0.html'>
-     Originality checker v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
-     SIS v1.0 (Final)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.1.html'>
+ <a class="navbar-item" href="../udp/manifest-file.html">   Manifest file </a>    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
      SIS v1.1 (Candidate)
     </a>
-    <a class='navbar-item' href='../loading_schemas/html/LMS-1.0.html'>
+    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+     SIS v1.0 (Final)
+    </a>
+    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+     Originality checker v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
      LMS v1.0 (Draft)
     </a>
   </div>
 </div>
-
-        <!-- Developer menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            Developers
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../developers/caliper-integration.html">
-            <a class="navbar-item" href="../developers/caliper-integration.html">              Caliper sensor guidelines
-            </a>
-          </div>
-        </div>
 
       </div>
 
@@ -115,6 +94,7 @@
 <tr ><td>dateupdated</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>deletedate</td><td>DATE</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>issequential</td><td>BIT (1)</td><td>Common Educational Data Standards</td><td></td></tr>
+<tr ><td>lmsextid</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>lmsintid</td><td>CHARACTER VARYING (30)</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>moduleid</td><td>INTEGER</td><td>Common Educational Data Standards</td><td></td></tr>
 <tr ><td>name</td><td>CHARACTER VARYING</td><td>Common Educational Data Standards</td><td></td></tr>
