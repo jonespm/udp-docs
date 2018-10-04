@@ -46,7 +46,7 @@ entities:
         fk: Course offering.OcIntId
       - code: RepositoryChecked
         name: Repository checked
-        description: Only check against institutional papers or with TurnItIn. Global student database vs. Institutional database. Standard paper repository: Student papers will be checked against other institutions' student submissions.   Institution paper repository: Student papers will only be checked against other student papers within your institution. With this setting enabled, if a student from your institution submits a paper matching a paper of a student from another institution. Turnitin will not identify this match.
+        description: Only check against institutional papers or with TurnItIn. Global student database vs. Institutional database. Standard paper repository - Student papers will be checked against other institutions' student submissions.   Institution paper repository - Student papers will only be checked against other student papers within your institution. With this setting enabled, if a student from your institution submits a paper matching a paper of a student from another institution. Turnitin will not identify this match.
         is_required: false
       - code: ExcludeBibliography
         name: Exclude - Bibliography

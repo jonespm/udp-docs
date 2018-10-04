@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Manifest file</title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='../assets/base.css'>
+  </head>
+
+  <body>
+    <a name='top'></a>
+
+    <!-- Navigation -->
+    <div class="container">
+      <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+          <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="../index.html">
+            <a class="navbar-item" href="../index.html">          Home
+            </a>
+
+            <!-- UCDM documentation menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                UCDM
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="../ucdm/data-dictionary.html">
+                <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
+                </a>
+                <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
+                <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
+                </a>
+                <a class="navbar-item" href="../ucdm/relational-schema.html">
+                <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
+                </a>
+                <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+                <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+                <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
+                </a>
+                <a class="navbar-item" href="../ucdm/queries-event-store.html">
+                <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
+                </a>
+              </div>
+            </div>
+
+            <!-- Caliper endpoint documentation menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                Event data
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+                <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+                </a>
+                <a class="navbar-item" href="../event-data/event-processing.html">
+                <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
+                </a>
+              </div>
+            </div>
+
+    <div class='navbar-item has-dropdown is-hoverable'>
+      <a class='navbar-link' href=''>
+        Context data
+      </a>
+      <div class='navbar-dropdown is-boxed'>
+     <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+        <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+         Originality checker v1.0 (Draft)
+        </a>
+        <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+         LMS v1.0 (Draft)
+        </a>
+        <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+         SIS v1.0 (Final)
+        </a>
+        <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+         SIS v1.1 (Candidate)
+        </a>
+      </div>
+    </div>
+
+          </div>
+
+          <div class="navbar-end">
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- /// Navigation -->
+
+    <!-- Section header -->
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title">Manifest file</h2>
+          <h2 class="subtitle">Batch data integrations</h2>
+        </div>
+      </div>
+    </section>
+    <!-- /// Section header -->
+
+    <div class="content">
+      <br>
+      <div class="container">
+
+<pre>
+  # This file acts as a manifest and sentinel file
+
+  manifest_version: v1 # a version tag describing the version of this manifest
+
+  source: canvas-data # value will be (canvas-data|[sis_system])
+  # where sis_system == (hyphen-separated sis system name(s), e.g. 'peoplesoft', 'banner')
+
+  data_schema: 1.0 # ucdm version number
+
+  datetime: 2017-11-19T21:11:31Z # ISO 8601 datetime stamp
+
+  dump_id: b4f8eec7-7adc-47a1-83a4-238f1032da00 # some UUID for canvas data, a truncated ISO 8601 date (YYYY-MM-DD) for SIS
+
+  files:
+    - name: assignment_dim_0.gz # name of file
+      checksum: 291305b872ff5ae8e47dbe8d97ec23b2 # md5 checksum of file
+    - name: assignment_dim_1.gz
+      checksum: 163f2d7d097518435ccc61936e60cd49
+    ...
+</pre>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="content">
+          <p>
+            Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br>
+            Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- ///Footer -->
+
+  </body>
+</html>

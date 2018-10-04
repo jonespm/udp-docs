@@ -146,46 +146,6 @@
         </ol>
 
 
-        <!-- Message authentication -->
-        <a name='authentication'></a>
-        <h1>1. Message authentication</h1>
-
-        <p>
-          Caliper events posted to your Caliper endpoint MUST be authenticated with a token granted by Unizin. If a Caliper event envelope or Caliper event is posted without a valid authentication token, it is rejected by the Caliper endpoint.
-        </p>
-
-        <p>
-          Per the Caliper 1.1 specification, a tool's Caliper <em>sensor</em> implementation:
-        </p>
-
-        <blockquote>
-          SHOULD ... set the Authorization request header field using the "Bearer" authentication scheme described in RFC 6750, Section 2.1. The b64token authorization credential sent by a Sensor MUST be one the Endpoint can validate although the credential MAY be opaque to the emitting Sensor itself.
-        </blockquote>
-
-        <p>
-          Your Caliper endpoint will inspect the <code>Authorization:</code> request header for a Bearer token and compare it agains a list of valid tokens.
-        </p>
-
-        <p>
-          An example header for a Caliper message sent over HTTPS would therefore look like this:
-        </p>
-
-  <pre>
-  POST /caliper-endpoint HTTP/1.1
-  Host: server.example.com
-  Authorization: Bearer [some_granted_token]
-  </pre>
-
-        <h2>1.1 Granting and revoking auth tokens</h2>
-        <p>
-          At present, Unizin's technical services team will grant and revoke authentication tokens on Institution's behalf. Tokens are granted on a per-tool basis. It is <strong>strongly recommended</strong> that institutions do not share the same token among multiple tool providers. If the same auth token is granted to multiple tool providers, then all are subject to the validity of a token that may need to revoked if a single tool provider were to abuse a token.
-        </p>
-
-        <p>
-          <a href="https://resources.unizin.org/jira/servicedesk/customer/portal/1/user/login?destination=portal%2F1">Request an Auth token.</a>
-        </p>
-
-
 
 
         <!-- Endpoint validation -->

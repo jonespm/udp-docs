@@ -15,30 +15,6 @@
         <a class="navbar-item" href="../index.html">          Home
         </a>
 
-        <!-- UDP documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            UDP
-          </a>
-          <div class="navbar-dropdown is-boxed">
-<!--
-            <a class="navbar-item" href="../udp/access-udp-resources.html">
-            <a class="navbar-item" href="../udp/access-udp-resources.html">              Accessing UDP resources
-            </a>
-            <hr class="navbar-divider">
-          -->
-            <a class="navbar-item" href="../udp/caliper-endpoint.html">
-            <a class="navbar-item" href="../udp/caliper-endpoint.html">              Caliper endpoint
-            </a>
-            <a class="navbar-item" href="../udp/event-processing.html">
-            <a class="navbar-item" href="../udp/event-processing.html">              Event processing
-            </a>
-            <a class="navbar-item" href="../udp/lrs-event-record.html">
-            <a class="navbar-item" href="../udp/lrs-event-record.html">              Event record
-            </a>
-          </div>
-        </div>
-
         <!-- UCDM documentation menu -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="">
@@ -67,37 +43,41 @@
           </div>
         </div>
 
+        <!-- Caliper endpoint documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            Event data
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+            <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+            </a>
+            <a class="navbar-item" href="../event-data/event-processing.html">
+            <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
+            </a>
+          </div>
+        </div>
+
 <div class='navbar-item has-dropdown is-hoverable'>
   <a class='navbar-link' href=''>
-    Loading schemas
+    Context data
   </a>
   <div class='navbar-dropdown is-boxed'>
-    <a class='navbar-item' href='../loading_schemas/html/LMS-1.0.html'>
-     LMS v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.1.html'>
-     SIS v1.1 (Candidate)
-    </a>
-    <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
+ <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
      SIS v1.0 (Final)
     </a>
-    <a class='navbar-item' href='../loading_schemas/html/Originality checker-1.0.html'>
+    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+     SIS v1.1 (Candidate)
+    </a>
+    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+     LMS v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
      Originality checker v1.0 (Draft)
     </a>
   </div>
 </div>
-
-        <!-- Developer menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            Developers
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../developers/caliper-integration.html">
-            <a class="navbar-item" href="../developers/caliper-integration.html">              Caliper sensor guidelines
-            </a>
-          </div>
-        </div>
 
       </div>
 
@@ -141,7 +121,7 @@
 <tr ><td>Credits earned</td><td><code>CreditsEarned</code></td><td>The number of credits the Person actually earned in the Course section.</td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name="institutional-affiliation"><h1>Institutional affiliation</h1></a><p>The association of a Person to an academic institution, and the description of the general or primary capacity in which they act at that institution.(Common Educational Data Standards)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
 </thead><tbody><tr ><td>Person Id</td><td><code>PersonId</code></td><td>The person affilitated with the University.</td></tr>
-<tr ><td>Directory information block</td><td><code>DirectoryBlock</code></td><td>A variable used to describe Persons who are currently electing to block their directory information as per FERPA, or those who previously had a block but are requesting it be removed. A `null` value indicates that the related person does not have a FERPA directory block, and values may be shared in accordance with standard data agreements. &nbsp;  - This block is only valid for institutional affiliated records.<br>Option set: <a href="../tables/refdirectoryinformationblock.html">RefDirectoryInformationBlock</a></td></tr>
+<tr ><td>Directory information block</td><td><code>DirectoryBlock</code></td><td>A variable used to describe Persons who are currently electing to block their directory information as per FERPA, or those who previously had a block but are requesting it be removed. A `null` value indicates that the related person does not have a FERPA directory block, and values may be shared in accordance with standard data agreements. &nbsp;  - This block is only valid for institutional affiliated records.<br>Option set: <a href="../tables/refdirectoryinformationblockstatus.html">RefDirectoryInformationBlockStatus</a></td></tr>
 </tbody></table><a href="#top">top</a><br><br><a name="learner-activity"><h1>Learner activity</h1></a><p>An assignment, task, piece of work, or other activity that is as part of a course of study.(Unizin Common Data Model)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
 </thead><tbody><tr ><td>Course Id</td><td><code>CourseId</code></td><td>The Course offering Id to which this learner activity belongs.</td></tr>
 <tr ><td>Title</td><td><code>Title</code></td><td>The title or name of the learner activity.</td></tr>

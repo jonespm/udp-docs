@@ -42,7 +42,7 @@ exit 1;
 sub document_loading_schemas($) {
   my($doc_dir) = @_;
 
-  my $ls_dir = $doc_dir . '/udp/loading_schemas/src';
+  my $ls_dir = $doc_dir . '/udp/context-data/src';
 
   ## Only proceed if we have some value
   ## for the loading schema directory.
@@ -94,7 +94,7 @@ sub document_loading_schema($) {
 
   ## Create the HTML file representing
   ## the loading schema.
-  my $outfile = $doc_dir . '/udp/loading_schemas/html/' . "${system}-${version}.html";
+  my $outfile = $doc_dir . '/udp/context-data/html/' . "${system}-${version}.html";
   open(my $fh, ">$outfile") or die "Couldn't create $outfile\n";
 
   ## Start the HTML in the documentation.
