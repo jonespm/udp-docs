@@ -42,7 +42,7 @@ entities:
         is_required: true
       - code: CourseId
         name: Course offering ID
-        desription: The unique, internal identifier for the Course offering to which this Learner activity belongs.
+        description: The unique, internal identifier for the Course offering to which this Learner activity belongs.
         is_required: true
         fk: Course offering.OcIntId
       - code: RepositoryChecked
@@ -81,7 +81,7 @@ entities:
         description: The unique identifier for the Learner activity result from the system that provisions the Originality checker. This value will most likely correpsond to the Learning Management System's primary key for an assignment submission.
         is_required: true
       - code: LearnerActivityId
-        desription: The unique, internal identifier for the Learner activity to which this Learner activity result belongs.
+        description: The unique, internal identifier for the Learner activity to which this Learner activity result belongs.
         is_required: true
         fk: Learner activity.OcIntId
       - code: SubmitterId
@@ -104,7 +104,8 @@ entities:
         description: The unique identifier for the File from the system that provisions the Originality checker. This value will most likely correpsond to the Learning Management System's primary key for a file.
         is_required: true
       - code: LearnerActivityResultId
-        desription: The unique, internal identifier for the Learner activity result to which this File belongs.
+        name: Learner activity result ID
+        description: The unique, internal identifier for the Learner activity result to which this File belongs.
         is_required: true
         fk: Learner activity result.OcIntId
   - name: Originality Report
@@ -112,16 +113,19 @@ entities:
       - code: OcIntId
         name: Internal Originality report ID
         description: The internal primary key used by the Originality checker to define an Originality reports.
+        is_required: true
       - code: LearnerActivityResultId
-        desription: The unique, internal identifier for the Learner activity result to which this Originality Report belongs.
+        name: Learner activity result ID
+        description: The unique, internal identifier for the Learner activity result to which this Originality Report belongs.
         is_required: true
         fk: Learner activity result.OcIntId
+      - code: FileId
+        name: File ID
+        description: If the content type for the Originality report is a File, then this value is non-null and describes the unique, internal identifier for the File to which this Originality Report belongs.
+        fk: File.OcIntId
       - code: ContentType
         name: Content type
         description: Describes the content type of the Learner activity result for which this Originality report was generated. Values may include 'File' or 'Text entry'.
-      - code: FileId
-        description: If the content type for the Originality report is a File, then this value is non-null and describes the unique, internal identifier for the File to which this Originality Report belongs.
-        fk: File.OcIntId
       - code: ReportGeneratedDate
         name: Report generation date
         description: The timestamp representing when the report for a learner activity result was generated.
@@ -186,10 +190,10 @@ entities:
         description: The percentage, between 0-100, of the text that is quoted text.
         is_required: false
       - code: StudentFirstViewReport
-        name: Owner opened date
-        description: The date on which the student opened the viewer.
+        name: Student first viewed date
+        description: The date and time that the student who submitted the Learner activity result first viewed the originality reprt.
         is_required: false
       - code: InstructorFirstViewReport
-        name: Number of times the student opened the viewer
-        description: ??
+        name: Instructure first viewed date
+        description: The date and time that an instructor first viewed the originality reprt.
         is_required: false
