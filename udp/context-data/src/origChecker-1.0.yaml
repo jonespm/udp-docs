@@ -48,7 +48,7 @@ entities:
       - code: RepositoryChecked
         name: Repository checked
         description: The name of the repository whose corpus is used to measure similarity. Different Originality checkers may make available different repositories against which to check originality. Values may include "Global student database," "Institutional database," and "Standard paper repository," for example.
-        is_required: false
+        is_required: true
       - code: ExcludeBibliography
         name: Exclude - Bibliography
         description: If true, then the bibliographic sections of a learner activity result (e.g., an essay) are ignored by the Originality checker for this Learner activity. Otherwise, this value must be false.
@@ -92,7 +92,7 @@ entities:
       - code: SubmittedToOCDate
         name: Date submitted to Originality checker
         description: The date & time that the learner activity result (e.g., assignment submission) was submitted in the Originality checker.
-        is_required: false
+        is_required: true
   - name: File
     elements:
       - code: OcIntId
@@ -123,13 +123,15 @@ entities:
         name: File ID
         description: If the content type for the Report is a File, then this value is non-null and describes the unique, internal identifier for the File to which this Report belongs.
         fk: File.OcIntId
+        is_required: false
       - code: ContentType
         name: Content type
         description: Describes the content type of the Learner activity result for which this Report was generated. Values may include 'File' or 'Text entry'.
+        is_required: true
       - code: ReportGeneratedDate
         name: Report generation date
         description: The timestamp representing when the report for a learner activity result was generated.
-        is_required: false
+        is_required: true
       - code: CharacterCount
         name: Character count
         description: The number of characters in the learner activity result.
@@ -169,6 +171,7 @@ entities:
       - code: SimilarityScore
         name: Similarity score
         description: The similarity score for the learner activity result, on a scale of 0-100.
+        is_required: true
       - code: SimilarityToSubmittedStudentWork
         name: Similarity to submitted student work
         description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Tool from its repository of submitted student work.
