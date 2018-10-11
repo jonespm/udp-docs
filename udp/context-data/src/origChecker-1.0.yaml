@@ -108,24 +108,24 @@ entities:
         description: The unique, internal identifier for the Learner activity result to which this File belongs.
         is_required: true
         fk: Learner activity result.OcIntId
-  - name: Originality Report
+  - name: Report
     elements:
       - code: OcIntId
-        name: Internal Originality report ID
-        description: The internal primary key used by the Originality checker to define an Originality reports.
+        name: Internal Report ID
+        description: The internal primary key used by the Tool to define an Report.
         is_required: true
       - code: LearnerActivityResultId
         name: Learner activity result ID
-        description: The unique, internal identifier for the Learner activity result to which this Originality Report belongs.
+        description: The unique, internal identifier for the Learner activity result to which this Report belongs.
         is_required: true
         fk: Learner activity result.OcIntId
       - code: FileId
         name: File ID
-        description: If the content type for the Originality report is a File, then this value is non-null and describes the unique, internal identifier for the File to which this Originality Report belongs.
+        description: If the content type for the Report is a File, then this value is non-null and describes the unique, internal identifier for the File to which this Report belongs.
         fk: File.OcIntId
       - code: ContentType
         name: Content type
-        description: Describes the content type of the Learner activity result for which this Originality report was generated. Values may include 'File' or 'Text entry'.
+        description: Describes the content type of the Learner activity result for which this Report was generated. Values may include 'File' or 'Text entry'.
       - code: ReportGeneratedDate
         name: Report generation date
         description: The timestamp representing when the report for a learner activity result was generated.
@@ -144,7 +144,7 @@ entities:
         is_required: false
       - code: CreateDate
         name: Create date
-        description: Date the Originality score was created.
+        description: Date the Report score was created.
         is_required: true
       - code: ExcludeQuotes
         name: Exclude - Quotes
@@ -152,11 +152,11 @@ entities:
         is_required: false
       - code: ExcludeBibliography
         name: Exlcude - Bibliography
-        description: If true, then bibliographic materials in the Learner activity result are excluded from the originality evaluation.
+        description: If true, then bibliographic materials in the Learner activity result are excluded from the Report.
         is_required: false
       - code: ExcludeSmallMatches
         name: Exclude - Small matches
-        description: If true, then small matches in the Learner activity result are excluded from the originality evaluation.
+        description: If true, then small matches in the Learner activity result are excluded from the Report.
         is_required: false
       - code: SmallMatchThresholdCount
         name: Small match threshold - count
@@ -171,15 +171,15 @@ entities:
         description: The similarity score for the learner activity result, on a scale of 0-100.
       - code: SimilarityToSubmittedStudentWork
         name: Similarity to submitted student work
-        description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Originality Checker from its repository of submitted student work.
+        description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Tool from its repository of submitted student work.
         is_required: false
       - code: SimilarityToInternetContent
         name: Similarity - Internet content
-        description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Originality Checker from the Internet.
+        description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Tool from the Internet.
         is_required: false
       - code: SimilarityToPublishersContent
         name: Similarity - Publishers content
-        description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Originality Checker from published content (whether proprietary or public domain).
+        description: The percentage of the paper, calculated in word counts, that matches sources indexed by the Tool from published content (whether proprietary or public domain).
         is_required: false
       - code: PercentageBibliographicContent
         name: Percentage bibliographic content
@@ -191,9 +191,9 @@ entities:
         is_required: false
       - code: StudentFirstViewReport
         name: Student first viewed date
-        description: The date and time that the student who submitted the Learner activity result first viewed the originality reprt.
+        description: The date and time that the student who submitted the Learner activity result first viewed the Reprt.
         is_required: false
       - code: InstructorFirstViewReport
         name: Instructure first viewed date
-        description: The date and time that an instructor first viewed the originality reprt.
+        description: The date and time that an instructor first viewed the Report.
         is_required: false
