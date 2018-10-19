@@ -139,7 +139,7 @@ sub document_loading_schema($) {
     print $fh '<table class="table is-bordered is-hoverable">';
 
     print $fh '<thead>';
-    &ls_row($fh, 'Element', 'Code (Header)', 'Description', 'Required', 1);
+    &ls_row($fh, 'Element', 'Code (Header)', 'Description', 'Required', 'Data type', 1);
     print $fh '</thead>';
 
     print $fh '<tbody>';
@@ -183,13 +183,20 @@ sub document_loading_schema($) {
         defined $element_ls->{description} ne ''
       ) ? $element_ls->{description} : $element_data->{description};
 
+      my $element_data_type =
+        (
+          defined $element_ls->{data_type} &&
+          defined $element_ls->{data_type} ne ''
+        ) ? $element_ls->{data_type} : 'n/a';
+
 
       ## Present element metadata from the schema
       ## if it exists. Otherwise, we default to what
       ## is in the YAML definition.
-      if( defined $element_name        && $element_name ne '' &&
-          defined $element_code        && $element_code ne '' &&
-          defined $element_description && $element_description ne '' ) {
+      if( defined $element_name        && $element_name        ne '' &&
+          defined $element_code        && $element_code        ne '' &&
+          defined $element_description && $element_description ne '' &&
+          defined $element_data_type   && $element_data_type   ne '' ) {
 
         ## Start with the basic description.
         my $html_element_description =
@@ -242,6 +249,7 @@ sub document_loading_schema($) {
           "<code>$element_code</code>$new_element",
           $html_element_description,
           $html_is_required,
+          $element_data_type,
           0
         );
 
@@ -257,6 +265,7 @@ sub document_loading_schema($) {
           "<code>$element_code</code>",
           $element_desc,
           '<span color="red">No</span>',
+          $element_data_type,
           0
         );
       }
@@ -323,17 +332,19 @@ sub get_element_by_code($$) {
 }
 
 sub ls_row {
-  my($fh, $element, $header, $desc, $is_required, $is_head) = @_;
+  my($fh, $element, $header, $desc, $is_required, $data_type, $is_head) = @_;
 
   my $row_type = $is_head ? 'th' : 'td';
 
-  $element = '' unless $element && $element ne '';
-  $header  = '' unless $header && $header ne '';
-  $desc    = '' unless $desc && $desc ne '';
+  $element   = '' unless $element && $element ne '';
+  $header    = '' unless $header && $header ne '';
+  $desc      = '' unless $desc && $desc ne '';
+  $data_type = '' unless $data_type && $data_type ne '';
 
   print $fh '<tr>';
   print $fh "<${row_type}>$element</${row_type}>";
   print $fh "<${row_type}>$header</${row_type}>";
+  print $fh "<${row_type}>$data_type</${row_type}>";
   print $fh "<${row_type}>$desc</${row_type}>";
   print $fh "<${row_type}>$is_required</${row_type}>";
   print $fh '</tr>';
