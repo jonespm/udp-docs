@@ -1,0 +1,53 @@
+configuration:
+  system: e-Reader
+  version: 1.0
+  ucdmVersion: 1.0
+  status: Draft
+entities:
+  - name: Person
+    ucdm_entity: Person
+    system_of_record: false
+    elements:
+      - code: ErIntId
+      - code: ErExtId
+  - name: Academic term
+    ucdm_entity: Academic term
+    system_of_record: false
+    elements:
+      - code: ErIntId
+      - code: ErExtId
+  - name: Session
+    ucdm_entity: Session
+    system_of_record: false
+    elements:
+      - code: ErIntId
+      - code: ErExtId
+  - name: Course offering
+    ucdm_entity: Course offering
+    system_of_record: false
+    elements:
+      - code: ErIntId
+      - code: ErExtId
+  - name: Course section
+    ucdm_entity: Course section
+    system_of_record: false
+    elements:
+      - code: ErIntId
+      - code: ErExtId
+  - name: Learning resource
+    ucdm_entity: Learning resource
+    system_of_record: true
+    elements:
+      - code: ErIntId
+      - code: ErExtId
+      - code: Title
+      - code: Edition
+      - code: Print ISBN
+      - code: Digital ISBN
+      - code: URL
+      - code: Resource description
+      - code: Content description
+      - code: Publisher
+      - code: Author
+      - code: Publish date
+      - code: Upload date 
