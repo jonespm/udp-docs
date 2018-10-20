@@ -45,8 +45,8 @@ entities:
         name: Course offering ID
         description: The Course offering ID in which this Learner activity is assigned.
         is_required: true
-        fk: Course offering.OcIntId
         data_type: varchar
+        fk: Course offering.OcIntId
       - code: RepositoryChecked
         name: Repository checked
         description: The name of the repository whose corpus is used to measure similarity. Different Originality checkers may make available different repositories against which to check originality. Values may include "Global student database" or "Institutional student database."
@@ -91,16 +91,17 @@ entities:
         is_required: true
         data_type: varchar
       - code: LearnerActivityId
+        name: Learner activity ID
         description: The Learner activity ID that corresponds to this Learner activity result.
         is_required: true
+        data_type: varchar
         fk: Learner activity.OcIntId
-        data_type: integer
       - code: SubmitterToOCId
         name: Submitter ID
         description: The Person ID of the individual who submitted the Learner activity result to the Originality checker system.
         is_required: true
-        fk: Person.OcIntId
         data_type: varchar
+        fk: Person.OcIntId
       - code: SubmittedToOCDate
         name: Date submitted to Originality checker
         description: The date & time that the learner activity result (e.g., assignment submission) was submitted in the Originality checker.
@@ -123,8 +124,8 @@ entities:
         name: Learner activity result ID
         description: The Learner activity result to which this File belongs.
         is_required: true
+        data_type: varchar
         fk: Learner activity result.OcIntId
-        data_type: integer
   - name: Report
     description: A Report is a formal account of teaching & learning. This generic concept can be applied in many contexts relevant to teaching and learning processes, including reporting learner outcomes, the originality of a student work, or a rubric-driven evaluatio of an assignment.
     elements:
@@ -142,14 +143,14 @@ entities:
         name: Learner activity result ID
         description: The Learner activity result ID for which this Report was generated.
         is_required: true
+        data_type: varchar
         fk: Learner activity result.OcIntId
-        data_type: integer
       - code: FileId
         name: File ID
         description: If the content type for the Report is a File, then this value is non-null and describes the unique, internal identifier for the File to which this Report belongs.
-        fk: File.OcIntId
         is_required: false
-        data_type: integer
+        data_type: varchar
+        fk: File.OcIntId
       - code: ContentType
         name: Content type
         description: Describes the content type of the Learner activity result for which this Report was generated. Values may include 'File' or 'Text entry'.
