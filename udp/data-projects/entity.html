@@ -1,0 +1,263 @@
+<!doctype html><html lang="en">  <head>   <title>Data project DB: Entity</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a><!-- Navigation -->
+<div class="container">
+  <nav class="navbar is-transparent">
+    <div class="navbar-brand">
+      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="../index.html">
+        <a class="navbar-item" href="../index.html">          Home
+        </a>
+
+        <!-- UCDM documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            UCDM
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../ucdm/data-dictionary.html">
+            <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
+            </a>
+            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
+            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
+            </a>
+            <a class="navbar-item" href="../ucdm/relational-schema.html">
+            <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
+            </a>
+            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+            <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
+            </a>
+            <a class="navbar-item" href="../ucdm/queries-event-store.html">
+            <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
+            </a>
+          </div>
+        </div>
+
+        <!-- Caliper endpoint documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            Event data
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+            <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+            </a>
+            <a class="navbar-item" href="../event-data/event-processing.html">
+            <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
+            </a>
+          </div>
+        </div>
+
+<div class='navbar-item has-dropdown is-hoverable'>
+  <a class='navbar-link' href=''>
+    Context data
+  </a>
+  <div class='navbar-dropdown is-boxed'>
+ <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+     Originality checker v1.0 (Candidate)
+    </a>
+    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+     SIS v1.1 (Candidate)
+    </a>
+    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+     SIS v1.0 (Final)
+    </a>
+    <a class='navbar-item' href='../context-data/html/e-Reader-1.0.html'>
+     e-Reader v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+     LMS v1.0 (Draft)
+    </a>
+  </div>
+</div>
+
+        <!-- Caliper endpoint documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            Data projects DB
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../data-projects/entity.html">
+            <a class="navbar-item" href="../data-projects/entity.html">              Entity tables
+            </a>
+            <a class="navbar-item" href="../data-projects/features.html">
+            <a class="navbar-item" href="../data-projects/features.html">              Feature tables
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="navbar-end">
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- /// Navigation -->
+<section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>Entity tables</b>       </h1>      <h1 class="subtitle">        Data projects DB      </h1>    </div>  </div></section><div class="content"><br><div class="container"><a name=top></a><ol><li><a href='#academic_term'>Academic term</a> (8)</li><li><a href='#assessment'>Assessment</a> (6)</li><li><a href='#assessment_item'>Assessment item</a> (4)</li><li><a href='#assessment_item_response'>Assessment item response</a> (4)</li><li><a href='#assessment_result'>Assessment result</a> (7)</li><li><a href='#course_offering'>Course offering</a> (8)</li><li><a href='#course_section'>Course section</a> (6)</li><li><a href='#course_section_enrollment'>Course section enrollment</a> (8)</li><li><a href='#learner_activity'>Learner activity</a> (14)</li><li><a href='#learner_activity_group'>Learner activity group</a> (5)</li><li><a href='#learner_activity_result'>Learner activity result</a> (25)</li><li><a href='#learner_group'>Learner group</a> (9)</li><li><a href='#person'>Person</a> (38)</li></ol><p>Total data points: 142</p><p><a name='academic_term'></a><h2>Academic term</h2>Table name: <code>academic_term</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>termtype</td><td>character varying</td></tr>
+<tr><td width=80>3</td><td width=350>sessiontype</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>sessionname</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>termbegindate</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>termenddate</td><td>character varying</td></tr>
+<tr><td width=80>7</td><td width=350>instrbegindate</td><td>character varying</td></tr>
+<tr><td width=80>8</td><td width=350>instrenddate</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='assessment_item_response'></a><h2>Assessment item response</h2>Table name: <code>assessment_item_response</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>assessmentitemresponseid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>assessmentitemid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>assessmentresultid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>body</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='assessment_result'></a><h2>Assessment result</h2>Table name: <code>assessment_result</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>assessmentresultid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>asessmentid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>learneractivityresultid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>numberofresponses</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>status</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>createdate</td><td>timestamp without time zone</td></tr>
+<tr><td width=80>7</td><td width=350>updatedate</td><td>timestamp without time zone</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='assessment'></a><h2>Assessment</h2>Table name: <code>assessment</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>assessmentid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>learneractivityid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>title</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>type</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>status</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_offering'></a><h2>Course offering</h2>Table name: <code>course_offering</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>coursesubj</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>courseno</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>title</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>description</td><td>character varying</td></tr>
+<tr><td width=80>7</td><td width=350>status</td><td>character varying</td></tr>
+<tr><td width=80>8</td><td width=350>availablecredits</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_section'></a><h2>Course section</h2>Table name: <code>course_section</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>sectionid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>sectionnumber</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>deliverymode</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>maxenrollment</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity'></a><h2>Learner activity</h2>Table name: <code>learner_activity</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivityid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>learneractivitygroupid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>title</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>description</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>createdate</td><td>date</td></tr>
+<tr><td width=80>7</td><td width=350>updatedate</td><td>date</td></tr>
+<tr><td width=80>8</td><td width=350>unlockdate</td><td>date</td></tr>
+<tr><td width=80>9</td><td width=350>lockdate</td><td>date</td></tr>
+<tr><td width=80>10</td><td width=350>duedate</td><td>date</td></tr>
+<tr><td width=80>11</td><td width=350>possiblepoints</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>gradingtype</td><td>character varying</td></tr>
+<tr><td width=80>13</td><td width=350>status</td><td>character varying</td></tr>
+<tr><td width=80>14</td><td width=350>position</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity_group'></a><h2>Learner activity group</h2>Table name: <code>learner_activity_group</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivitygroupid</td><td>character varying</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>bigint</td></tr>
+<tr><td width=80>3</td><td width=350>name</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>status</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>position</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_group'></a><h2>Learner group</h2>Table name: <code>learner_group</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learnergroupid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>name</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>description</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>status</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>createdate</td><td>date</td></tr>
+<tr><td width=80>7</td><td width=350>updatedate</td><td>date</td></tr>
+<tr><td width=80>8</td><td width=350>deletedate</td><td>date</td></tr>
+<tr><td width=80>9</td><td width=350>publiccontents</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='assessment_item'></a><h2>Assessment item</h2>Table name: <code>assessment_item</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>assessmentitemid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>assessmentid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>type</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>body</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity_result'></a><h2>Learner activity result</h2>Table name: <code>learner_activity_result</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivityresultid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>learneractivityid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>graderid</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>learnergroupid</td><td>bigint</td></tr>
+<tr><td width=80>6</td><td width=350>type</td><td>character varying</td></tr>
+<tr><td width=80>7</td><td width=350>body</td><td>character varying</td></tr>
+<tr><td width=80>8</td><td width=350>url</td><td>character varying</td></tr>
+<tr><td width=80>9</td><td width=350>gradingstatus</td><td>character varying</td></tr>
+<tr><td width=80>10</td><td width=350>score</td><td>numeric</td></tr>
+<tr><td width=80>11</td><td width=350>publishedscore</td><td>character varying</td></tr>
+<tr><td width=80>12</td><td width=350>scoretype</td><td>character varying</td></tr>
+<tr><td width=80>13</td><td width=350>grade</td><td>character varying</td></tr>
+<tr><td width=80>14</td><td width=350>publishedgrade</td><td>character varying</td></tr>
+<tr><td width=80>15</td><td width=350>gradetype</td><td>character varying</td></tr>
+<tr><td width=80>16</td><td width=350>submissionstatus</td><td>character varying</td></tr>
+<tr><td width=80>17</td><td width=350>gradebookstatus</td><td>character varying</td></tr>
+<tr><td width=80>18</td><td width=350>createdate</td><td>date</td></tr>
+<tr><td width=80>19</td><td width=350>updatedate</td><td>date</td></tr>
+<tr><td width=80>20</td><td width=350>responsedate</td><td>date</td></tr>
+<tr><td width=80>21</td><td width=350>gradeddate</td><td>date</td></tr>
+<tr><td width=80>22</td><td width=350>usage</td><td>character varying</td></tr>
+<tr><td width=80>23</td><td width=350>studentviewed</td><td>character varying</td></tr>
+<tr><td width=80>24</td><td width=350>extraattempts</td><td>integer</td></tr>
+<tr><td width=80>25</td><td width=350>extratime</td><td>numeric</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_section_enrollment'></a><h2>Course section enrollment</h2>Table name: <code>course_section_enrollment</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>sectionid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>role</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>rolestatus</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>entrydate</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>exitdate</td><td>character varying</td></tr>
+<tr><td width=80>7</td><td width=350>creditstaken</td><td>character varying</td></tr>
+<tr><td width=80>8</td><td width=350>creditsearned</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='person'></a><h2>Person</h2>Table name: <code>person</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>firstname</td><td>character varying</td></tr>
+<tr><td width=80>3</td><td width=350>middlename</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>lastname</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>suffix</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>sex</td><td>character varying</td></tr>
+<tr><td width=80>7</td><td width=350>ethnicity</td><td>character varying</td></tr>
+<tr><td width=80>8</td><td width=350>zipcode</td><td>character varying</td></tr>
+<tr><td width=80>9</td><td width=350>usresidency</td><td>character varying</td></tr>
+<tr><td width=80>10</td><td width=350>hsgpa</td><td>character varying</td></tr>
+<tr><td width=80>11</td><td width=350>colgpacum</td><td>character varying</td></tr>
+<tr><td width=80>12</td><td width=350>activeduty</td><td>character varying</td></tr>
+<tr><td width=80>13</td><td width=350>veteran</td><td>character varying</td></tr>
+<tr><td width=80>14</td><td width=350>edulevelpaternal</td><td>character varying</td></tr>
+<tr><td width=80>15</td><td width=350>edulevelmaternal</td><td>character varying</td></tr>
+<tr><td width=80>16</td><td width=350>edulevelparental</td><td>character varying</td></tr>
+<tr><td width=80>17</td><td width=350>enrollmentlevel</td><td>character varying</td></tr>
+<tr><td width=80>18</td><td width=350>coursecount</td><td>character varying</td></tr>
+<tr><td width=80>19</td><td width=350>satmathpre2016</td><td>character varying</td></tr>
+<tr><td width=80>20</td><td width=350>satmathpost2016</td><td>character varying</td></tr>
+<tr><td width=80>21</td><td width=350>satmathcombined</td><td>character varying</td></tr>
+<tr><td width=80>22</td><td width=350>satverbalpre2016</td><td>character varying</td></tr>
+<tr><td width=80>23</td><td width=350>satreadingpost2016</td><td>character varying</td></tr>
+<tr><td width=80>24</td><td width=350>satverbalreadingcombined</td><td>character varying</td></tr>
+<tr><td width=80>25</td><td width=350>satwritingpre2016</td><td>character varying</td></tr>
+<tr><td width=80>26</td><td width=350>satwritingpost2016</td><td>character varying</td></tr>
+<tr><td width=80>27</td><td width=350>satwritingcombined</td><td>character varying</td></tr>
+<tr><td width=80>28</td><td width=350>sattotalcombined</td><td>character varying</td></tr>
+<tr><td width=80>29</td><td width=350>actreading</td><td>character varying</td></tr>
+<tr><td width=80>30</td><td width=350>actmath</td><td>character varying</td></tr>
+<tr><td width=80>31</td><td width=350>actenglish</td><td>character varying</td></tr>
+<tr><td width=80>32</td><td width=350>actscience</td><td>character varying</td></tr>
+<tr><td width=80>33</td><td width=350>actcomposite</td><td>character varying</td></tr>
+<tr><td width=80>34</td><td width=350>phonenumber</td><td>character varying</td></tr>
+<tr><td width=80>35</td><td width=350>phonetype</td><td>character varying</td></tr>
+<tr><td width=80>36</td><td width=350>emailaddress</td><td>character varying</td></tr>
+<tr><td width=80>37</td><td width=350>emailtype</td><td>character varying</td></tr>
+<tr><td width=80>38</td><td width=350>directoryblock</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><br><br><br><br></div></div><!-- Footer --><footer class="footer"> <div class="container"> <div class="content"> <p> Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br> Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer --></body></html>

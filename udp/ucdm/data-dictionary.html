@@ -1,92 +1,112 @@
-<!doctype html><html lang="en">  <head>   <title>UCDM Data dictionary</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a><!-- Navigation -->
-<div class="container">
-  <nav class="navbar is-transparent">
-    <div class="navbar-brand">
-      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-        <span></span>
-        <span></span>
-        <span></span>
+<!doctype html><html lang="en">  <head>   <title>UCDM Data dictionary</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a>
+
+  <!-- Navigation -->
+  <div class="container">
+    <nav class="navbar is-transparent">
+      <div class="navbar-brand">
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
+
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">
+          <a class="navbar-item" href="../index.html">          Home
+          </a>
+
+          <!-- UCDM documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              UCDM
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../ucdm/data-dictionary.html">
+              <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
+              </a>
+              <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
+              <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
+              </a>
+              <a class="navbar-item" href="../ucdm/relational-schema.html">
+              <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
+              </a>
+              <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+              <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+              <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
+              </a>
+              <a class="navbar-item" href="../ucdm/queries-event-store.html">
+              <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
+              </a>
+            </div>
+          </div>
+
+          <!-- Caliper endpoint documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              Event data
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+              <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+              </a>
+              <a class="navbar-item" href="../event-data/event-processing.html">
+              <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
+              </a>
+            </div>
+          </div>
+
+  <div class='navbar-item has-dropdown is-hoverable'>
+    <a class='navbar-link' href=''>
+      Context data
+    </a>
+    <div class='navbar-dropdown is-boxed'>
+   <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+      <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+       LMS v1.0 (Draft)
+      </a>
+      <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+       Originality checker v1.0 (Candidate)
+      </a>
+      <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+       SIS v1.1 (Candidate)
+      </a>
+      <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+       SIS v1.0 (Final)
+      </a>
+      <a class='navbar-item' href='../context-data/html/e-Reader-1.0.html'>
+       e-Reader v1.0 (Draft)
+      </a>
     </div>
-
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="../index.html">
-        <a class="navbar-item" href="../index.html">          Home
-        </a>
-
-        <!-- UCDM documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            UCDM
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../ucdm/data-dictionary.html">
-            <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
-            </a>
-            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
-            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
-            </a>
-            <a class="navbar-item" href="../ucdm/relational-schema.html">
-            <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
-            </a>
-            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
-            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="../ucdm/queries-relational-store.html">
-            <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
-            </a>
-            <a class="navbar-item" href="../ucdm/queries-event-store.html">
-            <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
-            </a>
-          </div>
-        </div>
-
-        <!-- Caliper endpoint documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            Event data
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../event-data/caliper-endpoint.html">
-            <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
-            </a>
-            <a class="navbar-item" href="../event-data/event-processing.html">
-            <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
-            </a>
-          </div>
-        </div>
-
-<div class='navbar-item has-dropdown is-hoverable'>
-  <a class='navbar-link' href=''>
-    Context data
-  </a>
-  <div class='navbar-dropdown is-boxed'>
- <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
-    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
-     SIS v1.0 (Final)
-    </a>
-    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
-     SIS v1.1 (Candidate)
-    </a>
-    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
-     LMS v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
-     Originality checker v1.0 (Draft)
-    </a>
   </div>
-</div>
 
-      </div>
+          <!-- Caliper endpoint documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              Data projects DB
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../data-projects/entity.html">
+              <a class="navbar-item" href="../data-projects/entity.html">              Entity tables
+              </a>
+              <a class="navbar-item" href="../data-projects/features.html">
+              <a class="navbar-item" href="../data-projects/features.html">              Feature tables
+              </a>
+            </div>
+          </div>
 
-      <div class="navbar-end">
+        </div>
+
+        <div class="navbar-end">
+        </div>
       </div>
-    </div>
-  </nav>
-</div>
-<!-- /// Navigation -->
+    </nav>
+  </div>
+  <!-- /// Navigation -->
 <section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>Data dictionary</b>       </h1>      <h1 class="subtitle">        Unizin Common Data Model      </h1>    </div>  </div></section><div class="content"><br><div class="container"><h1>UCDM Entities</h1><ul><li><a href="#academic-term">Academic term</a></li><li><a href="#course-offering">Course offering</a></li><li><a href="#course-section">Course section</a></li><li><a href="#course-section-enrollment">Course section enrollment</a></li><li><a href="#institutional-affiliation">Institutional affiliation</a></li><li><a href="#learner-activity">Learner activity</a></li><li><a href="#learner-activity-group">Learner activity group</a></li><li><a href="#learner-activity-override">Learner activity override</a></li><li><a href="#learner-activity-result">Learner activity result</a></li><li><a href="#learner-group">Learner group</a></li><li><a href="#person">Person</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#quiz-item">Quiz item</a></li><li><a href="#quiz-item-response">Quiz item response</a></li><li><a href="#quiz-result">Quiz result</a></li></ul><a name="academic-term"><h1>Academic term</h1></a><p>A calendar session in which classes are instructed.(Common Educational Data Standards)</p><table class='table is-bordered is-hoverable'><thead><tr ><th>Element</th><th>Code</th><th>Description</th></tr>
 </thead><tbody><tr ><td>Term type</td><td><code>TermType</code></td><td>The type of Academic term.<br>Option set: <a href="../tables/reftermtype.html">RefTermType</a></td></tr>
 <tr ><td>Session type</td><td><code>SessionType</code></td><td>The type of session for your Academic term, usually describing the length of the term/<br>Option set: <a href="../tables/refsessiontype.html">RefSessionType</a></td></tr>

@@ -1,92 +1,112 @@
-<!doctype html><html lang="en">  <head>   <title>Canvas to UCDM</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a><!-- Navigation -->
-<div class="container">
-  <nav class="navbar is-transparent">
-    <div class="navbar-brand">
-      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-        <span></span>
-        <span></span>
-        <span></span>
+<!doctype html><html lang="en">  <head>   <title>Canvas to UCDM</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a>
+
+  <!-- Navigation -->
+  <div class="container">
+    <nav class="navbar is-transparent">
+      <div class="navbar-brand">
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
+
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">
+          <a class="navbar-item" href="../index.html">          Home
+          </a>
+
+          <!-- UCDM documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              UCDM
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../ucdm/data-dictionary.html">
+              <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
+              </a>
+              <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
+              <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
+              </a>
+              <a class="navbar-item" href="../ucdm/relational-schema.html">
+              <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
+              </a>
+              <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+              <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+              <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
+              </a>
+              <a class="navbar-item" href="../ucdm/queries-event-store.html">
+              <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
+              </a>
+            </div>
+          </div>
+
+          <!-- Caliper endpoint documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              Event data
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+              <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+              </a>
+              <a class="navbar-item" href="../event-data/event-processing.html">
+              <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
+              </a>
+            </div>
+          </div>
+
+  <div class='navbar-item has-dropdown is-hoverable'>
+    <a class='navbar-link' href=''>
+      Context data
+    </a>
+    <div class='navbar-dropdown is-boxed'>
+   <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+      <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+       LMS v1.0 (Draft)
+      </a>
+      <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+       Originality checker v1.0 (Candidate)
+      </a>
+      <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+       SIS v1.1 (Candidate)
+      </a>
+      <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+       SIS v1.0 (Final)
+      </a>
+      <a class='navbar-item' href='../context-data/html/e-Reader-1.0.html'>
+       e-Reader v1.0 (Draft)
+      </a>
     </div>
-
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="../index.html">
-        <a class="navbar-item" href="../index.html">          Home
-        </a>
-
-        <!-- UCDM documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            UCDM
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../ucdm/data-dictionary.html">
-            <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
-            </a>
-            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
-            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
-            </a>
-            <a class="navbar-item" href="../ucdm/relational-schema.html">
-            <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
-            </a>
-            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
-            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="../ucdm/queries-relational-store.html">
-            <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
-            </a>
-            <a class="navbar-item" href="../ucdm/queries-event-store.html">
-            <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
-            </a>
-          </div>
-        </div>
-
-        <!-- Caliper endpoint documentation menu -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="">
-            Event data
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="../event-data/caliper-endpoint.html">
-            <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
-            </a>
-            <a class="navbar-item" href="../event-data/event-processing.html">
-            <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
-            </a>
-          </div>
-        </div>
-
-<div class='navbar-item has-dropdown is-hoverable'>
-  <a class='navbar-link' href=''>
-    Context data
-  </a>
-  <div class='navbar-dropdown is-boxed'>
- <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
-    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
-     LMS v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
-     Originality checker v1.0 (Draft)
-    </a>
-    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
-     SIS v1.1 (Candidate)
-    </a>
-    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
-     SIS v1.0 (Final)
-    </a>
   </div>
-</div>
 
-      </div>
+          <!-- Caliper endpoint documentation menu -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="">
+              Data projects DB
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="../data-projects/entity.html">
+              <a class="navbar-item" href="../data-projects/entity.html">              Entity tables
+              </a>
+              <a class="navbar-item" href="../data-projects/features.html">
+              <a class="navbar-item" href="../data-projects/features.html">              Feature tables
+              </a>
+            </div>
+          </div>
 
-      <div class="navbar-end">
+        </div>
+
+        <div class="navbar-end">
+        </div>
       </div>
-    </div>
-  </nav>
-</div>
-<!-- /// Navigation -->
+    </nav>
+  </div>
+  <!-- /// Navigation -->
 <section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>Canvas to UCDM</b>       </h1>      <h1 class="subtitle">        Mapping from Camvas Data to UCDM      </h1>    </div>  </div></section><div class="content"><br><div class="container"><h1>Notes about the Canvas Data -> UCDM Mapping</h1><ol><li> The Canvas Data schema is a denormalized, Kimball-style data warehouse schema. The UCDM schema, by constrast, is a highly normalized relational warehouse schema. Given this, the majority of foreign keys in Canvas Data's dimensional and fact tables will not be mapped to a particular Element in the UCDM. This is important to keep in mind as you explore the mappings.</li><li> The <code>id</code> and <code>canvas_id</code> values for each dimensional table are not mapped. This is because, upon ingestion, the UDP replaces source primary keys with UCDM surrogate keys.</li><li> All <code>sis_source_id</code> values are not mapped. Again, all source data primary identifiers are collapsed into UCDM surrogate identifiers.</li></ol><h1>Canvas data tables</h1><ul><li><a href="#assignment_dim">assignment_dim</a></li><li><a href="#assignment_fact">assignment_fact</a></li><li><a href="#assignment_group_dim">assignment_group_dim</a></li><li><a href="#assignment_group_fact">assignment_group_fact</a></li><li><a href="#assignment_group_rule_dim">assignment_group_rule_dim</a></li><li><a href="#assignment_override_dim">assignment_override_dim</a></li><li><a href="#assignment_override_fact">assignment_override_fact</a></li><li><a href="#assignment_override_user_dim">assignment_override_user_dim</a></li><li><a href="#assignment_override_user_fact">assignment_override_user_fact</a></li><li><a href="#course_dim">course_dim</a></li><li><a href="#course_section_dim">course_section_dim</a></li><li><a href="#enrollment_dim">enrollment_dim</a></li><li><a href="#enrollment_fact">enrollment_fact</a></li><li><a href="#enrollment_term_dim">enrollment_term_dim</a></li><li><a href="#group_dim">group_dim</a></li><li><a href="#group_fact">group_fact</a></li><li><a href="#quiz_dim">quiz_dim</a></li><li><a href="#quiz_fact">quiz_fact</a></li><li><a href="#quiz_submission_dim">quiz_submission_dim</a></li><li><a href="#quiz_submission_fact">quiz_submission_fact</a></li><li><a href="#quiz_submission_historical_dim">quiz_submission_historical_dim</a></li><li><a href="#quiz_submission_historical_fact">quiz_submission_historical_fact</a></li><li><a href="#score_dim">score_dim</a></li><li><a href="#score_fact">score_fact</a></li><li><a href="#submission_dim">submission_dim</a></li><li><a href="#submission_fact">submission_fact</a></li><li><a href="#user_dim">user_dim</a></li></ul><a name='assignment_dim'></a><h1>assignment_dim</h1><table class='table is-bordered is-hoverable'><thead><tr ><th>CD Column</th><th>Entity</th><th>Element</th><th>UCDM Table</th><th>UCDM Column</th></tr>
 </thead><tbody><tr  style="color: #BBB"><td>id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
 <tr  style="color: #BBB"><td>canvas_id</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
