@@ -26,28 +26,6 @@
             <a class="navbar-item" href="../index.html">          Home
             </a>
 
-            <!-- UDP documentation menu -->
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="">
-                UDP
-              </a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="../udp/access-udp-resources.html">
-                <a class="navbar-item" href="../udp/access-udp-resources.html">              Accessing UDP resources
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="../udp/caliper-endpoint.html">
-                <a class="navbar-item" href="../udp/caliper-endpoint.html">              Caliper endpoint
-                </a>
-                <a class="navbar-item" href="../udp/event-processing.html">
-                <a class="navbar-item" href="../udp/event-processing.html">              Event processing
-                </a>
-                <a class="navbar-item" href="../udp/lrs-event-record.html">
-                <a class="navbar-item" href="../udp/lrs-event-record.html">              Event record
-                </a>
-              </div>
-            </div>
-
             <!-- UCDM documentation menu -->
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="">
@@ -63,12 +41,6 @@
                 <a class="navbar-item" href="../ucdm/relational-schema.html">
                 <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
                 </a>
-                <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">
-                <a class="navbar-item" href="../ucdm/sis-loading-schema-v1.html">              SIS Loading Schema for UCDM (v1)
-                </a>
-                <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">
-                <a class="navbar-item" href="../ucdm/sis-loading-schema-v1p1.html">              SIS Loading Schema proposed changes (v1.1)
-                </a>
                 <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
                 <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
                 </a>
@@ -82,28 +54,59 @@
               </div>
             </div>
 
-            <!-- Developer menu -->
+            <!-- Caliper endpoint documentation menu -->
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="">
-                Developers
+                Event data
               </a>
               <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="../developers/caliper-integration.html">
-                <a class="navbar-item" href="../developers/caliper-integration.html">              Caliper sensor guidelines
+                <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+                <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+                </a>
+                <a class="navbar-item" href="../event-data/event-processing.html">
+                <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
                 </a>
               </div>
             </div>
 
     <div class='navbar-item has-dropdown is-hoverable'>
       <a class='navbar-link' href=''>
-        Loading schemas
+        Context data
       </a>
       <div class='navbar-dropdown is-boxed'>
-        <a class='navbar-item' href='../loading_schemas/html/SIS-1.0.html'>
-          v1.0 (Final)
+     <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+        <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+         LMS v1.0 (Draft)
+        </a>
+        <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+         Originality checker v1.0 (Candidate)
+        </a>
+        <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+         SIS v1.1 (Candidate)
+        </a>
+        <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+         SIS v1.0 (Final)
+        </a>
+        <a class='navbar-item' href='../context-data/html/e-Reader-1.0.html'>
+         e-Reader v1.0 (Draft)
         </a>
       </div>
     </div>
+
+            <!-- Caliper endpoint documentation menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                Data projects DB
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="../data-projects/entity.html">
+                <a class="navbar-item" href="../data-projects/entity.html">              Entity tables
+                </a>
+                <a class="navbar-item" href="../data-projects/features.html">
+                <a class="navbar-item" href="../data-projects/features.html">              Feature tables
+                </a>
+              </div>
+            </div>
 
           </div>
 
@@ -135,15 +138,16 @@
 
         <ul>
           <li><a href="#overview">Overview</a></li>
+          <li><a href="#1-authentication">1. Authentication</li>
           <li>
-            <a href="#1-responses">1. Responses
+            <a href="#2-responses">2. Responses
             <ul>
               <li><a href="#response-status-codes">Response status codes</a></li>
               <li><a href="#response-body">Response body</a></li>
             </ul>
           </li>
           <li>
-            <a href="#2-validation">2. Validation errors
+            <a href="#3-validation">3. Validation errors
             <ul>
               <li><a href="#http-request-conformance">HTTP Request</a></li>
               <li><a href="#caliper-envelope-conformance">Envelope validation</a></li>
@@ -151,10 +155,10 @@
             </ul>
           </li>
           <li>
-            <a href="#3-event-processing">3. Event processing
+            <a href="#4-event-processing">4. Event processing
           </li>
           <li>
-            <a href="#4-general-guidelines">4. General guidelines
+            <a href="#5-general-guidelines">5. General guidelines
             <ul>
               <li><a href="#non-standard">Consistent payloads</a></li>
               <li><a href="#identifiers">Identifier definition</a></li>
@@ -182,8 +186,50 @@
           The Endpoint's HTTP response will vary based on the validation and routing it performs.
         </p>
 
-        <a name='1-responses'></a>
-        <h2>1. Responses</h2>
+
+      <!-- Message authentication -->
+      <a name='1-authentication'></a>
+      <h1>1. Message authentication</h1>
+
+      <p>
+        Caliper events posted to your Caliper endpoint MUST be authenticated with a token granted by Unizin. If a Caliper event envelope or Caliper event is posted without a valid authentication token, it is rejected by the Caliper endpoint.
+      </p>
+
+      <p>
+        Per the Caliper 1.1 specification, a tool's Caliper <em>sensor</em> implementation:
+      </p>
+
+      <blockquote>
+        SHOULD ... set the Authorization request header field using the "Bearer" authentication scheme described in RFC 6750, Section 2.1. The b64token authorization credential sent by a Sensor MUST be one the Endpoint can validate although the credential MAY be opaque to the emitting Sensor itself.
+      </blockquote>
+
+      <p>
+        Your Caliper endpoint will inspect the <code>Authorization:</code> request header for a Bearer token and compare it agains a list of valid tokens.
+      </p>
+
+      <p>
+        An example header for a Caliper message sent over HTTPS would therefore look like this:
+      </p>
+
+<pre>
+POST /caliper-endpoint HTTP/1.1
+Host: server.example.com
+Authorization: Bearer [some_granted_token]
+</pre>
+
+      <h2>1.1 Granting and revoking auth tokens</h2>
+      <p>
+        At present, Unizin's technical services team will grant and revoke authentication tokens on Institution's behalf. Tokens are granted on a per-tool basis. It is <strong>strongly recommended</strong> that institutions do not share the same token among multiple tool providers. If the same auth token is granted to multiple tool providers, then all are subject to the validity of a token that may need to revoked if a single tool provider were to abuse a token.
+      </p>
+
+      <p>
+        <a href="https://resources.unizin.org/jira/servicedesk/customer/portal/1/user/login?destination=portal%2F1">Request an Auth token.</a>
+      </p>
+
+
+
+        <a name='2-responses'></a>
+        <h2>2. Responses</h2>
 
         <p>
           In a <code>prod</code> environment, the Caliper's endpoint responses are terse to keep the endpoint performant at scale. We call these "common" responses (see below).
@@ -279,8 +325,8 @@
   }
 </pre>
 
-        <a name='2-validation'></a>
-        <h2>2. Validation errors: requests, envelopes, events</h2>
+        <a name='3-validation'></a>
+        <h2>3. Validation errors: requests, envelopes, events</h2>
 
         <p>
           The UDP Caliper endpoint only accepts valid HTTP requests with <code>content-type</code> of JSON.
@@ -404,8 +450,8 @@
         </table>
 
 
-        <a name='3-event-processing'></a>
-        <h2>3. Event processing</h2>
+        <a name='4-event-processing'></a>
+        <h2>4. Event processing</h2>
 
         <p>
           When Caliper events are accepted, the response includes information describing to which kind of processing the event was routed.
@@ -432,8 +478,8 @@
         </p>
 
 
-        <a name='4-general-guidelines'></a>
-        <h1>4. General guidelines</h1>
+        <a name='5-general-guidelines'></a>
+        <h1>5. General guidelines</h1>
         <a name='non-standard'></a>
         <h3>Make your event payloads consistent</h3>
 

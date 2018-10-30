@@ -27,6 +27,7 @@ use DBI;
 use Getopt::Long;
 
 require 'navigation.pl';
+require 'html.pl';
 
 ################################################################################
 
@@ -47,7 +48,7 @@ my $dbh = &connect_to_database($db_name, $db_host, $db_port, $db_user, $db_pass)
 
 &ucdm_data_dictionary($dbh);
 &ucdm_relational_schema($dbh);
-&ucdm_event_schema($dbh);
+#&ucdm_event_schema($dbh);
 &map_canvas_to_ucdm($dbh);
 
 &disconnect_from_database($dbh);
@@ -61,7 +62,7 @@ sub ucdm_data_dictionary($) {
 
   ## Create data dictionary file
   my $fh = &file_handle('ucdm/data-dictionary.html');
-  &start_html($fh, './', 'UCDM Data dictionary', 'Data dictionary', 'Unizin Common Data Model');
+  &start_html($fh, $doc_dir, './', 'UCDM Data dictionary', 'Data dictionary', 'Unizin Common Data Model');
 
   ## Get the UCDM entities.
   my %entities = &get_ucdm_entities($dbh);
@@ -135,7 +136,7 @@ sub ucdm_relational_schema($) {
 
   ## Create data dictionary file
   my $fh = &file_handle('ucdm/relational-schema.html');
-  &start_html($fh, './', 'UCDM table definitions', 'Relational schema', 'Unizin Common Data Model');
+  &start_html($fh, $doc_dir, './', 'UCDM table definitions', 'Relational schema', 'Unizin Common Data Model');
 
   &section($fh, 'Data tables');
   &table_definitions_section($dbh, $fh, &q_ucdm_tables);
@@ -164,7 +165,7 @@ sub ucdm_event_schema($) {
 
   ## Create data dictionary file
   my $fh = &file_handle('udp/lrs-event-record.html');
-  &start_html($fh, './', 'Event record', 'Event record', 'UDP Learning Record Store');
+  &start_html($fh, $doc_dir, './', 'Event record', 'Event record', 'UDP Learning Record Store');
 
   print $fh "<table class='table is-bordered is-hoverable'>";
   print $fh "<thead>";
@@ -208,7 +209,7 @@ sub map_canvas_to_ucdm($) {
 
   ## Create data dictionary file
   my $fh = &file_handle('ucdm/canvas-to-ucdm.html');
-  &start_html($fh, './', 'Canvas to UCDM', 'Canvas to UCDM', 'Mapping from Camvas Data to UCDM');
+  &start_html($fh, $doc_dir, './', 'Canvas to UCDM', 'Canvas to UCDM', 'Mapping from Camvas Data to UCDM');
 
   ##########################
   ## Some proviso and such.
@@ -356,7 +357,7 @@ sub f_create_ucdm_table($$) {
   my $filename = lc($table);
 
   my $fh = &file_handle("tables/${filename}.html");
-  &start_html($fh, '../', "$table: definition", $table, '');
+  &start_html($fh, $doc_dir, '../', "$table: definition", $table, '');
 
   my @table_header = ('Name', 'Definition', 'Jursidiction');
   push(@table_header, 'Option set') unless &is_os_table($table);
@@ -518,77 +519,6 @@ sub file_handle($) {
   return $fh;
 }
 
-################################################################################
-################################################################################
-
-sub start_html($$$) {
-  my($fh, $prefix, $title, $header, $subheader) = @_;
-
-  print $fh '<!doctype html>';
-  print $fh '<html lang="en">';
-  print $fh '  <head>';
-  print $fh "   <title>$title</title>";
-  print $fh '   <meta charset="utf-8">';
-  print $fh "   <link rel='stylesheet' href='../assets/base.css'>";
-  print $fh ' </head>';
-  print $fh '<body>';
-  print $fh "<a name='top'></a>";
-
-  &ls_navigation_to_file($fh, $doc_dir, 1);
-
-  &header($fh, $header, $subheader);
-
-  print $fh "<div class=\"content\"><br>";
-  print $fh "<div class=\"container\">";
-
-  return 1;
-}
-
-sub header($$) {
-  my($fh, $x, $y) = @_;
-
-  print $fh '<section class="hero is-primary">';
-  print $fh '  <div class="hero-body">';
-  print $fh '    <div class="container">';
-  print $fh '      <h1 class="title">';
-  print $fh "        <b>$x</b>";
-  print $fh '       </h1>';
-  print $fh '      <h1 class="subtitle">';
-  print $fh "        $y";
-  print $fh '      </h1>';
-  print $fh '    </div>';
-  print $fh '  </div>';
-  print $fh '</section>';
-
-  return 1;
-}
-
-sub footer($) {
-  my($fh) = @_;
-
-  print $fh "<!-- Footer --><footer class=\"footer\"> <div class=\"container\"> <div class=\"content\"> <p> Questions about the documentation? <a href='mailto:udp\@unizin.org'>Contact us</a>.<br> Unizin Data Platform by <a href=\"http://unizin.org\">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer -->";
-
-  return 1;
-}
-
-sub section($$) {
-  my($fh, $x) = @_;
-
-  print $fh "    <h1 class=\"title\">$x</h1>";
-
-  return 1;
-}
-
-sub end_html($) {
-  my($fh) = @_;
-  print $fh "<br><br><br><br>";
-  print $fh "</div></div>";
-  &footer($fh);
-  print $fh "</body>";
-  print $fh "</html>";
-  return 1;
-}
-
 
 ########################################
 ## Present the values of an Option set
@@ -654,16 +584,6 @@ sub p_role_values($) {
 
   print $fh "</tbody>";
   print $fh "</table>";
-
-  return 1;
-}
-
-sub p_table_row($$$$) {
-  my($fh, $type, $ref, $dim) = @_;
-  my $dim_me = $dim ? ' style="color: #BBB"' : '';
-
-  print $fh "<tr $dim_me><$type>", join("</$type><$type>", @$ref), "</$type></tr>";
-  print $fh "\n";
 
   return 1;
 }

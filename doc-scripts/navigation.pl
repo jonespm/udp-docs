@@ -22,7 +22,7 @@ sub ls_config($) {
 sub load_navigation($) {
   my($doc_dir) = @_;
 
-  my $ls_dir = $doc_dir . '/udp/loading_schemas/src';
+  my $ls_dir = $doc_dir . '/udp/context-data/src';
 
   ## Only proceed if we have some value
   ## for the loading schema directory.
@@ -84,16 +84,20 @@ sub navigation_as_html($$$) {
 
       $html .= "<div class='navbar-item has-dropdown is-hoverable'>\n";
       $html .= "  <a class='navbar-link' href=''>\n";
-      $html .= "    Loading schemas\n";
+      $html .= "    Context data\n";
       $html .= "  </a>\n";
       $html .= "  <div class='navbar-dropdown is-boxed'>\n";
+      $html .= ' <a class="navbar-item" href="../context-data/manifest-file.html">';
+      $html .= '   Manifest file';
+      $html .= ' </a>';
+      $html .= "\n";
 
       foreach my $system (keys %$index) {
         my $versions = $index->{$system};
 
         foreach my $version (keys %$versions) {
 
-          $html .= "    <a class='navbar-item' href='${dots}loading_schemas/html/$versions->{$version}->{file}'>\n";
+          $html .= "    <a class='navbar-item' href='${dots}context-data/html/$versions->{$version}->{file}'>\n";
           $html .= "     $system $versions->{$version}->{label}";
           $html .= "\n";
           $html .= "    </a>\n";

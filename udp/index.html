@@ -27,30 +27,6 @@
             <a class="navbar-item" href="index.html">          Home
             </a>
 
-            <!-- UDP documentation menu -->
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="">
-                UDP
-              </a>
-              <div class="navbar-dropdown is-boxed">
-    <!--
-                <a class="navbar-item" href="udp/access-udp-resources.html">
-                <a class="navbar-item" href="udp/access-udp-resources.html">              Accessing UDP resources
-                </a>
-                <hr class="navbar-divider">
-              -->
-                <a class="navbar-item" href="udp/caliper-endpoint.html">
-                <a class="navbar-item" href="udp/caliper-endpoint.html">              Caliper endpoint
-                </a>
-                <a class="navbar-item" href="udp/event-processing.html">
-                <a class="navbar-item" href="udp/event-processing.html">              Event processing
-                </a>
-                <a class="navbar-item" href="udp/lrs-event-record.html">
-                <a class="navbar-item" href="udp/lrs-event-record.html">              Event record
-                </a>
-              </div>
-            </div>
-
             <!-- UCDM documentation menu -->
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="">
@@ -79,34 +55,56 @@
               </div>
             </div>
 
+            <!-- Caliper endpoint documentation menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="">
+                Event data
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="event-data/caliper-endpoint.html">
+                <a class="navbar-item" href="event-data/caliper-endpoint.html">              UDP Caliper endpoint
+                </a>
+                <a class="navbar-item" href="event-data/event-processing.html">
+                <a class="navbar-item" href="event-data/event-processing.html">              UDP Event processing
+                </a>
+              </div>
+            </div>
+
     <div class='navbar-item has-dropdown is-hoverable'>
       <a class='navbar-link' href=''>
-        Loading schemas
+        Context data
       </a>
       <div class='navbar-dropdown is-boxed'>
-        <a class='navbar-item' href='loading_schemas/html/SIS-1.0.html'>
-         SIS v1.0 (Final)
+     <a class="navbar-item" href="context-data/manifest-file.html">   Manifest file </a>
+        <a class='navbar-item' href='context-data/html/Originality checker-1.0.html'>
+         Originality checker v1.0 (Candidate)
         </a>
-        <a class='navbar-item' href='loading_schemas/html/SIS-1.1.html'>
+        <a class='navbar-item' href='context-data/html/e-Reader-1.0.html'>
+         e-Reader v1.0 (Draft)
+        </a>
+        <a class='navbar-item' href='context-data/html/SIS-1.1.html'>
          SIS v1.1 (Candidate)
         </a>
-        <a class='navbar-item' href='loading_schemas/html/Originality checker-1.0.html'>
-         Originality checker v1.0 (Draft)
+        <a class='navbar-item' href='context-data/html/SIS-1.0.html'>
+         SIS v1.0 (Final)
         </a>
-        <a class='navbar-item' href='loading_schemas/html/LMS-1.0.html'>
+        <a class='navbar-item' href='context-data/html/LMS-1.0.html'>
          LMS v1.0 (Draft)
         </a>
       </div>
     </div>
 
-            <!-- Developer menu -->
+            <!-- Caliper endpoint documentation menu -->
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="">
-                Developers
+                Data projects DB
               </a>
               <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="developers/caliper-integration.html">
-                <a class="navbar-item" href="developers/caliper-integration.html">              Caliper sensor guidelines
+                <a class="navbar-item" href="data-projects/entity.html">
+                <a class="navbar-item" href="data-projects/entity.html">              Entity tables
+                </a>
+                <a class="navbar-item" href="data-projects/features.html">
+                <a class="navbar-item" href="data-projects/features.html">              Feature tables
                 </a>
               </div>
             </div>
@@ -138,11 +136,11 @@
 
         <h1>What is the Unizin Data Platform?</h1>
         <p>
-          <strong>The Unizin Data Platform (UDP)</strong> collects data from across the teaching and learning landscape and transforms it using the Unizin Common Data Model (UCDM). The UDP will eventually deliver services and products at the institutional and consortium level that enable a data-driven teaching and learning ecosystem. Expected UDP products and services include data marts, real-time event processing, and APIs in service of research, learning analytics, application development, and business intelligence.
+          <strong>The Unizin Common Data Model (UCDM)</strong> is the Unizin standard for representing data from across the teaching and learning ecosystem. Its purpose is to normalize data from a range of tools and systems that are critical to University researchers, faculty, application developers, and other staff who need a uniform vision of the data landscape. The UCDM aligns with and extends the Common Education Data Standards (CEDS). The UCDM also aligns with event standards such as Caliper and xAPI.
         </p>
 
         <p>
-          <strong>The Unizin Common Data Model (UCDM)</strong> is the Unizin standard for representing data from across the teaching and learning ecosystem. Its purpose is to normalize data from a range of tools and systems that are critical to University researchers, faculty, application developers, and other staff who need a uniform vision of the data landscape. The UCDM aligns with and extends the Common Education Data Standards (CEDS). The UCDM also aligns with event standards such as Caliper and xAPI.
+          <strong>The Unizin Data Platform (UDP)</strong> collects data from across the teaching and learning landscape and transforms it using the Unizin Common Data Model (UCDM). The UDP will eventually deliver services and products at the institutional and consortium level that enable a data-driven teaching and learning ecosystem. Expected UDP products and services include data marts, real-time event processing, and APIs in service of research, learning analytics, application development, and business intelligence.
         </p>
 
         <hr>
@@ -150,76 +148,6 @@
         <p>
           <strong>Join the UDP Slack workspace.</strong> Questions about implemeting a Caliper sensor? Or, about how the UDP can enrich your event data before it lands in the Learning Record Store? Consider joining Unizin's <a href="https://unizin-udp.slack.com">UDP Slack workspace</a>. We have found it a useful area for Members' IT developers to discuss UDP implementations and development. <strong>Note:</strong> access to the UDP Slack workspace is limited to Unizin Member organizations.
         </p>
-
-        <hr>
-
-        <p>
-          <strong style="text-decoration: underline red;">Note: the Unizin Data Platform is in active development.</strong> This includes the development of the UDP's ingestion capabilities. Access to data from the Unizin Data Platform is currently available as part of an "Early adopter" program. The function of this Early Adopter program is to work with Unizin members to articulate consumption patterns and use cases for data that can be built as consortium wide data products on the UDP.
-        </p>
-
-        <p>
-          Unizin members may <a href="mailto:udp@unizin.org">request a UDP implementation</a>.
-        </p>
-
-        <hr>
-
-        <!--
-          Unizin Data Platform
-          documentation
-        -->
-        <h1>Unizin Data Platform (UDP)</h1>
-
-        <!-- Access UDP resources -->
-        <h2><a href="udp/access-udp-resources.html">Access UDP resources</a></h2>
-        <p>
-          Documentation to access the UDP Data Lake's Relational store and Learning record store.
-        </p>
-
-        <!-- UDP Caliper endpoint -->
-        <h2><a href="udp/caliper-endpoint.html">Caliper endpoint</a></h2>
-        <p>
-          Documents the UDP's Caliper endpoint behaviors.
-        </p>
-
-        <!-- UDP Caliper endpoint -->
-        <h2><a href="udp/event-processing.html">Event processing</a></h2>
-        <p>
-          Documents the UDP's event triage, routing, and processing after event validation by the Caliper endpoint.
-        </p>
-
-        <!-- UCDM Event schema -->
-        <h2><a href="udp/lrs-event-record.html">Event record</a></h2>
-        <p>
-          The UDP ingests Caliper 1.1 events from your Institution's tool ecosystem, processes those events, and stores them in a Learning Record Store.
-        </p>
-
-
-
-        <!--
-          Unizin Common Data Model
-          documentation
-        -->
-        <h1>Unizin Common Data Model (UCDM)</h1>
-
-        <!-- Data dictionary -->
-        <h2><a href="ucdm/data-dictionary.html">Data dictionary</a></h2>
-        <p>
-          The UCDM Data dictionary describes the UCDM Entities and Elements currently in use. Entity and element definitions provide a human-readable overview of the data inside an institutional UDP.
-        </p>
-
-        <!-- UCDM Relational schema -->
-        <h2><a href="ucdm/relational-schema.html">Relational schema</a></h2>
-        <p>
-          Complete documentation of the UCDM relational teaching & learning data schema. This documentation provides descriptions of every UCDM data table, table column definitions, and UCDM option sets if they are required for a particular column.
-        </p>
-
-        <!-- Canvas to UCDM mapping -->
-        <h2><a href="ucdm/canvas-to-ucdm.html">Canvas Data to UCDM</a></h2>
-        <p>
-          This document describes how Unizin maps Canvas Data to the UCDM Entities and elements. This documentation may be useful if you are used to pulling data from Canvas Data and wish to port to using the UCDM.
-        </p>
-
-
 
 
       </div>

@@ -1,0 +1,836 @@
+<!doctype html><html lang="en">  <head>   <title>Data project DB: Features</title>   <meta charset="utf-8">   <link rel='stylesheet' href='../assets/base.css'> </head><body><a name='top'></a><!-- Navigation -->
+<div class="container">
+  <nav class="navbar is-transparent">
+    <div class="navbar-brand">
+      <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="../index.html">
+        <a class="navbar-item" href="../index.html">          Home
+        </a>
+
+        <!-- UCDM documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            UCDM
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../ucdm/data-dictionary.html">
+            <a class="navbar-item" href="../ucdm/data-dictionary.html">              Data dictionary (ingested)
+            </a>
+            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">
+            <a class="navbar-item" href="../ucdm/data-dictionary-modeled.html">              Data dictionary (modeled)
+            </a>
+            <a class="navbar-item" href="../ucdm/relational-schema.html">
+            <a class="navbar-item" href="../ucdm/relational-schema.html">              Relational schema
+            </a>
+            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">
+            <a class="navbar-item" href="../ucdm/canvas-to-ucdm.html">              Canvas Data to UCDM
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="../ucdm/queries-relational-store.html">
+            <a class="navbar-item" href="../ucdm/queries-relational-store.html">              Sample Relational Store queries
+            </a>
+            <a class="navbar-item" href="../ucdm/queries-event-store.html">
+            <a class="navbar-item" href="../ucdm/queries-event-store.html">              Sample Learning Record Store queries
+            </a>
+          </div>
+        </div>
+
+        <!-- Caliper endpoint documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            Event data
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../event-data/caliper-endpoint.html">
+            <a class="navbar-item" href="../event-data/caliper-endpoint.html">              UDP Caliper endpoint
+            </a>
+            <a class="navbar-item" href="../event-data/event-processing.html">
+            <a class="navbar-item" href="../event-data/event-processing.html">              UDP Event processing
+            </a>
+          </div>
+        </div>
+
+<div class='navbar-item has-dropdown is-hoverable'>
+  <a class='navbar-link' href=''>
+    Context data
+  </a>
+  <div class='navbar-dropdown is-boxed'>
+ <a class="navbar-item" href="../context-data/manifest-file.html">   Manifest file </a>
+    <a class='navbar-item' href='../context-data/html/SIS-1.0.html'>
+     SIS v1.0 (Final)
+    </a>
+    <a class='navbar-item' href='../context-data/html/SIS-1.1.html'>
+     SIS v1.1 (Candidate)
+    </a>
+    <a class='navbar-item' href='../context-data/html/e-Reader-1.0.html'>
+     e-Reader v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../context-data/html/LMS-1.0.html'>
+     LMS v1.0 (Draft)
+    </a>
+    <a class='navbar-item' href='../context-data/html/Originality checker-1.0.html'>
+     Originality checker v1.0 (Candidate)
+    </a>
+  </div>
+</div>
+
+        <!-- Caliper endpoint documentation menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="">
+            Data projects DB
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="../data-projects/entity.html">
+            <a class="navbar-item" href="../data-projects/entity.html">              Entity tables
+            </a>
+            <a class="navbar-item" href="../data-projects/features.html">
+            <a class="navbar-item" href="../data-projects/features.html">              Feature tables
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="navbar-end">
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- /// Navigation -->
+<section class="hero is-primary">  <div class="hero-body">    <div class="container">      <h1 class="title">        <b>Features tables</b>       </h1>      <h1 class="subtitle">        Data projects DB      </h1>    </div>  </div></section><div class="content"><br><div class="container"><a name=top></a><ol><li><a href='#academic_term'>Academic term</a> (11)</li><li><a href='#academic_term_by_students'>Academic term by students</a> (45)</li><li><a href='#course_by_students'>Course by students</a> (124)</li><li><a href='#course_offering'>Course offering</a> (5)</li><li><a href='#course_section'>Course section</a> (7)</li><li><a href='#course_section_enrollment'>Course section enrollment</a> (13)</li><li><a href='#course_section_term_by_student'>Course section term by student</a> (122)</li><li><a href='#course_term_by_students'>Course term by students</a> (125)</li><li><a href='#date'>Date</a> (1)</li><li><a href='#learner_activity'>Learner activity</a> (20)</li><li><a href='#learner_activity_by_learner_activity_result'>Learner activity by learner activity result</a> (51)</li><li><a href='#learner_activity_group'>Learner activity group</a> (4)</li><li><a href='#learner_activity_group_course_section_by_learner_activity'>Learner activity group course section by learner activity</a> (35)</li><li><a href='#learner_activity_result'>Learner activity result</a> (28)</li><li><a href='#person'>Person</a> (59)</li><li><a href='#student_term_by_completed_course_section'>Student term by completed course section</a> (15)</li><li><a href='#student_term_by_completed_course_section_buckets'>Student term by completed course section buckets</a> (30)</li><li><a href='#student_term_by_course_section'>Student term by course section</a> (11)</li><li><a href='#student_term_by_day'>Student term by day</a> (3)</li></ol><p>Total data points: 867</p><p><a name='course_section_enrollment'></a><h2>Course section enrollment</h2>Table name: <code>course_section_enrollment</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>sectionid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>is_role_student</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>is_role_teacher</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>is_role_teachingassistant</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>is_rolestatus_enrolled</td><td>integer</td></tr>
+<tr><td width=80>9</td><td width=350>is_rolestatus_none</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>enrollment_length_days</td><td>integer</td></tr>
+<tr><td width=80>11</td><td width=350>creditstaken</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>creditsearned</td><td>numeric</td></tr>
+<tr><td width=80>13</td><td width=350>person_term_order</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_term_by_students'></a><h2>Course term by students</h2>Table name: <code>course_term_by_students</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>coursesubj</td><td>character varying</td></tr>
+<tr><td width=80>3</td><td width=350>courseno</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>title</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>description</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>sum_is_role_student</td><td>bigint</td></tr>
+<tr><td width=80>8</td><td width=350>min_person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>9</td><td width=350>max_person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>10</td><td width=350>avg_person_term_order</td><td>numeric</td></tr>
+<tr><td width=80>11</td><td width=350>min_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>max_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>13</td><td width=350>avg_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>14</td><td width=350>min_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>15</td><td width=350>max_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>16</td><td width=350>avg_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>17</td><td width=350>min_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>18</td><td width=350>max_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>19</td><td width=350>avg_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>20</td><td width=350>sum_is_sex_female</td><td>bigint</td></tr>
+<tr><td width=80>21</td><td width=350>sum_is_sex_male</td><td>bigint</td></tr>
+<tr><td width=80>22</td><td width=350>sum_is_sex_none</td><td>bigint</td></tr>
+<tr><td width=80>23</td><td width=350>sum_is_sex_notselected</td><td>bigint</td></tr>
+<tr><td width=80>24</td><td width=350>sum_is_ethn_americanindian</td><td>bigint</td></tr>
+<tr><td width=80>25</td><td width=350>sum_is_ethn_asian</td><td>bigint</td></tr>
+<tr><td width=80>26</td><td width=350>sum_is_ethn_black</td><td>bigint</td></tr>
+<tr><td width=80>27</td><td width=350>sum_is_ethn_hispanicorlatino</td><td>bigint</td></tr>
+<tr><td width=80>28</td><td width=350>sum_is_ethn_nativepacificislander</td><td>bigint</td></tr>
+<tr><td width=80>29</td><td width=350>sum_is_ethn_none</td><td>bigint</td></tr>
+<tr><td width=80>30</td><td width=350>sum_is_ethn_notspecified</td><td>bigint</td></tr>
+<tr><td width=80>31</td><td width=350>sum_is_ethn_twoormoreraces</td><td>bigint</td></tr>
+<tr><td width=80>32</td><td width=350>sum_is_ethn_white</td><td>bigint</td></tr>
+<tr><td width=80>33</td><td width=350>sum_is_usres_nodata</td><td>bigint</td></tr>
+<tr><td width=80>34</td><td width=350>sum_is_usres_none</td><td>bigint</td></tr>
+<tr><td width=80>35</td><td width=350>sum_is_usres_nonresidentalien</td><td>bigint</td></tr>
+<tr><td width=80>36</td><td width=350>sum_is_usres_permanentresident</td><td>bigint</td></tr>
+<tr><td width=80>37</td><td width=350>sum_is_usres_uscitizen</td><td>bigint</td></tr>
+<tr><td width=80>38</td><td width=350>min_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>39</td><td width=350>max_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>40</td><td width=350>avg_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>41</td><td width=350>min_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>42</td><td width=350>max_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>43</td><td width=350>avg_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>44</td><td width=350>sum_is_vet_notveteran</td><td>bigint</td></tr>
+<tr><td width=80>45</td><td width=350>sum_is_vet_unknown</td><td>bigint</td></tr>
+<tr><td width=80>46</td><td width=350>sum_is_vet_veteran</td><td>bigint</td></tr>
+<tr><td width=80>47</td><td width=350>sum_is_edulvlpar_as</td><td>bigint</td></tr>
+<tr><td width=80>48</td><td width=350>sum_is_edulvlpar_ba</td><td>bigint</td></tr>
+<tr><td width=80>49</td><td width=350>sum_is_edulvlpar_ct</td><td>bigint</td></tr>
+<tr><td width=80>50</td><td width=350>sum_is_edulvlpar_do</td><td>bigint</td></tr>
+<tr><td width=80>51</td><td width=350>sum_is_edulvlpar_dp</td><td>bigint</td></tr>
+<tr><td width=80>52</td><td width=350>sum_is_edulvlpar_es</td><td>bigint</td></tr>
+<tr><td width=80>53</td><td width=350>sum_is_edulvlpar_hs</td><td>bigint</td></tr>
+<tr><td width=80>54</td><td width=350>sum_is_edulvlpar_lh</td><td>bigint</td></tr>
+<tr><td width=80>55</td><td width=350>sum_is_edulvlpar_md</td><td>bigint</td></tr>
+<tr><td width=80>56</td><td width=350>sum_is_edulvlpar_none</td><td>bigint</td></tr>
+<tr><td width=80>57</td><td width=350>sum_is_edulvlpar_pd</td><td>bigint</td></tr>
+<tr><td width=80>58</td><td width=350>sum_is_edulvlpar_sc</td><td>bigint</td></tr>
+<tr><td width=80>59</td><td width=350>sum_is_edulvlpar_uk</td><td>bigint</td></tr>
+<tr><td width=80>60</td><td width=350>sum_is_enrllvl_graduate</td><td>bigint</td></tr>
+<tr><td width=80>61</td><td width=350>sum_is_enrllvl_none</td><td>bigint</td></tr>
+<tr><td width=80>62</td><td width=350>sum_is_enrllvl_professional</td><td>bigint</td></tr>
+<tr><td width=80>63</td><td width=350>sum_is_enrllvl_undergraduate</td><td>bigint</td></tr>
+<tr><td width=80>64</td><td width=350>min_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>65</td><td width=350>max_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>66</td><td width=350>avg_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>67</td><td width=350>cnt_satmathpre2016</td><td>bigint</td></tr>
+<tr><td width=80>68</td><td width=350>min_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>69</td><td width=350>max_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>70</td><td width=350>avg_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>71</td><td width=350>cnt_satmathpost2016</td><td>bigint</td></tr>
+<tr><td width=80>72</td><td width=350>min_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>73</td><td width=350>max_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>74</td><td width=350>avg_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>75</td><td width=350>cnt_satmathcombined</td><td>bigint</td></tr>
+<tr><td width=80>76</td><td width=350>min_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>77</td><td width=350>max_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>78</td><td width=350>avg_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>79</td><td width=350>cnt_satverbalpre2016</td><td>bigint</td></tr>
+<tr><td width=80>80</td><td width=350>min_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>81</td><td width=350>max_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>82</td><td width=350>avg_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>83</td><td width=350>cnt_satreadingpost2016</td><td>bigint</td></tr>
+<tr><td width=80>84</td><td width=350>min_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>85</td><td width=350>max_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>86</td><td width=350>avg_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>87</td><td width=350>cnt_satverbalreadingcombined</td><td>bigint</td></tr>
+<tr><td width=80>88</td><td width=350>min_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>89</td><td width=350>max_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>90</td><td width=350>avg_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>91</td><td width=350>cnt_satwritingpre2016</td><td>bigint</td></tr>
+<tr><td width=80>92</td><td width=350>min_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>93</td><td width=350>max_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>94</td><td width=350>avg_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>95</td><td width=350>cnt_satwritingpost2016</td><td>bigint</td></tr>
+<tr><td width=80>96</td><td width=350>min_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>97</td><td width=350>max_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>98</td><td width=350>avg_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>99</td><td width=350>cnt_satwritingcombined</td><td>bigint</td></tr>
+<tr><td width=80>100</td><td width=350>min_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>101</td><td width=350>max_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>102</td><td width=350>avg_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>103</td><td width=350>cnt_sattotalcombined</td><td>bigint</td></tr>
+<tr><td width=80>104</td><td width=350>min_actreading</td><td>numeric</td></tr>
+<tr><td width=80>105</td><td width=350>max_actreading</td><td>numeric</td></tr>
+<tr><td width=80>106</td><td width=350>avg_actreading</td><td>numeric</td></tr>
+<tr><td width=80>107</td><td width=350>cnt_actreading</td><td>bigint</td></tr>
+<tr><td width=80>108</td><td width=350>min_actmath</td><td>numeric</td></tr>
+<tr><td width=80>109</td><td width=350>max_actmath</td><td>numeric</td></tr>
+<tr><td width=80>110</td><td width=350>avg_actmath</td><td>numeric</td></tr>
+<tr><td width=80>111</td><td width=350>cnt_actmath</td><td>bigint</td></tr>
+<tr><td width=80>112</td><td width=350>min_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>113</td><td width=350>max_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>114</td><td width=350>avg_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>115</td><td width=350>cnt_actenglish</td><td>bigint</td></tr>
+<tr><td width=80>116</td><td width=350>min_actscience</td><td>numeric</td></tr>
+<tr><td width=80>117</td><td width=350>max_actscience</td><td>numeric</td></tr>
+<tr><td width=80>118</td><td width=350>avg_actscience</td><td>numeric</td></tr>
+<tr><td width=80>119</td><td width=350>cnt_actscience</td><td>bigint</td></tr>
+<tr><td width=80>120</td><td width=350>min_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>121</td><td width=350>max_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>122</td><td width=350>avg_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>123</td><td width=350>cnt_actcomposite</td><td>bigint</td></tr>
+<tr><td width=80>124</td><td width=350>sum_has_phone_nmbr</td><td>bigint</td></tr>
+<tr><td width=80>125</td><td width=350>sum_has_email_addr</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='academic_term_by_students'></a><h2>Academic term by students</h2>Table name: <code>academic_term_by_students</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>students</td><td>bigint</td></tr>
+<tr><td width=80>3</td><td width=350>student_cnt_term_order_1</td><td>bigint</td></tr>
+<tr><td width=80>4</td><td width=350>student_cnt_term_order_2</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>student_cnt_term_order_3</td><td>bigint</td></tr>
+<tr><td width=80>6</td><td width=350>student_cnt_term_order_4</td><td>bigint</td></tr>
+<tr><td width=80>7</td><td width=350>student_cnt_term_order_5</td><td>bigint</td></tr>
+<tr><td width=80>8</td><td width=350>student_cnt_term_order_6</td><td>bigint</td></tr>
+<tr><td width=80>9</td><td width=350>student_cnt_term_order_7</td><td>bigint</td></tr>
+<tr><td width=80>10</td><td width=350>student_cnt_term_order_8</td><td>bigint</td></tr>
+<tr><td width=80>11</td><td width=350>student_cnt_term_order_9</td><td>bigint</td></tr>
+<tr><td width=80>12</td><td width=350>student_cnt_term_order_10</td><td>bigint</td></tr>
+<tr><td width=80>13</td><td width=350>student_cnt_term_order_11</td><td>bigint</td></tr>
+<tr><td width=80>14</td><td width=350>student_cnt_term_order_12</td><td>bigint</td></tr>
+<tr><td width=80>15</td><td width=350>student_cnt_term_order_13</td><td>bigint</td></tr>
+<tr><td width=80>16</td><td width=350>student_cnt_term_order_14</td><td>bigint</td></tr>
+<tr><td width=80>17</td><td width=350>student_cnt_term_order_15</td><td>bigint</td></tr>
+<tr><td width=80>18</td><td width=350>student_cnt_term_order_16</td><td>bigint</td></tr>
+<tr><td width=80>19</td><td width=350>student_cnt_term_order_gt_16</td><td>bigint</td></tr>
+<tr><td width=80>20</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_0_lt_4</td><td>bigint</td></tr>
+<tr><td width=80>21</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_4_lt_8</td><td>bigint</td></tr>
+<tr><td width=80>22</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_12_lt_16</td><td>bigint</td></tr>
+<tr><td width=80>23</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_16_lt_20</td><td>bigint</td></tr>
+<tr><td width=80>24</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_20_lt_24</td><td>bigint</td></tr>
+<tr><td width=80>25</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_24_lt_28</td><td>bigint</td></tr>
+<tr><td width=80>26</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_28_lt_32</td><td>bigint</td></tr>
+<tr><td width=80>27</td><td width=350>student_cnt_crs_sct_all_cmpltd_gt_32</td><td>bigint</td></tr>
+<tr><td width=80>28</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_0_lt_15</td><td>bigint</td></tr>
+<tr><td width=80>29</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_15_lt_30</td><td>bigint</td></tr>
+<tr><td width=80>30</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_30_lt_45</td><td>bigint</td></tr>
+<tr><td width=80>31</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_45_lt_60</td><td>bigint</td></tr>
+<tr><td width=80>32</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_60_lt_75</td><td>bigint</td></tr>
+<tr><td width=80>33</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_75_lt_90</td><td>bigint</td></tr>
+<tr><td width=80>34</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_90_lt_105</td><td>bigint</td></tr>
+<tr><td width=80>35</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_105_lt_120</td><td>bigint</td></tr>
+<tr><td width=80>36</td><td width=350>students_sum_credits_taken_all_cmpltd_gt_120</td><td>bigint</td></tr>
+<tr><td width=80>37</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_0_lt_15</td><td>bigint</td></tr>
+<tr><td width=80>38</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_15_lt_30</td><td>bigint</td></tr>
+<tr><td width=80>39</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_30_lt_45</td><td>bigint</td></tr>
+<tr><td width=80>40</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_45_lt_60</td><td>bigint</td></tr>
+<tr><td width=80>41</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_60_lt_75</td><td>bigint</td></tr>
+<tr><td width=80>42</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_75_lt_90</td><td>bigint</td></tr>
+<tr><td width=80>43</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_90_lt_105</td><td>bigint</td></tr>
+<tr><td width=80>44</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_105_lt_120</td><td>bigint</td></tr>
+<tr><td width=80>45</td><td width=350>students_sum_credits_earned_all_cmpltd_gt_120</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity_by_learner_activity_result'></a><h2>Learner activity by learner activity result</h2>Table name: <code>learner_activity_by_learner_activity_result</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivityid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>learneractivitygroupid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>cnt_la_result</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>cnt_students</td><td>bigint</td></tr>
+<tr><td width=80>6</td><td width=350>cnt_graders</td><td>bigint</td></tr>
+<tr><td width=80>7</td><td width=350>sum_is_online_quiz</td><td>bigint</td></tr>
+<tr><td width=80>8</td><td width=350>sum_is_gradebookstatus_graded</td><td>bigint</td></tr>
+<tr><td width=80>9</td><td width=350>sum_is_gradingstatus_graded</td><td>bigint</td></tr>
+<tr><td width=80>10</td><td width=350>sum_is_gradingstatus_none</td><td>bigint</td></tr>
+<tr><td width=80>11</td><td width=350>sum_is_gradingstatus_pendingreview</td><td>bigint</td></tr>
+<tr><td width=80>12</td><td width=350>sum_is_gradingstatus_submitted</td><td>bigint</td></tr>
+<tr><td width=80>13</td><td width=350>sum_is_gradingstatus_unsubmitted</td><td>bigint</td></tr>
+<tr><td width=80>14</td><td width=350>min_score</td><td>numeric</td></tr>
+<tr><td width=80>15</td><td width=350>max_score</td><td>numeric</td></tr>
+<tr><td width=80>16</td><td width=350>avg_score</td><td>numeric</td></tr>
+<tr><td width=80>17</td><td width=350>min_publishedscore</td><td>numeric</td></tr>
+<tr><td width=80>18</td><td width=350>max_publishedscore</td><td>numeric</td></tr>
+<tr><td width=80>19</td><td width=350>avg_publishedscore</td><td>numeric</td></tr>
+<tr><td width=80>20</td><td width=350>min_grade</td><td>numeric</td></tr>
+<tr><td width=80>21</td><td width=350>max_grade</td><td>numeric</td></tr>
+<tr><td width=80>22</td><td width=350>avg_grade</td><td>numeric</td></tr>
+<tr><td width=80>23</td><td width=350>min_publishedgrade</td><td>numeric</td></tr>
+<tr><td width=80>24</td><td width=350>max_publishedgrade</td><td>numeric</td></tr>
+<tr><td width=80>25</td><td width=350>avg_publishedgrade</td><td>numeric</td></tr>
+<tr><td width=80>26</td><td width=350>sum_is_submissionstatus_graded</td><td>bigint</td></tr>
+<tr><td width=80>27</td><td width=350>sum_is_submissionstatus_none</td><td>bigint</td></tr>
+<tr><td width=80>28</td><td width=350>sum_is_submissionstatus_pendingreview</td><td>bigint</td></tr>
+<tr><td width=80>29</td><td width=350>sum_is_submissionstatus_submitted</td><td>bigint</td></tr>
+<tr><td width=80>30</td><td width=350>sum_is_submissionstatus_unsubmitted</td><td>bigint</td></tr>
+<tr><td width=80>31</td><td width=350>sum_is_gradebookstatus_gradebook</td><td>bigint</td></tr>
+<tr><td width=80>32</td><td width=350>min_updated_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>33</td><td width=350>max_updated_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>34</td><td width=350>avg_updated_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>35</td><td width=350>min_response_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>36</td><td width=350>max_response_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>37</td><td width=350>avg_response_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>38</td><td width=350>min_graded_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>39</td><td width=350>max_graded_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>40</td><td width=350>avg_graded_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>41</td><td width=350>min_response_updated_diff_days</td><td>integer</td></tr>
+<tr><td width=80>42</td><td width=350>max_response_updated_diff_days</td><td>integer</td></tr>
+<tr><td width=80>43</td><td width=350>avg_response_updated_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>44</td><td width=350>min_graded_updated_diff_days</td><td>integer</td></tr>
+<tr><td width=80>45</td><td width=350>max_graded_updated_diff_days</td><td>integer</td></tr>
+<tr><td width=80>46</td><td width=350>avg_graded_updated_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>47</td><td width=350>min_graded_response_diff_days</td><td>integer</td></tr>
+<tr><td width=80>48</td><td width=350>max_graded_response_diff_days</td><td>integer</td></tr>
+<tr><td width=80>49</td><td width=350>avg_graded_response_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>50</td><td width=350>sum_is_studentview_seen</td><td>bigint</td></tr>
+<tr><td width=80>51</td><td width=350>sum_is_studentview_not_seen</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_section'></a><h2>Course section</h2>Table name: <code>course_section</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>sectionid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>is_delivmode_blendedlearning</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>is_delivmode_broadcast</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>is_delivmode_facetoface</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>is_delivmode_independentstudy</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>is_delivmode_online</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>maxenrollment</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity'></a><h2>Learner activity</h2>Table name: <code>learner_activity</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivityid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>learneractivitygroupid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>update_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>unlock_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>lock_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>due_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>due_update_diff_days</td><td>integer</td></tr>
+<tr><td width=80>9</td><td width=350>lock_unlock_diff_days</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>possiblepoints</td><td>numeric</td></tr>
+<tr><td width=80>11</td><td width=350>is_grdngtype_gpascale</td><td>integer</td></tr>
+<tr><td width=80>12</td><td width=350>is_grdngtype_letter</td><td>integer</td></tr>
+<tr><td width=80>13</td><td width=350>is_grdngtype_notgraded</td><td>integer</td></tr>
+<tr><td width=80>14</td><td width=350>is_grdngtype_passfail</td><td>integer</td></tr>
+<tr><td width=80>15</td><td width=350>is_grdngtype_percent</td><td>integer</td></tr>
+<tr><td width=80>16</td><td width=350>is_grdngtype_points</td><td>integer</td></tr>
+<tr><td width=80>17</td><td width=350>is_status_deleted</td><td>integer</td></tr>
+<tr><td width=80>18</td><td width=350>is_status_published</td><td>integer</td></tr>
+<tr><td width=80>19</td><td width=350>is_status_none</td><td>integer</td></tr>
+<tr><td width=80>20</td><td width=350>position</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_offering'></a><h2>Course offering</h2>Table name: <code>course_offering</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>is_status_active</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>availablecredits</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>title_char_length</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>desc_char_length</td><td>integer</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='student_term_by_course_section'></a><h2>Student term by course section</h2>Table name: <code>student_term_by_course_section</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>4</td><td width=350>count_course_section</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>sum_credits_earned</td><td>numeric</td></tr>
+<tr><td width=80>6</td><td width=350>sum_credits_taken</td><td>numeric</td></tr>
+<tr><td width=80>7</td><td width=350>sum_is_delivmode_blendedlearning</td><td>bigint</td></tr>
+<tr><td width=80>8</td><td width=350>sum_is_delivmode_broadcast</td><td>bigint</td></tr>
+<tr><td width=80>9</td><td width=350>sum_is_delivmode_facetoface</td><td>bigint</td></tr>
+<tr><td width=80>10</td><td width=350>sum_is_delivmode_independentstudy</td><td>bigint</td></tr>
+<tr><td width=80>11</td><td width=350>sum_is_delivmode_online</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity_result'></a><h2>Learner activity result</h2>Table name: <code>learner_activity_result</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivityresultid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>learneractivityid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>graderid</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>is_type_online_quiz</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>is_gradingstatus_graded</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>is_gradingstatus_pendingreview</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>is_gradingstatus_submitted</td><td>integer</td></tr>
+<tr><td width=80>9</td><td width=350>is_gradingstatus_unsubmitted</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>is_gradingstatus_none</td><td>integer</td></tr>
+<tr><td width=80>11</td><td width=350>score</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>publishedscore</td><td>character varying</td></tr>
+<tr><td width=80>13</td><td width=350>grade</td><td>character varying</td></tr>
+<tr><td width=80>14</td><td width=350>publishedgrade</td><td>character varying</td></tr>
+<tr><td width=80>15</td><td width=350>is_submissionstatus_graded</td><td>integer</td></tr>
+<tr><td width=80>16</td><td width=350>is_submissionstatus_pendingreview</td><td>integer</td></tr>
+<tr><td width=80>17</td><td width=350>is_submissionstatus_submitted</td><td>integer</td></tr>
+<tr><td width=80>18</td><td width=350>is_submissionstatus_unsubmitted</td><td>integer</td></tr>
+<tr><td width=80>19</td><td width=350>is_submissionstatus_none</td><td>integer</td></tr>
+<tr><td width=80>20</td><td width=350>is_gradebookstatus_gradebook</td><td>integer</td></tr>
+<tr><td width=80>21</td><td width=350>updated_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>22</td><td width=350>response_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>23</td><td width=350>graded_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>24</td><td width=350>response_updated_diff_days</td><td>integer</td></tr>
+<tr><td width=80>25</td><td width=350>graded_updated_diff_days</td><td>integer</td></tr>
+<tr><td width=80>26</td><td width=350>graded_response_diff_days</td><td>integer</td></tr>
+<tr><td width=80>27</td><td width=350>is_studentview_seen</td><td>integer</td></tr>
+<tr><td width=80>28</td><td width=350>is_studentview_not_seen</td><td>integer</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_by_students'></a><h2>Course by students</h2>Table name: <code>course_by_students</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>coursesubj</td><td>character varying</td></tr>
+<tr><td width=80>3</td><td width=350>courseno</td><td>character varying</td></tr>
+<tr><td width=80>4</td><td width=350>title</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>description</td><td>character varying</td></tr>
+<tr><td width=80>6</td><td width=350>sum_is_role_student</td><td>bigint</td></tr>
+<tr><td width=80>7</td><td width=350>min_person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>8</td><td width=350>max_person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>9</td><td width=350>avg_person_term_order</td><td>numeric</td></tr>
+<tr><td width=80>10</td><td width=350>min_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>11</td><td width=350>max_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>avg_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>13</td><td width=350>min_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>14</td><td width=350>max_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>15</td><td width=350>avg_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>16</td><td width=350>min_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>17</td><td width=350>max_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>18</td><td width=350>avg_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>19</td><td width=350>sum_is_sex_female</td><td>bigint</td></tr>
+<tr><td width=80>20</td><td width=350>sum_is_sex_male</td><td>bigint</td></tr>
+<tr><td width=80>21</td><td width=350>sum_is_sex_none</td><td>bigint</td></tr>
+<tr><td width=80>22</td><td width=350>sum_is_sex_notselected</td><td>bigint</td></tr>
+<tr><td width=80>23</td><td width=350>sum_is_ethn_americanindian</td><td>bigint</td></tr>
+<tr><td width=80>24</td><td width=350>sum_is_ethn_asian</td><td>bigint</td></tr>
+<tr><td width=80>25</td><td width=350>sum_is_ethn_black</td><td>bigint</td></tr>
+<tr><td width=80>26</td><td width=350>sum_is_ethn_hispanicorlatino</td><td>bigint</td></tr>
+<tr><td width=80>27</td><td width=350>sum_is_ethn_nativepacificislander</td><td>bigint</td></tr>
+<tr><td width=80>28</td><td width=350>sum_is_ethn_none</td><td>bigint</td></tr>
+<tr><td width=80>29</td><td width=350>sum_is_ethn_notspecified</td><td>bigint</td></tr>
+<tr><td width=80>30</td><td width=350>sum_is_ethn_twoormoreraces</td><td>bigint</td></tr>
+<tr><td width=80>31</td><td width=350>sum_is_ethn_white</td><td>bigint</td></tr>
+<tr><td width=80>32</td><td width=350>sum_is_usres_nodata</td><td>bigint</td></tr>
+<tr><td width=80>33</td><td width=350>sum_is_usres_none</td><td>bigint</td></tr>
+<tr><td width=80>34</td><td width=350>sum_is_usres_nonresidentalien</td><td>bigint</td></tr>
+<tr><td width=80>35</td><td width=350>sum_is_usres_permanentresident</td><td>bigint</td></tr>
+<tr><td width=80>36</td><td width=350>sum_is_usres_uscitizen</td><td>bigint</td></tr>
+<tr><td width=80>37</td><td width=350>min_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>38</td><td width=350>max_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>39</td><td width=350>avg_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>40</td><td width=350>min_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>41</td><td width=350>max_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>42</td><td width=350>avg_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>43</td><td width=350>sum_is_vet_notveteran</td><td>bigint</td></tr>
+<tr><td width=80>44</td><td width=350>sum_is_vet_unknown</td><td>bigint</td></tr>
+<tr><td width=80>45</td><td width=350>sum_is_vet_veteran</td><td>bigint</td></tr>
+<tr><td width=80>46</td><td width=350>sum_is_edulvlpar_as</td><td>bigint</td></tr>
+<tr><td width=80>47</td><td width=350>sum_is_edulvlpar_ba</td><td>bigint</td></tr>
+<tr><td width=80>48</td><td width=350>sum_is_edulvlpar_ct</td><td>bigint</td></tr>
+<tr><td width=80>49</td><td width=350>sum_is_edulvlpar_do</td><td>bigint</td></tr>
+<tr><td width=80>50</td><td width=350>sum_is_edulvlpar_dp</td><td>bigint</td></tr>
+<tr><td width=80>51</td><td width=350>sum_is_edulvlpar_es</td><td>bigint</td></tr>
+<tr><td width=80>52</td><td width=350>sum_is_edulvlpar_hs</td><td>bigint</td></tr>
+<tr><td width=80>53</td><td width=350>sum_is_edulvlpar_lh</td><td>bigint</td></tr>
+<tr><td width=80>54</td><td width=350>sum_is_edulvlpar_md</td><td>bigint</td></tr>
+<tr><td width=80>55</td><td width=350>sum_is_edulvlpar_none</td><td>bigint</td></tr>
+<tr><td width=80>56</td><td width=350>sum_is_edulvlpar_pd</td><td>bigint</td></tr>
+<tr><td width=80>57</td><td width=350>sum_is_edulvlpar_sc</td><td>bigint</td></tr>
+<tr><td width=80>58</td><td width=350>sum_is_edulvlpar_uk</td><td>bigint</td></tr>
+<tr><td width=80>59</td><td width=350>sum_is_enrllvl_graduate</td><td>bigint</td></tr>
+<tr><td width=80>60</td><td width=350>sum_is_enrllvl_none</td><td>bigint</td></tr>
+<tr><td width=80>61</td><td width=350>sum_is_enrllvl_professional</td><td>bigint</td></tr>
+<tr><td width=80>62</td><td width=350>sum_is_enrllvl_undergraduate</td><td>bigint</td></tr>
+<tr><td width=80>63</td><td width=350>min_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>64</td><td width=350>max_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>65</td><td width=350>avg_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>66</td><td width=350>cnt_satmathpre2016</td><td>bigint</td></tr>
+<tr><td width=80>67</td><td width=350>min_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>68</td><td width=350>max_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>69</td><td width=350>avg_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>70</td><td width=350>cnt_satmathpost2016</td><td>bigint</td></tr>
+<tr><td width=80>71</td><td width=350>min_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>72</td><td width=350>max_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>73</td><td width=350>avg_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>74</td><td width=350>cnt_satmathcombined</td><td>bigint</td></tr>
+<tr><td width=80>75</td><td width=350>min_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>76</td><td width=350>max_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>77</td><td width=350>avg_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>78</td><td width=350>cnt_satverbalpre2016</td><td>bigint</td></tr>
+<tr><td width=80>79</td><td width=350>min_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>80</td><td width=350>max_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>81</td><td width=350>avg_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>82</td><td width=350>cnt_satreadingpost2016</td><td>bigint</td></tr>
+<tr><td width=80>83</td><td width=350>min_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>84</td><td width=350>max_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>85</td><td width=350>avg_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>86</td><td width=350>cnt_satverbalreadingcombined</td><td>bigint</td></tr>
+<tr><td width=80>87</td><td width=350>min_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>88</td><td width=350>max_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>89</td><td width=350>avg_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>90</td><td width=350>cnt_satwritingpre2016</td><td>bigint</td></tr>
+<tr><td width=80>91</td><td width=350>min_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>92</td><td width=350>max_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>93</td><td width=350>avg_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>94</td><td width=350>cnt_satwritingpost2016</td><td>bigint</td></tr>
+<tr><td width=80>95</td><td width=350>min_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>96</td><td width=350>max_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>97</td><td width=350>avg_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>98</td><td width=350>cnt_satwritingcombined</td><td>bigint</td></tr>
+<tr><td width=80>99</td><td width=350>min_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>100</td><td width=350>max_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>101</td><td width=350>avg_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>102</td><td width=350>cnt_sattotalcombined</td><td>bigint</td></tr>
+<tr><td width=80>103</td><td width=350>min_actreading</td><td>numeric</td></tr>
+<tr><td width=80>104</td><td width=350>max_actreading</td><td>numeric</td></tr>
+<tr><td width=80>105</td><td width=350>avg_actreading</td><td>numeric</td></tr>
+<tr><td width=80>106</td><td width=350>cnt_actreading</td><td>bigint</td></tr>
+<tr><td width=80>107</td><td width=350>min_actmath</td><td>numeric</td></tr>
+<tr><td width=80>108</td><td width=350>max_actmath</td><td>numeric</td></tr>
+<tr><td width=80>109</td><td width=350>avg_actmath</td><td>numeric</td></tr>
+<tr><td width=80>110</td><td width=350>cnt_actmath</td><td>bigint</td></tr>
+<tr><td width=80>111</td><td width=350>min_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>112</td><td width=350>max_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>113</td><td width=350>avg_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>114</td><td width=350>cnt_actenglish</td><td>bigint</td></tr>
+<tr><td width=80>115</td><td width=350>min_actscience</td><td>numeric</td></tr>
+<tr><td width=80>116</td><td width=350>max_actscience</td><td>numeric</td></tr>
+<tr><td width=80>117</td><td width=350>avg_actscience</td><td>numeric</td></tr>
+<tr><td width=80>118</td><td width=350>cnt_actscience</td><td>bigint</td></tr>
+<tr><td width=80>119</td><td width=350>min_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>120</td><td width=350>max_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>121</td><td width=350>avg_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>122</td><td width=350>cnt_actcomposite</td><td>bigint</td></tr>
+<tr><td width=80>123</td><td width=350>sum_has_phone_nmbr</td><td>bigint</td></tr>
+<tr><td width=80>124</td><td width=350>sum_has_email_addr</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='date'></a><h2>Date</h2>Table name: <code>date</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>feature_day</td><td>date</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='student_term_by_day'></a><h2>Student term by day</h2>Table name: <code>student_term_by_day</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>feature_day</td><td>date</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity_group'></a><h2>Learner activity group</h2>Table name: <code>learner_activity_group</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivitygroupid</td><td>character varying</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>bigint</td></tr>
+<tr><td width=80>3</td><td width=350>is_deleted</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>position</td><td>character varying</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='academic_term'></a><h2>Academic term</h2>Table name: <code>academic_term</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>is_trmtyp_fall</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>is_trmtyp_other</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>is_trmtyp_spring</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>is_trmtyp_summer</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>is_trmtyp_winter</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>is_sestyp_longsession</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>is_sestyp_semester</td><td>integer</td></tr>
+<tr><td width=80>9</td><td width=350>is_sestyp_summerterm</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>term_length_days</td><td>integer</td></tr>
+<tr><td width=80>11</td><td width=350>instr_length_days</td><td>integer</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='student_term_by_completed_course_section'></a><h2>Student term by completed course section</h2>Table name: <code>student_term_by_completed_course_section</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>4</td><td width=350>count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>5</td><td width=350>count_course_section_cmpltd_rolling_1</td><td>bigint</td></tr>
+<tr><td width=80>6</td><td width=350>count_course_section_cmpltd_rolling_2</td><td>numeric</td></tr>
+<tr><td width=80>7</td><td width=350>count_course_section_cmpltd_rolling_4</td><td>numeric</td></tr>
+<tr><td width=80>8</td><td width=350>sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>9</td><td width=350>sum_credits_earned_cmpltd_rolling_1</td><td>numeric</td></tr>
+<tr><td width=80>10</td><td width=350>sum_credits_earned_cmpltd_rolling_2</td><td>numeric</td></tr>
+<tr><td width=80>11</td><td width=350>sum_credits_earned_cmpltd_rolling_4</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>13</td><td width=350>sum_credits_taken_cmpltd_rolling_1</td><td>numeric</td></tr>
+<tr><td width=80>14</td><td width=350>sum_credits_taken_cmpltd_rolling_2</td><td>numeric</td></tr>
+<tr><td width=80>15</td><td width=350>sum_credits_taken_cmpltd_rolling_4</td><td>numeric</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='learner_activity_group_course_section_by_learner_activity'></a><h2>Learner activity group course section by learner activity</h2>Table name: <code>learner_activity_group_course_section_by_learner_activity</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>learneractivitygroupid</td><td>character varying</td></tr>
+<tr><td width=80>2</td><td width=350>courseid</td><td>bigint</td></tr>
+<tr><td width=80>3</td><td width=350>is_deleted</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>position</td><td>character varying</td></tr>
+<tr><td width=80>5</td><td width=350>cnt_learner_activities</td><td>bigint</td></tr>
+<tr><td width=80>6</td><td width=350>min_updated_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>max_updated_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>avg_updated_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>9</td><td width=350>min_unlock_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>max_unlock_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>11</td><td width=350>avg_unlock_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>min_lock_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>13</td><td width=350>max_lock_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>14</td><td width=350>avg_lock_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>15</td><td width=350>min_due_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>16</td><td width=350>max_due_created_diff_days</td><td>integer</td></tr>
+<tr><td width=80>17</td><td width=350>avg_due_created_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>18</td><td width=350>min_due_update_diff_days</td><td>integer</td></tr>
+<tr><td width=80>19</td><td width=350>max_due_update_diff_days</td><td>integer</td></tr>
+<tr><td width=80>20</td><td width=350>avg_due_update_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>21</td><td width=350>min_lock_unlock_diff_days</td><td>integer</td></tr>
+<tr><td width=80>22</td><td width=350>max_lock_unlock_diff_days</td><td>integer</td></tr>
+<tr><td width=80>23</td><td width=350>avg_lock_unlock_diff_days</td><td>numeric</td></tr>
+<tr><td width=80>24</td><td width=350>min_possiblepoints</td><td>numeric</td></tr>
+<tr><td width=80>25</td><td width=350>max_possiblepoints</td><td>numeric</td></tr>
+<tr><td width=80>26</td><td width=350>avg_possiblepoints</td><td>numeric</td></tr>
+<tr><td width=80>27</td><td width=350>sum_is_grdngtype_gpascale</td><td>bigint</td></tr>
+<tr><td width=80>28</td><td width=350>sum_is_grdngtype_letter</td><td>bigint</td></tr>
+<tr><td width=80>29</td><td width=350>sum_is_grdngtype_notgraded</td><td>bigint</td></tr>
+<tr><td width=80>30</td><td width=350>sum_is_grdngtype_passfail</td><td>bigint</td></tr>
+<tr><td width=80>31</td><td width=350>sum_is_grdngtype_percent</td><td>bigint</td></tr>
+<tr><td width=80>32</td><td width=350>sum_is_grdngtype_points</td><td>bigint</td></tr>
+<tr><td width=80>33</td><td width=350>sum_is_status_deleted</td><td>bigint</td></tr>
+<tr><td width=80>34</td><td width=350>sum_is_status_none</td><td>bigint</td></tr>
+<tr><td width=80>35</td><td width=350>sum_is_status_published</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='person'></a><h2>Person</h2>Table name: <code>person</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>is_sex_female</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>is_sex_male</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>is_sex_notselected</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>is_sex_none</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>is_ethn_americanindian</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>is_ethn_asian</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>is_ethn_black</td><td>integer</td></tr>
+<tr><td width=80>9</td><td width=350>is_ethn_hispanicorlatino</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>is_ethn_nativepacificislander</td><td>integer</td></tr>
+<tr><td width=80>11</td><td width=350>is_ethn_notspecified</td><td>integer</td></tr>
+<tr><td width=80>12</td><td width=350>is_ethn_twoormoreraces</td><td>integer</td></tr>
+<tr><td width=80>13</td><td width=350>is_ethn_white</td><td>integer</td></tr>
+<tr><td width=80>14</td><td width=350>is_ethn_none</td><td>integer</td></tr>
+<tr><td width=80>15</td><td width=350>is_usres_nodata</td><td>integer</td></tr>
+<tr><td width=80>16</td><td width=350>is_usres_nonresidentalien</td><td>integer</td></tr>
+<tr><td width=80>17</td><td width=350>is_usres_permanentresident</td><td>integer</td></tr>
+<tr><td width=80>18</td><td width=350>is_usres_uscitizen</td><td>integer</td></tr>
+<tr><td width=80>19</td><td width=350>is_usres_none</td><td>integer</td></tr>
+<tr><td width=80>20</td><td width=350>hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>21</td><td width=350>colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>22</td><td width=350>is_vet_notveteran</td><td>integer</td></tr>
+<tr><td width=80>23</td><td width=350>is_vet_unknown</td><td>integer</td></tr>
+<tr><td width=80>24</td><td width=350>is_vet_veteran</td><td>integer</td></tr>
+<tr><td width=80>25</td><td width=350>is_edulvlpar_as</td><td>integer</td></tr>
+<tr><td width=80>26</td><td width=350>is_edulvlpar_ba</td><td>integer</td></tr>
+<tr><td width=80>27</td><td width=350>is_edulvlpar_ct</td><td>integer</td></tr>
+<tr><td width=80>28</td><td width=350>is_edulvlpar_do</td><td>integer</td></tr>
+<tr><td width=80>29</td><td width=350>is_edulvlpar_dp</td><td>integer</td></tr>
+<tr><td width=80>30</td><td width=350>is_edulvlpar_es</td><td>integer</td></tr>
+<tr><td width=80>31</td><td width=350>is_edulvlpar_hs</td><td>integer</td></tr>
+<tr><td width=80>32</td><td width=350>is_edulvlpar_lh</td><td>integer</td></tr>
+<tr><td width=80>33</td><td width=350>is_edulvlpar_md</td><td>integer</td></tr>
+<tr><td width=80>34</td><td width=350>is_edulvlpar_pd</td><td>integer</td></tr>
+<tr><td width=80>35</td><td width=350>is_edulvlpar_sc</td><td>integer</td></tr>
+<tr><td width=80>36</td><td width=350>is_edulvlpar_uk</td><td>integer</td></tr>
+<tr><td width=80>37</td><td width=350>is_edulvlpar_none</td><td>integer</td></tr>
+<tr><td width=80>38</td><td width=350>is_enrllvl_graduate</td><td>integer</td></tr>
+<tr><td width=80>39</td><td width=350>is_enrllvl_professional</td><td>integer</td></tr>
+<tr><td width=80>40</td><td width=350>is_enrllvl_undergraduate</td><td>integer</td></tr>
+<tr><td width=80>41</td><td width=350>is_enrllvl_none</td><td>integer</td></tr>
+<tr><td width=80>42</td><td width=350>coursecount</td><td>numeric</td></tr>
+<tr><td width=80>43</td><td width=350>satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>44</td><td width=350>satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>45</td><td width=350>satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>46</td><td width=350>satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>47</td><td width=350>satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>48</td><td width=350>satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>49</td><td width=350>satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>50</td><td width=350>satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>51</td><td width=350>satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>52</td><td width=350>sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>53</td><td width=350>actreading</td><td>numeric</td></tr>
+<tr><td width=80>54</td><td width=350>actmath</td><td>numeric</td></tr>
+<tr><td width=80>55</td><td width=350>actenglish</td><td>numeric</td></tr>
+<tr><td width=80>56</td><td width=350>actscience</td><td>numeric</td></tr>
+<tr><td width=80>57</td><td width=350>actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>58</td><td width=350>has_phone_nmbr</td><td>integer</td></tr>
+<tr><td width=80>59</td><td width=350>has_email_addr</td><td>integer</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='student_term_by_completed_course_section_buckets'></a><h2>Student term by completed course section buckets</h2>Table name: <code>student_term_by_completed_course_section_buckets</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>personid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>4</td><td width=350>cnt_crs_sct_all_cmpltd_gt_0_lt_4</td><td>integer</td></tr>
+<tr><td width=80>5</td><td width=350>cnt_crs_sct_all_cmpltd_gt_4_lt_8</td><td>integer</td></tr>
+<tr><td width=80>6</td><td width=350>cnt_crs_sct_all_cmpltd_gt_8_lt_12</td><td>integer</td></tr>
+<tr><td width=80>7</td><td width=350>cnt_crs_sct_all_cmpltd_gt_12_lt_16</td><td>integer</td></tr>
+<tr><td width=80>8</td><td width=350>cnt_crs_sct_all_cmpltd_gt_16_lt_20</td><td>integer</td></tr>
+<tr><td width=80>9</td><td width=350>cnt_crs_sct_all_cmpltd_gt_20_lt_24</td><td>integer</td></tr>
+<tr><td width=80>10</td><td width=350>cnt_crs_sct_all_cmpltd_gt_24_lt_28</td><td>integer</td></tr>
+<tr><td width=80>11</td><td width=350>cnt_crs_sct_all_cmpltd_gt_28_lt_32</td><td>integer</td></tr>
+<tr><td width=80>12</td><td width=350>cnt_crs_sct_all_cmpltd_gt_32</td><td>integer</td></tr>
+<tr><td width=80>13</td><td width=350>sum_credits_earned_all_cmpltd_gt_0_lt_15</td><td>integer</td></tr>
+<tr><td width=80>14</td><td width=350>sum_credits_earned_all_cmpltd_gt_15_lt_30</td><td>integer</td></tr>
+<tr><td width=80>15</td><td width=350>sum_credits_earned_all_cmpltd_gt_30_lt_45</td><td>integer</td></tr>
+<tr><td width=80>16</td><td width=350>sum_credits_earned_all_cmpltd_gt_45_lt_60</td><td>integer</td></tr>
+<tr><td width=80>17</td><td width=350>sum_credits_earned_all_cmpltd_gt_60_lt_75</td><td>integer</td></tr>
+<tr><td width=80>18</td><td width=350>sum_credits_earned_all_cmpltd_gt_75_lt_90</td><td>integer</td></tr>
+<tr><td width=80>19</td><td width=350>sum_credits_earned_all_cmpltd_gt_90_lt_105</td><td>integer</td></tr>
+<tr><td width=80>20</td><td width=350>sum_credits_earned_all_cmpltd_gt_105_lt_120</td><td>integer</td></tr>
+<tr><td width=80>21</td><td width=350>sum_credits_earned_all_cmpltd_gt_120</td><td>integer</td></tr>
+<tr><td width=80>22</td><td width=350>sum_credits_taken_all_cmpltd_gt_0_lt_15</td><td>integer</td></tr>
+<tr><td width=80>23</td><td width=350>sum_credits_taken_all_cmpltd_gt_15_lt_30</td><td>integer</td></tr>
+<tr><td width=80>24</td><td width=350>sum_credits_taken_all_cmpltd_gt_30_lt_45</td><td>integer</td></tr>
+<tr><td width=80>25</td><td width=350>sum_credits_taken_all_cmpltd_gt_45_lt_60</td><td>integer</td></tr>
+<tr><td width=80>26</td><td width=350>sum_credits_taken_all_cmpltd_gt_60_lt_75</td><td>integer</td></tr>
+<tr><td width=80>27</td><td width=350>sum_credits_taken_all_cmpltd_gt_75_lt_90</td><td>integer</td></tr>
+<tr><td width=80>28</td><td width=350>sum_credits_taken_all_cmpltd_gt_90_lt_105</td><td>integer</td></tr>
+<tr><td width=80>29</td><td width=350>sum_credits_taken_all_cmpltd_gt_105_lt_120</td><td>integer</td></tr>
+<tr><td width=80>30</td><td width=350>sum_credits_taken_all_cmpltd_gt_120</td><td>integer</td></tr>
+</tbody></table><a href="#top">top</a></p><p><a name='course_section_term_by_student'></a><h2>Course section term by student</h2>Table name: <code>course_section_term_by_student</code><br><br><table class='table is-bordered is-hoverable'><thead><tr><th width=80>Position</th><th width=350>Name</th><th>Data type</th></tr>
+</thead><tbody><tr><td width=80>1</td><td width=350>courseid</td><td>integer</td></tr>
+<tr><td width=80>2</td><td width=350>sectionid</td><td>integer</td></tr>
+<tr><td width=80>3</td><td width=350>termid</td><td>integer</td></tr>
+<tr><td width=80>4</td><td width=350>sum_is_role_student</td><td>bigint</td></tr>
+<tr><td width=80>5</td><td width=350>min_person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>6</td><td width=350>max_person_term_order</td><td>bigint</td></tr>
+<tr><td width=80>7</td><td width=350>avg_person_term_order</td><td>numeric</td></tr>
+<tr><td width=80>8</td><td width=350>min_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>9</td><td width=350>max_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>10</td><td width=350>avg_count_course_section_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>11</td><td width=350>min_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>12</td><td width=350>max_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>13</td><td width=350>avg_sum_credits_earned_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>14</td><td width=350>min_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>15</td><td width=350>max_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>16</td><td width=350>avg_sum_credits_taken_all_cmpltd</td><td>numeric</td></tr>
+<tr><td width=80>17</td><td width=350>sum_is_sex_female</td><td>bigint</td></tr>
+<tr><td width=80>18</td><td width=350>sum_is_sex_male</td><td>bigint</td></tr>
+<tr><td width=80>19</td><td width=350>sum_is_sex_none</td><td>bigint</td></tr>
+<tr><td width=80>20</td><td width=350>sum_is_sex_notselected</td><td>bigint</td></tr>
+<tr><td width=80>21</td><td width=350>sum_is_ethn_americanindian</td><td>bigint</td></tr>
+<tr><td width=80>22</td><td width=350>sum_is_ethn_asian</td><td>bigint</td></tr>
+<tr><td width=80>23</td><td width=350>sum_is_ethn_black</td><td>bigint</td></tr>
+<tr><td width=80>24</td><td width=350>sum_is_ethn_hispanicorlatino</td><td>bigint</td></tr>
+<tr><td width=80>25</td><td width=350>sum_is_ethn_nativepacificislander</td><td>bigint</td></tr>
+<tr><td width=80>26</td><td width=350>sum_is_ethn_none</td><td>bigint</td></tr>
+<tr><td width=80>27</td><td width=350>sum_is_ethn_notspecified</td><td>bigint</td></tr>
+<tr><td width=80>28</td><td width=350>sum_is_ethn_twoormoreraces</td><td>bigint</td></tr>
+<tr><td width=80>29</td><td width=350>sum_is_ethn_white</td><td>bigint</td></tr>
+<tr><td width=80>30</td><td width=350>sum_is_usres_nodata</td><td>bigint</td></tr>
+<tr><td width=80>31</td><td width=350>sum_is_usres_none</td><td>bigint</td></tr>
+<tr><td width=80>32</td><td width=350>sum_is_usres_nonresidentalien</td><td>bigint</td></tr>
+<tr><td width=80>33</td><td width=350>sum_is_usres_permanentresident</td><td>bigint</td></tr>
+<tr><td width=80>34</td><td width=350>sum_is_usres_uscitizen</td><td>bigint</td></tr>
+<tr><td width=80>35</td><td width=350>min_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>36</td><td width=350>max_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>37</td><td width=350>avg_hsgpa</td><td>numeric</td></tr>
+<tr><td width=80>38</td><td width=350>min_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>39</td><td width=350>max_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>40</td><td width=350>avg_colgpacum</td><td>numeric</td></tr>
+<tr><td width=80>41</td><td width=350>sum_is_vet_notveteran</td><td>bigint</td></tr>
+<tr><td width=80>42</td><td width=350>sum_is_vet_unknown</td><td>bigint</td></tr>
+<tr><td width=80>43</td><td width=350>sum_is_vet_veteran</td><td>bigint</td></tr>
+<tr><td width=80>44</td><td width=350>sum_is_edulvlpar_as</td><td>bigint</td></tr>
+<tr><td width=80>45</td><td width=350>sum_is_edulvlpar_ba</td><td>bigint</td></tr>
+<tr><td width=80>46</td><td width=350>sum_is_edulvlpar_ct</td><td>bigint</td></tr>
+<tr><td width=80>47</td><td width=350>sum_is_edulvlpar_do</td><td>bigint</td></tr>
+<tr><td width=80>48</td><td width=350>sum_is_edulvlpar_dp</td><td>bigint</td></tr>
+<tr><td width=80>49</td><td width=350>sum_is_edulvlpar_es</td><td>bigint</td></tr>
+<tr><td width=80>50</td><td width=350>sum_is_edulvlpar_hs</td><td>bigint</td></tr>
+<tr><td width=80>51</td><td width=350>sum_is_edulvlpar_lh</td><td>bigint</td></tr>
+<tr><td width=80>52</td><td width=350>sum_is_edulvlpar_md</td><td>bigint</td></tr>
+<tr><td width=80>53</td><td width=350>sum_is_edulvlpar_none</td><td>bigint</td></tr>
+<tr><td width=80>54</td><td width=350>sum_is_edulvlpar_pd</td><td>bigint</td></tr>
+<tr><td width=80>55</td><td width=350>sum_is_edulvlpar_sc</td><td>bigint</td></tr>
+<tr><td width=80>56</td><td width=350>sum_is_edulvlpar_uk</td><td>bigint</td></tr>
+<tr><td width=80>57</td><td width=350>sum_is_enrllvl_graduate</td><td>bigint</td></tr>
+<tr><td width=80>58</td><td width=350>sum_is_enrllvl_none</td><td>bigint</td></tr>
+<tr><td width=80>59</td><td width=350>sum_is_enrllvl_professional</td><td>bigint</td></tr>
+<tr><td width=80>60</td><td width=350>sum_is_enrllvl_undergraduate</td><td>bigint</td></tr>
+<tr><td width=80>61</td><td width=350>min_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>62</td><td width=350>max_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>63</td><td width=350>avg_satmathpre2016</td><td>numeric</td></tr>
+<tr><td width=80>64</td><td width=350>cnt_satmathpre2016</td><td>bigint</td></tr>
+<tr><td width=80>65</td><td width=350>min_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>66</td><td width=350>max_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>67</td><td width=350>avg_satmathpost2016</td><td>numeric</td></tr>
+<tr><td width=80>68</td><td width=350>cnt_satmathpost2016</td><td>bigint</td></tr>
+<tr><td width=80>69</td><td width=350>min_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>70</td><td width=350>max_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>71</td><td width=350>avg_satmathcombined</td><td>numeric</td></tr>
+<tr><td width=80>72</td><td width=350>cnt_satmathcombined</td><td>bigint</td></tr>
+<tr><td width=80>73</td><td width=350>min_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>74</td><td width=350>max_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>75</td><td width=350>avg_satverbalpre2016</td><td>numeric</td></tr>
+<tr><td width=80>76</td><td width=350>cnt_satverbalpre2016</td><td>bigint</td></tr>
+<tr><td width=80>77</td><td width=350>min_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>78</td><td width=350>max_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>79</td><td width=350>avg_satreadingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>80</td><td width=350>cnt_satreadingpost2016</td><td>bigint</td></tr>
+<tr><td width=80>81</td><td width=350>min_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>82</td><td width=350>max_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>83</td><td width=350>avg_satverbalreadingcombined</td><td>numeric</td></tr>
+<tr><td width=80>84</td><td width=350>cnt_satverbalreadingcombined</td><td>bigint</td></tr>
+<tr><td width=80>85</td><td width=350>min_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>86</td><td width=350>max_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>87</td><td width=350>avg_satwritingpre2016</td><td>numeric</td></tr>
+<tr><td width=80>88</td><td width=350>cnt_satwritingpre2016</td><td>bigint</td></tr>
+<tr><td width=80>89</td><td width=350>min_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>90</td><td width=350>max_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>91</td><td width=350>avg_satwritingpost2016</td><td>numeric</td></tr>
+<tr><td width=80>92</td><td width=350>cnt_satwritingpost2016</td><td>bigint</td></tr>
+<tr><td width=80>93</td><td width=350>min_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>94</td><td width=350>max_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>95</td><td width=350>avg_satwritingcombined</td><td>numeric</td></tr>
+<tr><td width=80>96</td><td width=350>cnt_satwritingcombined</td><td>bigint</td></tr>
+<tr><td width=80>97</td><td width=350>min_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>98</td><td width=350>max_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>99</td><td width=350>avg_sattotalcombined</td><td>numeric</td></tr>
+<tr><td width=80>100</td><td width=350>cnt_sattotalcombined</td><td>bigint</td></tr>
+<tr><td width=80>101</td><td width=350>min_actreading</td><td>numeric</td></tr>
+<tr><td width=80>102</td><td width=350>max_actreading</td><td>numeric</td></tr>
+<tr><td width=80>103</td><td width=350>avg_actreading</td><td>numeric</td></tr>
+<tr><td width=80>104</td><td width=350>cnt_actreading</td><td>bigint</td></tr>
+<tr><td width=80>105</td><td width=350>min_actmath</td><td>numeric</td></tr>
+<tr><td width=80>106</td><td width=350>max_actmath</td><td>numeric</td></tr>
+<tr><td width=80>107</td><td width=350>avg_actmath</td><td>numeric</td></tr>
+<tr><td width=80>108</td><td width=350>cnt_actmath</td><td>bigint</td></tr>
+<tr><td width=80>109</td><td width=350>min_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>110</td><td width=350>max_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>111</td><td width=350>avg_actenglish</td><td>numeric</td></tr>
+<tr><td width=80>112</td><td width=350>cnt_actenglish</td><td>bigint</td></tr>
+<tr><td width=80>113</td><td width=350>min_actscience</td><td>numeric</td></tr>
+<tr><td width=80>114</td><td width=350>max_actscience</td><td>numeric</td></tr>
+<tr><td width=80>115</td><td width=350>avg_actscience</td><td>numeric</td></tr>
+<tr><td width=80>116</td><td width=350>cnt_actscience</td><td>bigint</td></tr>
+<tr><td width=80>117</td><td width=350>min_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>118</td><td width=350>max_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>119</td><td width=350>avg_actcomposite</td><td>numeric</td></tr>
+<tr><td width=80>120</td><td width=350>cnt_actcomposite</td><td>bigint</td></tr>
+<tr><td width=80>121</td><td width=350>sum_has_phone_nmbr</td><td>bigint</td></tr>
+<tr><td width=80>122</td><td width=350>sum_has_email_addr</td><td>bigint</td></tr>
+</tbody></table><a href="#top">top</a></p><br><br><br><br></div></div><!-- Footer --><footer class="footer"> <div class="container"> <div class="content"> <p> Questions about the documentation? <a href='mailto:udp@unizin.org'>Contact us</a>.<br> Unizin Data Platform by <a href="http://unizin.org">Unizin, Ltd.</a> </p> </div> </div></footer><!-- ///Footer --></body></html>
